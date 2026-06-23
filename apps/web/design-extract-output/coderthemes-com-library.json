@@ -1,0 +1,14 @@
+{
+  "library": "bootstrap",
+  "confidence": 0.8,
+  "evidence": [
+    "bootstrap utility hits: 5"
+  ],
+  "alternates": [],
+  "signals": {
+    "tailwindLike": 0.319,
+    "radixAttrCount": 0,
+    "classSampleSize": 198
+  },
+  "needsSmart": false
+}

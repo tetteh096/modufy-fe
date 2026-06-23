@@ -1,0 +1,192 @@
+{
+  "pageIntent": {
+    "type": "landing",
+    "confidence": 0.75,
+    "path": "/",
+    "title": "Coderthemes Design - Full-stack software, web design & development",
+    "description": "Coderthemes design is a full-stack software, web design and development company focusing on providing the high quality software services.",
+    "signals": [
+      {
+        "kind": "url",
+        "type": "landing",
+        "weight": 0.45,
+        "detail": "root-path"
+      },
+      {
+        "kind": "shape",
+        "type": "landing",
+        "weight": 0.3,
+        "detail": "features+hero+footer"
+      }
+    ],
+    "alternates": [],
+    "needsSmart": false
+  },
+  "sectionRoles": {
+    "sections": [
+      {
+        "index": 0,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 74
+        },
+        "buttonCount": 1,
+        "cardCount": 10,
+        "slots": {
+          "ctaCount": 1,
+          "lede": "HOME\nEXPERTISE\nUI PORTFOLIO\nABOUT US\nCONTACT US"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 1,
+        "tag": "section",
+        "role": "hero",
+        "subrole": null,
+        "confidence": 0.85,
+        "heading": "We Design & Develop modern software and web applications",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 716.5
+        },
+        "buttonCount": 1,
+        "cardCount": 0,
+        "slots": {
+          "heading": "We Design & Develop modern software and web applications",
+          "ctaCount": 1
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 2,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Our Expertise",
+        "bounds": {
+          "x": 0,
+          "y": 716.5,
+          "w": 1280,
+          "h": 671.390625
+        },
+        "buttonCount": 0,
+        "cardCount": 3,
+        "slots": {
+          "heading": "Our Expertise"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 3,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "Development Services",
+        "bounds": {
+          "x": 0,
+          "y": 1387.890625,
+          "w": 1280,
+          "h": 291.1875
+        },
+        "buttonCount": 0,
+        "cardCount": 13,
+        "slots": {
+          "heading": "Development Services"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 4,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": "About",
+        "bounds": {
+          "x": 0,
+          "y": 1679.078125,
+          "w": 1280,
+          "h": 441.59375
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {
+          "heading": "About",
+          "subheadings": [
+            "+",
+            "+",
+            "+"
+          ]
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 5,
+        "tag": "section",
+        "role": "hero",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": "Let's Talk Further",
+        "bounds": {
+          "x": 0,
+          "y": 2120.671875,
+          "w": 1280,
+          "h": 790.09375
+        },
+        "buttonCount": 1,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Let's Talk Further",
+          "ctaCount": 1
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 6,
+        "tag": "footer",
+        "role": "footer",
+        "subrole": null,
+        "confidence": 0.95,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 2910.765625,
+          "w": 1280,
+          "h": 376
+        },
+        "buttonCount": 0,
+        "cardCount": 7,
+        "slots": {
+          "lede": "Coderthemes"
+        },
+        "needsSmart": false
+      }
+    ],
+    "counts": {
+      "nav": 1,
+      "hero": 2,
+      "content": 3,
+      "footer": 1
+    },
+    "readingOrder": [
+      "nav",
+      "hero",
+      "content",
+      "content",
+      "content",
+      "hero",
+      "footer"
+    ]
+  }
+}

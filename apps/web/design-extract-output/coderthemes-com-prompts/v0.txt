@@ -1,0 +1,28 @@
+Build a landing page with this exact visual language.
+COLORS:
+  #374760
+  #000000
+  #ffffff
+  #6c757d
+  #96a6b7
+  #2f75d0
+  #7c8bad
+  #ff0000
+  #444444
+  #dc3545
+  #343a40
+  #007bff
+  #ffc107
+  #28a745
+FONTS: [object Object]
+SPACING: 4, 48, 54, 70, 88, 95, 150, 190
+RADIUS: 3, 50
+SHADOWS: rgba(0, 0, 0, 0.2) 2px 2px 3px 0px
+MATERIAL LANGUAGE: flat
+VOICE: Tone: friendly · Headings: Title Case · CTA verbs: [object Object], [object Object]
+LIBRARY: Use Bootstrap 5 utility classes. Customize via CSS variables.
+SECTIONS (in order):
+- hero — heading: "We Design & Develop modern software and web applications"
+- hero — heading: "Let's Talk Further"
+- footer
+Use Tailwind. Match these tokens exactly. Keep the material language consistent.

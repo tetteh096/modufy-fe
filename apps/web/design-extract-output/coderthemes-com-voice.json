@@ -1,0 +1,40 @@
+{
+  "tone": "friendly",
+  "pronoun": "we→you",
+  "headingStyle": "Title Case",
+  "headingLengthClass": "tight",
+  "ctaVerbs": [
+    {
+      "value": "contact",
+      "count": 1
+    },
+    {
+      "value": "submit",
+      "count": 1
+    }
+  ],
+  "buttonPatterns": [
+    {
+      "value": "contact us",
+      "count": 1
+    },
+    {
+      "value": "submit",
+      "count": 1
+    }
+  ],
+  "sampleHeadings": [
+    "We Design & Develop modern software and web applications",
+    "Our Expertise",
+    "Development Services",
+    "About",
+    "+",
+    "+",
+    "+",
+    "Let's Talk Further"
+  ],
+  "stats": {
+    "buttons": 2,
+    "headings": 8
+  }
+}

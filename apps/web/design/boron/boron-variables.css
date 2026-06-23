@@ -1,0 +1,71 @@
+/* Boron — coderthemes.com/boron (Neubrutalism). Tokens from designlang user extract. */
+
+.boron-root {
+  --boron-primary: #669776;
+  --boron-secondary: #fce7e7;
+  --boron-accent: #60addf;
+  --boron-neutral-400: #4c4c5c;
+  --boron-neutral-300: #97aac1;
+  --boron-neutral-200: #6c81a1;
+  --boron-neutral-100: #ffffff;
+  --boron-neutral-600: #343a40;
+  --boron-neutral-900: #000000;
+  /* note: trend-down derived from --boron-primary via HSL (hue +148°, sat 42%, light 42%) for AA on white */
+  --boron-trend-down: hsl(2 42% 42%);
+  --boron-trend-up: var(--boron-primary);
+  --boron-space-1: 1px;
+  --boron-space-7: 28px;
+  --boron-space-8: 35px;
+  --boron-space-9: 70px;
+  --boron-radius-sm: 2px;
+  --boron-radius-md: 5px;
+  --boron-radius-lg: 10px;
+  --boron-radius-pill: 50px;
+  --boron-shadow-brutal: 4px 4px 0 0 var(--boron-neutral-900);
+  --boron-shadow-brutal-sm: 2px 2px 0 0 var(--boron-neutral-900);
+  --boron-border: 2px solid var(--boron-neutral-900);
+  --boron-duration-fast: 100ms;
+  --boron-duration-base: 250ms;
+  --boron-duration-slow: 300ms;
+  font-family: var(--font-boron, "Lexend", system-ui, sans-serif);
+  font-size: 16px;
+  color: var(--boron-neutral-900);
+  background-color: var(--boron-secondary);
+}
+
+.boron-card {
+  background-color: var(--boron-neutral-100);
+  border: var(--boron-border);
+  border-radius: var(--boron-radius-md);
+  box-shadow: var(--boron-shadow-brutal);
+}
+
+.boron-btn {
+  border: var(--boron-border);
+  border-radius: var(--boron-radius-md);
+  box-shadow: var(--boron-shadow-brutal-sm);
+  background-color: var(--boron-neutral-100);
+  transition: transform var(--boron-duration-fast), box-shadow var(--boron-duration-fast);
+}
+
+.boron-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 0 var(--boron-neutral-900);
+}
+
+.boron-btn-primary {
+  background-color: var(--boron-primary);
+  color: var(--boron-neutral-100);
+}
+
+.boron-badge-sold {
+  background-color: hsl(from var(--boron-primary) h calc(s * 0.25) calc(l + 0.42));
+  color: var(--boron-primary);
+  border-radius: var(--boron-radius-pill);
+}
+
+.boron-badge-return {
+  background-color: var(--boron-secondary);
+  color: var(--boron-trend-down);
+  border-radius: var(--boron-radius-pill);
+}

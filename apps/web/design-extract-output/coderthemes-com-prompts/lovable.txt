@@ -1,0 +1,11 @@
+Clone the design language of this landing page and build a fresh equivalent.
+Visual feel: flat. Tone: friendly · Headings: Title Case · CTA verbs: [object Object], [object Object]
+Primary palette: #374760, #000000, #ffffff, #6c757d, #96a6b7.
+Typography: [object Object].
+Corner radius vocabulary: 3, 50.
+Shadow vocabulary: rgba(0, 0, 0, 0.2) 2px 2px 3px 0px.
+Use: Use Bootstrap 5 utility classes. Customize via CSS variables.
+Page structure:
+- hero — heading: "We Design & Develop modern software and web applications"
+- hero — heading: "Let's Talk Further"
+- footer

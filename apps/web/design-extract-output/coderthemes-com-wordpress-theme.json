@@ -1,0 +1,177 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "primary",
+          "color": "#2f75d0",
+          "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "#ff0000",
+          "name": "Secondary"
+        },
+        {
+          "slug": "accent",
+          "color": "#007bff",
+          "name": "Accent"
+        },
+        {
+          "slug": "neutral-1",
+          "color": "#000000",
+          "name": "Neutral 1"
+        },
+        {
+          "slug": "neutral-2",
+          "color": "#ffffff",
+          "name": "Neutral 2"
+        },
+        {
+          "slug": "neutral-3",
+          "color": "#6c757d",
+          "name": "Neutral 3"
+        },
+        {
+          "slug": "neutral-4",
+          "color": "#96a6b7",
+          "name": "Neutral 4"
+        },
+        {
+          "slug": "neutral-5",
+          "color": "#7c8bad",
+          "name": "Neutral 5"
+        },
+        {
+          "slug": "bg-ffffff",
+          "color": "#ffffff",
+          "name": "Background #ffffff"
+        },
+        {
+          "slug": "bg-fafaff",
+          "color": "#fafaff",
+          "name": "Background #fafaff"
+        },
+        {
+          "slug": "bg-f8f9fa",
+          "color": "#f8f9fa",
+          "name": "Background #f8f9fa"
+        }
+      ],
+      "gradients": []
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "hkgrotesk",
+          "slug": "hkgrotesk",
+          "name": "hkgrotesk"
+        }
+      ],
+      "fontSizes": [
+        {
+          "size": "42px",
+          "slug": "size-42",
+          "name": "42px"
+        },
+        {
+          "size": "36px",
+          "slug": "size-36",
+          "name": "36px"
+        },
+        {
+          "size": "32px",
+          "slug": "size-32",
+          "name": "32px"
+        },
+        {
+          "size": "28px",
+          "slug": "size-28",
+          "name": "28px"
+        },
+        {
+          "size": "20px",
+          "slug": "size-20",
+          "name": "20px"
+        },
+        {
+          "size": "16px",
+          "slug": "size-16",
+          "name": "16px"
+        },
+        {
+          "size": "14px",
+          "slug": "size-14",
+          "name": "14px"
+        },
+        {
+          "size": "13px",
+          "slug": "size-13",
+          "name": "13px"
+        }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        {
+          "size": "4px",
+          "slug": "spacing-4",
+          "name": "4px"
+        },
+        {
+          "size": "48px",
+          "slug": "spacing-48",
+          "name": "48px"
+        },
+        {
+          "size": "54px",
+          "slug": "spacing-54",
+          "name": "54px"
+        },
+        {
+          "size": "70px",
+          "slug": "spacing-70",
+          "name": "70px"
+        },
+        {
+          "size": "88px",
+          "slug": "spacing-88",
+          "name": "88px"
+        },
+        {
+          "size": "95px",
+          "slug": "spacing-95",
+          "name": "95px"
+        },
+        {
+          "size": "150px",
+          "slug": "spacing-150",
+          "name": "150px"
+        },
+        {
+          "size": "190px",
+          "slug": "spacing-190",
+          "name": "190px"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "1140px",
+      "wideSize": "1400px"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#000000"
+    },
+    "typography": {
+      "fontSize": "16px",
+      "lineHeight": "18.4px",
+      "fontFamily": "hkgrotesk"
+    },
+    "spacing": {}
+  }
+}

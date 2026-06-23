@@ -1,0 +1,19 @@
+/* Scoped Tailwind v4 theme — import after boron-variables.css inside .boron-root layouts */
+
+@theme inline {
+  --color-boron-primary: var(--boron-primary);
+  --color-boron-secondary: var(--boron-secondary);
+  --color-boron-accent: var(--boron-accent);
+  --color-boron-muted: var(--boron-neutral-300);
+  --color-boron-subtle: var(--boron-neutral-200);
+  --color-boron-ink: var(--boron-neutral-900);
+  --color-boron-surface: var(--boron-neutral-100);
+  --color-boron-sidebar: var(--boron-neutral-900);
+  --spacing-boron-7: var(--boron-space-7);
+  --spacing-boron-8: var(--boron-space-8);
+  --spacing-boron-9: var(--boron-space-9);
+  --radius-boron-md: var(--boron-radius-md);
+  --radius-boron-pill: var(--boron-radius-pill);
+  --shadow-boron: var(--boron-shadow-brutal);
+  --font-boron: var(--font-boron, "Lexend", system-ui, sans-serif);
+}

@@ -1,0 +1,40 @@
+# ─── Frontend repo (modufy-fe): tracks apps/web + apps/admin only ───
+
+# Environment files — never commit these
+.env
+.env.local
+.env.*.local
+
+# Node / Next.js
+node_modules/
+.next/
+.turbo/
+dist/
+build/
+*.tsbuildinfo
+
+# Backend & infrastructure (lives in modufy-be)
+/services/
+/modules/
+/scripts/
+/docs/
+/Boron/
+/docker-compose.yml
+
+# Internal planning & review docs — do not publish
+/businessplan.md
+/devplan.md
+/ARCH.md
+/SECURITY_REVIEW.md
+
+# Tooling
+/.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

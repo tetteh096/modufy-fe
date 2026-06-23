@@ -1,0 +1,43 @@
+{
+  "$metadata": {
+    "generator": "designlang (manual Boron URL tokens)",
+    "source": "https://coderthemes.com/boron/layouts/index.html",
+    "generatedAt": "2026-06-04"
+  },
+  "primitive": {
+    "color": {
+      "primary": { "$value": "#669776", "$type": "color" },
+      "secondary": { "$value": "#fce7e7", "$type": "color" },
+      "accent": { "$value": "#60addf", "$type": "color" },
+      "neutral": {
+        "n400": { "$value": "#4c4c5c", "$type": "color" },
+        "n300": { "$value": "#97aac1", "$type": "color" },
+        "n200": { "$value": "#6c81a1", "$type": "color" },
+        "n100": { "$value": "#ffffff", "$type": "color" },
+        "n600": { "$value": "#343a40", "$type": "color" },
+        "n900": { "$value": "#000000", "$type": "color" }
+      }
+    },
+    "spacing": {
+      "1": { "$value": "1px", "$type": "dimension" },
+      "7": { "$value": "28px", "$type": "dimension" },
+      "8": { "$value": "35px", "$type": "dimension" },
+      "9": { "$value": "70px", "$type": "dimension" }
+    },
+    "radius": {
+      "sm": { "$value": "2px", "$type": "dimension" },
+      "md": { "$value": "5px", "$type": "dimension" },
+      "lg": { "$value": "10px", "$type": "dimension" },
+      "pill": { "$value": "50px", "$type": "dimension" }
+    },
+    "font": {
+      "sans": { "$value": "Lexend", "$type": "fontFamily" },
+      "sizeBase": { "$value": "16px", "$type": "dimension" }
+    },
+    "motion": {
+      "fast": { "$value": "100ms", "$type": "duration" },
+      "base": { "$value": "250ms", "$type": "duration" },
+      "slow": { "$value": "300ms", "$type": "duration" }
+    }
+  }
+}

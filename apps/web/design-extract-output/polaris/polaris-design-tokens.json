@@ -1,0 +1,64 @@
+{
+  "$source": "@shopify/polaris-tokens@9.4.2",
+  "$note": "Shape, density, type and motion only. Colors omitted — BizOS keeps its own green palette.",
+  "borderRadius": {
+    "050": "2px",
+    "100": "4px",
+    "150": "6px",
+    "200": "8px (controls: button, input, select)",
+    "300": "12px (cards)",
+    "400": "16px",
+    "500": "20px"
+  },
+  "borderWidth": {
+    "025": "1px (hairline / default)",
+    "050": "2px (focus ring)"
+  },
+  "space": {
+    "100": "4px",
+    "150": "6px",
+    "200": "8px",
+    "300": "12px",
+    "400": "16px",
+    "500": "20px",
+    "600": "24px",
+    "800": "32px",
+    "semantic": {
+      "cardPadding": "16px (space-400)",
+      "cardGap": "16px (space-400)",
+      "tableCellPadding": "6px (space-150)",
+      "buttonGroupGap": "8px (space-200)"
+    }
+  },
+  "shadow": {
+    "100": "0 1px 0 rgba(26,26,26,.07)  — resting card / hairline",
+    "200": "0 3px 1px -1px rgba(26,26,26,.07)",
+    "300": "0 4px 6px -2px rgba(26,26,26,.20) — popover/menu",
+    "400": "0 8px 16px -4px rgba(26,26,26,.22) — dialog",
+    "500": "0 12px 20px -8px rgba(26,26,26,.24)",
+    "600": "0 20px 20px -8px rgba(26,26,26,.28) — modal"
+  },
+  "font": {
+    "familySans": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    "weights": { "regular": 450, "medium": 550, "semibold": 650, "bold": 700 },
+    "letterSpacing": { "normal": "0", "dense": "-0.2px", "denser": "-0.3px", "densest": "-0.54px" }
+  },
+  "textStyles": {
+    "bodyXs":   { "size": "11px", "lineHeight": "12px", "weight": "regular" },
+    "bodySm":   { "size": "12px", "lineHeight": "16px", "weight": "regular" },
+    "bodyMd":   { "size": "13px", "lineHeight": "20px", "weight": "regular", "note": "default body" },
+    "bodyLg":   { "size": "14px", "lineHeight": "20px", "weight": "regular" },
+    "headingXs":  { "size": "12px", "lineHeight": "16px", "weight": "semibold" },
+    "headingSm":  { "size": "13px", "lineHeight": "20px", "weight": "semibold" },
+    "headingMd":  { "size": "14px", "lineHeight": "20px", "weight": "semibold" },
+    "headingLg":  { "size": "18px", "lineHeight": "24px", "weight": "semibold", "letterSpacing": "dense" },
+    "headingXl":  { "size": "22px", "lineHeight": "28px", "weight": "bold", "letterSpacing": "dense" },
+    "heading2xl": { "size": "30px", "lineHeight": "40px", "weight": "bold", "letterSpacing": "denser" },
+    "heading3xl": { "size": "36px", "lineHeight": "48px", "weight": "bold", "letterSpacing": "densest" }
+  },
+  "motion": {
+    "durations": { "fast": "100ms", "base": "150ms", "moderate": "200ms", "slow": "300ms" },
+    "ease": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+    "easeOut": "cubic-bezier(0.19, 0.91, 0.38, 1)"
+  }
+}

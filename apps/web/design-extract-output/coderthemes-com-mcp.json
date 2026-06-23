@@ -1,0 +1,693 @@
+{
+  "colors": {
+    "all": [
+      {
+        "hex": "#374760",
+        "rgb": {
+          "r": 55,
+          "g": 71,
+          "b": 96,
+          "a": 1
+        },
+        "hsl": {
+          "h": 217,
+          "s": 27,
+          "l": 30
+        },
+        "count": 311,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0
+        },
+        "count": 74,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100
+        },
+        "count": 51,
+        "contexts": [
+          "background",
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#6c757d",
+        "rgb": {
+          "r": 108,
+          "g": 117,
+          "b": 125,
+          "a": 1
+        },
+        "hsl": {
+          "h": 208,
+          "s": 7,
+          "l": 46
+        },
+        "count": 40,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#96a6b7",
+        "rgb": {
+          "r": 150,
+          "g": 166,
+          "b": 183,
+          "a": 1
+        },
+        "hsl": {
+          "h": 211,
+          "s": 19,
+          "l": 65
+        },
+        "count": 30,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#2f75d0",
+        "rgb": {
+          "r": 47,
+          "g": 117,
+          "b": 208,
+          "a": 1
+        },
+        "hsl": {
+          "h": 214,
+          "s": 63,
+          "l": 50
+        },
+        "count": 21,
+        "contexts": [
+          "background",
+          "border",
+          "text"
+        ]
+      },
+      {
+        "hex": "#7c8bad",
+        "rgb": {
+          "r": 124,
+          "g": 139,
+          "b": 173,
+          "a": 1
+        },
+        "hsl": {
+          "h": 222,
+          "s": 23,
+          "l": 58
+        },
+        "count": 16,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#ff0000",
+        "rgb": {
+          "r": 255,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 50
+        },
+        "count": 12,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#444444",
+        "rgb": {
+          "r": 68,
+          "g": 68,
+          "b": 68,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 27
+        },
+        "count": 10,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#dc3545",
+        "rgb": {
+          "r": 220,
+          "g": 53,
+          "b": 69,
+          "a": 1
+        },
+        "hsl": {
+          "h": 354,
+          "s": 70,
+          "l": 54
+        },
+        "count": 8,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#343a40",
+        "rgb": {
+          "r": 52,
+          "g": 58,
+          "b": 64,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 10,
+          "l": 23
+        },
+        "count": 7,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#007bff",
+        "rgb": {
+          "r": 0,
+          "g": 123,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 211,
+          "s": 100,
+          "l": 50
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#ffc107",
+        "rgb": {
+          "r": 255,
+          "g": 193,
+          "b": 7,
+          "a": 1
+        },
+        "hsl": {
+          "h": 45,
+          "s": 100,
+          "l": 51
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#28a745",
+        "rgb": {
+          "r": 40,
+          "g": 167,
+          "b": 69,
+          "a": 1
+        },
+        "hsl": {
+          "h": 134,
+          "s": 61,
+          "l": 41
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#17a2b8",
+        "rgb": {
+          "r": 23,
+          "g": 162,
+          "b": 184,
+          "a": 1
+        },
+        "hsl": {
+          "h": 188,
+          "s": 78,
+          "l": 41
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#495057",
+        "rgb": {
+          "r": 73,
+          "g": 80,
+          "b": 87,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 9,
+          "l": 31
+        },
+        "count": 4,
+        "contexts": [
+          "text"
+        ]
+      },
+      {
+        "hex": "#edf0f3",
+        "rgb": {
+          "r": 237,
+          "g": 240,
+          "b": 243,
+          "a": 1
+        },
+        "hsl": {
+          "h": 210,
+          "s": 20,
+          "l": 94
+        },
+        "count": 4,
+        "contexts": [
+          "border"
+        ]
+      },
+      {
+        "hex": "#c1c1c1",
+        "rgb": {
+          "r": 193,
+          "g": 193,
+          "b": 193,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 76
+        },
+        "count": 1,
+        "contexts": [
+          "border"
+        ]
+      },
+      {
+        "hex": "#cccccc",
+        "rgb": {
+          "r": 204,
+          "g": 204,
+          "b": 204,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 80
+        },
+        "count": 1,
+        "contexts": [
+          "border"
+        ]
+      }
+    ]
+  },
+  "regions": [
+    {
+      "role": "nav",
+      "tag": "nav",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 74
+      },
+      "heading": null,
+      "buttonCount": 1,
+      "cardCount": 10,
+      "className": "navbar navbar-expand-lg navbar-custom"
+    },
+    {
+      "role": "hero",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 716.5
+      },
+      "heading": "We Design & Develop modern software and web applications",
+      "buttonCount": 1,
+      "cardCount": 0,
+      "className": "hero-section"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 716.5,
+        "w": 1280,
+        "h": 671.390625
+      },
+      "heading": "Our Expertise",
+      "buttonCount": 0,
+      "cardCount": 3,
+      "className": "section"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 1387.890625,
+        "w": 1280,
+        "h": 291.1875
+      },
+      "heading": "Development Services",
+      "buttonCount": 0,
+      "cardCount": 13,
+      "className": "section pt-0 position-relative"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 1679.078125,
+        "w": 1280,
+        "h": 441.59375
+      },
+      "heading": "About",
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": "section bg-light"
+    },
+    {
+      "role": "hero",
+      "tag": "section",
+      "bounds": {
+        "x": 0,
+        "y": 2120.671875,
+        "w": 1280,
+        "h": 790.09375
+      },
+      "heading": "Let's Talk Further",
+      "buttonCount": 1,
+      "cardCount": 0,
+      "className": "section"
+    },
+    {
+      "role": "footer",
+      "tag": "footer",
+      "bounds": {
+        "x": 0,
+        "y": 2910.765625,
+        "w": 1280,
+        "h": 376
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 7,
+      "className": "bg-dark footer"
+    }
+  ],
+  "componentClusters": [
+    {
+      "kind": "button",
+      "structuralHash": "a>i",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(47, 117, 208)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "14px 22px 14px 22px",
+            "borderRadius": "4px",
+            "border": "1px 1px 2px solid rgb(47, 117, 208) rgb(47, 117, 208) rgba(0, 0, 0, 0.15)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "card",
+      "structuralHash": "div>div>h5>p",
+      "instanceCount": 3,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(55, 71, 96)",
+            "padding": "24px 24px 24px 24px",
+            "borderRadius": "4px",
+            "border": "0px none rgb(55, 71, 96)",
+            "fontSize": "16px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 3
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "structuralHash": "input",
+      "instanceCount": 3,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(248, 249, 250)",
+            "color": "rgb(73, 80, 87)",
+            "padding": "6px 12px 6px 15px",
+            "borderRadius": "4px",
+            "border": "1px solid rgb(237, 240, 243)",
+            "fontSize": "14px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 3
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "structuralHash": "textarea",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(248, 249, 250)",
+            "color": "rgb(73, 80, 87)",
+            "padding": "6px 12px 6px 15px",
+            "borderRadius": "4px",
+            "border": "1px solid rgb(237, 240, 243)",
+            "fontSize": "14px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(47, 117, 208)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "14px 22px 14px 22px",
+            "borderRadius": "4px",
+            "border": "1px 1px 2px solid rgb(47, 117, 208) rgb(47, 117, 208) rgba(0, 0, 0, 0.15)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "remediation": []
+  },
+  "cssHealth": {
+    "sheets": [
+      {
+        "url": "https://coderthemes.com/assets/css/animation.css",
+        "totalBytes": 2439,
+        "usedBytes": 1118,
+        "unusedBytes": 1321,
+        "unusedPercent": 54
+      },
+      {
+        "url": "https://unicons.iconscout.com/release/v2.1.11/css/unicons.css",
+        "totalBytes": 64731,
+        "usedBytes": 1659,
+        "unusedBytes": 63072,
+        "unusedPercent": 97
+      },
+      {
+        "url": "https://coderthemes.com/assets/css/style.css",
+        "totalBytes": 5741,
+        "usedBytes": 3018,
+        "unusedBytes": 2723,
+        "unusedPercent": 47
+      },
+      {
+        "url": "https://coderthemes.com/assets/css/fonts.css",
+        "totalBytes": 1020,
+        "usedBytes": 0,
+        "unusedBytes": 1020,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+        "totalBytes": 155758,
+        "usedBytes": 8354,
+        "unusedBytes": 147404,
+        "unusedPercent": 95
+      },
+      {
+        "url": "https://www.gstatic.com/recaptcha/releases/ne1iDVwClkE7nKD3uA9Vqsvl/styles__ltr.css",
+        "totalBytes": 82857,
+        "usedBytes": 48993,
+        "unusedBytes": 33864,
+        "unusedPercent": 41
+      },
+      {
+        "url": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6Ld3ohgUAAAAAHK5uzEFJzkAR_Zfhn7kfntBwQgd&co=aHR0cHM6Ly9jb2RlcnRoZW1lcy5jb206NDQz&hl=en&v=ne1iDVwClkE7nKD3uA9Vqsvl&size=normal&anchor-ms=20000&execute-ms=30000&cb=785tetn5eg3h",
+        "totalBytes": 16001,
+        "usedBytes": 0,
+        "unusedBytes": 16001,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://www.google.com/recaptcha/api2/bframe?hl=en&v=ne1iDVwClkE7nKD3uA9Vqsvl&k=6Ld3ohgUAAAAAHK5uzEFJzkAR_Zfhn7kfntBwQgd&bft=0dAFcWeA5Mx3fu_eGTynPBtvyTVsYJ9NsmBTYlsS1G0Ua45OqqVgZrLRXZ1N3fakpYMR6iPBqizf82SjeqlaHsnPWWSnJajwpvEQ",
+        "totalBytes": 16001,
+        "usedBytes": 0,
+        "unusedBytes": 16001,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://www.gstatic.com/recaptcha/releases/ne1iDVwClkE7nKD3uA9Vqsvl/styles__ltr.css",
+        "totalBytes": 82857,
+        "usedBytes": 28,
+        "unusedBytes": 82829,
+        "unusedPercent": 100
+      }
+    ],
+    "totalBytes": 427405,
+    "usedBytes": 63170,
+    "unusedBytes": 364235,
+    "unusedPercent": 85,
+    "importantCount": 1044,
+    "duplicates": 4598,
+    "vendorPrefixes": {
+      "webkit": 332,
+      "moz": 34,
+      "ms": 509,
+      "o": 0
+    },
+    "keyframes": [
+      {
+        "name": "animate",
+        "steps": 2
+      },
+      {
+        "name": "rotating",
+        "steps": 2
+      },
+      {
+        "name": "rotating2",
+        "steps": 2
+      },
+      {
+        "name": "rotating3",
+        "steps": 2
+      },
+      {
+        "name": "rotating4",
+        "steps": 2
+      },
+      {
+        "name": "rotating5",
+        "steps": 2
+      },
+      {
+        "name": "hero_animation",
+        "steps": 2
+      }
+    ],
+    "specificity": {
+      "max": [
+        1,
+        7,
+        13
+      ],
+      "average": [
+        0.01,
+        1.63,
+        0.13
+      ],
+      "count": 4881
+    },
+    "issues": [
+      "1044 !important rules",
+      "4598 duplicate declarations",
+      "85% unused CSS"
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+:root {
+  /* Colors — Primary */
+  --color-primary: #2f75d0;
+  --color-secondary: #ff0000;
+  --color-accent: #007bff;
+
+  /* Colors — Neutrals */
+  --color-neutral-50: #000000;
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #6c757d;
+  --color-neutral-300: #96a6b7;
+  --color-neutral-400: #7c8bad;
+  --color-neutral-500: #444444;
+  --color-neutral-600: #343a40;
+  --color-neutral-700: #495057;
+  --color-neutral-800: #edf0f3;
+  --color-neutral-900: #c1c1c1;
+
+  /* Colors — Backgrounds */
+  --color-bg: #ffffff;
+  --color-bg-1: #fafaff;
+  --color-bg-2: #f8f9fa;
+  --color-bg-3: #343a40;
+
+  /* Colors — Text */
+  --color-text: #000000;
+  --color-text-1: #374760;
+  --color-text-2: #007bff;
+  --color-text-3: #444444;
+  --color-text-4: #6c757d;
+
+  /* Typography — Families */
+  --font-sans: 'hkgrotesk', sans-serif;
+
+  /* Typography — Scale */
+  --font-size-42: 42px;
+  --font-size-36: 36px;
+  --font-size-32: 32px;
+  --font-size-28: 28px;
+  --font-size-20: 20px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-13: 13px;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-48: 48px;
+  --spacing-54: 54px;
+  --spacing-70: 70px;
+  --spacing-88: 88px;
+  --spacing-95: 95px;
+  --spacing-150: 150px;
+  --spacing-190: 190px;
+  --spacing-200: 200px;
+  --spacing-210: 210px;
+  --spacing-230: 230px;
+  --spacing-308: 308px;
+
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-full: 50px;
+
+  /* Box Shadows */
+  --shadow-sm: rgba(0, 0, 0, 0.2) 2px 2px 3px 0px;
+
+  /* Original Site Variables */
+  /* — colors — */
+  --primary: #007bff;
+  --secondary: #6c757d;
+  /* — spacing — */
+  --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  /* — typography — */
+  --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  /* — other — */
+  --light: #f8f9fa;
+  --yellow: #ffc107;
+  --indigo: #6610f2;
+  --green: #28a745;
+  --pink: #e83e8c;
+  --purple: #6f42c1;
+  --breakpoint-xs: 0;
+  --teal: #20c997;
+  --gray-dark: #343a40;
+  --breakpoint-md: 768px;
+  --breakpoint-sm: 576px;
+  --breakpoint-lg: 992px;
+  --blue: #007bff;
+  --white: #fff;
+  --danger: #dc3545;
+  --success: #28a745;
+  --gray: #6c757d;
+  --warning: #ffc107;
+  --red: #dc3545;
+  --info: #17a2b8;
+  --dark: #343a40;
+  --cyan: #17a2b8;
+  --breakpoint-xl: 1200px;
+  --orange: #fd7e14;
+  /* — semantic — */
+  success: [object Object];
+  warning: [object Object];
+  error: [object Object];
+  info: [object Object];
+
+}
