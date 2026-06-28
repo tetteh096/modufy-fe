@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { LegalDoc, LegalSection } from "@/components/features/legal/legal-doc";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | BizOS",
-  description: "The terms that govern your use of BizOS.",
+  title: "Terms of Service | Modufy",
+  description: "The terms that govern your use of Modufy.",
 };
 
 export default function TermsPage() {
@@ -14,16 +14,16 @@ export default function TermsPage() {
       intro={
         <p>
           These Terms of Service (&ldquo;Terms&rdquo;) are a legal agreement between you and
-          BizOS (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) governing your use of the
-          BizOS web application, websites, and related services (together, the
+          Modufy (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) governing your use of the
+          Modufy web application, websites, and related services (together, the
           &ldquo;Service&rdquo;). By creating an account or using the Service, you agree to
           these Terms. If you do not agree, do not use the Service.
         </p>
       }
     >
-      <LegalSection number={1} title="What BizOS is">
+      <LegalSection number={1} title="What Modufy is">
         <p>
-          BizOS is a business management platform that helps businesses manage customers,
+          Modufy is a business management platform that helps businesses manage customers,
           sales, invoices, expenses, accounting records, inventory, and online storefronts.
           The Service is designed primarily for businesses operating in Ghana, with support
           for Ghana Cedi (GHS) pricing, VAT handling, and mobile money payment records.
@@ -107,10 +107,10 @@ export default function TermsPage() {
       <LegalSection number={6} title="Invoices, payments, and financial records">
         <ol>
           <li>
-            BizOS helps you create and track invoices, record payments (including cash,
+            Modufy helps you create and track invoices, record payments (including cash,
             card, bank transfer, and mobile money), and maintain accounting records.{" "}
             <strong>
-              BizOS is a record-keeping tool, not a bank, payment processor, or licensed
+              Modufy is a record-keeping tool, not a bank, payment processor, or licensed
               financial institution.
             </strong>
           </li>
@@ -122,7 +122,7 @@ export default function TermsPage() {
           <li>
             Figures produced by the Service (totals, balances, VAT calculations, reports)
             depend on the data you enter. Verify important figures before relying on them.
-            BizOS does not provide accounting, tax, or legal advice.
+            Modufy does not provide accounting, tax, or legal advice.
           </li>
         </ol>
       </LegalSection>
@@ -147,10 +147,10 @@ export default function TermsPage() {
 
       <LegalSection number={8} title="Marketplace and storefronts">
         <p>
-          If you use BizOS to operate an online storefront, run promotions, or issue
+          If you use Modufy to operate an online storefront, run promotions, or issue
           coupons, you are the seller of record. You are responsible for your product
           listings, pricing, order fulfilment, refunds, and compliance with consumer
-          protection law. BizOS provides the software only and is not a party to
+          protection law. Modufy provides the software only and is not a party to
           transactions between you and your customers.
         </p>
       </LegalSection>
@@ -239,11 +239,11 @@ export default function TermsPage() {
 
       <LegalSection number={17} title="Contact">
         <p>
-          BizOS
+          Modufy
           <br />
           Accra, Ghana
           <br />
-          Email: legal@bizos.app
+          Email: legal@modufy.app
         </p>
       </LegalSection>
     </LegalDoc>

@@ -15,16 +15,15 @@ export const auth = betterAuth({
   database: makePool(),
   secret: process.env.BETTER_AUTH_SECRET!,
   baseURL: appURL,
-  appName: "BizOS",
+  appName: "Modufy",
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false,
     sendResetPassword: async ({ user, url }) => {
       await sendAuthMail({
         to: user.email,
-        subject: "Reset your BizOS password",
+        kind: "reset-password",
         url,
-        body: "Use the link above to set a new password.",
       });
     },
   },
@@ -32,29 +31,27 @@ export const auth = betterAuth({
     sendVerificationEmail: async ({ user, url }) => {
       await sendAuthMail({
         to: user.email,
-        subject: "Verify your BizOS email",
+        kind: "verify-email",
         url,
-        body: "Click the link to confirm your email address.",
       });
     },
     sendOnSignUp: true,
   },
   trustedOrigins: [appURL],
   plugins: [
-    twoFactor({ issuer: "BizOS" }),
+    twoFactor({ issuer: "Modufy" }),
     emailOTP({
       async sendVerificationOTP({ email, otp, type }) {
-        const subject =
+        const kind =
           type === "sign-in"
-            ? "Your BizOS sign-in code"
+            ? "sign-in-otp"
             : type === "email-verification"
-              ? "Verify your BizOS email"
-              : "Reset your BizOS password";
+              ? "verify-email-otp"
+              : "reset-password-otp";
         await sendAuthMail({
           to: email,
-          subject,
+          kind,
           otp,
-          body: `Your one-time code is ${otp}. It expires shortly.`,
         });
       },
     }),

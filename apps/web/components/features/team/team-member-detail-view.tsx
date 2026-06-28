@@ -394,7 +394,7 @@ function MemberDetailContent({ memberId }: { memberId: string }) {
                 created_at: item.at,
               }))}
               emptyTitle="No activity yet"
-              emptyDescription="Events will appear here when this member signs in or performs actions in BizOS."
+              emptyDescription="Events will appear here when this member signs in or performs actions in Modufy."
               showActor={false}
             />
             <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
@@ -527,7 +527,7 @@ function MemberDetailContent({ memberId }: { memberId: string }) {
                     className="gap-2"
                     onClick={() =>
                       copyText(
-                        `BizOS login\nEmail: ${detail.email}\nTemporary password: ${resetResult.temp_password}\nSign in: ${typeof window !== "undefined" ? window.location.origin : ""}/login`,
+                        `Modufy login\nEmail: ${detail.email}\nTemporary password: ${resetResult.temp_password}\nSign in: ${typeof window !== "undefined" ? window.location.origin : ""}/login`,
                         "Credentials",
                       )
                     }

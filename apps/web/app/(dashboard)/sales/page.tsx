@@ -27,6 +27,7 @@ import { formatMoney } from "@/lib/format";
 import { periodRange, type PeriodFilter } from "@/lib/period-range";
 import { PageHeader } from "@/components/shared/page-header";
 import { PeriodFilterTabs } from "@/components/shared/period-filter-tabs";
+import { BranchReportFilter, branchApiParams } from "@/components/features/branches/branch-report-filter";
 import { EmptyState } from "@/components/shared/empty-state";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { SalesRevenueChart } from "@/components/features/sales/sales-revenue-chart";
@@ -90,23 +91,25 @@ export default function SalesPage() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+  const [branchFilter, setBranchFilter] = useState("all");
   const debouncedSearch = useDebounce(search, 300);
   const queryClient = useQueryClient();
   const period = periodRange(periodFilter);
+  const branchParams = branchApiParams(branchFilter);
 
   useEffect(() => {
     setPage(1);
-  }, [periodFilter, paymentFilter, sourceFilter, debouncedSearch, pageSize]);
+  }, [periodFilter, paymentFilter, sourceFilter, debouncedSearch, pageSize, branchFilter]);
 
   const { data: summary, isLoading: summaryLoading } = useQuery({
-    queryKey: ["sales-summary", periodFilter, period.from, period.to],
-    queryFn: () => salesApi.summary(period.summaryParams),
+    queryKey: ["sales-summary", periodFilter, period.from, period.to, branchFilter],
+    queryFn: () => salesApi.summary({ ...period.summaryParams, ...branchParams }),
   });
 
   const { data: trends, isLoading: trendsLoading } = useQuery({
-    queryKey: ["sales-trends", period.chartFrom, period.chartTo],
+    queryKey: ["sales-trends", period.chartFrom, period.chartTo, branchFilter],
     queryFn: () =>
-      salesApi.trends({ from: period.chartFrom, to: period.chartTo }),
+      salesApi.trends({ from: period.chartFrom, to: period.chartTo, ...branchParams }),
   });
 
   const { data, isLoading, isFetching } = useQuery({
@@ -120,6 +123,7 @@ export default function SalesPage() {
       pageSize,
       period.from,
       period.to,
+      branchFilter,
     ],
     queryFn: () =>
       salesApi.list({
@@ -130,6 +134,7 @@ export default function SalesPage() {
         payment_method: paymentFilter === "all" ? undefined : paymentFilter,
         source_type: sourceFilter === "all" ? undefined : sourceFilter,
         search: debouncedSearch || undefined,
+        ...branchParams,
       }),
   });
 
@@ -154,7 +159,7 @@ export default function SalesPage() {
   }, [page, totalPages]);
 
   return (
-    <div className="w-full max-w-6xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="Sales"
         description="Track money in — cash, MoMo, and bank. No invoice needed for quick sales."
@@ -171,7 +176,10 @@ export default function SalesPage() {
         }
       />
 
-      <PeriodFilterTabs value={periodFilter} onChange={setPeriodFilter} />
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <PeriodFilterTabs value={periodFilter} onChange={setPeriodFilter} />
+        <BranchReportFilter value={branchFilter} onChange={setBranchFilter} />
+      </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
         <SummaryCard

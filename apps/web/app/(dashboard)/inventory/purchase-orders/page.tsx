@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { PurchaseOrder, POStatus } from "@/types/api";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 import { cn } from "@/lib/utils";
 
 const statusConfig: Record<POStatus, { label: string; className: string }> = {
@@ -69,7 +70,14 @@ function PORow({ po }: { po: PurchaseOrder }) {
       </Badge>
       <DropdownMenu>
         <DropdownMenuTrigger
-          render={<Button variant="ghost" size="icon" className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity" />}
+          render={
+            <Button
+              variant="outline"
+              size="icon"
+              className={tableRowMenuButtonClass}
+              aria-label="Purchase order actions"
+            />
+          }
         >
           <MoreHorizontal className="h-4 w-4" />
         </DropdownMenuTrigger>

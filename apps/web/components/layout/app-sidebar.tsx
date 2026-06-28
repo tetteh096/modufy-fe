@@ -11,6 +11,7 @@ import {
   Circle,
   CircleDot,
   ClipboardList,
+  Mail,
 } from "lucide-react";
 import { SidebarNavItem } from "@/components/layout/sidebar-nav-item";
 import { AlertsSidebarNavItem } from "@/components/layout/alerts-sidebar-nav-item";
@@ -33,6 +34,7 @@ import { cn } from "@/lib/utils";
 const mainNav = [
   { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
   { label: "Customers", href: "/customers", icon: Users },
+  { label: "Messages", href: "/communications", icon: Mail },
   { label: "Orders", href: "/orders", icon: ClipboardList },
   { label: "Sales", href: "/sales", icon: ShoppingCart },
   { label: "Expenses", href: "/expenses", icon: CreditCard },
@@ -73,7 +75,7 @@ export function AppSidebar() {
             <Building2 className="h-4 w-4 text-sidebar-primary-foreground" />
           </div>
           <span className="text-sm font-semibold tracking-tight group-data-[collapsible=icon]:hidden">
-            BizOS
+            Modufy
           </span>
         </Link>
       </SidebarHeader>

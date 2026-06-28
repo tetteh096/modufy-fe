@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import type { InventoryItem } from "@/types/api";
 import { formatMoney } from "@/lib/format";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 import { cn } from "@/lib/utils";
 
 const statusConfig: Record<string, { label: string; className: string }> = {
@@ -117,14 +118,15 @@ function ServiceTableRow({
         <TableCell className="hidden lg:table-cell">
           <Badge className={cn("text-xs border-0", status.className)}>{status.label}</Badge>
         </TableCell>
-        <TableCell className="text-right w-12">
+        <TableCell className="text-right w-14">
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity data-[popup-open]:opacity-100"
+                  className={tableRowMenuButtonClass}
+                  aria-label={`Actions for ${item.name}`}
                 />
               }
             >
@@ -207,7 +209,7 @@ export function ServicesListTable({
             <TableHead className="hidden md:table-cell">Duration</TableHead>
             <TableHead className="hidden lg:table-cell">Storefront</TableHead>
             <TableHead className="hidden lg:table-cell">Status</TableHead>
-            <TableHead className="w-12" />
+            <TableHead className="text-right w-14">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

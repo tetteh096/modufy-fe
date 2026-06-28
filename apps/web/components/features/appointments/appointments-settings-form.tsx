@@ -395,7 +395,7 @@ export function AppointmentsSettingsForm() {
               <span className="text-sm leading-snug">
                 <span className="font-medium">Email to customer</span>
                 <span className="mt-0.5 block text-xs text-muted-foreground">
-                  Save your preference now — automatic email delivery is coming soon. Requires a
+                  Automatic email at 9:00 AM the day before each confirmed booking. Requires a
                   customer email on the booking.
                 </span>
               </span>

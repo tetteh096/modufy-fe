@@ -41,13 +41,16 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import type { Sale } from "@/types/api";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 
 function SaleTableRow({
   sale,
   onDelete,
+  showBranch,
 }: {
   sale: Sale;
   onDelete: (id: string) => void;
+  showBranch?: boolean;
 }) {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const firstLine = sale.lines[0]?.description ?? "Sale";
@@ -87,6 +90,11 @@ function SaleTableRow({
             <span className="text-xs text-muted-foreground">Walk-in</span>
           )}
         </TableCell>
+        {showBranch ? (
+          <TableCell className="hidden lg:table-cell text-sm text-muted-foreground">
+            {sale.branch_name || "—"}
+          </TableCell>
+        ) : null}
         <TableCell className="hidden sm:table-cell">
           <div className="flex flex-col gap-1 items-start">
             <Badge variant="outline" className="gap-1 font-normal text-[10px]">
@@ -113,14 +121,15 @@ function SaleTableRow({
             </Badge>
           ) : null}
         </TableCell>
-        <TableCell className="w-10">
+        <TableCell className="w-14 text-right">
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className={tableRowMenuButtonClass}
+                  aria-label="Sale actions"
                 />
               }
             >
@@ -177,9 +186,11 @@ function SaleTableRow({
 type SalesListTableProps = {
   sales: Sale[];
   onDelete: (id: string) => void;
+  showBranch?: boolean;
 };
 
-export function SalesListTable({ sales, onDelete }: SalesListTableProps) {
+export function SalesListTable({ sales, onDelete, showBranch }: SalesListTableProps) {
+  const showBranchCol = showBranch ?? sales.some((s) => Boolean(s.branch_name));
   return (
     <div className="overflow-x-auto">
       <Table>
@@ -188,14 +199,22 @@ export function SalesListTable({ sales, onDelete }: SalesListTableProps) {
             <TableHead className="w-[100px]">Date</TableHead>
             <TableHead>Description</TableHead>
             <TableHead className="hidden md:table-cell">Customer</TableHead>
+            {showBranchCol ? (
+              <TableHead className="hidden lg:table-cell">Branch</TableHead>
+            ) : null}
             <TableHead className="hidden sm:table-cell">Payment</TableHead>
             <TableHead className="text-right w-[120px]">Amount</TableHead>
-            <TableHead className="w-10" />
+            <TableHead className="w-14 text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {sales.map((sale) => (
-            <SaleTableRow key={sale.id} sale={sale} onDelete={onDelete} />
+            <SaleTableRow
+              key={sale.id}
+              sale={sale}
+              onDelete={onDelete}
+              showBranch={showBranchCol}
+            />
           ))}
         </TableBody>
       </Table>

@@ -50,7 +50,7 @@ export function DashboardPaymentRadial({
     }));
 
   return (
-    <div className={cn("space-y-4 bizos-chart", className)}>
+    <div className={cn("space-y-4 Modufy-chart", className)}>
       <ResponsiveContainer width="100%" height={240}>
         <RadialBarChart
           cx="50%"

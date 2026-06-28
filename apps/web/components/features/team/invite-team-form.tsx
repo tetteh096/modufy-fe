@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { ArrowLeft, Copy, KeyRound, Link2, Mail, Phone, User, UserPlus } from "lucide-react";
-import { businessApi, getApiErrorMessage } from "@/lib/api";
+import { branchesApi, businessApi, getApiErrorMessage } from "@/lib/api";
 import { formatTeamRole } from "@/lib/team-roles";
 import {
   TeamRolePicker,
@@ -47,7 +47,14 @@ export function InviteTeamForm() {
     type: "system",
     name: "staff",
   });
+  const [branchIds, setBranchIds] = useState<string[]>([]);
   const queryClient = useQueryClient();
+
+  const { data: branchData } = useQuery({
+    queryKey: ["branches"],
+    queryFn: branchesApi.list,
+  });
+  const branches = branchData?.branches ?? [];
 
   const {
     register,
@@ -98,6 +105,7 @@ export function InviteTeamForm() {
       phone: data.phone,
       name: data.name?.trim() || undefined,
       provision_account: data.provision_account,
+      branch_ids: branchIds.length > 0 ? branchIds : undefined,
       ...selectedRolePayload(assignRole),
     });
   }
@@ -154,7 +162,7 @@ export function InviteTeamForm() {
                   className="w-full gap-2"
                   onClick={() =>
                     copyText(
-                      `BizOS login\nEmail: ${email}\nTemporary password: ${result.temp_password}\nSign in: ${typeof window !== "undefined" ? window.location.origin : ""}/login`,
+                      `Modufy login\nEmail: ${email}\nTemporary password: ${result.temp_password}\nSign in: ${typeof window !== "undefined" ? window.location.origin : ""}/login`,
                       "Credentials",
                     )
                   }
@@ -214,7 +222,7 @@ export function InviteTeamForm() {
 
       <PageHeader
         title="Add team member"
-        description="Create a login with a temporary password, or send an invite link so they choose their own password."
+        description="Create a login with a temporary password, or send an invite link by email."
       />
 
       <form id="team-invite-form" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -247,7 +255,7 @@ export function InviteTeamForm() {
             <span>
               <span className="text-sm font-medium block">Create login with temporary password</span>
               <span className="text-sm text-muted-foreground block mt-1 leading-relaxed">
-                Share credentials in person or on WhatsApp. SMS and email delivery are not wired yet.
+                We email login details when Resend is configured. You can still copy credentials here.
               </span>
             </span>
           </label>
@@ -256,6 +264,33 @@ export function InviteTeamForm() {
             <Label>Role</Label>
             <TeamRolePicker value={assignRole} onChange={setAssignRole} />
           </div>
+
+          {branches.length > 1 && (
+            <div className="space-y-3 mt-6">
+              <Label>Branches</Label>
+              <p className="text-xs text-muted-foreground">
+                Choose which locations this person can access. They pick one at login.
+              </p>
+              <div className="space-y-2 rounded-xl border p-3">
+                {branches.map((b) => (
+                  <label key={b.id} className="flex items-center gap-2 text-sm cursor-pointer">
+                    <Checkbox
+                      checked={branchIds.includes(b.id)}
+                      onCheckedChange={(v) => {
+                        setBranchIds((prev) =>
+                          v === true ? [...prev, b.id] : prev.filter((id) => id !== b.id),
+                        );
+                      }}
+                    />
+                    <span>{b.name}</span>
+                    {b.is_default && (
+                      <span className="text-xs text-muted-foreground">(default)</span>
+                    )}
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
         </SettingsSection>
 
         <SettingsStickyFooter>

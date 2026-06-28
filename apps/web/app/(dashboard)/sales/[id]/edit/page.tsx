@@ -11,7 +11,7 @@ export default function EditSalePage() {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <div className="w-full max-w-5xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="Edit sale"
         description="Update amount, payment method, items, or date."

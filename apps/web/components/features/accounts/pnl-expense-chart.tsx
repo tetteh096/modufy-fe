@@ -72,7 +72,7 @@ export function PnlExpenseChart({ items, currency, className }: PnlExpenseChartP
   }
 
   return (
-    <div className={cn("bizos-chart", className)}>
+    <div className={cn("Modufy-chart", className)}>
       <ResponsiveContainer width="100%" height={Math.max(160, chartData.length * 44)}>
         <BarChart
           data={chartData}

@@ -68,7 +68,7 @@ function AccountContent() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-8 overflow-x-hidden pb-16">
+    <div className="w-full space-y-8 overflow-x-hidden pb-16">
       <PageHeader
         title={profile.name || "My account"}
         description="Your personal profile, sign-in security, and account controls"
@@ -115,7 +115,7 @@ function AccountContent() {
           <SettingsSection
             icon={User}
             title="Profile details"
-            description="How you appear to teammates in BizOS."
+            description="How you appear to teammates in Modufy."
           >
             <AccountAvatarField profile={profile} />
             <div className="border-t border-border/60 pt-6">

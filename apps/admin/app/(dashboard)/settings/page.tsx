@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Settings } from "lucide-react";
+import { Settings, Plug } from "lucide-react";
 import { adminApi } from "@/lib/admin-api";
 import { getApiErrorMessage } from "@/lib/api";
 import { PageHeader } from "@/components/shared/page-header";
@@ -31,6 +32,23 @@ export default function SettingsPage() {
   return (
     <div>
       <PageHeader title="Settings" description="Platform configuration." />
+
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="text-sm flex items-center gap-2">
+            <Plug className="h-4 w-4" />
+            Integrations
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-3">
+            Configure Arkesel SMS, test delivery, and view credit balance.
+          </p>
+          <Button variant="outline" size="sm" nativeButton={false} render={<Link href="/settings/integrations" />}>
+            Manage integrations
+          </Button>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

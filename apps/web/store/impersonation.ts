@@ -20,6 +20,6 @@ export const useImpersonationStore = create<ImpersonationState>()(
       clearSession: () =>
         set({ active: false, sessionId: null, scope: null }),
     }),
-    { name: "bizos-impersonation" }
+    { name: "Modufy-impersonation" }
   )
 );

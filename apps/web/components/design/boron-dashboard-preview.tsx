@@ -296,7 +296,7 @@ export function BoronDashboardPreview() {
                   className="boron-btn flex items-center gap-1 px-3 py-2 text-xs font-semibold text-[var(--boron-neutral-600)]"
                 >
                   <ArrowLeft className="h-3 w-3" />
-                  Back to BizOS
+                  Back to Modufy
                 </Link>
                 <h1 className="text-2xl font-bold uppercase tracking-tight">Dashboard</h1>
               </div>

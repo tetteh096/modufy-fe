@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
   ShieldCheck, LayoutDashboard, LayoutGrid, Users, Settings,
-  LogOut, Sun, Moon, Bell, LifeBuoy, CalendarClock, ScrollText,
+  LogOut, Sun, Moon, Bell, LifeBuoy, CalendarClock, ScrollText, Radio,
 } from "lucide-react";
 import { useAdminStore } from "@/store/admin";
 import { authClient } from "@/lib/auth-client";
@@ -28,6 +28,7 @@ const nav = [
   { label: "Tickets", href: "/tickets", icon: LifeBuoy },
   { label: "Demos", href: "/demos", icon: CalendarClock },
   { label: "Audit", href: "/audit", icon: ScrollText },
+  { label: "Notifications", href: "/notifications", icon: Radio },
   { label: "Team", href: "/admins", icon: Users },
   { label: "Settings", href: "/settings", icon: Settings },
 ];

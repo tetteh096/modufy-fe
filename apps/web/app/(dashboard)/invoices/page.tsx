@@ -125,6 +125,7 @@ export default function InvoicesPage() {
         action={
           <div className="flex flex-wrap gap-2">
             <Button
+              nativeButton={false}
               render={<Link href="/settings/invoices" />}
               variant="outline"
               size="sm"
@@ -195,7 +196,7 @@ export default function InvoicesPage() {
                   : "Try a wider date range or create a new invoice, quote, or proforma."
               }
               action={
-                <Button render={<Link href="/invoices/new" />} size="sm" className="gap-1.5">
+                <Button nativeButton={false} render={<Link href="/invoices/new" />} size="sm" className="gap-1.5">
                   <Plus className="h-4 w-4" />
                   New invoice
                 </Button>

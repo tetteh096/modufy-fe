@@ -195,7 +195,7 @@ function JoinContent() {
         <CardDescription className="flex flex-col items-center gap-2 pt-1">
           <span>You&apos;ve been invited as</span>
           <TeamRoleBadge role={preview.role} />
-          <span className="text-xs">{formatTeamRole(preview.role)} access on BizOS</span>
+          <span className="text-xs">{formatTeamRole(preview.role)} access on Modufy</span>
         </CardDescription>
       </CardHeader>
 

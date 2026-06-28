@@ -54,6 +54,6 @@ export const useUIStore = create<UIState>()(
           themeSettingsOpen: false,
         }),
     }),
-    { name: "bizos-ui" }
+    { name: "Modufy-ui" }
   )
 );

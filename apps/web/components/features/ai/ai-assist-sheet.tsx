@@ -78,7 +78,7 @@ export function AiAssistSheet() {
           <Button
             variant="outline"
             size="sm"
-            className="hidden h-8 gap-1.5 sm:inline-flex"
+            className="topbar-action-btn hidden h-8 gap-1.5 sm:inline-flex"
           >
             <Sparkles className="h-3.5 w-3.5" />
             Assist
@@ -87,7 +87,7 @@ export function AiAssistSheet() {
       />
       <SheetContent side="right" className="flex w-full flex-col p-0 sm:max-w-md">
         <SheetHeader className="border-b px-4 py-4">
-          <SheetTitle>BizOS Assist</SheetTitle>
+          <SheetTitle>Modufy Assist</SheetTitle>
           <SheetDescription>
             Ask about today&apos;s sales, alerts, and what to do next.
           </SheetDescription>

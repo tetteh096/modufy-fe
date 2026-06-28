@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { AuthBrandPanel, AuthMobileStrip } from "@/components/features/auth/auth-brand-panel";
+import { appConfig } from "@/lib/app-config";
 import "./auth-portal.css";
 
 export const metadata: Metadata = {
-  title: { default: "Sign in", template: "%s | BizOS" },
+  title: { default: "Sign in", template: `%s | ${appConfig.name}` },
 };
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {

@@ -49,6 +49,57 @@ export type Business = {
   show_hours: boolean;
   hours: BusinessHoursDay[];
   currencies: BusinessCurrencySetting[];
+  max_branches: number;
+};
+
+export type Branch = {
+  id: string;
+  business_id: string;
+  name: string;
+  code: string;
+  address: string;
+  city: string;
+  area: string;
+  phone: string;
+  latitude?: number | null;
+  longitude?: number | null;
+  is_default: boolean;
+  is_active: boolean;
+  storefront_enabled: boolean;
+  storefront_slug: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type BranchListData = {
+  branches: Branch[];
+  limits: {
+    max_branches: number;
+    used: number;
+    can_add: boolean;
+  };
+};
+
+export type CreateBranchRequest = {
+  name: string;
+  code?: string;
+  address?: string;
+  city?: string;
+  area?: string;
+  phone?: string;
+};
+
+export type UpdateBranchRequest = {
+  name?: string;
+  code?: string;
+  address?: string;
+  city?: string;
+  area?: string;
+  phone?: string;
+  is_active?: boolean;
+  set_default?: boolean;
+  storefront_enabled?: boolean;
+  storefront_slug?: string;
 };
 
 export type UpdateBusinessHoursRequest = {
@@ -172,6 +223,7 @@ export type TeamMember = {
   phone: string;
   active: boolean;
   roles: string[];
+  branch_ids?: string[];
   last_seen_at: string | null;
 };
 
@@ -352,10 +404,62 @@ export type AlertRule = {
   hours_before: number;
   day_of_month: number;
   in_app: boolean;
+  email: boolean;
 };
 
 export type AlertRuleListData = {
   rules: AlertRule[];
+};
+
+export type SMSWallet = {
+  balance_credits: number;
+  low_balance_threshold: number;
+  sent_30d: number;
+  credits_used_30d: number;
+  low_balance: boolean;
+};
+
+export type SMSUsageItem = {
+  id: string;
+  event_type: string;
+  recipient: string;
+  segments: number;
+  credits_charged: number;
+  status: string;
+  sandbox: boolean;
+  created_at: string;
+};
+
+export type CommunicationItem = {
+  id: string;
+  channel: "email" | "sms";
+  direction: "outbound" | "inbound";
+  event_type: string;
+  recipient: string;
+  subject: string;
+  preview: string;
+  body?: string;
+  status: string;
+  sandbox?: boolean;
+  sent_at?: string;
+  delivered_at?: string;
+  error_message?: string;
+  created_at: string;
+};
+
+export type CommunicationsSenderInfo = {
+  business_name: string;
+  business_email: string;
+  business_phone: string;
+  email_from_label: string;
+  sms_sender_label: string;
+  sms_credits: number;
+  email_enabled: boolean;
+};
+
+export type CommunicationsListData = {
+  items: CommunicationItem[];
+  total: number;
 };
 
 // ─── Sales ────────────────────────────────────────────────────────────────────
@@ -383,6 +487,8 @@ export type Sale = {
   source_id?: string | null;
   receipt_number?: string;
   pos_session_id?: string | null;
+  branch_id?: string | null;
+  branch_name?: string;
   sale_date: string;
   lines: SaleLine[];
   amount_paid?: number;
@@ -414,6 +520,13 @@ export type TopItem = {
 
 export type SaleTopItem = TopItem;
 
+export type BranchRevenueSummary = {
+  branch_id: string;
+  branch_name: string;
+  revenue: number;
+  count: number;
+};
+
 export type SaleSummary = {
   date: string;
   total_revenue: number;
@@ -422,6 +535,7 @@ export type SaleSummary = {
   transaction_count: number;
   by_payment_method: Record<string, number>;
   top_items: TopItem[];
+  by_branch?: BranchRevenueSummary[];
 };
 
 export type SalesTrendDay = {
@@ -448,6 +562,8 @@ export type Expense = {
   receipt: string;
   payment_method: string;
   expense_date: string;
+  branch_id?: string | null;
+  branch_name?: string;
 };
 
 export type ExpenseListData = {
@@ -1089,6 +1205,7 @@ export type Appointment = {
   customer_name: string;
   guest_name: string;
   guest_phone: string;
+  guest_email?: string;
   status: AppointmentStatus;
   start_time: string;
   end_time: string;
@@ -1557,6 +1674,7 @@ export type OrderStatus = "received" | "confirmed" | "dispatched" | "delivered" 
 
 export type MarketplaceOrder = {
   id: string;
+  branch_id?: string | null;
   customer_id?: string | null;
   guest_name: string;
   guest_phone: string;
@@ -1685,6 +1803,10 @@ export type PublicReview = {
 export type PublicStorefront = {
   business_name: string;
   business_slug: string;
+  branch_id: string;
+  branch_name: string;
+  branch_slug?: string;
+  is_branch_storefront: boolean;
   city: string;
   area: string;
   country: string;
@@ -2133,4 +2255,160 @@ export type AIExpenseCategoryData = {
 export type AIProductDescriptionData = {
   description: string;
   category_suggestion?: string;
+};
+
+// ─── Marketing ────────────────────────────────────────────────────────────────
+
+export type MarketingChannel = "sms" | "email";
+
+export type MarketingTemplate = {
+  id: string;
+  channel: MarketingChannel;
+  category: string;
+  name: string;
+  subject: string;
+  body: string;
+  is_system: boolean;
+  is_active: boolean;
+};
+
+export type MarketingTemplateListData = {
+  templates: MarketingTemplate[];
+  total: number;
+};
+
+export type CreateMarketingTemplateRequest = {
+  channel: MarketingChannel;
+  category: string;
+  name: string;
+  subject?: string;
+  body: string;
+};
+
+export type UpdateMarketingTemplateRequest = {
+  name?: string;
+  subject?: string;
+  body?: string;
+  is_active?: boolean;
+};
+
+export type MarketingSegmentRules = {
+  tags_any?: string[];
+  source?: string;
+  has_email?: boolean;
+  has_phone?: boolean;
+  inactive_days?: number;
+  active_within_days?: number;
+  created_within_days?: number;
+  min_lifetime_spent?: number;
+};
+
+export type MarketingSegment = {
+  id: string;
+  name: string;
+  description: string;
+  rules: MarketingSegmentRules;
+  member_count: number;
+};
+
+export type MarketingSegmentListData = {
+  segments: MarketingSegment[];
+  total: number;
+};
+
+export type CreateMarketingSegmentRequest = {
+  name: string;
+  description?: string;
+  rules: MarketingSegmentRules;
+};
+
+export type UpdateMarketingSegmentRequest = {
+  name?: string;
+  description?: string;
+  rules?: MarketingSegmentRules;
+};
+
+export type MarketingSegmentPreview = {
+  total: number;
+  reachable: number;
+  suppressed: number;
+  no_contact: number;
+};
+
+export type MarketingCampaignStatus =
+  | "draft"
+  | "scheduled"
+  | "sending"
+  | "sent"
+  | "cancelled"
+  | "failed";
+
+export type MarketingCampaign = {
+  id: string;
+  name: string;
+  channel: MarketingChannel;
+  template_id?: string;
+  segment_id?: string;
+  subject: string;
+  body: string;
+  status: MarketingCampaignStatus;
+  scheduled_at?: string;
+  completed_at?: string;
+  recipient_count: number;
+  sent_count: number;
+  failed_count: number;
+  skipped_count: number;
+  created_at: string;
+};
+
+export type MarketingCampaignListData = {
+  campaigns: MarketingCampaign[];
+  total: number;
+};
+
+export type CreateMarketingCampaignRequest = {
+  name: string;
+  channel: MarketingChannel;
+  template_id?: string;
+  segment_id: string;
+  subject?: string;
+  body: string;
+  scheduled_at?: string;
+};
+
+export type UpdateMarketingCampaignRequest = {
+  name?: string;
+  subject?: string;
+  body?: string;
+  segment_id?: string;
+  scheduled_at?: string;
+};
+
+export type SendMarketingCampaignResult = {
+  status: string;
+  recipients: number;
+  sent: number;
+  failed: number;
+  skipped: number;
+  credits_spent?: number;
+};
+
+export type MarketingSuppression = {
+  id: string;
+  channel: MarketingChannel;
+  contact: string;
+  reason: string;
+  source: string;
+  created_at: string;
+};
+
+export type MarketingSuppressionListData = {
+  suppressions: MarketingSuppression[];
+  total: number;
+};
+
+export type AddMarketingSuppressionRequest = {
+  channel: MarketingChannel;
+  contact: string;
+  reason?: string;
 };

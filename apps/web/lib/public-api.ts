@@ -87,6 +87,7 @@ export const publicBookingApi = {
       start_time: string;
       guest_name: string;
       guest_phone: string;
+      guest_email?: string;
       notes?: string;
       policy_accepted?: boolean;
     }

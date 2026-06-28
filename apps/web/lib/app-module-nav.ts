@@ -8,6 +8,7 @@ import {
   PenLine,
   Monitor,
   Sparkles,
+  Megaphone,
 } from "lucide-react";
 
 export type AppModuleKey =
@@ -18,7 +19,8 @@ export type AppModuleKey =
   | "marketplace"
   | "blog"
   | "pos"
-  | "ai";
+  | "ai"
+  | "marketing";
 
 export type AppModuleSubNavItem = {
   label: string;
@@ -70,6 +72,36 @@ export const APP_MODULE_NAV: AppModuleNavConfig[] = [
         label: "Settings",
         href: "/settings/pos",
         isActive: (pathname) => pathname === "/settings/pos",
+      },
+    ],
+  },
+  {
+    key: "marketing",
+    label: "Marketing",
+    icon: Megaphone,
+    href: "/marketing",
+    isInModule: (pathname) =>
+      pathname === "/marketing" || pathname.startsWith("/marketing/"),
+    subNav: [
+      {
+        label: "Campaigns",
+        href: "/marketing",
+        isActive: (pathname) => pathname === "/marketing",
+      },
+      {
+        label: "Templates",
+        href: "/marketing/templates",
+        isActive: (pathname) => pathname.startsWith("/marketing/templates"),
+      },
+      {
+        label: "Segments",
+        href: "/marketing/segments",
+        isActive: (pathname) => pathname.startsWith("/marketing/segments"),
+      },
+      {
+        label: "Opt-outs",
+        href: "/marketing/opt-outs",
+        isActive: (pathname) => pathname.startsWith("/marketing/opt-outs"),
       },
     ],
   },

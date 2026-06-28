@@ -10,7 +10,7 @@ export function MainContentChrome({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-0 min-w-0 flex-1 flex-col">
       <SupportSessionBanner />
       <TopBar />
-      <main className="flex-1 overflow-y-auto w-full">
+      <main className="dashboard-canvas flex-1 overflow-y-auto w-full">
         <div className="mx-auto w-full max-w-7xl xl:max-w-[90rem] px-4 py-4 md:px-5 md:py-5 lg:px-6">
           {children}
         </div>

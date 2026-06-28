@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import type { Invoice, InvoiceDocType } from "@/types/api";
 import { cn } from "@/lib/utils";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 
 export const invoiceStatusConfig: Record<
   Invoice["status"],
@@ -92,9 +93,10 @@ function InvoiceRowActions({
       <DropdownMenuTrigger
         render={
           <Button
-            variant="ghost"
+            variant="outline"
             size="icon"
-            className="h-8 w-8 shrink-0 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity"
+            className={tableRowMenuButtonClass}
+            aria-label="Invoice actions"
           />
         }
       >

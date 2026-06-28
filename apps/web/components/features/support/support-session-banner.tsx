@@ -61,7 +61,7 @@ export function SupportSessionBanner() {
       <div className="flex items-center gap-2">
         <ShieldAlert className="h-4 w-4 text-amber-700 dark:text-amber-400 shrink-0" />
         <span>
-          BizOS support {merchantSessions.length === 1 ? "has an active session" : "has active sessions"} on your account.
+          Modufy support {merchantSessions.length === 1 ? "has an active session" : "has active sessions"} on your account.
         </span>
       </div>
       <div className="flex gap-2">

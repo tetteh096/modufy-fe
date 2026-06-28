@@ -8,7 +8,7 @@ import { RecordSaleForm } from "@/components/features/sales/record-sale-form";
 
 export default function RecordSalePage() {
   return (
-    <div className="w-full max-w-5xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="Record sale"
         description="Log money you received — cash, MoMo, or bank. Takes under a minute."

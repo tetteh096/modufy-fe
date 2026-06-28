@@ -41,7 +41,7 @@ export default function ActivitySettingsPage() {
         description={
           total > 0
             ? `${total.toLocaleString()} event${total === 1 ? "" : "s"} recorded`
-            : "Events are recorded automatically when your team uses BizOS."
+            : "Events are recorded automatically when your team uses Modufy."
         }
       >
         {error ? (

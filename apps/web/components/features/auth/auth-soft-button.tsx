@@ -39,7 +39,7 @@ export function AuthSoftButton({
 export function AuthCopyright() {
   return (
     <p className="mt-auto pt-6 mb-0 text-xs text-muted-foreground">
-      © {new Date().getFullYear()} BizOS ·{" "}
+      © {new Date().getFullYear()} Modufy ·{" "}
       <span className="font-semibold underline underline-offset-2 decoration-muted-foreground/40">
         Business OS
       </span>

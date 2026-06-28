@@ -12,7 +12,7 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   title: "Boron preview",
-  description: "Coderthemes Boron Neubrutalism design system preview on BizOS",
+  description: "Coderthemes Boron Neubrutalism design system preview on Modufy",
 };
 
 export default function BoronPreviewLayout({ children }: { children: React.ReactNode }) {

@@ -69,7 +69,7 @@ export function TwoFactorSettings() {
     setBusy(true);
     const { data: result, error } = await authClient.twoFactor.enable({
       password: data.password,
-      issuer: "BizOS",
+      issuer: "Modufy",
     });
     setBusy(false);
 

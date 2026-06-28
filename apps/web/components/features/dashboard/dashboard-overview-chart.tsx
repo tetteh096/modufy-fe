@@ -181,7 +181,7 @@ export function DashboardOverviewChart({
           No cash movement in this window yet.
         </p>
       ) : (
-        <div className="bizos-chart">
+        <div className="Modufy-chart">
           <ResponsiveContainer width="100%" height={320}>
             <ComposedChart
             data={data}

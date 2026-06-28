@@ -18,6 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { SupportSessionPanel } from "@/components/features/admin/support-session-panel";
+import { BusinessSMSWalletPanel } from "@/components/features/admin/business-sms-wallet-panel";
 
 const MODULES = [
   { key: "invoices", label: "Invoices" },
@@ -25,6 +26,7 @@ const MODULES = [
   { key: "appointments", label: "Appointments" },
   { key: "accounts", label: "Accounts" },
   { key: "marketplace", label: "Marketplace" },
+  { key: "marketing", label: "Marketing" },
   { key: "blog", label: "Blog" },
   { key: "pos", label: "POS" },
   { key: "ai", label: "AI" },
@@ -194,6 +196,7 @@ export default function BusinessDetailPage() {
 
         <div className="space-y-6">
           <SupportSessionPanel businessId={id} />
+          <BusinessSMSWalletPanel businessId={id} />
 
           <Card>
             <CardHeader>

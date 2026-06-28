@@ -50,7 +50,7 @@ export function AccountsRevenueExpensesChart({
   }
 
   return (
-    <div className={cn("bizos-chart", className)}>
+    <div className={cn("Modufy-chart", className)}>
       {!hasData ? (
         <p className="text-xs text-muted-foreground text-center py-10 mb-2">
           No revenue or expenses in this period yet.

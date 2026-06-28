@@ -28,7 +28,9 @@ import {
   type DashboardPeriodFilter,
 } from "@/lib/period-range";
 import { PeriodFilterTabs } from "@/components/shared/period-filter-tabs";
+import { BranchReportFilter, branchApiParams } from "@/components/features/branches/branch-report-filter";
 import { DashboardHero } from "@/components/features/dashboard/dashboard-hero";
+import { DashboardSpotlightRow } from "@/components/features/dashboard/dashboard-spotlight-row";
 import { DashboardAttentionPanel } from "@/components/features/dashboard/dashboard-attention-panel";
 import { AiBriefingBanner } from "@/components/features/ai/ai-briefing-banner";
 import { DashboardStatCard } from "@/components/features/dashboard/dashboard-stat-card";
@@ -48,7 +50,9 @@ export default function DashboardPage() {
   const { currency } = useDefaultCurrency();
   const user = useAuthStore((s) => s.user);
   const [periodFilter, setPeriodFilter] = useState<DashboardPeriodFilter>("today");
+  const [branchFilter, setBranchFilter] = useState("all");
   const period = periodRange(periodFilter);
+  const branchParams = branchApiParams(branchFilter);
 
   const { data: business } = useQuery({
     queryKey: ["business"],
@@ -56,8 +60,8 @@ export default function DashboardPage() {
   });
 
   const { data: summary, isLoading: summaryLoading } = useQuery({
-    queryKey: ["sales-summary", "dashboard", periodFilter, period.from, period.to],
-    queryFn: () => salesApi.summary(period.summaryParams),
+    queryKey: ["sales-summary", "dashboard", periodFilter, period.from, period.to, branchFilter],
+    queryFn: () => salesApi.summary({ ...period.summaryParams, ...branchParams }),
   });
 
   const { data: salesTrends, isLoading: salesTrendsLoading } = useQuery({
@@ -67,11 +71,13 @@ export default function DashboardPage() {
       periodFilter,
       period.chartFrom,
       period.chartTo,
+      branchFilter,
     ],
     queryFn: () =>
       salesApi.trends({
         from: period.chartFrom,
         to: period.chartTo,
+        ...branchParams,
       }),
   });
 
@@ -82,33 +88,37 @@ export default function DashboardPage() {
       periodFilter,
       period.chartFrom,
       period.chartTo,
+      branchFilter,
     ],
     queryFn: () =>
       expensesApi.trends({
         from: period.chartFrom,
         to: period.chartTo,
+        ...branchParams,
       }),
   });
 
   const { data: periodSales, isLoading: salesLoading } = useQuery({
-    queryKey: ["sales", "dashboard", periodFilter, period.from, period.to],
+    queryKey: ["sales", "dashboard", periodFilter, period.from, period.to, branchFilter],
     queryFn: () =>
       salesApi.list({
         from: period.from,
         to: period.to,
         limit: 20,
         page: 1,
+        ...branchParams,
       }),
   });
 
   const { data: periodExpenses, isLoading: expensesLoading } = useQuery({
-    queryKey: ["expenses", "dashboard", periodFilter, period.from, period.to],
+    queryKey: ["expenses", "dashboard", periodFilter, period.from, period.to, branchFilter],
     queryFn: () =>
       expensesApi.list({
         from: period.from,
         to: period.to,
         limit: 20,
         page: 1,
+        ...branchParams,
       }),
   });
 
@@ -165,11 +175,23 @@ export default function DashboardPage() {
     <div className="w-full space-y-6 pb-4">
       <DashboardHero userName={user?.name} businessName={business?.name} />
 
-      <PeriodFilterTabs
-        value={periodFilter}
-        onChange={(v) => setPeriodFilter(v as DashboardPeriodFilter)}
-        options={DASHBOARD_PERIOD_OPTIONS}
+      <DashboardSpotlightRow
+        customerCount={customerTotal}
+        saleCount={saleCount}
+        periodLabel={period.label}
+        outstandingAmount={
+          totalOutstanding > 0 ? formatMoney(totalOutstanding, currency) : undefined
+        }
       />
+
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <PeriodFilterTabs
+          value={periodFilter}
+          onChange={(v) => setPeriodFilter(v as DashboardPeriodFilter)}
+          options={DASHBOARD_PERIOD_OPTIONS}
+        />
+        <BranchReportFilter value={branchFilter} onChange={setBranchFilter} />
+      </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-4">
@@ -228,6 +250,35 @@ export default function DashboardPage() {
           loading={customersLoading}
         />
       </div>
+
+      {(summary?.by_branch?.length ?? 0) > 0 && branchFilter === "all" ? (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base">Revenue by branch · {period.label}</CardTitle>
+            <CardDescription>Consolidated breakdown across locations</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="divide-y">
+              {summary?.by_branch?.map((row) => (
+                <div
+                  key={row.branch_id}
+                  className="flex items-center justify-between py-2.5 text-sm first:pt-0 last:pb-0"
+                >
+                  <div>
+                    <p className="font-medium">{row.branch_name}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {row.count} sale{row.count !== 1 ? "s" : ""}
+                    </p>
+                  </div>
+                  <p className="font-semibold tabular-nums">
+                    {formatMoney(row.revenue, currency)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ) : null}
 
       {/* Overview chart + payment breakdown (Boron 8+4 layout) */}
       <div className="grid gap-4 lg:grid-cols-5">

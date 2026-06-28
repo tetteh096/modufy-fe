@@ -8,9 +8,11 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Spinner } from "@/components/shared/spinner";
-import { AuthField } from "@/components/features/auth/auth-form-fields";
+import { AuthField, AuthFormReveal } from "@/components/features/auth/auth-form-fields";
+import { AuthBoxReveal } from "@/components/features/auth/auth-motion";
 import { apiClient, getApiErrorMessage } from "@/lib/api";
 import { useAuthStore } from "@/store/auth";
+import { cn } from "@/lib/utils";
 
 const schema = z.object({
   businessName: z.string().min(2, "Business name must be at least 2 characters"),
@@ -83,7 +85,6 @@ export default function OnboardingPage() {
         owner_email: user?.email,
       });
 
-      // Refresh JWT — now has business_id, role, permissions
       const res = await fetch("/api/auth/token");
       const { token: newToken } = await res.json() as { token: string };
 
@@ -91,7 +92,7 @@ export default function OnboardingPage() {
         setAuth(newToken, user, user.id ?? "");
       }
 
-      toast.success("Business created! Welcome to BizOS.");
+      toast.success("Business created! Welcome to Modufy.");
       router.push("/dashboard");
     } catch (err) {
       toast.error(getApiErrorMessage(err));
@@ -101,26 +102,33 @@ export default function OnboardingPage() {
   return (
     <div className="space-y-8">
       <header className="space-y-4">
-        <div className="flex items-center gap-2">
-          {steps.map((_, i) => (
-            <span
-              key={i}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === step ? "w-8 bg-[#16a34a]" : i < step ? "w-4 bg-[#16a34a]/60" : "w-4 bg-[#e3e8ee]"
-              }`}
-            />
-          ))}
-          <span className="ml-auto text-xs font-medium auth-text-muted">
-            Step {step + 1} of {steps.length}
-          </span>
-        </div>
-        <div className="space-y-2">
-          <h1 className="auth-page-title">
-            {step === 0 && user?.name ? `Hey ${user.name.split(" ")[0]}! ` : ""}
-            {steps[step].title}
-          </h1>
-          <p className="auth-page-description">{steps[step].description}</p>
-        </div>
+        <nav className="auth-step-track" aria-label="Setup progress">
+          {steps.map((s, i) => {
+            const done = step > i;
+            const active = step === i;
+            return (
+              <div
+                key={s.title}
+                className={cn("auth-step-pill", active && "is-active", done && "is-done")}
+              >
+                <span className="auth-step-dot">
+                  {done ? <Check className="h-3.5 w-3.5" /> : i + 1}
+                </span>
+                <span className="auth-step-label">{i === 0 ? "Business" : "Location"}</span>
+              </div>
+            );
+          })}
+        </nav>
+
+        <AuthBoxReveal delay={0.04}>
+          <div className="space-y-2">
+            <h1 className="auth-page-title">
+              {step === 0 && user?.name ? `Hey ${user.name.split(" ")[0]}! ` : ""}
+              {steps[step].title}
+            </h1>
+            <p className="auth-page-description">{steps[step].description}</p>
+          </div>
+        </AuthBoxReveal>
       </header>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
@@ -131,64 +139,71 @@ export default function OnboardingPage() {
               label="Business name"
               placeholder="e.g. Mama Akua Stores"
               autoFocus
+              revealDelay={0.1}
               error={errors.businessName?.message}
               {...register("businessName")}
             />
 
-            <div className="auth-field">
-              <span className="auth-field-label">What do you do?</span>
-              <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Business category">
-                {categories.map((c) => {
-                  const selected = category === c;
-                  return (
-                    <button
-                      key={c}
-                      type="button"
-                      role="radio"
-                      aria-checked={selected}
-                      onClick={() => setValue("category", c, { shouldValidate: true })}
-                      className={`auth-chip ${selected ? "auth-chip--selected" : ""}`}
-                    >
-                      {selected ? <Check className="h-3.5 w-3.5" /> : null}
-                      {c}
-                    </button>
-                  );
-                })}
+            <AuthFormReveal delay={0.14}>
+              <div className="auth-field">
+                <span className="auth-field-label">What do you do?</span>
+                <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Business category">
+                  {categories.map((c) => {
+                    const selected = category === c;
+                    return (
+                      <button
+                        key={c}
+                        type="button"
+                        role="radio"
+                        aria-checked={selected}
+                        onClick={() => setValue("category", c, { shouldValidate: true })}
+                        className={`auth-chip ${selected ? "auth-chip--selected" : ""}`}
+                      >
+                        {selected ? <Check className="h-3.5 w-3.5" /> : null}
+                        {c}
+                      </button>
+                    );
+                  })}
+                </div>
+                {errors.category ? (
+                  <p className="auth-field-error">{errors.category.message}</p>
+                ) : null}
               </div>
-              {errors.category ? (
-                <p className="auth-field-error">{errors.category.message}</p>
-              ) : null}
-            </div>
+            </AuthFormReveal>
 
-            <button type="button" onClick={nextStep} className="auth-btn-primary">
-              <span className="inline-flex items-center gap-2">
-                Continue
-                <ArrowRight className="h-4 w-4" />
-              </span>
-            </button>
+            <AuthFormReveal delay={0.22}>
+              <button type="button" onClick={nextStep} className="auth-btn-primary group/btn">
+                <span className="inline-flex items-center gap-2">
+                  Continue
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </button>
+            </AuthFormReveal>
           </div>
         ) : (
           <div className="space-y-6">
-            <div className="auth-field">
-              <label htmlFor="country" className="auth-field-label">
-                Country
-              </label>
-              <select
-                id="country"
-                className="auth-field-input"
-                value={country}
-                onChange={(e) => setValue("country", e.target.value)}
-              >
-                {countries.map((c) => (
-                  <option key={c.code} value={c.code}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-              <p className="text-xs auth-text-muted">
-                Your currency will be set to {currencyForCountry(country)}.
-              </p>
-            </div>
+            <AuthFormReveal delay={0.1}>
+              <div className="auth-field">
+                <label htmlFor="country" className="auth-field-label">
+                  Country
+                </label>
+                <select
+                  id="country"
+                  className="auth-field-input"
+                  value={country}
+                  onChange={(e) => setValue("country", e.target.value)}
+                >
+                  {countries.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs auth-text-muted">
+                  Your currency will be set to {currencyForCountry(country)}.
+                </p>
+              </div>
+            </AuthFormReveal>
 
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <AuthField
@@ -196,6 +211,7 @@ export default function OnboardingPage() {
                 label="WhatsApp / Phone (optional)"
                 type="tel"
                 placeholder="+233 50 123 4567"
+                revealDelay={0.14}
                 error={errors.phone?.message}
                 {...register("phone")}
               />
@@ -203,32 +219,35 @@ export default function OnboardingPage() {
                 id="city"
                 label="City (optional)"
                 placeholder="Accra"
+                revealDelay={0.18}
                 error={errors.city?.message}
                 {...register("city")}
               />
             </div>
 
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setStep(0)}
-                className="auth-btn-secondary !w-auto px-4"
-                disabled={isSubmitting}
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Back
-              </button>
-              <button type="submit" className="auth-btn-primary flex-1" disabled={isSubmitting}>
-                {isSubmitting ? (
-                  <span className="inline-flex items-center gap-2">
-                    <Spinner size="sm" className="text-white" />
-                    Creating your business…
-                  </span>
-                ) : (
-                  "Create my business"
-                )}
-              </button>
-            </div>
+            <AuthFormReveal delay={0.22}>
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStep(0)}
+                  className="auth-btn-secondary !w-auto px-4"
+                  disabled={isSubmitting}
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Back
+                </button>
+                <button type="submit" className="auth-btn-primary group/btn flex-1" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <span className="inline-flex items-center gap-2">
+                      <Spinner size="sm" className="text-white" />
+                      Creating your business…
+                    </span>
+                  ) : (
+                    "Create my business"
+                  )}
+                </button>
+              </div>
+            </AuthFormReveal>
           </div>
         )}
       </form>

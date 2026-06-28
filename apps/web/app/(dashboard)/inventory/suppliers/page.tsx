@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { Supplier } from "@/types/api";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 
 function SupplierRow({
   sup,
@@ -79,9 +80,10 @@ function SupplierRow({
         <DropdownMenuTrigger
           render={
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
-              className="h-9 w-9 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
+              className={tableRowMenuButtonClass}
+              aria-label={`Actions for ${sup.name}`}
             />
           }
         >

@@ -10,7 +10,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
               <Building2 className="h-4 w-4" />
             </span>
-            <span className="text-lg font-bold tracking-tight">BizOS</span>
+            <span className="text-lg font-bold tracking-tight">Modufy</span>
           </Link>
           <nav className="flex items-center gap-5 text-sm font-medium text-muted-foreground">
             <Link href="/terms" className="hover:text-foreground transition-colors">
@@ -33,7 +33,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-6 text-sm text-muted-foreground">
-          <p>© 2026 BizOS. All rights reserved.</p>
+          <p>© 2026 Modufy. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/terms" className="hover:text-foreground transition-colors">
               Terms

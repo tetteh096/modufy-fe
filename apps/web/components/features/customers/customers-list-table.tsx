@@ -44,6 +44,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import type { Customer } from "@/types/api";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 
 function CustomerTableRow({
   customer,
@@ -149,14 +150,15 @@ function CustomerTableRow({
             ? formatSaleDate(customer.last_transaction_at)
             : "—"}
         </TableCell>
-        <TableCell className="w-10">
+        <TableCell className="w-14 text-right">
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className={tableRowMenuButtonClass}
+                  aria-label={`Actions for ${customer.name}`}
                 />
               }
             >
@@ -231,7 +233,7 @@ export function CustomersListTable({ customers, onDelete }: CustomersListTablePr
             <TableHead className="hidden lg:table-cell">Address</TableHead>
             <TableHead className="text-right">Balance due</TableHead>
             <TableHead className="hidden sm:table-cell">Last activity</TableHead>
-            <TableHead className="w-10" />
+            <TableHead className="w-14 text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

@@ -101,8 +101,10 @@ export function AppointmentReminderSection({ appt }: { appt: Appointment }) {
   if (emailEnabled && upcoming) {
     if (!email) {
       emailStatus = "Enabled — add a customer with an email address to deliver reminders.";
+    } else if (appt.reminder_sent_at) {
+      emailStatus = `Sent ${formatDate(appt.reminder_sent_at)}. Automatic email also runs at 9:00 AM the day before.`;
     } else {
-      emailStatus = "Enabled — automatic email delivery is coming soon. You can contact the customer directly for now.";
+      emailStatus = "Scheduled for 9:00 AM the day before the appointment.";
     }
   } else if (emailEnabled && !upcoming) {
     emailStatus = "Not applicable for past or cancelled bookings.";

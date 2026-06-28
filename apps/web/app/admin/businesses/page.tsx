@@ -181,7 +181,7 @@ export default function AdminBusinessesPage() {
     <div>
       <PageHeader
         title="Businesses"
-        description={total > 0 ? `${total} registered business${total !== 1 ? "es" : ""}` : "All BizOS customers"}
+        description={total > 0 ? `${total} registered business${total !== 1 ? "es" : ""}` : "All Modufy customers"}
       />
       <Card>
         <CardContent className="p-0">

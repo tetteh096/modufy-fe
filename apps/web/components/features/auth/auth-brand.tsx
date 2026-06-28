@@ -16,7 +16,7 @@ export function AuthBrand({ className }: AuthBrandProps) {
       <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm transition-transform group-hover:scale-105">
         <Building2 className="h-4 w-4" />
       </div>
-      <span className="text-xl font-bold tracking-tight">BizOS</span>
+      <span className="text-xl font-bold tracking-tight">Modufy</span>
     </Link>
   );
 }

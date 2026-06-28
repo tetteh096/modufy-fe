@@ -49,7 +49,7 @@ export function AccountsNetProfitChart({
   }
 
   return (
-    <div className={cn("bizos-chart", className)}>
+    <div className={cn("Modufy-chart", className)}>
       {!hasData ? (
         <p className="text-xs text-muted-foreground text-center py-10 mb-2">
           No profit movement in this period yet.

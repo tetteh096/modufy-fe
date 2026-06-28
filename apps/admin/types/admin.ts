@@ -141,3 +141,64 @@ export interface CurrencyItem {
   decimal_places: number;
   enabled: boolean;
 }
+
+export interface PlatformIntegrations {
+  sms_provider: "arkesel" | "hubtel";
+  arkesel_configured: boolean;
+  arkesel_sender_id: string;
+  arkesel_api_key_hint?: string;
+  sms_sandbox: boolean;
+  sms_balance?: string;
+  sms_inbound_url?: string;
+  hubtel_configured: boolean;
+  hubtel_sender_id?: string;
+  hubtel_client_id_hint?: string;
+  resend_configured: boolean;
+  resend_from?: string;
+  resend_webhook_url?: string;
+}
+
+export type UpdateIntegrationsBody = {
+  sms_provider?: "arkesel" | "hubtel";
+  arkesel_api_key?: string;
+  arkesel_sender_id?: string;
+  sms_sandbox?: boolean;
+  hubtel_client_id?: string;
+  hubtel_client_secret?: string;
+  hubtel_sender_id?: string;
+};
+
+export interface BusinessSMSWallet {
+  balance_credits: number;
+  low_balance_threshold: number;
+  sent_30d: number;
+  credits_used_30d: number;
+}
+
+export interface SMSUsageItem {
+  id: string;
+  event_type: string;
+  recipient: string;
+  segments: number;
+  credits_charged: number;
+  status: string;
+  sandbox: boolean;
+  created_at: string;
+}
+
+export interface NotificationLogItem {
+  id: string;
+  business_id?: string;
+  business_name?: string;
+  channel: "email" | "sms";
+  event_type: string;
+  action: string;
+  recipient: string;
+  status: string;
+  subject?: string;
+  provider?: string;
+  provider_msg_id?: string;
+  error_message?: string;
+  sandbox: boolean;
+  created_at: string;
+}

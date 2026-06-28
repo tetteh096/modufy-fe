@@ -96,7 +96,7 @@ export function TeamRolesPanel() {
   const resetSystemMutation = useMutation({
     mutationFn: (name: string) => businessApi.team.resetRolePermissions(name),
     onSuccess: () => {
-      toast.success("Restored BizOS defaults");
+      toast.success("Restored Modufy defaults");
       queryClient.invalidateQueries({ queryKey: ["team-roles"] });
     },
     onError: (err) => toast.error(getApiErrorMessage(err)),

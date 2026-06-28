@@ -36,13 +36,17 @@ function TwoFactorForm() {
     }
 
     const tokenRes = await syncAuthToken();
+    if (tokenRes?.requires_branch_selection) {
+      router.push(resolvePostAuthPath(false, true, next));
+      return;
+    }
     if (!tokenRes?.token) {
       toast.error("Could not start session");
       return;
     }
 
     toast.success("Verified!");
-    router.push(resolvePostAuthPath(tokenRes.onboarding_required, next));
+    router.push(resolvePostAuthPath(tokenRes.onboarding_required, false, next));
   }
 
   async function verifyBackup() {
@@ -61,13 +65,17 @@ function TwoFactorForm() {
     }
 
     const tokenRes = await syncAuthToken();
+    if (tokenRes?.requires_branch_selection) {
+      router.push(resolvePostAuthPath(false, true, next));
+      return;
+    }
     if (!tokenRes?.token) {
       toast.error("Could not start session");
       return;
     }
 
     toast.success("Verified!");
-    router.push(resolvePostAuthPath(tokenRes.onboarding_required, next));
+    router.push(resolvePostAuthPath(tokenRes.onboarding_required, false, next));
   }
 
   return (

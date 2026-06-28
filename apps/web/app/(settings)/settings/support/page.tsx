@@ -67,7 +67,7 @@ export default function SupportSettingsPage() {
     <div>
       <PageHeader
         title="Support access"
-        description="Let BizOS help you without sharing your password. You control when access starts and ends."
+        description="Let Modufy help you without sharing your password. You control when access starts and ends."
       />
 
       <SettingsSection
@@ -107,7 +107,7 @@ export default function SupportSettingsPage() {
         </div>
       </SettingsSection>
 
-      <SettingsSection title="Requests & grants" description="Pending requests from BizOS and active grants.">
+      <SettingsSection title="Requests & grants" description="Pending requests from Modufy and active grants.">
         {isLoading ? (
           <SectionLoader className="py-8" />
         ) : !grants?.length ? (

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NewAppointmentPage() {
   return (
-    <div className="w-full max-w-5xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="New booking"
         description="Schedule a service for a customer or walk-in — under a minute."

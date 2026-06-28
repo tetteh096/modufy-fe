@@ -23,6 +23,7 @@ import { formatMoney } from "@/lib/format";
 import { periodRange, type PeriodFilter } from "@/lib/period-range";
 import { PageHeader } from "@/components/shared/page-header";
 import { PeriodFilterTabs } from "@/components/shared/period-filter-tabs";
+import { BranchReportFilter, branchApiParams } from "@/components/features/branches/branch-report-filter";
 import { EmptyState } from "@/components/shared/empty-state";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { ExpensesListTable } from "@/components/features/expenses/expenses-list-table";
@@ -88,29 +89,31 @@ export default function ExpensesPage() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+  const [branchFilter, setBranchFilter] = useState("all");
   const debouncedSearch = useDebounce(search, 300);
   const queryClient = useQueryClient();
   const period = periodRange(periodFilter);
+  const branchParams = branchApiParams(branchFilter);
   const periodLabel = period.label.toLowerCase();
 
   useEffect(() => {
     setPage(1);
-  }, [periodFilter, categoryFilter, debouncedSearch, pageSize]);
+  }, [periodFilter, categoryFilter, debouncedSearch, pageSize, branchFilter]);
 
   const { data: expenseSummary, isLoading: expenseSummaryLoading } = useQuery({
-    queryKey: ["expenses-summary", periodFilter, period.from, period.to],
-    queryFn: () => expensesApi.summary(period.summaryParams),
+    queryKey: ["expenses-summary", periodFilter, period.from, period.to, branchFilter],
+    queryFn: () => expensesApi.summary({ ...period.summaryParams, ...branchParams }),
   });
 
   const { data: salesSummary, isLoading: salesSummaryLoading } = useQuery({
-    queryKey: ["sales-summary", periodFilter, period.from, period.to],
-    queryFn: () => salesApi.summary(period.summaryParams),
+    queryKey: ["sales-summary", periodFilter, period.from, period.to, branchFilter],
+    queryFn: () => salesApi.summary({ ...period.summaryParams, ...branchParams }),
   });
 
   const { data: trends, isLoading: trendsLoading } = useQuery({
-    queryKey: ["expenses-trends", period.chartFrom, period.chartTo],
+    queryKey: ["expenses-trends", period.chartFrom, period.chartTo, branchFilter],
     queryFn: () =>
-      expensesApi.trends({ from: period.chartFrom, to: period.chartTo }),
+      expensesApi.trends({ from: period.chartFrom, to: period.chartTo, ...branchParams }),
   });
 
   const { data, isLoading, isFetching, isError, error } = useQuery({
@@ -123,6 +126,7 @@ export default function ExpensesPage() {
       pageSize,
       period.from,
       period.to,
+      branchFilter,
     ],
     queryFn: () =>
       expensesApi.list({
@@ -133,6 +137,7 @@ export default function ExpensesPage() {
         category:
           categoryFilter && categoryFilter !== "all" ? categoryFilter : undefined,
         search: debouncedSearch || undefined,
+        ...branchParams,
       }),
   });
 
@@ -160,7 +165,7 @@ export default function ExpensesPage() {
   }, [page, totalPages]);
 
   return (
-    <div className="w-full max-w-6xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="Expenses"
         description="Track money out — rent, stock, transport, and running costs."
@@ -177,7 +182,10 @@ export default function ExpensesPage() {
         }
       />
 
-      <PeriodFilterTabs value={periodFilter} onChange={setPeriodFilter} />
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <PeriodFilterTabs value={periodFilter} onChange={setPeriodFilter} />
+        <BranchReportFilter value={branchFilter} onChange={setBranchFilter} />
+      </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
         <SummaryCard

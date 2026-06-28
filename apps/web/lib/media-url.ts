@@ -1,3 +1,4 @@
+/** Public base URL for object storage (MinIO locally, R2/CDN in prod). */
 const STORAGE_BASE =
   process.env.NEXT_PUBLIC_STORAGE_URL ?? "http://localhost:9000/bizos-uploads";
 

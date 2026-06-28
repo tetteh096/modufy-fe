@@ -164,7 +164,7 @@ export function LockPinSettings() {
     <SettingsSection
       icon={Lock}
       title="Lock screen & PIN"
-      description="Lock BizOS when you step away. Optionally set a short PIN for quick unlock on this device."
+      description="Lock Modufy when you step away. Optionally set a short PIN for quick unlock on this device."
     >
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm font-medium">PIN status</span>

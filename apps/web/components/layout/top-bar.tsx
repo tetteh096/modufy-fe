@@ -24,9 +24,11 @@ import { useAuthStore } from "@/store/auth";
 import { useLockStore } from "@/store/lock";
 import { useUIStore } from "@/store/ui";
 import { BackToAppLink } from "@/components/layout/back-to-app-link";
+import { BranchSwitcher } from "@/components/features/branches/branch-switcher";
 import { TopBarQuickNav } from "@/components/layout/top-bar-quick-nav";
 import { AiAssistSheet } from "@/components/features/ai/ai-assist-sheet";
 import { cn } from "@/lib/utils";
+import { glassBar } from "@/lib/glass-styles";
 
 function NotificationBell() {
   const queryClient = useQueryClient();
@@ -123,7 +125,10 @@ export function TopBar() {
   return (
     <header
       data-slot="app-topbar"
-      className="flex h-12 shrink-0 items-center gap-2 border-b bg-card/95 backdrop-blur-sm px-3 md:px-4 sticky top-0 z-10 transition-[background-color,color,border-color]"
+      className={cn(
+        "flex h-12 shrink-0 items-center gap-2 border-b px-3 md:px-4 sticky top-0 z-10 transition-[background-color,color,border-color]",
+        glassBar
+      )}
     >
       <SidebarTrigger className="-ml-1 text-muted-foreground hover:text-foreground" />
       <Separator orientation="vertical" className="h-4" />
@@ -138,6 +143,7 @@ export function TopBar() {
       {!inSettings && <TopBarQuickNav />}
 
       <div className="flex flex-1 items-center justify-end gap-0.5">
+        {!inSettings && <BranchSwitcher className="hidden sm:inline-flex mr-1" />}
         <Button
           variant="ghost"
           size="icon"
@@ -154,7 +160,7 @@ export function TopBar() {
         <Button
           variant="outline"
           size="icon"
-          className="h-8 w-8 shrink-0"
+          className="topbar-action-btn h-8 w-8 shrink-0"
           onClick={() => setThemeSettingsOpen(true)}
           title="Theme settings"
         >

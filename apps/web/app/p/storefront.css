@@ -1654,13 +1654,13 @@
   color: rgb(255 255 255 / 0.45);
 }
 
-.storefront-footer-bizos {
+.storefront-footer-modufy {
   font-weight: 800;
   color: var(--sf-footer-accent, var(--sf-accent));
   text-decoration: none;
 }
 
-.storefront-footer-bizos:hover {
+.storefront-footer-modufy:hover {
   text-decoration: underline;
 }
 
@@ -2404,6 +2404,97 @@
   max-width: 42rem;
   margin: 0 auto;
   padding: 0 1rem 3rem;
+}
+
+/* Booking hero with orbit visual */
+.sf-book-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 1.5rem 2rem;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--sf-hero-accent, var(--sf-accent)) 6%, var(--sf-cream)) 0%,
+    var(--sf-surface) 70%
+  );
+  border-bottom: 1px solid var(--sf-border);
+}
+
+.sf-book-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .sf-book-hero-grid {
+    grid-template-columns: 1fr min(340px, 38%);
+    gap: 2.5rem;
+  }
+}
+
+.sf-book-hero-copy {
+  position: relative;
+}
+
+.sf-book-hero-orbit-wrap {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .sf-book-hero-orbit-wrap {
+    display: block;
+  }
+}
+
+.sf-book-hero-orbit {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--sf-hero-accent, var(--sf-accent)) 18%, var(--sf-border));
+  background: color-mix(in srgb, var(--sf-hero-accent, var(--sf-accent)) 4%, var(--sf-surface));
+  overflow: hidden;
+}
+
+.sf-book-orbit-ripple span {
+  border-color: color-mix(in srgb, var(--sf-hero-accent, var(--sf-accent)) 22%, transparent);
+  background: color-mix(in srgb, var(--sf-hero-accent, var(--sf-accent)) 5%, transparent);
+}
+
+.sf-book-hero-orbit-label {
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.sf-book-hero-orbit-label span {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.sf-book-hero-orbit-sub {
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--sf-muted);
+  max-width: 12rem;
 }
 
 .sf-book-unavailable {

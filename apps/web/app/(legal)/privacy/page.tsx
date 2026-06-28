@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { LegalDoc, LegalSection } from "@/components/features/legal/legal-doc";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | BizOS",
-  description: "How BizOS collects, uses, and protects your information.",
+  title: "Privacy Policy | Modufy",
+  description: "How Modufy collects, uses, and protects your information.",
 };
 
 export default function PrivacyPage() {
@@ -13,9 +13,9 @@ export default function PrivacyPage() {
       lastUpdated="10 June 2026"
       intro={
         <p>
-          This Privacy Policy explains how BizOS (&ldquo;we&rdquo;, &ldquo;us&rdquo;,
+          This Privacy Policy explains how Modufy (&ldquo;we&rdquo;, &ldquo;us&rdquo;,
           &ldquo;our&rdquo;) collects, uses, and protects personal information when you use
-          the BizOS web application and related services (the &ldquo;Service&rdquo;). We are
+          the Modufy web application and related services (the &ldquo;Service&rdquo;). We are
           committed to handling personal data in line with the Data Protection Act, 2012
           (Act 843) of Ghana and other applicable law.
         </p>
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
         <ol>
           <li>
             <strong>Account data</strong>, where we decide how data is used (we act as data
-            controller). This is information about you and your team as users of BizOS.
+            controller). This is information about you and your team as users of Modufy.
           </li>
           <li>
             <strong>Business data</strong>, which you enter about your own customers, sales,
@@ -70,7 +70,7 @@ export default function PrivacyPage() {
         </ul>
         <p>
           <strong>What we do not collect:</strong> we do not ask for or store your mobile
-          money PIN, full card numbers, or bank credentials. Payment records in BizOS are
+          money PIN, full card numbers, or bank credentials. Payment records in Modufy are
           references you enter, not payment instructions we execute.
         </p>
       </LegalSection>
@@ -188,7 +188,7 @@ export default function PrivacyPage() {
         </ul>
         <p>
           To exercise these rights, contact us at the address below. If your personal data
-          was entered into BizOS by a business you deal with (for example, a shop that keeps
+          was entered into Modufy by a business you deal with (for example, a shop that keeps
           your details as their customer), please contact that business first; we will
           support them in responding.
         </p>
@@ -213,9 +213,9 @@ export default function PrivacyPage() {
         <p>
           Data protection enquiries:
           <br />
-          BizOS, Accra, Ghana
+          Modufy, Accra, Ghana
           <br />
-          Email: privacy@bizos.app
+          Email: privacy@modufy.app
         </p>
       </LegalSection>
     </LegalDoc>

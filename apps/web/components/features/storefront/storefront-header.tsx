@@ -83,7 +83,10 @@ export function StorefrontHeader({ sf, accent, cartCount, showBook }: Storefront
               {sf.business_name.slice(0, 1)}
             </span>
           )}
-          <span className="storefront-brand-name">{sf.header_text || sf.business_name}</span>
+          <span className="storefront-brand-name">
+            {sf.header_text ||
+              (sf.is_branch_storefront && sf.branch_name ? sf.branch_name : sf.business_name)}
+          </span>
         </Link>
 
         <nav ref={navRef} className="storefront-nav storefront-nav--mega" aria-label="Store navigation">

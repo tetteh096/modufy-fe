@@ -71,7 +71,7 @@ export default function SaleDetailPage() {
     (sale.amount_paid ?? 0) > 0 && (sale.amount_due ?? 0) > 0 && sale.status === "pending";
 
   return (
-    <div className="w-full max-w-5xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title={firstLine}
         description={`Sale · ${formatDate(sale.sale_date)}`}

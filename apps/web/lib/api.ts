@@ -3,6 +3,10 @@ import { useAuthStore } from "@/store/auth";
 import type {
   ApiResponse,
   Business,
+  Branch,
+  BranchListData,
+  CreateBranchRequest,
+  UpdateBranchRequest,
   Customer,
   CustomerDetail,
   CustomerListData,
@@ -20,6 +24,11 @@ import type {
   AttentionListData,
   AlertRule,
   AlertRuleListData,
+  SMSWallet,
+  SMSUsageItem,
+  CommunicationItem,
+  CommunicationsListData,
+  CommunicationsSenderInfo,
   CreateCustomerRequest,
   UpdateCustomerRequest,
   UpdateBusinessRequest,
@@ -153,6 +162,25 @@ import type {
   AIGenerateResponse,
   AIBriefingResponse,
   AIChatRequest,
+  MarketingChannel,
+  MarketingTemplate,
+  MarketingTemplateListData,
+  CreateMarketingTemplateRequest,
+  UpdateMarketingTemplateRequest,
+  MarketingSegment,
+  MarketingSegmentListData,
+  MarketingSegmentRules,
+  MarketingSegmentPreview,
+  CreateMarketingSegmentRequest,
+  UpdateMarketingSegmentRequest,
+  MarketingCampaign,
+  MarketingCampaignListData,
+  CreateMarketingCampaignRequest,
+  UpdateMarketingCampaignRequest,
+  SendMarketingCampaignResult,
+  MarketingSuppression,
+  MarketingSuppressionListData,
+  AddMarketingSuppressionRequest,
 } from "@/types/api";
 
 export const apiClient = axios.create({
@@ -277,6 +305,7 @@ export const businessApi = {
       role?: string;
       role_id?: string;
       provision_account?: boolean;
+      branch_ids?: string[];
     }) => apiClient.post<ApiResponse<TeamInviteCreated>>("/team/invite", body).then(data),
     updateRole: (id: string, body: { role?: string; role_id?: string }) =>
       apiClient.patch(`/team/${id}/role`, body),
@@ -287,6 +316,8 @@ export const businessApi = {
         .then(data),
     updateMemberPermissions: (id: string, permissions: string[]) =>
       apiClient.put(`/team/members/${id}/permissions`, { permissions }),
+    updateMemberBranches: (id: string, branch_ids: string[]) =>
+      apiClient.put(`/team/members/${id}/branches`, { branch_ids }),
     listAuditEvents: (params?: { limit?: number; offset?: number; actor_id?: string; action?: string }) =>
       apiClient.get<ApiResponse<AuditListData>>("/audit/events", { params }).then(data),
     accept: (token: string) => {
@@ -327,13 +358,31 @@ export const businessApi = {
       apiClient.get<ApiResponse<AlertRuleListData>>("/alert-rules").then(data),
     update: (
       eventType: string,
-      body: Partial<Pick<AlertRule, "enabled" | "days_before" | "hours_before" | "day_of_month" | "in_app">>
+      body: Partial<Pick<AlertRule, "enabled" | "days_before" | "hours_before" | "day_of_month" | "in_app" | "email">>
     ) => apiClient.patch<ApiResponse<AlertRule>>(`/alert-rules/${eventType}`, body).then(data),
+  },
+  smsWallet: {
+    get: () => apiClient.get<ApiResponse<SMSWallet>>("/sms-wallet").then(data),
+    usage: (limit?: number) =>
+      apiClient
+        .get<ApiResponse<{ items: SMSUsageItem[] }>>("/sms-usage", {
+          params: limit ? { limit } : undefined,
+        })
+        .then(data),
   },
   modules: () =>
     apiClient
       .get<ApiResponse<{ modules: BusinessModule[] }>>("/business/modules")
       .then(data),
+};
+
+export const branchesApi = {
+  list: () => apiClient.get<ApiResponse<BranchListData>>("/branches").then(data),
+  mine: () => apiClient.get<ApiResponse<{ branches: Branch[] }>>("/branches/mine").then(data),
+  create: (body: CreateBranchRequest) =>
+    apiClient.post<ApiResponse<Branch>>("/branches", body).then(data),
+  update: (id: string, body: UpdateBranchRequest) =>
+    apiClient.patch<ApiResponse<Branch>>(`/branches/${id}`, body).then(data),
 };
 
 // ─── Customers ────────────────────────────────────────────────────────────────
@@ -365,6 +414,24 @@ export const customersApi = {
   update: (id: string, body: UpdateCustomerRequest) =>
     apiClient.patch<ApiResponse<Customer>>(`/customers/${id}`, body).then(data),
   delete: (id: string) => apiClient.delete(`/customers/${id}`),
+  communications: (id: string, params?: { channel?: string; limit?: number }) =>
+    apiClient
+      .get<ApiResponse<CommunicationsListData>>(`/customers/${id}/communications`, { params })
+      .then(data),
+};
+
+export const communicationsApi = {
+  list: (params?: { channel?: string; limit?: number }) =>
+    apiClient.get<ApiResponse<CommunicationsListData>>("/communications", { params }).then(data),
+
+  sender: () =>
+    apiClient.get<ApiResponse<CommunicationsSenderInfo>>("/communications/sender").then(data),
+
+  sendSMS: (body: { to?: string; customer_id?: string; message: string }) =>
+    apiClient.post<ApiResponse<{ status: string }>>("/communications/send-sms", body).then(data),
+
+  sendEmail: (body: { to?: string; customer_id?: string; subject: string; body: string }) =>
+    apiClient.post<ApiResponse<{ status: string }>>("/communications/send-email", body).then(data),
 };
 
 // ─── Sales ────────────────────────────────────────────────────────────────────
@@ -378,6 +445,7 @@ export const salesApi = {
     payment_method?: string;
     source_type?: string;
     search?: string;
+    branch_id?: string;
   }) => {
     const limit = params?.limit ?? 50;
     const offset = params?.page ? (params.page - 1) * limit : 0;
@@ -391,6 +459,7 @@ export const salesApi = {
           payment_method: params?.payment_method,
           source_type: params?.source_type,
           search: params?.search,
+          branch_id: params?.branch_id,
         },
       })
       .then(data);
@@ -402,11 +471,11 @@ export const salesApi = {
   update: (id: string, body: RecordSaleRequest) =>
     apiClient.patch<ApiResponse<Sale>>(`/sales/${id}`, body).then(data),
   delete: (id: string) => apiClient.delete(`/sales/${id}`),
-  summary: (params?: { date?: string; from?: string; to?: string; period?: string }) =>
+  summary: (params?: { date?: string; from?: string; to?: string; period?: string; branch_id?: string }) =>
     apiClient
       .get<ApiResponse<SaleSummary>>("/sales/summary", { params })
       .then(data),
-  trends: (params?: { days?: number; from?: string; to?: string }) =>
+  trends: (params?: { days?: number; from?: string; to?: string; branch_id?: string }) =>
     apiClient
       .get<ApiResponse<SalesTrends>>("/sales/trends", { params })
       .then(data),
@@ -422,6 +491,7 @@ export const expensesApi = {
     to?: string;
     category?: string;
     search?: string;
+    branch_id?: string;
   }) => {
     const limit = params?.limit ?? 20;
     const offset = params?.page ? (params.page - 1) * limit : 0;
@@ -434,15 +504,16 @@ export const expensesApi = {
           to: params?.to,
           category: params?.category,
           search: params?.search,
+          branch_id: params?.branch_id,
         },
       })
       .then(data);
   },
-  summary: (params?: { date?: string; from?: string; to?: string; period?: string }) =>
+  summary: (params?: { date?: string; from?: string; to?: string; period?: string; branch_id?: string }) =>
     apiClient
       .get<ApiResponse<ExpenseSummary>>("/expenses/summary", { params })
       .then(data),
-  trends: (params?: { from?: string; to?: string; days?: number }) =>
+  trends: (params?: { from?: string; to?: string; days?: number; branch_id?: string }) =>
     apiClient
       .get<ApiResponse<ExpenseTrends>>("/expenses/trends", { params })
       .then(data),
@@ -1163,3 +1234,71 @@ export function getApiErrorMessage(error: unknown): string {
   }
   return "Something went wrong";
 }
+
+// ─── Marketing ────────────────────────────────────────────────────────────────
+
+export const marketingApi = {
+  templates: {
+    list: (channel?: string) =>
+      apiClient
+        .get<ApiResponse<MarketingTemplateListData>>("/marketing/templates", {
+          params: channel ? { channel } : undefined,
+        })
+        .then(data),
+    create: (body: CreateMarketingTemplateRequest) =>
+      apiClient.post<ApiResponse<MarketingTemplate>>("/marketing/templates", body).then(data),
+    update: (id: string, body: UpdateMarketingTemplateRequest) =>
+      apiClient.patch<ApiResponse<MarketingTemplate>>(`/marketing/templates/${id}`, body).then(data),
+    remove: (id: string) => apiClient.delete(`/marketing/templates/${id}`),
+    duplicate: (id: string) =>
+      apiClient
+        .post<ApiResponse<MarketingTemplate>>(`/marketing/templates/${id}/duplicate`, {})
+        .then(data),
+  },
+  segments: {
+    list: () =>
+      apiClient.get<ApiResponse<MarketingSegmentListData>>("/marketing/segments").then(data),
+    create: (body: CreateMarketingSegmentRequest) =>
+      apiClient.post<ApiResponse<MarketingSegment>>("/marketing/segments", body).then(data),
+    update: (id: string, body: UpdateMarketingSegmentRequest) =>
+      apiClient.patch<ApiResponse<MarketingSegment>>(`/marketing/segments/${id}`, body).then(data),
+    remove: (id: string) => apiClient.delete(`/marketing/segments/${id}`),
+    preview: (channel: MarketingChannel, rules: MarketingSegmentRules) =>
+      apiClient
+        .post<ApiResponse<MarketingSegmentPreview>>("/marketing/segments/preview", {
+          channel,
+          rules,
+        })
+        .then(data),
+  },
+  campaigns: {
+    list: (status?: string) =>
+      apiClient
+        .get<ApiResponse<MarketingCampaignListData>>("/marketing/campaigns", {
+          params: status ? { status } : undefined,
+        })
+        .then(data),
+    get: (id: string) =>
+      apiClient.get<ApiResponse<MarketingCampaign>>(`/marketing/campaigns/${id}`).then(data),
+    create: (body: CreateMarketingCampaignRequest) =>
+      apiClient.post<ApiResponse<MarketingCampaign>>("/marketing/campaigns", body).then(data),
+    update: (id: string, body: UpdateMarketingCampaignRequest) =>
+      apiClient.patch<ApiResponse<MarketingCampaign>>(`/marketing/campaigns/${id}`, body).then(data),
+    remove: (id: string) => apiClient.delete(`/marketing/campaigns/${id}`),
+    send: (id: string) =>
+      apiClient
+        .post<ApiResponse<SendMarketingCampaignResult>>(`/marketing/campaigns/${id}/send`, {})
+        .then(data),
+  },
+  suppressions: {
+    list: (channel?: string) =>
+      apiClient
+        .get<ApiResponse<MarketingSuppressionListData>>("/marketing/suppressions", {
+          params: channel ? { channel } : undefined,
+        })
+        .then(data),
+    add: (body: AddMarketingSuppressionRequest) =>
+      apiClient.post<ApiResponse<MarketingSuppression>>("/marketing/suppressions", body).then(data),
+    remove: (id: string) => apiClient.delete(`/marketing/suppressions/${id}`),
+  },
+};

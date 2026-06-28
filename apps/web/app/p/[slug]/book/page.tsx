@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { publicBookingApi } from "@/lib/public-api";
+import { StorefrontBookingHero } from "@/components/features/storefront/storefront-booking-hero";
 import { StorefrontTextHero } from "@/components/features/storefront/storefront-text-hero";
 import { StorefrontBookingFlow } from "@/components/features/storefront/storefront-booking-flow";
 import { useStorefront } from "@/components/features/storefront/storefront-context";
@@ -53,12 +54,13 @@ function BookContent() {
 
   return (
     <main className="storefront-main storefront-main--flush">
-      <StorefrontTextHero
+      <StorefrontBookingHero
         watermark="BOOK"
         eyebrow="Appointment"
         title={`Book with ${data.business.name}`}
         description="Choose a service, pick a time, review everything, then confirm — nothing is missed."
         accent={accent}
+        businessName={data.business.name}
         crumbs={[
           { label: sf.nav_services_label || "Services", href: `${basePath}/services` },
           { label: "Book" },

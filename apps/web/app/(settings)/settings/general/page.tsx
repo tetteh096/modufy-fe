@@ -100,7 +100,7 @@ export default function GeneralSettingsPage() {
         <SettingsSection
           title="Business profile"
           icon={Building2}
-          description="Name and category shown across BizOS"
+          description="Name and category shown across Modufy"
         >
           <div className="grid gap-6 lg:grid-cols-2">
             <SettingsField

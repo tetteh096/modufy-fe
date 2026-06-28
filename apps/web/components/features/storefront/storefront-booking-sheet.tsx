@@ -56,6 +56,7 @@ export function StorefrontBookingSheet({
                       .concat(data.services.filter((s) => s.id !== preselectedServiceId))
                   : data.services
               }
+              compact
             />
           )}
         </div>

@@ -8,7 +8,7 @@ import { CustomerForm } from "@/components/features/customers/customer-form";
 
 export default function NewCustomerPage() {
   return (
-    <div className="w-full max-w-3xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="Add customer"
         description="Track purchases, invoices, and what they owe you."

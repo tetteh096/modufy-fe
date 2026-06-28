@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Building2,
+  MapPin,
   Palette,
   Store,
   Receipt,
@@ -35,6 +36,12 @@ export const SETTINGS_BUSINESS_NAV: SettingsNavItem[] = [
     label: "General",
     description: "Name, location, and contact",
     icon: Building2,
+  },
+  {
+    href: "/settings/branches",
+    label: "Branches",
+    description: "Shop locations and branch access",
+    icon: MapPin,
   },
   {
     href: "/settings/branding",
@@ -81,7 +88,7 @@ export const SETTINGS_BUSINESS_NAV: SettingsNavItem[] = [
   {
     href: "/settings/support",
     label: "Support access",
-    description: "Grant BizOS help without sharing your password",
+    description: "Grant Modufy help without sharing your password",
     icon: LifeBuoy,
   },
   {

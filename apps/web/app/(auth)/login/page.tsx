@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { KeyRound } from "lucide-react";
 import { Spinner } from "@/components/shared/spinner";
-import { AuthField, AuthPasswordField } from "@/components/features/auth/auth-form-fields";
+import { AuthField, AuthPasswordField, AuthFormReveal } from "@/components/features/auth/auth-form-fields";
 import { AuthPageShell } from "@/components/features/auth/auth-page-shell";
 import { authClient } from "@/lib/auth-client";
 import { resolvePostAuthPath, syncAuthToken } from "@/lib/auth-session";
@@ -56,6 +56,10 @@ function LoginForm() {
     }
 
     const tokenRes = await syncAuthToken();
+    if (tokenRes?.requires_branch_selection) {
+      router.push(resolvePostAuthPath(false, true, next));
+      return;
+    }
     if (!tokenRes?.token) {
       setError("root", { message: "Could not start session" });
       toast.error("Could not start session");
@@ -63,7 +67,9 @@ function LoginForm() {
     }
 
     toast.success("Welcome back!");
-    router.push(resolvePostAuthPath(tokenRes.onboarding_required, next));
+    router.push(
+      resolvePostAuthPath(tokenRes.onboarding_required, false, next),
+    );
   }
 
   return (
@@ -72,7 +78,7 @@ function LoginForm() {
       description="Sign in to manage sales, invoices, and your team."
       footer={
         <p>
-          New to BizOS?{" "}
+          New to Modufy?{" "}
           <Link href="/register" className="auth-link">
             Create a free account
           </Link>
@@ -87,56 +93,64 @@ function LoginForm() {
           placeholder="you@company.com"
           autoComplete="email"
           autoFocus
+          revealDelay={0.08}
           error={errors.email?.message}
           {...register("email")}
         />
 
-        <div className="space-y-2">
-          <AuthPasswordField
-            id="password"
-            label="Password"
-            error={errors.password?.message}
-            registration={{
-              ...register("password"),
-              autoComplete: "current-password",
-              placeholder: "Enter your password",
-            }}
-          />
-          <div className="flex justify-end">
-            <Link href="/forgot-password" className="auth-link text-sm">
+        <AuthPasswordField
+          id="password"
+          label="Password"
+          revealDelay={0.12}
+          error={errors.password?.message}
+          registration={{
+            ...register("password"),
+            autoComplete: "current-password",
+            placeholder: "Enter your password",
+          }}
+          labelAction={
+            <Link href="/forgot-password" className="auth-link text-xs font-semibold">
               Forgot password?
             </Link>
-          </div>
-        </div>
+          }
+        />
 
-        <label className="flex items-center gap-2.5 cursor-pointer select-none text-sm auth-text-muted">
-          <input
-            type="checkbox"
-            className="auth-checkbox"
-            {...register("remember")}
-          />
-          Keep me signed in on this device
-        </label>
+        <AuthFormReveal delay={0.16}>
+          <label className="flex items-center gap-2.5 cursor-pointer select-none text-sm auth-text-muted">
+            <input type="checkbox" className="auth-checkbox" {...register("remember")} />
+            Keep me signed in on this device
+          </label>
+        </AuthFormReveal>
 
-        {errors.root ? <div className="auth-alert-error">{errors.root.message}</div> : null}
+        {errors.root ? (
+          <AuthFormReveal delay={0.18}>
+            <div className="auth-alert-error">{errors.root.message}</div>
+          </AuthFormReveal>
+        ) : null}
 
-        <button type="submit" className="auth-btn-primary" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <span className="inline-flex items-center gap-2">
-              <Spinner size="sm" className="text-white" />
-              Signing in…
-            </span>
-          ) : (
-            "Sign in"
-          )}
-        </button>
+        <AuthFormReveal delay={0.2}>
+          <button type="submit" className="auth-btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <span className="inline-flex items-center gap-2">
+                <Spinner size="sm" className="text-white" />
+                Signing in…
+              </span>
+            ) : (
+              "Sign in"
+            )}
+          </button>
+        </AuthFormReveal>
 
-        <div className="auth-divider">or</div>
+        <AuthFormReveal delay={0.24}>
+          <div className="auth-divider">or</div>
+        </AuthFormReveal>
 
-        <Link href="/login-pin" className="auth-btn-secondary">
-          <KeyRound className="h-4 w-4 auth-icon-accent" />
-          Sign in with email code
-        </Link>
+        <AuthFormReveal delay={0.28}>
+          <Link href="/login-pin" className="auth-btn-secondary">
+            <KeyRound className="h-4 w-4 auth-icon-accent" />
+            Sign in with email code
+          </Link>
+        </AuthFormReveal>
       </form>
     </AuthPageShell>
   );

@@ -11,6 +11,7 @@ import {
   EyeOff,
   ExternalLink,
 } from "lucide-react";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -98,7 +99,12 @@ function BlogPostRow({
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <Button variant="ghost" size="icon-sm" className="opacity-0 group-hover:opacity-100">
+                <Button
+                  variant="outline"
+                  size="icon-sm"
+                  className={tableRowMenuButtonClass}
+                  aria-label={`Actions for ${post.title}`}
+                >
                   <MoreHorizontal className="h-4 w-4" />
                 </Button>
               }
@@ -169,7 +175,7 @@ export function BlogPostsListTable({
           <TableHead>Post</TableHead>
           <TableHead>Status</TableHead>
           <TableHead className="hidden md:table-cell">Updated</TableHead>
-          <TableHead className="w-[52px]" />
+          <TableHead className="w-14 text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

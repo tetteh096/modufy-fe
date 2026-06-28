@@ -53,11 +53,11 @@ type StorefrontContextValue = {
 const StorefrontContext = createContext<StorefrontContextValue | null>(null);
 
 function cartStorageKey(slug: string) {
-  return `bizos-cart-${slug}`;
+  return `Modufy-cart-${slug}`;
 }
 
 function wishlistStorageKey(slug: string) {
-  return `bizos-wishlist-${slug}`;
+  return `Modufy-wishlist-${slug}`;
 }
 
 export function useStorefront() {

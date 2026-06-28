@@ -26,6 +26,6 @@ export const useLockStore = create<LockState>()(
       unlock: () => set({ isLocked: false, returnPath: null }),
       setPinHash: (pinHash) => set({ pinHash }),
     }),
-    { name: "bizos-lock" }
+    { name: "Modufy-lock" }
   )
 );

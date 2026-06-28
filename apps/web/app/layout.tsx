@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Lexend } from "next/font/google";
+import { appConfig } from "@/lib/app-config";
 import { DEFAULT_LAYOUT_SETTINGS } from "@/lib/layout-settings";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -24,7 +25,7 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: { default: "BizOS", template: "%s | BizOS" },
+  title: { default: appConfig.name, template: `%s | ${appConfig.name}` },
   description: "Business management for African SMBs",
 };
 

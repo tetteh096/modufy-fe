@@ -172,7 +172,7 @@ export default function TaxSettingsPage() {
         <SettingsSection
           title="VAT registration"
           icon={Receipt}
-          description="Tell BizOS whether you charge and report VAT"
+          description="Tell Modufy whether you charge and report VAT"
         >
           <VatRegistrationToggle
             checked={!!vatRegistered}

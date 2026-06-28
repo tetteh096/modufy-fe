@@ -27,7 +27,7 @@ export default function NewInvoicePage() {
   const meta = titles[type] ?? titles.invoice;
 
   return (
-    <div className="w-full max-w-5xl space-y-6">
+    <div className="w-full space-y-6">
       <PageHeader title={meta.title} description={meta.description} />
       <CreateInvoiceForm docType={type} />
     </div>

@@ -73,13 +73,17 @@ function LoginPinForm() {
     }
 
     const tokenRes = await syncAuthToken();
+    if (tokenRes?.requires_branch_selection) {
+      router.push(resolvePostAuthPath(false, true, next));
+      return;
+    }
     if (!tokenRes?.token) {
       toast.error("Could not start session");
       return;
     }
 
     toast.success("Signed in!");
-    router.push(resolvePostAuthPath(tokenRes.onboarding_required, next));
+    router.push(resolvePostAuthPath(tokenRes.onboarding_required, false, next));
   }
 
   async function resend() {

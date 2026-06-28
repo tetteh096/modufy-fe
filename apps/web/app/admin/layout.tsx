@@ -31,7 +31,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <ShieldCheck className="h-4 w-4 text-primary-foreground" />
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-bold tracking-tight">BizOS Admin</p>
+            <p className="text-sm font-bold tracking-tight">Modufy Admin</p>
             <p className="text-[10px] text-muted-foreground">Platform control</p>
           </div>
         </div>

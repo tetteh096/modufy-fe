@@ -9,6 +9,7 @@ import {
   Eye,
   RefreshCw,
   AlertTriangle,
+  SlidersHorizontal,
 } from "lucide-react";
 import { InventoryItemPhoto } from "@/components/features/inventory/inventory-item-photo";
 import { Button } from "@/components/ui/button";
@@ -39,6 +40,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import type { InventoryItem } from "@/types/api";
+import { tableRowActionButtonClass, tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 import { cn } from "@/lib/utils";
 
 const statusConfig: Record<string, { label: string; className: string }> = {
@@ -50,9 +52,11 @@ const statusConfig: Record<string, { label: string; className: string }> = {
 function ProductTableRow({
   item,
   onDelete,
+  onQuickAdjust,
 }: {
   item: InventoryItem;
   onDelete: (id: string) => void;
+  onQuickAdjust: (item: InventoryItem) => void;
 }) {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const status = statusConfig[item.status] ?? statusConfig.active;
@@ -90,9 +94,17 @@ function ProductTableRow({
           ) : null}
         </TableCell>
         <TableCell className="text-right tabular-nums hidden md:table-cell">
-          <span className={cn("text-sm font-medium", item.is_low_stock && "text-amber-600 dark:text-amber-400")}>
+          <button
+            type="button"
+            onClick={() => onQuickAdjust(item)}
+            className={cn(
+              "text-sm font-medium rounded-md px-2 py-1 -mr-2 transition-colors hover:bg-muted",
+              item.is_low_stock && "text-amber-600 dark:text-amber-400",
+            )}
+            title="Quick adjust stock"
+          >
             {item.stock_qty} {item.unit || "units"}
-          </span>
+          </button>
           {item.is_low_stock ? (
             <p className="text-xs text-amber-600 dark:text-amber-400 flex items-center justify-end gap-0.5">
               <AlertTriangle className="h-3 w-3" />
@@ -103,39 +115,56 @@ function ProductTableRow({
         <TableCell className="hidden lg:table-cell">
           <Badge className={cn("text-xs border-0", status.className)}>{status.label}</Badge>
         </TableCell>
-        <TableCell className="text-right w-12">
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity data-[popup-open]:opacity-100"
-                />
-              }
+        <TableCell className="text-right w-[7.5rem] sm:w-36">
+          <div className="flex items-center justify-end gap-1.5">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className={tableRowActionButtonClass}
+              onClick={() => onQuickAdjust(item)}
             >
-              <MoreHorizontal className="h-4 w-4" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem render={<Link href={`/inventory/${item.id}`} />}>
-                <Eye className="mr-2 h-4 w-4" />
-                View detail
-              </DropdownMenuItem>
-              <DropdownMenuItem render={<Link href={`/inventory/${item.id}/edit`} />}>
-                <Pencil className="mr-2 h-4 w-4" />
-                Edit
-              </DropdownMenuItem>
-              <DropdownMenuItem render={<Link href={`/inventory/${item.id}?restock=1`} />}>
-                <RefreshCw className="mr-2 h-4 w-4" />
-                Restock
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem variant="destructive" onClick={() => setDeleteOpen(true)}>
-                <Trash2 className="mr-2 h-4 w-4" />
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              <SlidersHorizontal className="h-3.5 w-3.5" />
+              Adjust
+            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className={tableRowMenuButtonClass}
+                    aria-label={`Actions for ${item.name}`}
+                  />
+                }
+              >
+                <MoreHorizontal className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => onQuickAdjust(item)}>
+                  <SlidersHorizontal className="mr-2 h-4 w-4" />
+                  Quick adjust
+                </DropdownMenuItem>
+                <DropdownMenuItem render={<Link href={`/inventory/${item.id}`} />}>
+                  <Eye className="mr-2 h-4 w-4" />
+                  View detail
+                </DropdownMenuItem>
+                <DropdownMenuItem render={<Link href={`/inventory/${item.id}/edit`} />}>
+                  <Pencil className="mr-2 h-4 w-4" />
+                  Edit
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onQuickAdjust(item)}>
+                  <RefreshCw className="mr-2 h-4 w-4" />
+                  Restock
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem variant="destructive" onClick={() => setDeleteOpen(true)}>
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </TableCell>
       </TableRow>
 
@@ -181,10 +210,12 @@ export function ProductsListTable({
   items,
   isLoading,
   onDelete,
+  onQuickAdjust,
 }: {
   items: InventoryItem[];
   isLoading?: boolean;
   onDelete: (id: string) => void;
+  onQuickAdjust: (item: InventoryItem) => void;
 }) {
   return (
     <div className="overflow-x-auto">
@@ -196,7 +227,7 @@ export function ProductsListTable({
             <TableHead className="text-right">Price</TableHead>
             <TableHead className="text-right hidden md:table-cell">Stock</TableHead>
             <TableHead className="hidden lg:table-cell">Status</TableHead>
-            <TableHead className="w-12" />
+            <TableHead className="text-right w-[7.5rem] sm:w-36">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -204,7 +235,12 @@ export function ProductsListTable({
             Array.from({ length: 8 }).map((_, i) => <ProductTableSkeleton key={i} />)
           ) : (
             items.map((item) => (
-              <ProductTableRow key={item.id} item={item} onDelete={onDelete} />
+              <ProductTableRow
+                key={item.id}
+                item={item}
+                onDelete={onDelete}
+                onQuickAdjust={onQuickAdjust}
+              />
             ))
           )}
         </TableBody>

@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/shared/spinner";
-import { AuthField, AuthPasswordField } from "@/components/features/auth/auth-form-fields";
+import { AuthField, AuthPasswordField, AuthFormReveal } from "@/components/features/auth/auth-form-fields";
 import { AuthPageShell } from "@/components/features/auth/auth-page-shell";
 import { authClient } from "@/lib/auth-client";
 import { syncAuthToken } from "@/lib/auth-session";
@@ -87,6 +87,7 @@ export default function RegisterPage() {
           placeholder="Kwame Mensah"
           autoComplete="name"
           autoFocus
+          revealDelay={0.1}
           error={errors.name?.message}
           {...register("name")}
         />
@@ -97,6 +98,7 @@ export default function RegisterPage() {
           type="email"
           placeholder="you@company.com"
           autoComplete="email"
+          revealDelay={0.14}
           error={errors.email?.message}
           {...register("email")}
         />
@@ -104,6 +106,7 @@ export default function RegisterPage() {
         <AuthPasswordField
           id="password"
           label="Password"
+          revealDelay={0.18}
           error={errors.password?.message}
           registration={{
             ...register("password"),
@@ -115,6 +118,7 @@ export default function RegisterPage() {
         <AuthPasswordField
           id="confirmPassword"
           label="Confirm password"
+          revealDelay={0.22}
           error={errors.confirmPassword?.message}
           registration={{
             ...register("confirmPassword"),
@@ -123,29 +127,37 @@ export default function RegisterPage() {
           }}
         />
 
-        {errors.root ? <div className="auth-alert-error">{errors.root.message}</div> : null}
+        {errors.root ? (
+          <AuthFormReveal delay={0.22}>
+            <div className="auth-alert-error">{errors.root.message}</div>
+          </AuthFormReveal>
+        ) : null}
 
-        <button type="submit" className="auth-btn-primary" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <span className="inline-flex items-center gap-2">
-              <Spinner size="sm" className="text-white" />
-              Creating account…
-            </span>
-          ) : (
-            "Create account"
-          )}
-        </button>
+        <AuthFormReveal delay={0.26}>
+          <button type="submit" className="auth-btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <span className="inline-flex items-center gap-2">
+                <Spinner size="sm" className="text-white" />
+                Creating account…
+              </span>
+            ) : (
+              "Create account"
+            )}
+          </button>
+        </AuthFormReveal>
 
-        <p className="text-center text-xs auth-text-muted">
-          By creating an account you agree to our{" "}
-          <Link href="/terms" className="auth-link">
-            Terms
-          </Link>{" "}
-          and{" "}
-          <Link href="/privacy" className="auth-link">
-            Privacy Policy
-          </Link>
-        </p>
+        <AuthFormReveal delay={0.3}>
+          <p className="text-center text-xs auth-text-muted">
+            By creating an account you agree to our{" "}
+            <Link href="/terms" className="auth-link">
+              Terms
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy" className="auth-link">
+              Privacy Policy
+            </Link>
+          </p>
+        </AuthFormReveal>
       </form>
     </AuthPageShell>
   );

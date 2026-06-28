@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
     const res = await fetch(url.toString(), {
       headers: {
         Accept: "application/json",
-        "User-Agent": "BizOS/1.0 (https://bizos.app; storefront geocoding)",
+        "User-Agent": "Modufy/1.0 (https://modufy.app; storefront geocoding)",
       },
       next: { revalidate: 3600 },
     });

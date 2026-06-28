@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AiCustomerBriefSheet } from "@/components/features/ai/ai-customer-brief-sheet";
+import { CommunicationsInbox } from "@/components/features/communications/communications-inbox";
 
 const typeIcons: Record<string, React.ElementType> = {
   invoice: FileText,
@@ -46,7 +47,7 @@ export default function CustomerDetailPage() {
   const isCompany = customer.customer_type === "company";
 
   return (
-    <div className="space-y-6 max-w-3xl">
+    <div className="w-full space-y-6">
       <PageHeader
         title={customer.name}
         description={
@@ -123,6 +124,15 @@ export default function CustomerDetailPage() {
           {customer.notes && (
             <p className="text-sm text-muted-foreground border-t pt-3">{customer.notes}</p>
           )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Messages</CardTitle>
+        </CardHeader>
+        <CardContent className="p-0 pb-0">
+          <CommunicationsInbox customerId={id} />
         </CardContent>
       </Card>
 

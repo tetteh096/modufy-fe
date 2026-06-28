@@ -92,6 +92,29 @@ html.dark.boron[data-topbar-color="dark"] header[data-slot="app-topbar"] {
   border-color: oklch(0.26 0.03 260);
 }
 
+/* Outline / filled controls on the topbar must not inherit header text color */
+header[data-slot="app-topbar"] .topbar-action-btn {
+  color: var(--foreground);
+  background-color: var(--background);
+  border-color: var(--border);
+}
+
+header[data-slot="app-topbar"] .topbar-action-btn:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+}
+
+html[data-topbar-color="dark"] header[data-slot="app-topbar"] [data-slot="button"].text-muted-foreground,
+html.dark[data-topbar-color="dark"] header[data-slot="app-topbar"] [data-slot="button"].text-muted-foreground {
+  color: oklch(0.72 0.02 247);
+}
+
+html[data-topbar-color="dark"] header[data-slot="app-topbar"] [data-slot="button"].text-muted-foreground:hover,
+html.dark[data-topbar-color="dark"] header[data-slot="app-topbar"] [data-slot="button"].text-muted-foreground:hover {
+  color: oklch(0.92 0.015 247);
+  background-color: oklch(1 0 0 / 0.08);
+}
+
 /* ── Icon-strip: condensed, default collapsed, compact collapsed, hover strip ── */
 html[data-sidenav-size="condensed"] [data-slot="sidebar"][data-state="collapsed"] [data-slot="sidebar-header"],
 html[data-sidenav-size="default"] [data-slot="sidebar"][data-state="collapsed"] [data-slot="sidebar-header"],

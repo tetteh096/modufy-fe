@@ -49,7 +49,7 @@ export function CashFlowDailyChart({
         </p>
       ) : null}
 
-      <div className="bizos-chart">
+      <div className="Modufy-chart">
         <ResponsiveContainer width="100%" height={height}>
           <BarChart
             data={data}

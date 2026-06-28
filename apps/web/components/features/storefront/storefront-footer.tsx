@@ -139,8 +139,8 @@ export function StorefrontFooter({ sf, accent }: StorefrontFooterProps) {
         <StorefrontThemeToggle variant="footer" className="storefront-footer-theme" />
         <span>
           Powered by{" "}
-          <a href="https://bizos.app" className="storefront-footer-bizos">
-            BizOS
+          <a href="https://modufy.app" className="storefront-footer-modufy">
+            Modufy
           </a>
         </span>
       </div>

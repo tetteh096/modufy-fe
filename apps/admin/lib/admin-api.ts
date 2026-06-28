@@ -10,6 +10,11 @@ import type {
   SupportSession,
   DemoRequest,
   PlatformTeamMember,
+  PlatformIntegrations,
+  UpdateIntegrationsBody,
+  BusinessSMSWallet,
+  SMSUsageItem,
+  NotificationLogItem,
   SupportTicket,
   TicketDetail,
 } from "@/types/admin";
@@ -72,6 +77,20 @@ export const adminApi = {
       .get<ApiResponse<{ logs: AuditLogEntry[]; total: number }>>("/admin/audit", { params })
       .then((r) => r.data.data),
 
+  notifications: (params?: {
+    channel?: string;
+    status?: string;
+    business_id?: string;
+    event_type?: string;
+    page?: number;
+    limit?: number;
+  }) =>
+    apiClient
+      .get<ApiResponse<{ items: NotificationLogItem[]; total: number }>>("/admin/notifications", {
+        params,
+      })
+      .then((r) => r.data.data),
+
   team: () =>
     apiClient.get<ApiResponse<PlatformTeamMember[]>>("/admin/team").then((r) => r.data.data),
 
@@ -107,5 +126,41 @@ export const adminApi = {
   activeSupportSessions: () =>
     apiClient
       .get<ApiResponse<SupportSession[]>>("/admin/support/sessions/active")
+      .then((r) => r.data.data),
+
+  integrations: () =>
+    apiClient.get<ApiResponse<PlatformIntegrations>>("/admin/integrations").then((r) => r.data.data),
+
+  updateIntegrations: (body: UpdateIntegrationsBody) =>
+    apiClient.patch<ApiResponse<PlatformIntegrations>>("/admin/integrations", body).then((r) => r.data.data),
+
+  testSMS: (body: { phone: string; message?: string }) =>
+    apiClient
+      .post<ApiResponse<{ status: string; message: string }>>("/admin/integrations/test-sms", body)
+      .then((r) => r.data.data),
+
+  testEmail: (body: { email: string; subject?: string }) =>
+    apiClient
+      .post<ApiResponse<{ status: string; message: string; email_id?: string }>>(
+        "/admin/integrations/test-email",
+        body,
+      )
+      .then((r) => r.data.data),
+
+  businessSMSWallet: (id: string) =>
+    apiClient
+      .get<ApiResponse<BusinessSMSWallet>>(`/admin/businesses/${id}/sms-wallet`)
+      .then((r) => r.data.data),
+
+  grantBusinessSMSCredits: (id: string, body: { credits: number; note?: string }) =>
+    apiClient
+      .post<ApiResponse<BusinessSMSWallet>>(`/admin/businesses/${id}/sms-credits`, body)
+      .then((r) => r.data.data),
+
+  businessSMSUsage: (id: string, limit?: number) =>
+    apiClient
+      .get<ApiResponse<{ items: SMSUsageItem[] }>>(`/admin/businesses/${id}/sms-usage`, {
+        params: limit ? { limit } : undefined,
+      })
       .then((r) => r.data.data),
 };

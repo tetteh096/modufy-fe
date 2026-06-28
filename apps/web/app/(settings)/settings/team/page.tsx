@@ -55,7 +55,7 @@ function TeamSettingsContent() {
     <div className="space-y-8 w-full max-w-6xl">
       <PageHeader
         title="Team"
-        description="People who can sign in to your BizOS account — each with a role that controls what they can do."
+        description="People who can sign in to your Modufy account — each with a role that controls what they can do."
         action={
           <Button size="sm" className="gap-1.5" render={<Link href="/settings/team/new" />}>
             <UserPlus className="h-4 w-4" />

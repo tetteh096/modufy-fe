@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Package, Wrench } from "lucide-react";
 import { resolveMediaUrl } from "@/lib/media-url";
 import { cn } from "@/lib/utils";
@@ -17,13 +18,19 @@ export function InventoryItemPhoto({
   className?: string;
   iconClassName?: string;
 }) {
+  const [failed, setFailed] = useState(false);
   const url = resolveMediaUrl(src);
   const Icon = type === "service" ? Wrench : Package;
 
-  if (url) {
+  if (url && !failed) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={url} alt={name ?? ""} className={cn("h-full w-full object-cover", className)} />
+      <img
+        src={url}
+        alt={name ?? ""}
+        className={cn("h-full w-full object-cover", className)}
+        onError={() => setFailed(true)}
+      />
     );
   }
 

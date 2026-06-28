@@ -7,6 +7,8 @@ import { aiApi } from "@/lib/api";
 import { useAiModule } from "@/hooks/use-ai-module";
 import { AiMetaFooter } from "@/components/features/ai/ai-meta-footer";
 import { Button } from "@/components/ui/button";
+import { glassAccent } from "@/lib/glass-styles";
+import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function AiBriefingBanner() {
@@ -30,7 +32,7 @@ export function AiBriefingBanner() {
   if (isError || !data?.text) return null;
 
   return (
-    <div className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 shadow-sm">
+    <div className={cn(glassAccent, "px-4 py-3")}>
       <div className="flex items-start gap-3">
         <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
         <div className="min-w-0 flex-1 space-y-2">

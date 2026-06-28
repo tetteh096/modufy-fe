@@ -80,7 +80,7 @@ export default function AlertsPage() {
         title="Alerts"
         description="One place for invoices due, low stock, appointments, and tax — tap any item to act on it."
         action={
-          <Button variant="outline" size="sm" className="gap-1.5 h-8" render={<Link href="/settings/alerts" />}>
+          <Button variant="outline" size="sm" className="gap-1.5 h-8" nativeButton={false} render={<Link href="/settings/alerts" />}>
             <Settings2 className="h-4 w-4" />
             Alert rules
           </Button>

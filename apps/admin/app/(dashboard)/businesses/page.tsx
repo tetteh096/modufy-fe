@@ -51,6 +51,7 @@ const MODULES = [
   { key: "appointments", label: "Appointments", color: "text-pink-500",   description: "Booking calendar, deposits, auto-invoice" },
   { key: "accounts",     label: "Accounts",     color: "text-amber-500",  description: "P&L reports, journals, VAT returns" },
   { key: "marketplace",  label: "Marketplace",  color: "text-teal-500",   description: "Public storefront, guest booking, directory" },
+  { key: "marketing",    label: "Marketing",    color: "text-orange-500", description: "SMS and email campaigns, segments, opt-outs" },
   { key: "blog",         label: "Blog",         color: "text-green-600",  description: "SEO blog with rich text editor" },
   { key: "pos",          label: "POS",          color: "text-violet-500", description: "In-store register, receipts, pickup fulfilment" },
   { key: "ai",           label: "AI Assistant", color: "text-fuchsia-500", description: "Drafting, insights, and document AI" },

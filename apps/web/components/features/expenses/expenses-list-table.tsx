@@ -42,13 +42,16 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import type { Expense } from "@/types/api";
+import { tableRowMenuButtonClass } from "@/components/shared/table-row-actions";
 
 function ExpenseTableRow({
   expense,
   onDelete,
+  showBranch,
 }: {
   expense: Expense;
   onDelete: (id: string) => void;
+  showBranch?: boolean;
 }) {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const catMeta = expenseCategoryMeta(expense.category);
@@ -79,6 +82,11 @@ function ExpenseTableRow({
             </div>
           </div>
         </TableCell>
+        {showBranch ? (
+          <TableCell className="hidden lg:table-cell text-sm text-muted-foreground">
+            {expense.branch_name || "—"}
+          </TableCell>
+        ) : null}
         <TableCell className="hidden sm:table-cell">
           <Badge variant="outline" className="gap-1 text-[10px] font-normal">
             <PayIcon className="h-3 w-3" />
@@ -88,14 +96,15 @@ function ExpenseTableRow({
         <TableCell className="text-right font-semibold tabular-nums whitespace-nowrap">
           {formatMoney(expense.amount, expense.currency)}
         </TableCell>
-        <TableCell className="w-10">
+        <TableCell className="w-14 text-right">
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className={tableRowMenuButtonClass}
+                  aria-label="Expense actions"
                 />
               }
             >
@@ -150,6 +159,7 @@ type ExpensesListTableProps = {
 };
 
 export function ExpensesListTable({ expenses, onDelete }: ExpensesListTableProps) {
+  const showBranchCol = expenses.some((e) => Boolean(e.branch_name));
   return (
     <div className="overflow-x-auto">
       <Table>
@@ -157,14 +167,22 @@ export function ExpensesListTable({ expenses, onDelete }: ExpensesListTableProps
           <TableRow className="hover:bg-transparent">
             <TableHead className="w-[100px]">Date</TableHead>
             <TableHead>Category</TableHead>
+            {showBranchCol ? (
+              <TableHead className="hidden lg:table-cell">Branch</TableHead>
+            ) : null}
             <TableHead className="hidden sm:table-cell">Payment</TableHead>
             <TableHead className="text-right w-[120px]">Amount</TableHead>
-            <TableHead className="w-10" />
+            <TableHead className="w-14 text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {expenses.map((expense) => (
-            <ExpenseTableRow key={expense.id} expense={expense} onDelete={onDelete} />
+            <ExpenseTableRow
+              key={expense.id}
+              expense={expense}
+              onDelete={onDelete}
+              showBranch={showBranchCol}
+            />
           ))}
         </TableBody>
       </Table>

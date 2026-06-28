@@ -20,8 +20,13 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
     let active = true;
 
     async function bootstrap() {
-      await syncAuthToken();
+      const result = await syncAuthToken();
       if (!active) return;
+
+      if (result?.requires_branch_selection) {
+        router.replace("/select-branch");
+        return;
+      }
 
       // No token means no valid session — send to login, preserving where the
       // user was so they return there after signing in.

@@ -42,7 +42,7 @@ export function DashboardStatCard({
   loading,
 }: DashboardStatCardProps) {
   const body = (
-    <Card className="relative h-full overflow-hidden">
+    <Card className="relative h-full overflow-hidden ring-1 ring-inset ring-white/40 dark:ring-white/5">
       <span
         className={cn("absolute inset-x-5 top-0 h-0.5 rounded-b-full opacity-70", accentBar[accent])}
         aria-hidden

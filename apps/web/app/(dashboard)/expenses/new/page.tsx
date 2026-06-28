@@ -8,7 +8,7 @@ import { LogExpenseForm } from "@/components/features/expenses/log-expense-form"
 
 export default function LogExpensePage() {
   return (
-    <div className="w-full max-w-3xl space-y-8">
+    <div className="w-full space-y-8">
       <PageHeader
         title="Log expense"
         description="Record money going out — rent, stock, transport, wages, and more."

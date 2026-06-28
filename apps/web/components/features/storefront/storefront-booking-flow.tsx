@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Clock,
   Loader2,
+  Mail,
   Phone,
   User,
 } from "lucide-react";
@@ -69,6 +70,7 @@ export function StorefrontBookingFlow({
   );
   const [guestName, setGuestName] = useState("");
   const [guestPhone, setGuestPhone] = useState("");
+  const [guestEmail, setGuestEmail] = useState("");
   const [notes, setNotes] = useState("");
   const [policyAccepted, setPolicyAccepted] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
@@ -91,6 +93,7 @@ export function StorefrontBookingFlow({
         start_time: slot,
         guest_name: guestName.trim(),
         guest_phone: guestPhone.trim(),
+        guest_email: guestEmail.trim() || undefined,
         notes: notes.trim() || undefined,
         policy_accepted: policyRequired ? policyAccepted : true,
       }),
@@ -131,6 +134,7 @@ export function StorefrontBookingFlow({
               {formatAppointmentDate(slot)} at {formatAppointmentTime(slot)}
             </p>
             <p>{guestName} · {guestPhone}</p>
+            {guestEmail.trim() ? <p>{guestEmail.trim()}</p> : null}
           </div>
         ) : null}
         <p className="sf-book-done-note">
@@ -337,6 +341,20 @@ export function StorefrontBookingFlow({
           </label>
 
           <label className="sf-book-field">
+            <span>
+              <Mail className="h-3.5 w-3.5" />
+              Email (optional)
+            </span>
+            <input
+              type="email"
+              autoComplete="email"
+              value={guestEmail}
+              onChange={(e) => setGuestEmail(e.target.value)}
+              placeholder="e.g. you@example.com"
+            />
+          </label>
+
+          <label className="sf-book-field">
             <span>Notes (optional)</span>
             <textarea
               rows={3}
@@ -393,6 +411,7 @@ export function StorefrontBookingFlow({
               <h3>Contact</h3>
               <p className="sf-book-summary-main">{guestName}</p>
               <p className="sf-book-summary-sub">{guestPhone}</p>
+              {guestEmail.trim() ? <p className="sf-book-summary-sub">{guestEmail.trim()}</p> : null}
               {notes.trim() ? <p className="sf-book-summary-note">&ldquo;{notes.trim()}&rdquo;</p> : null}
             </div>
 

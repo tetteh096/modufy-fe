@@ -21,7 +21,7 @@ export default function EditCustomerPage() {
   }
 
   return (
-    <div className="w-full max-w-2xl space-y-6">
+    <div className="w-full space-y-6">
       <PageHeader title="Edit customer" description="Update contact and billing details." />
       <CustomerForm customer={customer} />
     </div>
