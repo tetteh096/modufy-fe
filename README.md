@@ -1,8 +1,9 @@
 # Modufy — Frontend
 
-Two Next.js apps in one repository:
+Three Next.js apps in one repository:
 
-- **`apps/web`** — customer/business app
+- **`apps/www`** — public marketing site (modufy.app)
+- **`apps/web`** — customer/business app (app.modufy.app)
 - **`apps/admin`** — platform admin console (dev port 3001)
 
 Each app is standalone (its own `pnpm-lock.yaml`, no workspace dependencies).
@@ -10,6 +11,7 @@ Each app is standalone (its own `pnpm-lock.yaml`, no workspace dependencies).
 ## Local development
 
 ```bash
+cd apps/www   # marketing site (port 3002)
 cd apps/web   # or apps/admin
 pnpm install
 pnpm dev
@@ -27,12 +29,13 @@ pnpm exec tsc --noEmit   # type check only
 
 ## Vercel deployment
 
-Both apps deploy from this single repo as **two separate Vercel projects**:
+Both apps deploy from this single repo as **separate Vercel projects**:
 
-| Vercel project | Root Directory | Framework |
-|----------------|----------------|-----------|
-| modufy-web     | `apps/web`     | Next.js   |
-| modufy-admin   | `apps/admin`   | Next.js   |
+| Vercel project | Root Directory | Framework | Default port |
+|----------------|----------------|-----------|--------------|
+| modufy-www     | `apps/www`     | Next.js   | 3002         |
+| modufy-web     | `apps/web`     | Next.js   | 3000         |
+| modufy-admin   | `apps/admin`   | Next.js   | 3001         |
 
 For each project (Settings → General):
 
