@@ -1,16 +1,25 @@
 import { Pool, type PoolConfig } from "pg";
 
-/** Build a pg Pool config that works for local Docker and Heroku/RDS SSL. */
+/** Strip sslmode from a DSN so Pool `ssl` options are not overridden. */
+function stripSslMode(dsn: string): string {
+  return dsn
+    .replace(/([?&])sslmode=[^&]*/gi, "$1")
+    .replace(/\?&/, "?")
+    .replace(/[?&]$/, "")
+    .replace(/\?&/, "?");
+}
+
+/**
+ * Build a pg Pool config that works for local Docker and Heroku/RDS.
+ * Prefer Pool `ssl` over `sslmode=` in the URL — recent `pg` maps
+ * `sslmode=require` to verify-full and breaks on Heroku certs.
+ */
 export function pgPoolConfig(dsn = process.env.DATABASE_URL ?? ""): PoolConfig {
   const isLocal = /localhost|127\.0\.0\.1/.test(dsn);
-  let connectionString = dsn;
-  if (dsn && !dsn.includes("sslmode=")) {
-    connectionString = `${dsn}${dsn.includes("?") ? "&" : "?"}sslmode=${isLocal ? "disable" : "require"}`;
-  }
-  const useSSL = Boolean(dsn) && !isLocal && !connectionString.includes("sslmode=disable");
+  const connectionString = stripSslMode(dsn);
   return {
     connectionString,
-    ssl: useSSL ? { rejectUnauthorized: false } : undefined,
+    ssl: isLocal || !dsn ? undefined : { rejectUnauthorized: false },
   };
 }
 
