@@ -1,18 +1,12 @@
 import { betterAuth } from "better-auth";
 import { emailOTP, twoFactor } from "better-auth/plugins";
-import { Pool } from "pg";
+import { createPgPool } from "@/lib/pg";
 import { sendAuthMail } from "@/lib/auth-mail";
-
-function makePool() {
-  const dsn = process.env.DATABASE_URL ?? "";
-  const connectionString = dsn.includes("sslmode") ? dsn : `${dsn}?sslmode=disable`;
-  return new Pool({ connectionString });
-}
 
 const appURL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const auth = betterAuth({
-  database: makePool(),
+  database: createPgPool(),
   secret: process.env.BETTER_AUTH_SECRET!,
   baseURL: appURL,
   appName: "Modufy",

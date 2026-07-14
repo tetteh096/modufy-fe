@@ -2,13 +2,10 @@ import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
-import { Pool } from "pg";
+import { createPgPool } from "@/lib/pg";
 import { SelectBranchForm } from "@/components/features/branches/select-branch-form";
 
-const dsn = process.env.DATABASE_URL ?? "";
-const pool = new Pool({
-  connectionString: dsn.includes("sslmode") ? dsn : `${dsn}?sslmode=disable`,
-});
+const pool = createPgPool();
 
 export default async function SelectBranchPage() {
   const session = await auth.api.getSession({ headers: await headers() });

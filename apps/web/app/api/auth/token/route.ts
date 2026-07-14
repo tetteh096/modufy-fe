@@ -1,13 +1,10 @@
 import { auth } from "@/lib/auth";
 import { applyPermissionOverrides, mintBizOSToken } from "@/lib/auth-jwt";
+import { createPgPool } from "@/lib/pg";
 import { headers } from "next/headers";
-import { Pool } from "pg";
 import { NextResponse } from "next/server";
 
-const dsn = process.env.DATABASE_URL ?? "";
-const pool = new Pool({
-  connectionString: dsn.includes("sslmode") ? dsn : `${dsn}?sslmode=disable`,
-});
+const pool = createPgPool();
 
 const USER_QUERY = `SELECT
        u.id                                                  AS user_id,

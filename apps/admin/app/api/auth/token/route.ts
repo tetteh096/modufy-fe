@@ -1,13 +1,10 @@
 import { auth } from "@/lib/auth";
+import { createPgPool } from "@/lib/pg";
 import { headers } from "next/headers";
 import { SignJWT } from "jose";
-import { Pool } from "pg";
 import { NextResponse } from "next/server";
 
-const dsn = process.env.DATABASE_URL ?? "";
-const pool = new Pool({
-  connectionString: dsn.includes("sslmode") ? dsn : `${dsn}?sslmode=disable`,
-});
+const pool = createPgPool();
 const secret = new TextEncoder().encode(process.env.BETTER_AUTH_SECRET);
 
 export async function GET() {
