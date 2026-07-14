@@ -184,10 +184,10 @@ export function SiteHeader() {
               external
               className={heroNav ? "text-white hover:bg-white/10" : undefined}
             >
-              Login
+              Sign in
             </Button>
             <Button href={appPath("/register")} size="md" external>
-              Get Started
+              Sign up
             </Button>
           </div>
 
@@ -290,13 +290,13 @@ export function SiteHeader() {
 
               <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
                 <Button href={appPath("/login")} variant="outline" external className="w-full">
-                  Login
+                  Sign in
                 </Button>
                 <Button href="/demo" variant="secondary" className="w-full">
                   Book a demo
                 </Button>
                 <Button href={appPath("/register")} external className="w-full">
-                  Get Started
+                  Sign up
                 </Button>
               </div>
             </GlassPill>
