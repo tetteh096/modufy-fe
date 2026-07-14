@@ -174,7 +174,7 @@ export default function StorefrontSettingsPage() {
   if (isLoading || !business) return <SectionLoader />;
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Storefront"
         description="Public link for your online shop when Marketplace is enabled"

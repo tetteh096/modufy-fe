@@ -19,7 +19,7 @@ export default function AdminUsersPage() {
     <div>
       <PageHeader
         title="Platform team"
-        description="BizOS staff with admin access. Invite flow coming in Phase 2."
+        description="Modufy staff with admin access. Invite flow coming in Phase 2."
       />
       <Card>
         <CardContent className="p-0">

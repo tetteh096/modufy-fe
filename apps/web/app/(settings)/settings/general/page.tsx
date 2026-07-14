@@ -90,7 +90,7 @@ export default function GeneralSettingsPage() {
   if (isLoading || !business) return <SectionLoader />;
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="General"
         description="How your business appears to customers and on documents"

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "motion/react";
+import { useInView, useMotionValue, useSpring } from "motion/react";
 import { SectionLabel } from "@/components/home/section-label";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -68,12 +68,12 @@ export function HomeStorySection() {
                 <span className="block text-gradient-tangerine leading-none mt-1">in context.</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-white/60">
-                Support teams see the full picture — orders, invoices, notes, and history — so
+                Support teams see the full picture - orders, invoices, notes, and history - so
                 replies feel personal, not scripted.
               </p>
               <div className="mt-10 grid gap-10 sm:grid-cols-2">
                 <AnimatedStat value={99} suffix="%" label="Customer satisfaction across active teams" />
-                <AnimatedStat value={3.5} suffix="×" label="Faster deal closure with unified CRM" />
+                <AnimatedStat value={3.5} suffix="x" label="Faster deal closure with unified CRM" />
               </div>
             </FadeIn>
 
@@ -83,9 +83,10 @@ export function HomeStorySection() {
                   src={homeImages.story.support}
                   alt="Customer support professional helping a client"
                   fill
-                  className="object-cover transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                  className="object-cover object-[50%_38%] transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/5" />
               </div>
               <div className="absolute -bottom-6 -left-4 max-w-[220px] rounded-2xl border border-white/15 bg-[#181818]/90 p-4 backdrop-blur-xl sm:-left-8 shadow-[0_12px_36px_rgba(0,0,0,0.4)]">
                 <div className="flex items-center gap-2">
@@ -115,7 +116,7 @@ export function HomeStorySection() {
                     src={homeImages.story.salesTeam}
                     alt="Sales team collaborating in the office"
                     fill
-                    className="object-cover transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/sales:scale-[1.04]"
+                    className="object-cover object-[48%_35%] transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/sales:scale-[1.04]"
                     sizes="40vw"
                   />
                 </div>
@@ -147,7 +148,7 @@ export function HomeStorySection() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted-foreground">
                 Capture leads from your site, email, and POS. Automate follow-ups, assign owners,
-                and watch deals move — without switching tabs.
+                and watch deals move - without switching tabs.
               </p>
 
               <ul className="mt-8 space-y-5 border-t border-border/80 pt-8">

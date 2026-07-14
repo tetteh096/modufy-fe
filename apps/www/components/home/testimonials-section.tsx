@@ -9,9 +9,9 @@ import { testimonials } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const testimonialPhotos = [
-  "/images/v1/t_user1.png",
-  "/images/v1/t_user2.png",
-  "/images/v1/t_user3.png",
+  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
 ] as const;
 
 export function TestimonialsSection() {
@@ -94,7 +94,7 @@ export function TestimonialsSection() {
                   aria-label={`Show testimonial from ${entry.author}`}
                   onClick={() => setActive(index)}
                   className={cn(
-                    "group flex items-center gap-3 rounded-2xl border px-4 py-2.5 text-left transition-all duration-350",
+                    "group flex items-center gap-3 rounded-2xl border px-4 py-2.5 text-left transition-all duration-300",
                     index === active
                       ? "border-brand-leaf-green/20 bg-secondary/50 shadow-sm shadow-brand-leaf-green/5"
                       : "border-transparent hover:border-border/60 hover:bg-muted/50"

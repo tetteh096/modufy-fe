@@ -110,3 +110,23 @@
   body { @apply bg-background text-foreground; letter-spacing: var(--tracking-normal); }
   html { @apply font-sans; }
 }
+
+/* Admin auth — dark glass input focus state */
+.admin-input {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.10);
+  color: #f8fafc;
+  border-radius: 0.75rem;
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem;
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.admin-input::placeholder { color: rgba(255,255,255,0.22); }
+.admin-input:focus {
+  border-color: rgba(34,197,94,0.65);
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.12);
+}
+.admin-input.pr-12 { padding-right: 3rem; }

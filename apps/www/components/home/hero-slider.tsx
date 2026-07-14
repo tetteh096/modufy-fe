@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/utils";
 
 export type HeroSlide = {
   image: string;
@@ -15,22 +14,22 @@ export type HeroSlide = {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2400&q=80",
-    alt: "Team collaborating in a modern workspace",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2400&q=85",
+    alt: "Business team reviewing work in a modern office",
     eyebrow: "Get set for growth season and save 50%!",
     headline: ["Pay less.", "Grow more."],
   },
   {
     image:
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=2400&q=80",
-    alt: "Business team planning around a table",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=85",
+    alt: "Business team planning around a workshop table",
     eyebrow: "All-in-one platform for growing teams",
     headline: ["Run smarter.", "Scale faster."],
   },
   {
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2400&q=80",
-    alt: "Analytics dashboard showing business growth",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=2400&q=85",
+    alt: "Operations team discussing business performance",
     eyebrow: "Sales, ops, and finance in one place",
     headline: ["One platform.", "Every module."],
   },

@@ -13,7 +13,9 @@ import type {
   PlatformIntegrations,
   UpdateIntegrationsBody,
   BusinessSMSWallet,
+  BusinessEmailWallet,
   SMSUsageItem,
+  EmailUsageItem,
   NotificationLogItem,
   SupportTicket,
   TicketDetail,
@@ -31,8 +33,15 @@ export const adminApi = {
   business: (id: string) =>
     apiClient.get<ApiResponse<BusinessDetail>>(`/admin/businesses/${id}`).then((r) => r.data.data),
 
-  updateBusiness: (id: string, body: { verified?: boolean; suspended?: boolean }) =>
-    apiClient.patch(`/admin/businesses/${id}`, body),
+  updateBusiness: (
+    id: string,
+    body: {
+      verified?: boolean;
+      suspended?: boolean;
+      ai_cost_limit?: number;
+      ai_soft_pct?: number;
+    }
+  ) => apiClient.patch(`/admin/businesses/${id}`, body),
 
   addBusinessNote: (id: string, body: string) =>
     apiClient.post(`/admin/businesses/${id}/notes`, { body }),
@@ -64,6 +73,7 @@ export const adminApi = {
     subject: string;
     body: string;
     priority?: string;
+    assignee_user_id?: string;
   }) => apiClient.post<ApiResponse<SupportTicket>>("/admin/tickets", body).then((r) => r.data.data),
 
   updateTicket: (id: string, body: { status?: string; priority?: string }) =>
@@ -160,6 +170,23 @@ export const adminApi = {
   businessSMSUsage: (id: string, limit?: number) =>
     apiClient
       .get<ApiResponse<{ items: SMSUsageItem[] }>>(`/admin/businesses/${id}/sms-usage`, {
+        params: limit ? { limit } : undefined,
+      })
+      .then((r) => r.data.data),
+
+  businessEmailWallet: (id: string) =>
+    apiClient
+      .get<ApiResponse<BusinessEmailWallet>>(`/admin/businesses/${id}/email-wallet`)
+      .then((r) => r.data.data),
+
+  grantBusinessEmailCredits: (id: string, body: { credits: number; note?: string }) =>
+    apiClient
+      .post<ApiResponse<BusinessEmailWallet>>(`/admin/businesses/${id}/email-credits`, body)
+      .then((r) => r.data.data),
+
+  businessEmailUsage: (id: string, limit?: number) =>
+    apiClient
+      .get<ApiResponse<{ items: EmailUsageItem[] }>>(`/admin/businesses/${id}/email-usage`, {
         params: limit ? { limit } : undefined,
       })
       .then((r) => r.data.data),

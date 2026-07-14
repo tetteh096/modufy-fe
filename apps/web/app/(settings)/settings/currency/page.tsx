@@ -15,7 +15,7 @@ export default function CurrencySettingsPage() {
   if (isLoading || !business) return <SectionLoader />;
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Currency"
         description="Default currency for totals, plus currencies you accept"

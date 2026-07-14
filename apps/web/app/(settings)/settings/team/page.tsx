@@ -52,7 +52,7 @@ function TeamSettingsContent() {
   const pending = data?.pending_invites ?? [];
 
   return (
-    <div className="space-y-8 w-full max-w-6xl">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Team"
         description="People who can sign in to your Modufy account — each with a role that controls what they can do."

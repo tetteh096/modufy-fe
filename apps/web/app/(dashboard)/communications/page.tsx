@@ -8,7 +8,7 @@ export default function CommunicationsPage() {
         title="Messages"
         description="Send SMS and email to customers. Automated order and reminder messages appear in your outbox."
       />
-      <CommunicationsInbox className="min-h-[calc(100vh-11rem)]" />
+      <CommunicationsInbox className="h-[calc(100vh-10rem)] min-h-[640px]" />
     </div>
   );
 }

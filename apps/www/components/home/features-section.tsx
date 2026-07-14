@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SectionLabel } from "@/components/home/section-label";
 import { FadeIn } from "@/components/ui/fade-in";
 import { getModuleBySlug } from "@/lib/modules-content";
@@ -56,7 +56,13 @@ export function FeaturesSection() {
                     className="object-cover transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] group-hover:brightness-95"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-sea-grey/95 via-brand-sea-grey/40 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-sea-grey/95 via-brand-sea-grey/52 to-brand-sea-grey/10 transition-opacity duration-500 group-hover:opacity-90" />
+                  <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/12 to-transparent" />
+                </div>
+
+                <div className="absolute left-5 top-5 z-10 flex items-center gap-2 rounded-full border border-white/15 bg-white/12 px-3 py-2 text-xs font-semibold text-white backdrop-blur-xl">
+                  <module.icon className="h-4 w-4 text-brand-tangerine" />
+                  {module.category}
                 </div>
 
                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 z-10">
@@ -69,6 +75,17 @@ export function FeaturesSection() {
                       <p className="mt-2 max-w-md text-sm leading-relaxed text-white/75">
                         {module.tagline}
                       </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {module.connectsWith.slice(0, 3).map((item) => (
+                          <span
+                            key={item}
+                            className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-white/75"
+                          >
+                            <CheckCircle2 className="h-3 w-3 text-brand-tangerine" />
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                     <Link
                       href={`/modules/${module.slug}`}

@@ -63,7 +63,7 @@ export default function BrandingSettingsPage() {
   if (isLoading || !business) return <SectionLoader />;
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Branding"
         description="Logo and colour on invoices, storefront, and customer-facing pages"

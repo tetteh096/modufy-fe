@@ -27,8 +27,6 @@ const schema = z.object({
   key_mode: z.enum(["managed", "byo"]),
   byo_provider: z.enum(["anthropic", "openai"]),
   api_key: z.string().max(200).optional(),
-  cost_limit_usd: z.number().min(0).max(10000),
-  soft_pct: z.number().min(0).max(1),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -47,8 +45,6 @@ export function AISettingsForm() {
       key_mode: "managed",
       byo_provider: "anthropic",
       api_key: "",
-      cost_limit_usd: 5,
-      soft_pct: 0.8,
     },
   });
   const { register, handleSubmit, control, reset, watch, formState } = form;
@@ -59,8 +55,6 @@ export function AISettingsForm() {
         key_mode: settings.data.key_mode,
         byo_provider: settings.data.byo_provider ?? "anthropic",
         api_key: "",
-        cost_limit_usd: settings.data.cost_limit_usd,
-        soft_pct: settings.data.soft_pct,
       });
     }
   }, [settings.data, reset]);
@@ -78,8 +72,6 @@ export function AISettingsForm() {
   const onSubmit = (values: FormValues) => {
     const body = {
       key_mode: values.key_mode,
-      cost_limit_usd: values.cost_limit_usd,
-      soft_pct: values.soft_pct,
       ...(values.key_mode === "byo" ? { byo_provider: values.byo_provider } : {}),
       ...(values.api_key ? { api_key: values.api_key } : {}),
     };
@@ -142,40 +134,7 @@ export function AISettingsForm() {
       </SettingsSection>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-        <SettingsSection
-          title="Budget"
-          description="Set the monthly cap and when economy mode kicks in."
-          icon={Gauge}
-        >
-          <div className="grid gap-6 sm:grid-cols-2">
-            <SettingsField
-              label="Monthly limit (USD)"
-              htmlFor="cost_limit_usd"
-              hint="Hard cap. AI pauses for the rest of the month when reached."
-              error={formState.errors.cost_limit_usd?.message}
-            >
-              <Input
-                id="cost_limit_usd"
-                type="number"
-                step="0.5"
-                {...register("cost_limit_usd", { valueAsNumber: true })}
-              />
-            </SettingsField>
-            <SettingsField
-              label="Economy threshold (0–1)"
-              htmlFor="soft_pct"
-              hint="e.g. 0.8 = downgrade to the cheapest model at 80% of the cap."
-              error={formState.errors.soft_pct?.message}
-            >
-              <Input
-                id="soft_pct"
-                type="number"
-                step="0.05"
-                {...register("soft_pct", { valueAsNumber: true })}
-              />
-            </SettingsField>
-          </div>
-        </SettingsSection>
+        {/* Budget limit is configured and managed by the Super Admin */}
 
         <SettingsSection
           title="Billing mode"

@@ -40,7 +40,7 @@ export function ModuleSettingsPage({
   const label = MODULE_LABELS[moduleKey] ?? title;
 
   return (
-    <div className="space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title={title}
         description={description}

@@ -7,8 +7,8 @@ const inter = Inter({ variable: "--font-sans", subsets: ["latin"], display: "swa
 const mono = JetBrains_Mono({ variable: "--font-mono", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: "BizOS Admin", template: "%s | BizOS Admin" },
-  description: "BizOS platform administration",
+  title: { default: "Modufy Admin", template: "%s | Modufy Admin" },
+  description: "Modufy platform administration",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

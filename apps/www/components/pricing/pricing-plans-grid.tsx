@@ -38,6 +38,7 @@ export function PricingPlansGrid({
 
   return (
     <section className={cn("section-padding relative overflow-hidden", className)}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-tangerine/35 to-transparent" />
       <div className="container-site relative z-10">
         {showTitle ? (
           <FadeIn className="mx-auto max-w-2xl text-center">
@@ -86,12 +87,18 @@ export function PricingPlansGrid({
               <FadeIn key={plan.id} delay={index * 0.06}>
                 <article
                   className={cn(
-                    "relative flex h-full flex-col rounded-2xl border bg-card p-6 shadow-sm transition-all duration-500 hover:shadow-xl hover:border-brand-leaf-green/20 hover:-translate-y-1.5",
+                    "relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card p-6 shadow-sm transition-all duration-500 hover:shadow-xl hover:border-brand-leaf-green/20 hover:-translate-y-1.5",
                     plan.highlighted
                       ? "border-brand-tangerine shadow-xl shadow-brand-tangerine/12 ring-1 ring-brand-tangerine/15 hover:border-brand-tangerine"
                       : "border-border"
                   )}
                 >
+                  <div
+                    className={cn(
+                      "absolute inset-x-0 top-0 h-1",
+                      plan.highlighted ? "bg-brand-tangerine" : "bg-brand-leaf-green/25"
+                    )}
+                  />
                   {plan.highlighted && (
                     <span className="absolute -top-3 right-6 rounded-full bg-gradient-to-r from-brand-tangerine to-[#ffaa44] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md shadow-brand-tangerine/20 z-10">
                       Most Popular
@@ -126,7 +133,7 @@ export function PricingPlansGrid({
                     external
                     variant={plan.highlighted ? "primary" : "outline"}
                     className={cn(
-                      "mt-8 w-full transition-transform duration-350 hover:scale-[1.02] active:scale-98",
+                      "mt-8 w-full transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]",
                       plan.highlighted ? "shadow-glow-tangerine" : ""
                     )}
                   >

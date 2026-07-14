@@ -25,7 +25,7 @@ export default function HoursSettingsPage() {
   if (isLoading || !business) return <SectionLoader />;
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Business hours"
         description="Opening times for appointment booking and your public storefront"

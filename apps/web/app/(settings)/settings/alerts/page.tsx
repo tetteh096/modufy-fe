@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AlertsSettingsPage() {
   return (
-    <div className="space-y-6 max-w-3xl">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Alerts"
         description="SMS credits for customer messages, plus rules for when Modufy should warn you about money, stock, and tax."

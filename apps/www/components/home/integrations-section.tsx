@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Cable, CheckCircle2 } from "lucide-react";
 import { SectionLabel } from "@/components/home/section-label";
 import { FadeIn } from "@/components/ui/fade-in";
 import { integrations } from "@/lib/content";
@@ -32,15 +32,54 @@ export function IntegrationsSection() {
             </Link>
           </FadeIn>
 
-          <FadeIn delay={0.1} className="relative hidden lg:col-span-4 lg:block lg:col-start-9 group">
-            <div className="relative aspect-square overflow-hidden rounded-[1.75rem] border border-white/10 shadow-2xl">
+          <FadeIn delay={0.1} className="relative lg:col-span-6 lg:col-start-7">
+            <div className="relative min-h-[360px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/30 backdrop-blur group">
               <Image
                 src={homeImages.integrations}
                 alt="Connected apps and integrations"
                 fill
-                className="object-cover opacity-90 transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-                sizes="30vw"
+                className="object-cover opacity-18 transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#141414]/95 via-[#141414]/80 to-brand-leaf-green/35" />
+
+              <div className="relative grid h-full min-h-[320px] grid-cols-3 gap-3">
+                <div className="col-span-1 flex flex-col justify-between rounded-2xl border border-white/10 bg-white/8 p-4">
+                  <Cable className="h-8 w-8 text-brand-tangerine" />
+                  <div>
+                    <p className="font-display text-3xl font-black">12+</p>
+                    <p className="mt-1 text-xs font-medium text-white/55">connected tools</p>
+                  </div>
+                </div>
+
+                <div className="col-span-2 grid grid-cols-2 gap-3">
+                  {integrations.slice(0, 8).map((tool) => (
+                    <div
+                      key={tool}
+                      className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3 text-sm font-semibold text-white/80"
+                    >
+                      <span>{tool}</span>
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-tangerine/18 text-brand-tangerine">
+                        <CheckCircle2 className="h-3.5 w-3.5" />
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="col-span-3 rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
+                        Automation
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-white">
+                        Invoice paid in Stripe {"->"} customer timeline updated in Modufy
+                      </p>
+                    </div>
+                    <ArrowRight className="h-5 w-5 shrink-0 text-white/45" />
+                  </div>
+                </div>
+              </div>
             </div>
           </FadeIn>
         </div>

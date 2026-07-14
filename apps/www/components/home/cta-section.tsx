@@ -46,7 +46,7 @@ export function CtaSection() {
                   Your business, <span className="text-gradient-tangerine leading-none">finally in one place.</span>
                 </h2>
                 <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
-                  Free to start. Add modules when you&apos;re ready — no credit card for the trial.
+                  Free to start. Add modules when you&apos;re ready - no credit card for the trial.
                 </p>
                 <form
                   onSubmit={handleSubmit}
@@ -61,7 +61,7 @@ export function CtaSection() {
                   />
                   <button
                     type="submit"
-                    className="inline-flex h-12 shrink-0 items-center justify-center rounded-full bg-brand-tangerine px-8 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110 hover:shadow-glow-tangerine hover:scale-[1.02] active:scale-98"
+                    className="inline-flex h-12 shrink-0 items-center justify-center rounded-full bg-brand-tangerine px-8 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110 hover:shadow-glow-tangerine hover:scale-[1.02] active:scale-[0.98]"
                   >
                     Start free
                   </button>

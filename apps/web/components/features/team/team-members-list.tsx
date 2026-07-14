@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, MoreHorizontal, Trash2 } from "lucide-react";
+import { ChevronRight, MoreHorizontal, Trash2, Mail, Phone, Clock } from "lucide-react";
 import { formatActivityTime } from "@/lib/team-permissions";
 import type { TeamMember } from "@/types/api";
 import { TeamRoleBadge } from "@/components/features/team/team-role-badge";
@@ -34,7 +34,7 @@ export function TeamMembersList({
   }
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-3">
       {members.map((m) => {
         const isOwner = m.roles.includes("owner");
         const contact = m.email || m.phone || "Signed-in account";
@@ -44,33 +44,51 @@ export function TeamMembersList({
             key={m.id}
             className={cn(
               "group relative flex items-stretch gap-2 rounded-xl border border-border/70 bg-background",
-              "transition-shadow hover:shadow-md hover:border-border",
+              "transition-all duration-200 hover:shadow-xs hover:border-primary/20 hover:scale-[1.002]",
             )}
           >
             <Link
               href={memberHref(m.id)}
-              className="flex flex-1 items-center gap-5 min-w-0 px-5 py-5 sm:px-6"
+              className="flex flex-1 items-center gap-5 min-w-0 px-5 py-4.5 sm:px-6"
             >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary text-xl font-semibold">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/5 text-primary text-lg font-bold border border-primary/10 shadow-3xs group-hover:scale-105 transition-transform duration-200">
                 {m.name.charAt(0).toUpperCase()}
               </div>
 
-              <div className="flex-1 min-w-0 grid gap-1">
+              <div className="flex-1 min-w-0 space-y-1">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <p className="font-semibold text-lg leading-tight">{m.name}</p>
+                  <p className="font-semibold text-base leading-snug group-hover:text-primary transition-colors">{m.name}</p>
                   {m.roles.map((r) => (
                     <TeamRoleBadge key={r} role={r} />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground truncate">{contact}</p>
-                {m.last_seen_at && (
-                  <p className="text-xs text-muted-foreground/80">
-                    Last seen {formatActivityTime(m.last_seen_at)}
-                  </p>
-                )}
+                
+                <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1">
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground min-w-0">
+                    {m.email ? (
+                      <Mail className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
+                    ) : m.phone ? (
+                      <Phone className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
+                    ) : null}
+                    <span className="truncate">{contact}</span>
+                  </div>
+
+                  {m.last_seen_at && (
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground/80">
+                      <Clock className="h-3.5 w-3.5 text-muted-foreground/45 shrink-0" />
+                      <span className="flex items-center gap-1.5">
+                        Last seen {formatActivityTime(m.last_seen_at)}
+                        <span className={cn(
+                          "h-1.5 w-1.5 rounded-full shrink-0",
+                          isOwner ? "bg-emerald-500 animate-pulse" : "bg-slate-350 dark:bg-slate-650"
+                        )} />
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors self-center" />
+              <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground/75 group-hover:text-primary group-hover:translate-x-0.5 transition-all self-center" />
             </Link>
 
             {!isOwner && (
@@ -81,7 +99,7 @@ export function TeamMembersList({
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="h-10 w-10 shrink-0"
+                        className="h-9 w-9 shrink-0 cursor-pointer"
                         onClick={(e) => e.preventDefault()}
                       />
                     }

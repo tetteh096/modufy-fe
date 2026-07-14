@@ -363,6 +363,8 @@ export const businessApi = {
   },
   smsWallet: {
     get: () => apiClient.get<ApiResponse<SMSWallet>>("/sms-wallet").then(data),
+    update: (body: { low_balance_threshold: number }) =>
+      apiClient.patch<ApiResponse<SMSWallet>>("/sms-wallet", body).then(data),
     usage: (limit?: number) =>
       apiClient
         .get<ApiResponse<{ items: SMSUsageItem[] }>>("/sms-usage", {
@@ -1054,6 +1056,8 @@ export const supportApi = {
       .then(data),
   endSession: (id: string) =>
     apiClient.post(`/support/sessions/${id}/end`).then(data),
+  createTicket: (body: { subject: string; body: string }) =>
+    apiClient.post<ApiResponse<any>>("/support/tickets", body).then(data),
 };
 
 // ─── Inventory variants ────────────────────────────────────────────────────────

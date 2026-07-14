@@ -29,7 +29,7 @@ export default function ActivitySettingsPage() {
   const hasMore = events.length < total;
 
   return (
-    <>
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Activity log"
         description="See who did what across your business — team changes, sales, invoices, and sign-ins."
@@ -66,6 +66,6 @@ export default function ActivitySettingsPage() {
           </>
         )}
       </SettingsSection>
-    </>
+    </div>
   );
 }

@@ -86,6 +86,28 @@
       linear-gradient(180deg, #eef4ea 0%, #fdfbf8 100%);
   }
 
+  .text-gradient-tangerine {
+    background: linear-gradient(90deg, #f58f20 0%, #ffd08a 55%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-leaf {
+    background: linear-gradient(90deg, #467434 0%, #7ba564 55%, #f58f20 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shadow-glow-tangerine {
+    box-shadow: 0 18px 42px rgb(245 143 32 / 0.24);
+  }
+
+  .pulse-dot-ring {
+    animation: pulse-dot 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
   .marquee {
     animation: marquee 35s linear infinite;
   }
@@ -113,6 +135,14 @@
 
     to {
       transform: translateX(-50%);
+    }
+  }
+
+  @keyframes pulse-dot {
+    75%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
     }
   }
 }

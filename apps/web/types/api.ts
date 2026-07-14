@@ -436,6 +436,7 @@ export type CommunicationItem = {
   direction: "outbound" | "inbound";
   event_type: string;
   recipient: string;
+  recipient_name?: string;
   subject: string;
   preview: string;
   body?: string;

@@ -162,7 +162,7 @@ export default function TaxSettingsPage() {
   const showVsdc = country === "GH";
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Tax & VAT"
         description="For Ghana (GRA) and Nigeria (FIRS) tax reporting"

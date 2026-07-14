@@ -1,10 +1,25 @@
+export interface DashboardTrendDay {
+  date: string;
+  value: number;
+}
+
 export interface DashboardStats {
   total_businesses: number;
   businesses_with_modules: number;
   open_tickets: number;
   new_demo_requests: number;
   new_signups_7d: number;
+  new_signups_30d: number;
   suspended_businesses: number;
+  active_businesses: number;
+  platform_gmv_30d: number;
+  platform_gmv_7d: number;
+  platform_gmv_prev_7d: number;
+  sales_count_30d: number;
+  total_customers: number;
+  platform_mrr: number;
+  gmv_trend: DashboardTrendDay[];
+  signups_trend: DashboardTrendDay[];
 }
 
 export interface BusinessListItem {
@@ -42,6 +57,8 @@ export interface BusinessDetail {
     customer_count: number;
     open_ticket_count: number;
   };
+  ai_cost_limit?: number;
+  ai_soft_pct?: number;
   created_at: string;
 }
 
@@ -186,6 +203,22 @@ export interface SMSUsageItem {
   created_at: string;
 }
 
+export interface BusinessEmailWallet {
+  balance_credits: number;
+  low_balance_threshold: number;
+  sent_30d: number;
+  credits_used_30d: number;
+}
+
+export interface EmailUsageItem {
+  id: string;
+  event_type: string;
+  recipient: string;
+  credits_charged: number;
+  status: string;
+  created_at: string;
+}
+
 export interface NotificationLogItem {
   id: string;
   business_id?: string;
@@ -199,6 +232,24 @@ export interface NotificationLogItem {
   provider?: string;
   provider_msg_id?: string;
   error_message?: string;
+  sandbox: boolean;
+  created_at: string;
+}
+
+export interface BusinessEmailWallet {
+  balance_credits: number;
+  low_balance_threshold: number;
+  sent_30d: number;
+  credits_used_30d: number;
+}
+
+export interface EmailUsageItem {
+  id: string;
+  event_type: string;
+  recipient: string;
+  subject?: string;
+  credits_charged: number;
+  status: string;
   sandbox: boolean;
   created_at: string;
 }

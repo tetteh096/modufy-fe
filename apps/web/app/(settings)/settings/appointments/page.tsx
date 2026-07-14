@@ -5,7 +5,7 @@ import { AppointmentsSettingsForm } from "@/components/features/appointments/app
 
 export default function AppointmentsSettingsPage() {
   return (
-    <div className="w-full max-w-5xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Appointments"
         description="Booking link, cancellation rules, scheduling buffers, and SMS reminders."

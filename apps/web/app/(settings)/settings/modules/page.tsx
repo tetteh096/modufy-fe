@@ -17,7 +17,7 @@ export default function ModulesSettingsPage() {
   const modules = modulesData?.modules ?? [];
 
   return (
-    <div className="space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-10">
       <PageHeader
         title="Your plan"
         description="Features enabled on your account. Contact support to upgrade."
