@@ -93,7 +93,7 @@ export default function DocsPage() {
         </div>
       </section>
 
-      <section id="api" className="section-padding border-t border-border bg-[#faf8f5]">
+      <section id="api" className="section-padding border-t border-border bg-[#f5f6f3]">
         <div className="container-site">
           <FadeIn className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-5">
@@ -103,7 +103,7 @@ export default function DocsPage() {
               <h2 className="mt-4 text-3xl font-bold sm:text-4xl">API reference</h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 Build custom integrations with our REST API. Available on Professional and Ultimate
-                plans — full reference docs ship with your developer portal after signup.
+                plans: full reference docs ship with your developer portal after signup.
               </p>
               <Link
                 href="/contact"

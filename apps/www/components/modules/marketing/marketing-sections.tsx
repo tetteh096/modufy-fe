@@ -128,7 +128,7 @@ export function MarketingPricingSection() {
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
             Begin with Modufy Core, then enable Marketing Campaigns when your customer list is ready
-            — without exporting contacts to another tool.
+           , without exporting contacts to another tool.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href={appPath("/register")} size="lg" external variant="secondary">
@@ -144,10 +144,10 @@ export function MarketingPricingSection() {
           <div className="rounded-[1.75rem] border border-border bg-[#faf8f5] p-6 sm:p-8">
             <p className="text-sm font-bold text-[#1a2744]">Marketing Campaigns</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Enable anytime — segments, templates, SMS + email, wallet tracking.
+              Enable anytime: segments, templates, SMS + email, wallet tracking.
             </p>
             <div className="mt-6 rounded-2xl bg-white p-4 text-sm font-semibold text-brand-leaf-green">
-              Marketing active — build a segment and send.
+              Marketing active. Build a segment and send.
             </div>
           </div>
         </FadeIn>
@@ -176,7 +176,7 @@ export function MarketingFinalCta() {
                 Ready to message customers with confidence?
               </h2>
               <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/60">
-                Segments, SMS or email, delivery tracking, and opt-outs — from the same place you
+                Segments, SMS or email, delivery tracking, and opt-outs, from the same place you
                 already run the business.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">

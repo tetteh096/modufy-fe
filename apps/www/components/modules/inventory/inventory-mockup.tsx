@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import {
+  AnimatePresence,
   motion,
   useMotionTemplate,
   useMotionValue,
@@ -12,15 +13,17 @@ import {
 import { AlertTriangle, Check, Package, ScanBarcode, Truck } from "lucide-react";
 
 const ITEMS = [
-  { name: "Clay conditioning bar", sku: "SKU-118", qty: "120", status: "In stock" },
-  { name: "Shelf spray refill", sku: "SKU-204", qty: "18", status: "Low" },
-  { name: "Studio consult", sku: "SVC-012", qty: "—", status: "Service" },
-] as const;
+  { name: "Clay conditioning bar", sku: "SKU-118", qty: 120, status: "In stock" as const },
+  { name: "Shelf spray refill", sku: "SKU-204", qty: 20, status: "Watch" as const },
+  { name: "Studio consult", sku: "SVC-012", qty: null, status: "Service" as const },
+];
 
 export function InventoryMockup() {
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [sprayQty, setSprayQty] = useState(20);
   const [alerted, setAlerted] = useState(false);
+  const [scanPulse, setScanPulse] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -30,11 +33,23 @@ export function InventoryMockup() {
 
   useEffect(() => {
     if (reduceMotion) {
+      setSprayQty(18);
       setAlerted(true);
       return;
     }
-    const timer = window.setTimeout(() => setAlerted(true), 1800);
-    return () => window.clearTimeout(timer);
+
+    const timers = [
+      window.setTimeout(() => {
+        setScanPulse(true);
+        setSprayQty(19);
+      }, 1400),
+      window.setTimeout(() => {
+        setSprayQty(18);
+        setAlerted(true);
+        setScanPulse(false);
+      }, 2800),
+    ];
+    return () => timers.forEach((t) => window.clearTimeout(t));
   }, [reduceMotion]);
 
   function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
@@ -71,7 +86,11 @@ export function InventoryMockup() {
               </p>
               <p className="mt-0.5 text-sm font-bold text-[#1a2744]">Inventory overview</p>
             </div>
-            <span className="rounded-full bg-brand-leaf-green/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-leaf-green">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-leaf-green/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-leaf-green">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="pulse-dot-ring absolute inline-flex h-full w-full rounded-full bg-brand-leaf-green opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-leaf-green" />
+              </span>
               Live stock
             </span>
           </div>
@@ -80,10 +99,10 @@ export function InventoryMockup() {
             <div className="grid grid-cols-3 gap-2 text-center">
               {[
                 ["SKUs", "248"],
-                ["Low stock", "6"],
+                ["Low stock", alerted ? "6" : "5"],
                 ["On order", "3"],
               ].map(([label, value]) => (
-                <div key={label} className="rounded-xl border border-border bg-[#faf8f5] px-2 py-3">
+                <div key={label} className="rounded-xl border border-border bg-[#f6f6f4] px-2 py-3">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                     {label}
                   </p>
@@ -93,33 +112,52 @@ export function InventoryMockup() {
             </div>
 
             <div className="space-y-2">
-              {ITEMS.map((item) => (
-                <div
-                  key={item.sku}
-                  className="flex items-center justify-between gap-3 rounded-xl border border-border px-3 py-2.5"
-                >
-                  <div>
-                    <p className="text-sm font-semibold text-[#1a2744]">{item.name}</p>
-                    <p className="text-[11px] text-muted-foreground">
-                      {item.sku} · qty {item.qty}
-                    </p>
-                  </div>
-                  <span
-                    className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                      item.status === "Low"
-                        ? "bg-brand-tangerine/15 text-brand-tangerine"
-                        : item.status === "Service"
-                          ? "bg-[#1a2744]/8 text-[#1a2744]"
-                          : "bg-brand-leaf-green/15 text-brand-leaf-green"
-                    }`}
+              {ITEMS.map((item) => {
+                const qty = item.sku === "SKU-204" ? sprayQty : item.qty;
+                const status =
+                  item.sku === "SKU-204"
+                    ? sprayQty <= 18
+                      ? "Low"
+                      : scanPulse
+                        ? "Selling"
+                        : "Watch"
+                    : item.status;
+
+                return (
+                  <div
+                    key={item.sku}
+                    className="flex items-center justify-between gap-3 rounded-xl border border-border px-3 py-2.5"
                   >
-                    {item.status}
-                  </span>
-                </div>
-              ))}
+                    <div>
+                      <p className="text-sm font-semibold text-[#1a2744]">{item.name}</p>
+                      <p className="text-[11px] text-muted-foreground">
+                        {item.sku} · qty {qty ?? "-"}
+                      </p>
+                    </div>
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={status}
+                        initial={reduceMotion ? false : { opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                          status === "Low"
+                            ? "bg-brand-tangerine/15 text-brand-tangerine"
+                            : status === "Selling"
+                              ? "bg-brand-leaf-green/20 text-brand-leaf-green"
+                              : status === "Service"
+                                ? "bg-[#1a2744]/8 text-[#1a2744]"
+                                : "bg-brand-leaf-green/15 text-brand-leaf-green"
+                        }`}
+                      >
+                        {status}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
 
-            {alerted && (
+            {alerted ? (
               <motion.div
                 initial={reduceMotion ? false : { opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
@@ -128,7 +166,7 @@ export function InventoryMockup() {
                 <AlertTriangle className="h-4 w-4 shrink-0" />
                 Low stock · create purchase order
               </motion.div>
-            )}
+            ) : null}
           </div>
         </div>
 
@@ -138,14 +176,19 @@ export function InventoryMockup() {
           transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
         >
           <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-leaf-green/15 text-brand-leaf-green">
+            <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-brand-leaf-green/15 text-brand-leaf-green">
               <ScanBarcode className="h-4 w-4" />
+              {scanPulse ? (
+                <span className="absolute inset-0 animate-ping rounded-full bg-brand-leaf-green/30" />
+              ) : null}
             </span>
             <div>
               <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                 Scan
               </p>
-              <p className="text-xs font-semibold text-[#1a2744]">Barcode ready</p>
+              <p className="text-xs font-semibold text-[#1a2744]">
+                {scanPulse ? "POS · −1 logged" : "Barcode ready"}
+              </p>
             </div>
           </div>
         </motion.div>

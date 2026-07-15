@@ -75,7 +75,7 @@ export function InvoicingHero() {
               transition={{ duration: 0.55, delay: 0.28 }}
             >
               Create branded invoices, send reminders, and sync every payment straight into your
-              books — from draft to paid.
+              books, from draft to paid.
             </motion.p>
 
             <motion.div

@@ -32,7 +32,7 @@ export function InvoicingWorkflow() {
             How it works
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            From draft to paid — one clear path.
+            From draft to paid, one clear path.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
             Pull line items from Inventory or enter them manually. When payment lands, Accounts

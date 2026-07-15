@@ -17,11 +17,11 @@ export function DemoPageIntro() {
         Your walkthrough
       </p>
       <h2 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
-        A demo built around your business — not a generic slide deck
+        A demo built around your business, not a generic slide deck
       </h2>
       <p className="mt-4 text-base leading-relaxed text-muted-foreground">
         We&apos;ll show you how Modufy handles the workflows you care about: customers, daily sales,
-        invoicing, stock, POS, or appointments — using examples that fit your industry.
+        invoicing, stock, POS, or appointments: using examples that fit your industry.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
@@ -61,7 +61,7 @@ export function DemoPageIntro() {
         ].map(({ icon: Icon, label }) => (
           <div
             key={label}
-            className="flex flex-col items-center rounded-xl border border-border bg-[#faf8f5] px-3 py-4 text-center"
+            className="flex flex-col items-center rounded-xl border border-border bg-[#f5f6f3] px-3 py-4 text-center"
           >
             <Icon className="h-5 w-5 text-brand-tangerine" />
             <p className="mt-2 text-xs font-semibold text-brand-sea-grey">{label}</p>
@@ -72,7 +72,7 @@ export function DemoPageIntro() {
       <blockquote className="mt-10 rounded-[1.25rem] border border-border bg-secondary/40 p-5">
         <Sparkles className="h-5 w-5 text-brand-tangerine" />
         <p className="mt-3 text-sm leading-relaxed text-brand-sea-grey">&ldquo;{demoQuote.text}&rdquo;</p>
-        <footer className="mt-3 text-xs font-medium text-muted-foreground">— {demoQuote.author}</footer>
+        <footer className="mt-3 text-xs font-medium text-muted-foreground">- {demoQuote.author}</footer>
       </blockquote>
 
       <div className="mt-8 overflow-hidden rounded-[1.25rem] border border-border">
@@ -90,7 +90,7 @@ export function DemoPageIntro() {
             <Link href={appPath("/register")} className="underline underline-offset-2 hover:text-brand-tangerine">
               Start free on Core
             </Link>{" "}
-            — no call required.
+           , no call required.
           </p>
         </div>
       </div>

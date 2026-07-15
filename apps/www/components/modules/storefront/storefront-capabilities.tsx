@@ -26,7 +26,7 @@ export function StorefrontCapabilities() {
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Key capabilities
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Everything you need to sell and showcase online.
           </h2>
         </FadeIn>
@@ -36,7 +36,7 @@ export function StorefrontCapabilities() {
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
               Branding
             </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">
+            <h3 className="mt-2 text-2xl font-bold text-[#0e120e]">
               Publish a storefront that looks like you
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -49,7 +49,7 @@ export function StorefrontCapabilities() {
                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-leaf-green text-xs font-bold text-white">
                       M
                     </span>
-                    <p className="text-sm font-bold text-[#1a2744]">modufy.app/you</p>
+                    <p className="text-sm font-bold text-[#0e120e]">modufy.app/you</p>
                   </div>
                   <ToggleRight className="h-5 w-5 text-brand-leaf-green" />
                 </div>
@@ -57,7 +57,7 @@ export function StorefrontCapabilities() {
                   {["Products", "Services", "Gallery"].map((label) => (
                     <div
                       key={label}
-                      className="rounded-lg bg-[#faf8f5] px-2 py-3 text-center text-[11px] font-semibold text-[#1a2744]"
+                      className="rounded-lg bg-[#f5f6f3] px-2 py-3 text-center text-[11px] font-semibold text-[#0e120e]"
                     >
                       {label}
                     </div>
@@ -71,7 +71,7 @@ export function StorefrontCapabilities() {
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
               Catalog
             </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">
+            <h3 className="mt-2 text-2xl font-bold text-[#0e120e]">
               Products and services from Inventory
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -85,13 +85,13 @@ export function StorefrontCapabilities() {
               ].map(([name, meta], index) => (
                 <motion.div
                   key={name}
-                  className="flex items-center justify-between rounded-xl border border-border bg-[#faf8f5] px-3 py-3"
+                  className="flex items-center justify-between rounded-xl border border-border bg-[#f5f6f3] px-3 py-3"
                   animate={
                     reduceMotion ? undefined : { y: [0, index % 2 === 0 ? -3 : 3, 0] }
                   }
                   transition={{ duration: 3.3 + index * 0.2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a2744]">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e120e]">
                     <Package className="h-4 w-4 text-brand-leaf-green" />
                     {name}
                   </span>
@@ -106,7 +106,7 @@ export function StorefrontCapabilities() {
               <ShoppingBadge />
               <span className="text-xs font-bold uppercase tracking-wider">Guest checkout</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Order or enquire without an account</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Order or enquire without an account</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Lower friction for first-time buyers and clients.
             </p>
@@ -117,18 +117,18 @@ export function StorefrontCapabilities() {
               <BadgePercent className="h-5 w-5" />
               <span className="text-xs font-bold uppercase tracking-wider">Promotions</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Coupons with clear results</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Coupons with clear results</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Run discounts and see what actually moved.
             </p>
           </CapabilityShell>
 
           <CapabilityShell className="xl:col-span-2" delay={0.18}>
-            <div className="flex items-center gap-2 text-[#1a2744]">
+            <div className="flex items-center gap-2 text-[#0e120e]">
               <Images className="h-5 w-5 text-brand-leaf-green" />
               <span className="text-xs font-bold uppercase tracking-wider">Portfolio</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Show your work, not just your price list</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Show your work, not just your price list</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Galleries for studios, makers, and service brands.
             </p>
@@ -141,7 +141,7 @@ export function StorefrontCapabilities() {
                   <Star className="h-5 w-5" />
                   <span className="text-xs font-bold uppercase tracking-wider">Social proof</span>
                 </div>
-                <h3 className="mt-3 text-xl font-bold text-[#1a2744]">
+                <h3 className="mt-3 text-xl font-bold text-[#0e120e]">
                   Reviews you can reply to and moderate
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

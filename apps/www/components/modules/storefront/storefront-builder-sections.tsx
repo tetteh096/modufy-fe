@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import {
   Check,
   Eye,
@@ -27,6 +33,39 @@ const PRODUCT_CARDS = [
 export function StorefrontHero() {
   const reduceMotion = useReducedMotion();
   const [live, setLive] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setIsDesktop(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  /** Canvas opens while pinned; finishes before the sticky section releases. */
+  const openRaw = useTransform(scrollYProgress, [0, 0.72], [0, 1]);
+  const open = useSpring(openRaw, { stiffness: 100, damping: 30 });
+
+  const leftX = useTransform(open, [0, 1], [48, 0]);
+  const rightX = useTransform(open, [0, 1], [-48, 0]);
+  const panelScale = useTransform(open, [0, 1], [0.72, 1]);
+  const panelOpacity = useTransform(open, [0, 1], [0.45, 1]);
+  const gapPx = useTransform(open, [0, 1], [4, 8]);
+  const previewScale = useTransform(open, [0, 1], [0.88, 1]);
+  const floatY = useTransform(open, [0, 1], [12, 0]);
+  const editorW = useTransform(open, [0, 1], [72, 192]);
+  const editorH = useTransform(open, [0, 1], [72, 148]);
+  const phoneW = useTransform(open, [0, 1], [72, 160]);
+  const phoneH = useTransform(open, [0, 1], [96, 200]);
+  const editorCopyOpacity = open;
+  const hintOpacity = useTransform(open, [0, 0.85, 1], [1, 0.35, 0]);
 
   useEffect(() => {
     if (reduceMotion) {
@@ -37,219 +76,301 @@ export function StorefrontHero() {
     return () => window.clearTimeout(t);
   }, [reduceMotion]);
 
+  const pinEnabled = !reduceMotion && isDesktop;
+
   return (
-    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#0b0b0b] pb-16 pt-28 text-white sm:-mt-[6.25rem] sm:pb-24 sm:pt-32">
+    <section
+      ref={sectionRef}
+      className={
+        pinEnabled
+          ? "relative -mt-[5.75rem] h-[220vh] bg-[#0b0b0b] text-white sm:-mt-[6.25rem]"
+          : "relative -mt-[5.75rem] bg-[#0b0b0b] pb-16 pt-28 text-white sm:-mt-[6.25rem] sm:pb-24 sm:pt-32"
+      }
+    >
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden
-      />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_30%,rgba(70,116,52,0.22),transparent)]" />
+        className={
+          pinEnabled
+            ? "sticky top-0 flex h-screen flex-col overflow-hidden pt-28 sm:pt-32"
+            : "relative"
+        }
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_50%_30%,rgba(70,116,52,0.22),transparent)]" />
 
-      <div className="container-site relative">
-        <nav aria-label="Breadcrumb" className="text-sm text-white/45">
-          <ol className="flex flex-wrap items-center gap-2">
-            <li>
-              <Link href="/" className="transition hover:text-white">
-                Home
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/modules" className="transition hover:text-white">
-                Modules
-              </Link>
-            </li>
-            <li>/</li>
-            <li className="font-medium text-white/80">Storefront</li>
-          </ol>
-        </nav>
+        <div className="container-site relative flex min-h-0 flex-1 flex-col pb-10">
+          <nav aria-label="Breadcrumb" className="shrink-0 text-sm text-white/45">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li>
+                <Link href="/" className="transition hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li>/</li>
+              <li>
+                <Link href="/modules" className="transition hover:text-white">
+                  Modules
+                </Link>
+              </li>
+              <li>/</li>
+              <li className="font-medium text-white/80">Storefront</li>
+            </ol>
+          </nav>
 
-        <div className="relative mt-14 min-h-[420px] lg:mt-16 lg:min-h-[520px]">
-          {/* Floating product tiles — Shopify canvas style */}
-          <motion.div
-            className="absolute left-0 top-4 hidden w-36 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2 lg:block"
-            animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="relative aspect-square overflow-hidden rounded-xl">
-              <Image
-                src={homeImages.features.orders}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="144px"
-                aria-hidden
-              />
-            </div>
-            <div className="mt-2 flex gap-1.5 px-1">
-              {["#467434", "#F58F20", "#c5e4b0", "#1a2744", "#fff"].map((c) => (
-                <span
-                  key={c}
-                  className="h-4 w-4 rounded-full border border-white/20"
-                  style={{ background: c }}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute right-0 top-0 hidden gap-2 lg:flex"
-            animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-          >
-            {PRODUCT_CARDS.map((p) => (
-              <div
-                key={p.name}
-                className="w-[100px] overflow-hidden rounded-xl border border-white/10 bg-white/5"
-              >
-                <div className="relative aspect-square">
-                  <Image src={p.img} alt="" fill className="object-cover" sizes="100px" aria-hidden />
-                </div>
-                <p className="truncate px-2 py-1.5 text-[10px] font-semibold text-white/80">{p.price}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-4 left-0 hidden w-48 rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm lg:block"
-            animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
-            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          >
-            <p className="text-[10px] font-bold uppercase tracking-wider text-white/40">Editor</p>
-            <p className="mt-2 text-xs font-semibold text-white">Home page</p>
-            <p className="mt-1 text-[11px] text-white/50">Header</p>
-            <p className="mt-0.5 text-[11px] text-brand-leaf-green">+ Add section</p>
-            <p className="mt-2 text-[11px] text-white/50">Catalog · Reviews</p>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-8 right-4 hidden w-40 overflow-hidden rounded-2xl border border-white/10 lg:block"
-            animate={reduceMotion ? undefined : { y: [0, 10, 0] }}
-            transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-          >
-            <div className="relative aspect-[4/5]">
-              <Image
-                src={homeImages.features.mobile}
-                alt="Storefront on mobile"
-                fill
-                className="object-cover"
-                sizes="160px"
-              />
-            </div>
-          </motion.div>
-
-          {/* Center copy */}
-          <div className="relative z-10 mx-auto max-w-2xl text-center">
-            <motion.p
-              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[11px] font-bold uppercase tracking-[0.22em] text-brand-leaf-green"
-            >
-              Modufy Online Storefront
-            </motion.p>
-
-            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-              <motion.span
-                className="block"
-                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 }}
-              >
-                Your vision.
-              </motion.span>
-              <motion.span
-                className="mt-1 block text-white/90"
-                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.16 }}
-              >
-                Your storefront — live.
-              </motion.span>
-            </h1>
-
-            <motion.p
-              className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-white/55 sm:text-lg"
-              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.26 }}
-            >
-              Customize branding, sync products from Inventory, and publish a public page to browse,
-              book, and buy — without building a website from scratch.
-            </motion.p>
-
+          <div className="relative mt-10 min-h-0 flex-1 lg:mt-12">
+            {/* Top-left brand swatch */}
             <motion.div
-              className="mt-8 flex flex-wrap justify-center gap-3"
-              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.36 }}
+              className="absolute left-0 top-0 hidden origin-right lg:block"
+              style={
+                pinEnabled
+                  ? { x: leftX, scale: panelScale, opacity: panelOpacity, y: floatY }
+                  : undefined
+              }
             >
-              <Button
-                href={appPath("/register")}
-                size="lg"
-                external
-                className="rounded-full bg-white text-[#0b0b0b] hover:bg-white/90"
-              >
-                Start customizing free
-              </Button>
+              <div className="w-36 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2">
+                <div className="relative aspect-square overflow-hidden rounded-xl">
+                  <Image
+                    src={homeImages.features.orders}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="144px"
+                    aria-hidden
+                  />
+                </div>
+                <div className="mt-2 flex gap-1.5 px-1">
+                  {["#467434", "#F58F20", "#c5e4b0", "#1a2744", "#fff"].map((c) => (
+                    <span
+                      key={c}
+                      className="h-4 w-4 rounded-full border border-white/20"
+                      style={{ background: c }}
+                    />
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
-            <motion.p
-              className="mt-4 text-sm text-white/40"
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45 }}
-            >
-              No card required · start with Modufy Core free
-            </motion.p>
-
+            {/* Top-right product strip */}
             <motion.div
-              className="mx-auto mt-10 max-w-sm overflow-hidden rounded-[1.5rem] border border-white/15 bg-white text-[#1a2744] shadow-2xl lg:mt-12"
-              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              className="absolute right-0 top-0 hidden origin-left lg:block"
+              style={
+                pinEnabled
+                  ? { x: rightX, scale: panelScale, opacity: panelOpacity, y: floatY }
+                  : undefined
+              }
             >
-              <div className="flex items-center justify-between border-b border-border px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-leaf-green text-xs font-bold text-white">
-                    M
-                  </span>
-                  <div className="text-left">
-                    <p className="text-xs font-bold">Meridian Studio</p>
-                    <p className="text-[10px] text-muted-foreground">modufy.app/meridian</p>
-                  </div>
-                </div>
-                <span
-                  className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
-                    live
-                      ? "bg-brand-leaf-green/15 text-brand-leaf-green"
-                      : "bg-[#f4f1ea] text-[#6f6f6f]"
-                  }`}
-                >
-                  {live ? "Live" : "Draft"}
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-2 p-3">
+              <motion.div className="flex" style={pinEnabled ? { gap: gapPx } : { gap: 8 }}>
                 {PRODUCT_CARDS.map((p) => (
-                  <div key={p.name} className="overflow-hidden rounded-lg bg-[#f7f5f1]">
+                  <div
+                    key={p.name}
+                    className="w-[100px] shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/5"
+                  >
                     <div className="relative aspect-square">
-                      <Image src={p.img} alt={p.name} fill className="object-cover" sizes="100px" />
+                      <Image
+                        src={p.img}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="100px"
+                        aria-hidden
+                      />
                     </div>
-                    <p className="px-1.5 py-1 text-[10px] font-bold text-brand-leaf-green">{p.price}</p>
+                    <p className="truncate px-2 py-1.5 text-[10px] font-semibold text-white/80">
+                      {p.price}
+                    </p>
                   </div>
                 ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Bottom-left editor */}
+            <motion.div
+              className="absolute bottom-2 left-0 hidden origin-right overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm lg:block"
+              style={
+                pinEnabled
+                  ? {
+                      x: leftX,
+                      scale: panelScale,
+                      opacity: panelOpacity,
+                      width: editorW,
+                      height: editorH,
+                    }
+                  : { width: 192, height: 148 }
+              }
+            >
+              <div className="p-3">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-white/40">
+                  Editor
+                </p>
+                <motion.div style={pinEnabled ? { opacity: editorCopyOpacity } : undefined}>
+                  <p className="mt-2 text-xs font-semibold text-white">Home page</p>
+                  <p className="mt-1 text-[11px] text-white/50">Header</p>
+                  <p className="mt-0.5 text-[11px] text-brand-leaf-green">+ Add section</p>
+                  <p className="mt-2 text-[11px] text-white/50">Catalog · Reviews</p>
+                </motion.div>
               </div>
             </motion.div>
+
+            {/* Bottom-right mobile */}
+            <motion.div
+              className="absolute bottom-4 right-4 hidden origin-left overflow-hidden rounded-2xl border border-white/10 lg:block"
+              style={
+                pinEnabled
+                  ? {
+                      x: rightX,
+                      scale: panelScale,
+                      opacity: panelOpacity,
+                      width: phoneW,
+                      height: phoneH,
+                    }
+                  : { width: 160, height: 200 }
+              }
+            >
+              <div className="relative h-full w-full">
+                <Image
+                  src={homeImages.features.mobile}
+                  alt="Storefront on mobile"
+                  fill
+                  className="object-cover"
+                  sizes="160px"
+                />
+              </div>
+            </motion.div>
+
+            {/* Center copy */}
+            <div className="relative z-10 mx-auto flex h-full max-w-2xl flex-col justify-center text-center">
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-[11px] font-bold uppercase tracking-[0.22em] text-brand-leaf-green"
+              >
+                Modufy Online Storefront
+              </motion.p>
+
+              <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem]">
+                <motion.span
+                  className="block"
+                  initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.08 }}
+                >
+                  Your vision.
+                </motion.span>
+                <motion.span
+                  className="mt-1 block text-white/90"
+                  initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.16 }}
+                >
+                  Your storefront, live.
+                </motion.span>
+              </h1>
+
+              <motion.p
+                className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-white/55 sm:text-lg"
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.26 }}
+              >
+                Customize branding, sync products from Inventory, and publish a public page to
+                browse, book, and buy, without building a website from scratch.
+              </motion.p>
+
+              <motion.div
+                className="mt-8 flex flex-wrap justify-center gap-3"
+                initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.36 }}
+              >
+                <Button
+                  href={appPath("/register")}
+                  size="lg"
+                  external
+                  className="rounded-full bg-white text-[#0b0b0b] hover:bg-white/90"
+                >
+                  Start customizing free
+                </Button>
+              </motion.div>
+
+              <motion.p
+                className="mt-4 text-sm text-white/40"
+                initial={reduceMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.45 }}
+              >
+                No card required · start with Modufy Core free
+              </motion.p>
+
+              <motion.div
+                className="mx-auto mt-8 max-w-sm overflow-hidden rounded-[1.5rem] border border-white/15 bg-white text-[#1a2744] shadow-2xl sm:mt-10"
+                style={pinEnabled ? { scale: previewScale } : undefined}
+                initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <div className="flex items-center justify-between border-b border-border px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-leaf-green text-xs font-bold text-white">
+                      M
+                    </span>
+                    <div className="text-left">
+                      <p className="text-xs font-bold">Meridian Studio</p>
+                      <p className="text-[10px] text-muted-foreground">modufy.app/meridian</p>
+                    </div>
+                  </div>
+                  <span
+                    className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                      live
+                        ? "bg-brand-leaf-green/15 text-brand-leaf-green"
+                        : "bg-[#f4f1ea] text-[#6f6f6f]"
+                    }`}
+                  >
+                    {live ? "Live" : "Draft"}
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-2 p-3">
+                  {PRODUCT_CARDS.map((p) => (
+                    <div key={p.name} className="overflow-hidden rounded-lg bg-[#f7f5f1]">
+                      <div className="relative aspect-square">
+                        <Image
+                          src={p.img}
+                          alt={p.name}
+                          fill
+                          className="object-cover"
+                          sizes="100px"
+                        />
+                      </div>
+                      <p className="px-1.5 py-1 text-[10px] font-bold text-brand-leaf-green">
+                        {p.price}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {pinEnabled && (
+                <motion.p
+                  className="mt-5 hidden text-[11px] text-white/35 lg:block"
+                  style={{ opacity: hintOpacity }}
+                >
+                  Keep scrolling: canvas opens, then the page continues
+                </motion.p>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 export function StorefrontTrustStrip() {
   const reduceMotion = useReducedMotion();
@@ -303,17 +424,17 @@ export function StorefrontCustomizeSection() {
   const features = [
     {
       title: "Publish with your branding",
-      copy: "Logo, colours, and your Modufy link — go live or unpublish anytime.",
+      copy: "Logo, colours, and your Modufy link: go live or unpublish anytime.",
       visual: "brand" as const,
     },
     {
       title: "Catalog from Inventory",
-      copy: "Products and services stay in sync. List once — sell or book on your page.",
+      copy: "Products and services stay in sync. List once: sell or book on your page.",
       visual: "catalog" as const,
     },
     {
       title: "Promotions that track",
-      copy: "Coupons and offers with clear performance — not notes in a chat thread.",
+      copy: "Coupons and offers with clear performance, not notes in a chat thread.",
       visual: "promo" as const,
     },
     {
@@ -328,14 +449,14 @@ export function StorefrontCustomizeSection() {
       <div className="container-site">
         <FadeIn className="max-w-2xl">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
-            Customize — don&apos;t rebuild
+            Customize: don&apos;t rebuild
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
             Make your mark. No website project required.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             Modufy Storefront isn&apos;t a blank page builder. You customize a ready commercial page
-            and publish it — powered by the catalog you already run.
+            and publish it: powered by the catalog you already run.
           </p>
         </FadeIn>
 
@@ -395,7 +516,7 @@ export function StorefrontDiscoverSection() {
               </div>
               <h3 className="mt-5 text-xl font-bold text-[#1a2744]">One link for every channel</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Put it in Instagram, WhatsApp, or email. Customers land on a branded page — not a
+                Put it in Instagram, WhatsApp, or email. Customers land on a branded page, not a
                 photo dump in DMs.
               </p>
             </article>
@@ -428,7 +549,7 @@ export function StorefrontDiscoverSection() {
               </div>
               <h3 className="mt-5 text-xl font-bold text-[#1a2744]">Mobile-ready by default</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Your page looks right on every screen — no separate mobile rebuild.
+                Your page looks right on every screen, no separate mobile rebuild.
               </p>
             </article>
           </FadeIn>
@@ -442,7 +563,7 @@ export function StorefrontReadySection() {
   const cards = [
     {
       title: "Orders into Modufy",
-      copy: "Guest checkouts and enquiries land as records — tied to customers when they exist.",
+      copy: "Guest checkouts and enquiries land as records: tied to customers when they exist.",
       icon: ShoppingBag,
     },
     {
@@ -496,7 +617,7 @@ export function StorefrontCloseSection() {
               Start free. Publish when your catalog is ready.
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Begin with Modufy Core, add Inventory, then turn on Storefront — without migrating to
+              Begin with Modufy Core, add Inventory, then turn on Storefront, without migrating to
               a separate website tool.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -547,7 +668,7 @@ export function StorefrontCloseSection() {
               Ready to go live?
             </h2>
             <p className="relative mx-auto mt-4 max-w-md text-sm text-white/55">
-              Customize your page, sync the catalog, and share one link — orders and enquiries come
+              Customize your page, sync the catalog, and share one link: orders and enquiries come
               back into Modufy.
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3">

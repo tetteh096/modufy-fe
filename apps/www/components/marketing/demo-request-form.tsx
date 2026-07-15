@@ -42,7 +42,7 @@ export function DemoRequestForm() {
           slots that work for your timezone.
         </p>
         <p className="mt-4 text-xs text-muted-foreground">
-          Check your spam folder if you don&apos;t hear from us — or email{" "}
+          Check your spam folder if you don&apos;t hear from us: or email{" "}
           <a href="mailto:hello@modufy.app" className="font-semibold text-brand-leaf-green hover:text-brand-tangerine">
             hello@modufy.app
           </a>
@@ -59,7 +59,7 @@ export function DemoRequestForm() {
       </p>
       <h3 className="mt-2 text-2xl font-bold">Book your walkthrough</h3>
       <p className="mt-2 text-sm text-muted-foreground">
-        Fill in a few details and we&apos;ll send available times — usually within 24 hours.
+        Fill in a few details and we&apos;ll send available times: usually within 24 hours.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">

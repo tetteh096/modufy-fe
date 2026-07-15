@@ -31,7 +31,7 @@ export function ModulesIndex() {
 
   return (
     <>
-      <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f7f4ef] pb-14 pt-28 sm:-mt-[6.25rem] sm:pb-20 sm:pt-32">
+      <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f4f6f3] pb-14 pt-28 sm:-mt-[6.25rem] sm:pb-20 sm:pt-32">
         <div className="texture-noise pointer-events-none absolute inset-0 opacity-60" aria-hidden />
         <motion.div
           className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-brand-leaf-green/15 blur-[90px]"
@@ -55,7 +55,7 @@ export function ModulesIndex() {
                 </Link>
               </li>
               <li className="text-border">/</li>
-              <li className="font-medium text-[#1a2744]">Modules</li>
+              <li className="font-medium text-[#0e120e]">Modules</li>
             </ol>
           </nav>
 
@@ -64,13 +64,13 @@ export function ModulesIndex() {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
                 Modules
               </p>
-              <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#1a2744] sm:text-5xl lg:text-[3.5rem]">
+              <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#0e120e] sm:text-5xl lg:text-[3.5rem]">
                 Pick what you need.
                 <span className="mt-1 block text-gradient-leaf">Add more as you grow.</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Core is included with every account. Enable invoicing, inventory, POS, appointments,
-                and more when you are ready — without rebuilding your stack.
+                and more when you are ready, without rebuilding your stack.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href={appPath("/register")} size="lg" external variant="secondary">
@@ -84,7 +84,7 @@ export function ModulesIndex() {
                 {TRUST.map((item) => (
                   <span
                     key={item}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1a2744]/75"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0e120e]/75"
                   >
                     <CheckCircle2 className="h-4 w-4 text-brand-leaf-green" />
                     {item}
@@ -160,7 +160,7 @@ export function ModulesIndex() {
                     {core.name}
                   </h2>
                   <p className="mt-3 max-w-xl text-base leading-relaxed text-white/65">
-                    {core.tagline}. Every paid module plugs into this foundation — customers, sales,
+                    {core.tagline}. Every paid module plugs into this foundation: customers, sales,
                     expenses, team access, and alerts stay in one place.
                   </p>
                   <Link
@@ -204,7 +204,7 @@ export function ModulesIndex() {
                   <Icon className="h-6 w-6" />
                 </span>
                 <div>
-                  <h2 className="text-2xl font-extrabold tracking-tight text-[#1a2744] sm:text-3xl">
+                  <h2 className="text-2xl font-extrabold tracking-tight text-[#0e120e] sm:text-3xl">
                     {meta.label}
                   </h2>
                   <p className="mt-1 max-w-xl text-muted-foreground">{meta.description}</p>
@@ -281,7 +281,7 @@ function ModuleBadgeCard({ module, index }: { module: ModufyModule; index: numbe
           </span>
         </div>
         <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <h3 className="text-lg font-bold text-[#1a2744] transition group-hover:text-brand-leaf-green">
+          <h3 className="text-lg font-bold text-[#0e120e] transition group-hover:text-brand-leaf-green">
             {module.name}
           </h3>
           <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">

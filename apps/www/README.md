@@ -1,6 +1,6 @@
 # Modufy Marketing Site (`apps/www`)
 
-Public marketing website for Modufy — landing page, pricing, blog shell, demo requests, and contact.
+Public marketing website for Modufy: landing page, pricing, blog shell, demo requests, and contact.
 
 Deploys to **modufy.app** (or your marketing domain). The product app lives at `apps/web` (`app.modufy.app`).
 

@@ -21,7 +21,7 @@ export function IntegrationsSection() {
               <span className="block text-gradient-leaf mt-1">what you use.</span>
             </h2>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/50">
-              Stripe, Shopify, QuickBooks, Slack — connect the stack you already run on. No
+              Stripe, Shopify, QuickBooks, Slack: connect the stack you already run on. No
               rip-and-replace required.
             </p>
             <Link

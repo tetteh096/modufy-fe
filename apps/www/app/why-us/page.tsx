@@ -18,7 +18,7 @@ const reasons = [
   {
     title: "One platform, not ten tabs",
     description:
-      "Modufy brings CRM, invoicing, inventory, POS, and more into a single workspace — so your team stops copying data between tools.",
+      "Modufy brings CRM, invoicing, inventory, POS, and more into a single workspace, so your team stops copying data between tools.",
   },
   {
     title: "Modular by design",
@@ -33,7 +33,7 @@ const reasons = [
   {
     title: "Support that shows up",
     description:
-      "Real humans, clear documentation, and a product team that listens — because your operations can't wait on a ticket queue.",
+      "Real humans, clear documentation, and a product team that listens: because your operations can't wait on a ticket queue.",
   },
 ] as const;
 
@@ -60,7 +60,7 @@ export default function WhyUsPage() {
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Most teams stitch together spreadsheets, chat threads, and disconnected apps. Modufy gives
-              you a calmer way to run the business — with modules that share the same customers, products,
+              you a calmer way to run the business: with modules that share the same customers, products,
               and numbers.
             </p>
             <div className="mt-8">

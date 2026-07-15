@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Book a Demo",
-  description: `Schedule a personalized Modufy walkthrough — see Core, invoicing, inventory, POS, and the modules that fit your business. ${siteConfig.name}.`,
+  description: `Schedule a personalized Modufy walkthrough, see Core, invoicing, inventory, POS, and the modules that fit your business. ${siteConfig.name}.`,
 };
 
 export default function DemoPage() {
@@ -39,7 +39,7 @@ export default function DemoPage() {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-[#faf8f5]">
+      <section className="section-padding border-t border-border bg-[#f5f6f3]">
         <div className="container-site">
           <FadeIn className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-leaf-green">
@@ -47,7 +47,7 @@ export default function DemoPage() {
             </p>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Common demo questions</h2>
             <p className="mt-3 text-muted-foreground">
-              Still unsure? These come up often — or skip the call and{" "}
+              Still unsure? These come up often: or skip the call and{" "}
               <a href="/pricing" className="font-semibold text-brand-leaf-green hover:text-brand-tangerine">
                 start free on Core
               </a>

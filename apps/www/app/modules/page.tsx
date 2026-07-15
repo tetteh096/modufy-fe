@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Modules",
-  description: `Explore Modufy modules — invoicing, inventory, POS, appointments, storefront, marketing, accounts, AI, and more. Built on ${siteConfig.name} Core.`,
+  description: `Explore Modufy modules: invoicing, inventory, POS, appointments, storefront, marketing, accounts, AI, and more. Built on ${siteConfig.name} Core.`,
   keywords: [
     "business modules",
     "invoicing software",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/modules` },
   openGraph: {
     title: `Modules | ${siteConfig.name}`,
-    description: `Explore Modufy modules — invoicing, inventory, POS, appointments, and more. Built on ${siteConfig.name} Core.`,
+    description: `Explore Modufy modules: invoicing, inventory, POS, appointments, and more. Built on ${siteConfig.name} Core.`,
     url: `${siteConfig.url}/modules`,
     type: "website",
   },

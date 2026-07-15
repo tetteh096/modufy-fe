@@ -1,84 +1,42 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import { ModuleFullBleedHero } from "@/components/modules/module-fullbleed-hero";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
+import { moduleHeroImages, type ModuleHeroKey } from "@/lib/module-heroes";
 import { getModuleBySlug, type ModufyModule } from "@/lib/modules-content";
 import { appPath } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 type ModuleDetailProps = {
   module: ModufyModule;
 };
 
+function splitHeroTitle(title: string): { title: string; titleAccent?: string } {
+  const period = title.indexOf(". ");
+  if (period > 0 && period < title.length - 2) {
+    return {
+      title: title.slice(0, period + 1),
+      titleAccent: title.slice(period + 2),
+    };
+  }
+  return { title };
+}
+
 export function ModulePageHero({ module }: ModuleDetailProps) {
-  const Icon = module.icon;
+  const heroImage =
+    moduleHeroImages[module.slug as ModuleHeroKey] ?? moduleHeroImages.ai;
+  const { title, titleAccent } = splitHeroTitle(module.heroTitle);
 
   return (
-    <section className="relative -mt-[5.75rem] overflow-hidden bg-brand-sea-grey pb-14 pt-32 sm:-mt-[6.25rem] sm:pb-16 sm:pt-36">
-      <Image src={module.image} alt="" fill className="object-cover opacity-35" sizes="100vw" priority />
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-sea-grey/75 via-brand-sea-grey/88 to-brand-sea-grey" />
-
-      <div className="container-site relative">
-        <FadeIn>
-          <nav aria-label="Breadcrumb" className="text-sm text-white/50">
-            <ol className="flex flex-wrap items-center gap-2">
-              <li>
-                <Link href="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>/</li>
-              <li>
-                <Link href="/modules" className="hover:text-white">
-                  Modules
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-white/90">{module.name}</li>
-            </ol>
-          </nav>
-
-          <div className="mt-8 flex items-start gap-4">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-tangerine/20 text-brand-tangerine backdrop-blur-sm">
-              <Icon className="h-7 w-7" />
-            </span>
-            <div>
-              <span
-                className={cn(
-                  "inline-flex rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider",
-                  module.tier === "core"
-                    ? "bg-brand-leaf-green/30 text-brand-leaf-green"
-                    : "bg-white/15 text-white/80"
-                )}
-              >
-                {module.tier === "core" ? "Included" : "Paid module"}
-              </span>
-              <h1 className="mt-2 max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl">
-                {module.heroTitle}
-              </h1>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/65">
-                {module.heroDescription}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href={appPath("/register")} size="lg" external>
-              Start free trial
-            </Button>
-            <Button
-              href="/demo"
-              variant="outline"
-              size="lg"
-              className="border-white/25 bg-transparent text-white hover:bg-white/10 hover:text-white"
-            >
-              Book a demo
-            </Button>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
+    <ModuleFullBleedHero
+      breadcrumb={module.name}
+      eyebrow={module.tier === "core" ? "Included with every account" : "Paid module"}
+      title={title}
+      titleAccent={titleAccent}
+      description={module.heroDescription}
+      image={heroImage}
+      imageAlt={module.imageAlt}
+    />
   );
 }
 
@@ -122,7 +80,7 @@ export function ModulePageBody({ module }: ModuleDetailProps) {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-[#faf8f5]">
+      <section className="section-padding border-t border-border bg-[#f5f6f3]">
         <div className="container-site grid gap-12 lg:grid-cols-2">
           <FadeIn>
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-leaf-green">

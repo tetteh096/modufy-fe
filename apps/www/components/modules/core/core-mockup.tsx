@@ -12,9 +12,9 @@ import {
 import { Bell, Check, Receipt, Users, Wallet } from "lucide-react";
 
 const ACTIVITY = [
-  { label: "Sale · Mobile money", value: "GHS 180", tone: "text-brand-leaf-green" },
-  { label: "Expense · Restock", value: "GHS 95", tone: "text-brand-tangerine" },
-  { label: "New customer · Ama S.", value: "Tagged", tone: "text-[#1a2744]" },
+  { label: "Sale · Card", value: "$180", tone: "text-brand-leaf-green" },
+  { label: "Expense · Restock", value: "$95", tone: "text-brand-tangerine" },
+  { label: "New customer · Alex R.", value: "Tagged", tone: "text-[#1a2744]" },
 ] as const;
 
 export function CoreMockup() {
@@ -79,8 +79,8 @@ export function CoreMockup() {
           <div className="space-y-4 px-5 py-5 sm:px-6">
             <div className="grid grid-cols-3 gap-2">
               {[
-                ["Sales", "GHS 2.4k"],
-                ["Expenses", "GHS 610"],
+                ["Sales", "$2.4k"],
+                ["Expenses", "$610"],
                 ["Customers", "128"],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-xl border border-border bg-[#faf8f5] px-2 py-3 text-center">

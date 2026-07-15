@@ -63,7 +63,7 @@ export function CampaignMockup() {
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
                 Campaign
               </p>
-              <p className="mt-0.5 text-sm font-bold text-[#1a2744]">Weekend restock promo</p>
+              <p className="mt-0.5 text-sm font-bold text-[#0e120e]">Weekend restock promo</p>
             </div>
             <motion.span
               key={sent ? "sent" : "draft"}
@@ -86,7 +86,7 @@ export function CampaignMockup() {
             </div>
 
             <div className="rounded-2xl border border-border bg-[#f7f5f1] p-4">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#1a2744]">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#0e120e]">
                 <Users className="h-4 w-4 text-brand-leaf-green" />
                 Segment · Bought in last 90 days
               </div>
@@ -102,15 +102,15 @@ export function CampaignMockup() {
 
             <div className="grid grid-cols-3 gap-2 text-center">
               {[
-                ["Queued", sent ? "1,241" : "—"],
-                ["Skipped", sent ? "43" : "—"],
-                ["Failed", sent ? "0" : "—"],
+                ["Queued", sent ? "1,241" : "-"],
+                ["Skipped", sent ? "43" : "-"],
+                ["Failed", sent ? "0" : "-"],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-xl border border-border bg-white px-2 py-3">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                     {label}
                   </p>
-                  <p className="mt-1 text-sm font-bold text-[#1a2744]">{value}</p>
+                  <p className="mt-1 text-sm font-bold text-[#0e120e]">{value}</p>
                 </div>
               ))}
             </div>
@@ -141,13 +141,13 @@ export function CampaignMockup() {
               <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                 SMS wallet
               </p>
-              <p className="text-xs font-semibold text-[#1a2744]">2,410 credits</p>
+              <p className="text-xs font-semibold text-[#0e120e]">2,410 credits</p>
             </div>
           </div>
         </motion.div>
 
         <motion.div
-          className="absolute -right-1 top-24 hidden w-[170px] rounded-2xl border border-white/80 bg-[#1a2744] p-3 text-white shadow-xl sm:block"
+          className="absolute -right-1 top-24 hidden w-[170px] rounded-2xl border border-white/80 bg-[#0e120e] p-3 text-white shadow-xl sm:block"
           animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
         >

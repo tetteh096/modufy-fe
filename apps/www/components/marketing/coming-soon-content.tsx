@@ -61,7 +61,7 @@ export function ComingSoonContent() {
         <FadeIn delay={0.12} className="mt-12">
           {submitted ? (
             <p className="text-sm text-muted-foreground">
-              Thanks — we&apos;ll notify you when we launch.
+              Thanks, we&apos;ll notify you when we launch.
             </p>
           ) : (
             <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-3">

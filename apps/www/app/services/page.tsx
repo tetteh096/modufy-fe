@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Our Services",
-  description: `Explore ${siteConfig.name} services — customer support, marketing, finance, and more.`,
+  description: `Explore ${siteConfig.name} services: customer support, marketing, finance, and more.`,
 };
 
 export default function ServicesPage() {
@@ -19,7 +19,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Modules"
         title="Our Services"
-        subtitle="This page has moved — explore Modufy modules instead."
+        subtitle="This page has moved. Explore Modufy modules instead."
         image={pageHeroes.modules.image}
         imageAlt={pageHeroes.modules.imageAlt}
         breadcrumbs={[{ label: "Home", href: "/" }]}

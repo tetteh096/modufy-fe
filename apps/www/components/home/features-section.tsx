@@ -11,7 +11,7 @@ const homepageModuleSlugs = ["invoices", "inventory", "appointments", "accounts"
 const highlights: Record<(typeof homepageModuleSlugs)[number], readonly string[]> = {
   invoices: ["Branded PDFs your customers trust", "Payments post straight into Accounts"],
   inventory: ["One catalog for products and services", "Stock updates from POS and invoices"],
-  appointments: ["Guest booking — no account required", "Deposits and reminders built in"],
+  appointments: ["Guest booking, no account required", "Deposits and reminders built in"],
   accounts: ["Books that update from every sale", "P&L and cash flow without re-keying"],
 };
 
@@ -34,7 +34,7 @@ export function FeaturesSection() {
             <span className="block text-gradient-leaf mt-1">Runs as one.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-muted-foreground">
-            Core is included with every account. Enable only the modules you need — invoicing,
+            Core is included with every account. Enable only the modules you need: invoicing,
             inventory, appointments, finance, and more.
           </p>
         </FadeIn>
@@ -53,7 +53,7 @@ export function FeaturesSection() {
                 >
                   <div className="relative">
                     <div className="absolute inset-[12%] rounded-full bg-brand-leaf-green/10 blur-[60px]" />
-                    <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#eef4ea] via-[#faf8f5] to-[#fff4e8] p-6 sm:p-10">
+                    <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#eef4ea] via-[#f5f6f3] to-[#fff4e8] p-6 sm:p-10">
                       <Image
                         src={module.image}
                         alt={module.imageAlt}

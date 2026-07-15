@@ -27,7 +27,7 @@ const CARDS = [
   {
     title: "Free 1:1 onboarding",
     description:
-      "A live session that gets Core live — customers, sales, and your first modules ready for day one.",
+      "A live session that gets Core live: customers, sales, and your first modules ready for day one.",
     href: "/demo",
     cta: "Start onboarding",
     featuredCta: false,
@@ -36,7 +36,7 @@ const CARDS = [
   {
     title: "Human support",
     description:
-      "Real people when something breaks or you get stuck — not a bot loop before you reach help.",
+      "Real people when something breaks or you get stuck, not a bot loop before you reach help.",
     href: "/contact",
     cta: "Talk to us",
     featuredCta: false,

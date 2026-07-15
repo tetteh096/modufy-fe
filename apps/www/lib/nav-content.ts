@@ -132,7 +132,7 @@ export const resourcesNavLinks = [
   {
     label: "Help center",
     href: "/contact",
-    description: "Talk to our team — support, sales, and onboarding.",
+    description: "Talk to our team: support, sales, and onboarding.",
     icon: MessageSquare,
   },
 ] as const;

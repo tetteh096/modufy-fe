@@ -83,7 +83,7 @@ export function MarketingInteractivePreview() {
             ))}
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#1a2744] shadow-2xl">
+          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#0e120e] shadow-2xl">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4 sm:px-6">
               <div>
                 <p className="text-sm font-bold">Weekend restock promo</p>
@@ -113,7 +113,7 @@ export function MarketingInteractivePreview() {
                     initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
-                    className="mt-3 whitespace-pre-wrap rounded-2xl bg-[#f7f5f1] p-4 font-sans text-sm leading-relaxed text-[#1a2744]"
+                    className="mt-3 whitespace-pre-wrap rounded-2xl bg-[#f7f5f1] p-4 font-sans text-sm leading-relaxed text-[#0e120e]"
                   >
                     {meta.body}
                   </motion.pre>
@@ -127,7 +127,7 @@ export function MarketingInteractivePreview() {
                 <p className="mt-1 text-3xl font-bold text-brand-leaf-green">{audienceLabel}</p>
                 <p className="mt-2 text-xs text-muted-foreground">{meta.detail}</p>
                 <div className="mt-4 rounded-xl border border-border bg-white p-3 text-sm">
-                  <p className="font-semibold text-[#1a2744]">{meta.credits}</p>
+                  <p className="font-semibold text-[#0e120e]">{meta.credits}</p>
                   <p className="mt-1 text-xs text-muted-foreground">
                     Opt-outs and suppressions excluded before send.
                   </p>

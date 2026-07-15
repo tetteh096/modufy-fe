@@ -22,7 +22,7 @@ const VIEW_META: Record<
       { title: "Shelf spray refill", meta: "SKU-204 · 18 on hand · low threshold 20" },
       { title: "Gift set · 3-pack", meta: "Variant · cost GHS 140 · sell GHS 220" },
     ],
-    note: "Sell through POS, invoices, or storefront — quantity updates in one catalog.",
+    note: "Sell through POS, invoices, or storefront, quantity updates in one catalog.",
   },
   Services: {
     headline: "Billable work beside the products",
@@ -94,7 +94,7 @@ export function InventoryInteractivePreview() {
             ))}
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#1a2744] shadow-2xl">
+          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#0e120e] shadow-2xl">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4 sm:px-6">
               <div>
                 <p className="text-sm font-bold">Inventory &amp; Stock</p>
@@ -129,7 +129,7 @@ export function InventoryInteractivePreview() {
                       key={item.title}
                       className="rounded-2xl border border-border bg-[#f7f5f1] px-4 py-3"
                     >
-                      <p className="text-sm font-semibold text-[#1a2744]">{item.title}</p>
+                      <p className="text-sm font-semibold text-[#0e120e]">{item.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{item.meta}</p>
                     </li>
                   ))}

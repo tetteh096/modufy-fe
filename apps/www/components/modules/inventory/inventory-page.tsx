@@ -1,33 +1,32 @@
-import { InventoryCapabilities } from "@/components/modules/inventory/inventory-capabilities";
-import { InventoryHero } from "@/components/modules/inventory/inventory-hero";
-import { InventoryInteractivePreview } from "@/components/modules/inventory/inventory-interactive-preview";
+import { ModuleFullBleedHero } from "@/components/modules/module-fullbleed-hero";
 import {
-  InventoryAudienceSection,
-  InventoryComparisonSection,
-  InventoryConnectionsSection,
-  InventoryFinalCta,
-  InventoryFlowSection,
-  InventoryPricingSection,
-  InventoryTestimonialsSection,
-} from "@/components/modules/inventory/inventory-sections";
-import { InventoryTrustStrip } from "@/components/modules/inventory/inventory-trust-strip";
-import { InventoryWorkflow } from "@/components/modules/inventory/inventory-workflow";
+  InventoryCatalogMarquee,
+  InventoryCloseSection,
+  InventoryLiveFeedSection,
+  InventoryScanSection,
+  InventoryTrustStrip,
+  InventoryVisualFeatures,
+} from "@/components/modules/inventory/inventory-visual-sections";
+import { moduleHeroImages } from "@/lib/module-heroes";
 
 export function InventoryPage() {
   return (
     <>
-      <InventoryHero />
+      <ModuleFullBleedHero
+        breadcrumb="Inventory & Stock"
+        eyebrow="Paid module"
+        title="Know what you have."
+        titleAccent="Know what you sold."
+        description="One catalog for products and services. Sell through POS, invoices, or storefront, stock updates in the same place."
+        image={moduleHeroImages.inventory}
+        imageAlt="Inventory and stock management"
+      />
       <InventoryTrustStrip />
-      <InventoryWorkflow />
-      <InventoryCapabilities />
-      <InventoryInteractivePreview />
-      <InventoryFlowSection />
-      <InventoryAudienceSection />
-      <InventoryConnectionsSection />
-      <InventoryComparisonSection />
-      <InventoryTestimonialsSection />
-      <InventoryPricingSection />
-      <InventoryFinalCta />
+      <InventoryCatalogMarquee />
+      <InventoryVisualFeatures />
+      <InventoryLiveFeedSection />
+      <InventoryScanSection />
+      <InventoryCloseSection />
     </>
   );
 }

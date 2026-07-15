@@ -69,7 +69,7 @@ export function MarketingHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.28 }}
             >
-              Segments from your customer book. SMS or email. Opt-outs and wallet tracking —
+              Segments from your customer book. SMS or email. Opt-outs and wallet tracking -
               without leaving Modufy.
             </motion.p>
 

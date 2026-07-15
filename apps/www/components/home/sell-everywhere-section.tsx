@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { FadeIn } from "@/components/ui/fade-in";
-import { homeImages } from "@/lib/home-images";
 import { cn } from "@/lib/utils";
 
 const LEAD = "Run your business wherever customers show up.";
@@ -18,49 +17,49 @@ const PHRASES = [
 const CARDS = [
   {
     id: "storefront",
-    src: homeImages.features.orders,
+    src: "/landingscroll/53943ad415abb803677a602049fad915.jpg",
     alt: "Modufy storefront and orders",
     width: "w-[280px] sm:w-[320px]",
     aspect: "aspect-[3/4]",
   },
   {
     id: "mobile",
-    src: homeImages.features.mobile,
+    src: "/landingscroll/e55a842eae7770fbeafd3c7b8bf77bd8.jpg",
     alt: "Modufy on mobile",
     width: "w-[220px] sm:w-[250px]",
     aspect: "aspect-[9/16]",
   },
   {
     id: "counter",
-    src: homeImages.features.payments,
+    src: "/landingscroll/455ebfe512bd2626ec612ba0f4cde91a.jpg",
     alt: "Payments and till with Modufy",
     width: "w-[340px] sm:w-[480px] lg:w-[560px]",
     aspect: "aspect-[16/10]",
   },
   {
     id: "inventory",
-    src: homeImages.features.inventoryPhoto,
+    src: "/landingscroll/5ca5ffebf0e47d6c18cec6d901a8d03e.jpg",
     alt: "Inventory managed in Modufy",
     width: "w-[260px] sm:w-[300px]",
     aspect: "aspect-[4/5]",
   },
   {
     id: "dashboard",
-    src: homeImages.hero.dashboardDevices,
+    src: "/landingscroll/0496355a839d1cd0a865861fd6ae4436.jpg",
     alt: "Modufy dashboard across devices",
     width: "w-[320px] sm:w-[420px]",
     aspect: "aspect-[16/11]",
   },
   {
     id: "marketing",
-    src: homeImages.features.marketing,
+    src: "/landingscroll/5f29e23149927d8060af7af350cc337f.jpg",
     alt: "Marketing campaigns in Modufy",
     width: "w-[240px] sm:w-[280px]",
     aspect: "aspect-[3/4]",
   },
   {
     id: "team",
-    src: homeImages.story.salesTeam,
+    src: "/landingscroll/fecb92032e1d7cd3d19787aecf4a1566.jpg",
     alt: "Team collaborating with Modufy",
     width: "w-[300px] sm:w-[380px]",
     aspect: "aspect-[5/4]",
@@ -71,14 +70,22 @@ export function SellEverywhereSection() {
   const reduceMotion = useReducedMotion();
   const [activePhrase, setActivePhrase] = useState(0);
   const [hoveredPhrase, setHoveredPhrase] = useState<number | null>(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef<{ active: boolean; startX: number; scrollLeft: number }>({
-    active: false,
-    startX: 0,
-    scrollLeft: 0,
-  });
+  const [queue, setQueue] = useState(() => [...CARDS]);
+  const [paused, setPaused] = useState(false);
+  const busyRef = useRef(false);
 
-  // Auto-cycle phrase highlight
+  const rotate = useCallback(() => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+    setQueue((prev) => {
+      const [first, ...rest] = prev;
+      return [...rest, first];
+    });
+    window.setTimeout(() => {
+      busyRef.current = false;
+    }, 700);
+  }, []);
+
   useEffect(() => {
     if (reduceMotion || hoveredPhrase !== null) return;
     const id = window.setInterval(() => {
@@ -87,38 +94,13 @@ export function SellEverywhereSection() {
     return () => window.clearInterval(id);
   }, [reduceMotion, hoveredPhrase]);
 
+  useEffect(() => {
+    if (reduceMotion || paused) return;
+    const id = window.setInterval(rotate, 3000);
+    return () => window.clearInterval(id);
+  }, [reduceMotion, paused, rotate]);
+
   const highlightIndex = hoveredPhrase ?? activePhrase;
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    dragRef.current = {
-      active: true,
-      startX: e.clientX,
-      scrollLeft: el.scrollLeft,
-    };
-    el.setPointerCapture(e.pointerId);
-    el.classList.add("cursor-grabbing");
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollerRef.current;
-    if (!el || !dragRef.current.active) return;
-    const delta = e.clientX - dragRef.current.startX;
-    el.scrollLeft = dragRef.current.scrollLeft - delta;
-  };
-
-  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    dragRef.current.active = false;
-    el.classList.remove("cursor-grabbing");
-    try {
-      el.releasePointerCapture(e.pointerId);
-    } catch {
-      /* already released */
-    }
-  };
 
   return (
     <section className="relative overflow-hidden bg-[#121212] py-16 text-white sm:py-20 lg:py-24">
@@ -163,37 +145,42 @@ export function SellEverywhereSection() {
 
       <FadeIn delay={0.1} className="relative mt-10 sm:mt-14">
         <div
-          ref={scrollerRef}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-          className="flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4 sm:px-6 lg:px-8 [&::-webkit-scrollbar]:hidden"
+          className="overflow-hidden px-4 sm:px-6 lg:px-8"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
         >
-          {CARDS.map((card, index) => (
-            <motion.article
-              key={card.id}
-              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className={cn(
-                "relative shrink-0 snap-center overflow-hidden rounded-[1.35rem] bg-[#1c1c1c] sm:rounded-[1.6rem]",
-                card.width,
-                card.aspect
-              )}
-            >
-              <Image
-                src={card.src}
-                alt={card.alt}
-                fill
-                className="object-cover transition duration-700 ease-out hover:scale-[1.04]"
-                sizes="(min-width: 1024px) 480px, 70vw"
-                draggable={false}
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
-            </motion.article>
-          ))}
+          <div className="flex items-center gap-3 sm:gap-4">
+            {queue.map((card, index) => (
+              <motion.article
+                key={card.id}
+                layout={!reduceMotion}
+                transition={{
+                  layout: {
+                    type: "spring",
+                    stiffness: 320,
+                    damping: 34,
+                    mass: 0.8,
+                  },
+                }}
+                className={cn(
+                  "relative shrink-0 overflow-hidden rounded-[1.35rem] bg-[#1c1c1c] sm:rounded-[1.6rem]",
+                  card.width,
+                  card.aspect,
+                  index === 0 && "ring-2 ring-brand-tangerine/40"
+                )}
+              >
+                <Image
+                  src={card.src}
+                  alt={card.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 480px, 70vw"
+                  priority={index < 2}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/10" />
+              </motion.article>
+            ))}
+          </div>
         </div>
       </FadeIn>
     </section>

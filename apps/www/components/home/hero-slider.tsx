@@ -69,8 +69,8 @@ export function HeroSliderBackground({
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/15 to-brand-sea-grey/55" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-sea-grey/45 via-brand-sea-grey/18 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/75" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
     </div>
   );
 }

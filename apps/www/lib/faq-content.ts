@@ -27,7 +27,7 @@ export const marketingFaqs = [
   {
     question: "Do we offer discounts for nonprofit companies?",
     answer:
-      "Yes — we offer special pricing for qualified nonprofit organizations. Contact our team with your details and we'll walk you through eligibility and available plans.",
+      "Yes, we offer special pricing for qualified nonprofit organizations. Contact our team with your details and we'll walk you through eligibility and available plans.",
   },
   {
     question: "What are the common challenges businesses face without a unified platform?",
@@ -37,6 +37,6 @@ export const marketingFaqs = [
   {
     question: "What do I need to get started with Modufy?",
     answer:
-      "Just a browser and an internet connection. Sign up, invite your team, and you can start managing customers and sales in minutes — no complex installation required.",
+      "Just a browser and an internet connection. Sign up, invite your team, and you can start managing customers and sales in minutes, no complex installation required.",
   },
 ] as const;

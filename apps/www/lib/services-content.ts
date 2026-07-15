@@ -52,7 +52,7 @@ export const services: ServiceItem[] = [
     icon: "/images/v3/icon2.png",
     heroTitle: "Welcome to our project management",
     heroDescription:
-      "Plan, organize, and deliver work with clarity — from daily tasks to cross-team initiatives.",
+      "Plan, organize, and deliver work with clarity, from daily tasks to cross-team initiatives.",
     detailTitle: "Keep every project on track",
     detailParagraphs: [
       "Modufy project management brings timelines, tasks, and team accountability into one workspace.",
@@ -66,7 +66,7 @@ export const services: ServiceItem[] = [
       },
       {
         title: "Team collaboration:",
-        description: "Comments, files, and updates stay attached to the work — not lost in email.",
+        description: "Comments, files, and updates stay attached to the work, not lost in email.",
         icon: "/images/v1/icon3.png",
       },
       {
@@ -238,7 +238,7 @@ export const services: ServiceItem[] = [
     icon: "/images/v3/icon8.png",
     heroTitle: "Welcome to our integration support",
     heroDescription:
-      "Connect Modufy to the tools your team already uses — payments, messaging, accounting, and more.",
+      "Connect Modufy to the tools your team already uses: payments, messaging, accounting, and more.",
     detailTitle: "Your stack, connected",
     detailParagraphs: [
       "Pre-built integrations and webhooks let data flow between Modufy and your favorite apps.",
@@ -272,7 +272,7 @@ export const services: ServiceItem[] = [
       "Quote, invoice, and report in multiple currencies with live rates and clean reconciliation.",
     detailTitle: "Multi-currency made simple",
     detailParagraphs: [
-      "Sell across borders without spreadsheet hacks — Modufy handles conversion at invoice and report time.",
+      "Sell across borders without spreadsheet hacks: Modufy handles conversion at invoice and report time.",
       "Set your base currency and let the platform keep customer-facing prices accurate.",
     ],
     highlights: [

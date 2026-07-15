@@ -10,7 +10,7 @@ export function PricingSection({ showTitle = true }: { showTitle?: boolean }) {
       showTitle={showTitle}
       title="Simple plans that scale with you"
       ctaLabel="Start free trial"
-      className="relative overflow-hidden bg-[#faf8f5]"
+      className="relative overflow-hidden bg-[#f5f6f3]"
     />
   );
 }

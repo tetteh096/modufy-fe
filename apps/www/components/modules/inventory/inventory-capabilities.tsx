@@ -26,7 +26,7 @@ export function InventoryCapabilities() {
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Key capabilities
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Everything you need to keep stock honest.
           </h2>
         </FadeIn>
@@ -36,11 +36,11 @@ export function InventoryCapabilities() {
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
               Catalog
             </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">
+            <h3 className="mt-2 text-2xl font-bold text-[#0e120e]">
               Products and services in one place
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Photos, SKU, barcode, variants, pricing — plus hourly or fixed services with bookable
+              Photos, SKU, barcode, variants, pricing: plus hourly or fixed services with bookable
               flags.
             </p>
             <div className="mt-6 space-y-2">
@@ -51,13 +51,13 @@ export function InventoryCapabilities() {
               ].map(([name, meta], index) => (
                 <motion.div
                   key={name}
-                  className="flex items-center justify-between rounded-xl border border-border bg-[#faf8f5] px-3 py-3"
+                  className="flex items-center justify-between rounded-xl border border-border bg-[#f5f6f3] px-3 py-3"
                   animate={
                     reduceMotion ? undefined : { y: [0, index % 2 === 0 ? -3 : 3, 0] }
                   }
                   transition={{ duration: 3.3 + index * 0.2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a2744]">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e120e]">
                     <Package className="h-4 w-4 text-brand-leaf-green" />
                     {name}
                   </span>
@@ -71,15 +71,15 @@ export function InventoryCapabilities() {
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
               Movements
             </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">
-              Restock, adjust, write-off — with history
+            <h3 className="mt-2 text-2xl font-bold text-[#0e120e]">
+              Restock, adjust, write-off: with history
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Every change is logged so you know why quantity moved, not just that it did.
             </p>
             <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-[#f7f5f1] p-4">
               <div className="rounded-xl bg-white p-4 shadow-sm">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#1a2744]">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0e120e]">
                   <ClipboardList className="h-4 w-4 text-brand-leaf-green" />
                   Movement history
                 </div>
@@ -97,7 +97,7 @@ export function InventoryCapabilities() {
               <AlertTriangle className="h-5 w-5" />
               <span className="text-xs font-bold uppercase tracking-wider">Alerts</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Low-stock warnings early</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Low-stock warnings early</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Catch shortages before the shelf is empty.
             </p>
@@ -108,18 +108,18 @@ export function InventoryCapabilities() {
               <Truck className="h-5 w-5" />
               <span className="text-xs font-bold uppercase tracking-wider">Suppliers</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Purchase orders built in</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Purchase orders built in</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Track suppliers and restock without another tool.
             </p>
           </CapabilityShell>
 
           <CapabilityShell className="xl:col-span-2" delay={0.18}>
-            <div className="flex items-center gap-2 text-[#1a2744]">
+            <div className="flex items-center gap-2 text-[#0e120e]">
               <Scale className="h-5 w-5 text-brand-leaf-green" />
               <span className="text-xs font-bold uppercase tracking-wider">Valuation</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">FIFO or average cost</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">FIFO or average cost</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Inventory valuation reports that match how you account for stock.
             </p>
@@ -132,7 +132,7 @@ export function InventoryCapabilities() {
                   <Eye className="h-5 w-5" />
                   <span className="text-xs font-bold uppercase tracking-wider">Channels</span>
                 </div>
-                <h3 className="mt-3 text-xl font-bold text-[#1a2744]">
+                <h3 className="mt-3 text-xl font-bold text-[#0e120e]">
                   Control what appears on your storefront
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

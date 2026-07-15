@@ -10,7 +10,7 @@ export function StorefrontHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f7f4ef] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
+    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f4f6f3] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
       <div className="texture-noise pointer-events-none absolute inset-0 opacity-60" aria-hidden />
       <motion.div
         className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-leaf-green/15 blur-[90px]"
@@ -40,7 +40,7 @@ export function StorefrontHero() {
               </Link>
             </li>
             <li className="text-border">/</li>
-            <li className="font-medium text-[#1a2744]">Online Storefront</li>
+            <li className="font-medium text-[#0e120e]">Online Storefront</li>
           </ol>
         </nav>
 
@@ -55,14 +55,14 @@ export function StorefrontHero() {
               Paid module
             </motion.span>
 
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#1a2744] sm:text-5xl lg:text-[3.35rem]">
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#0e120e] sm:text-5xl lg:text-[3.35rem]">
               <motion.span
                 className="block"
                 initial={reduceMotion ? false : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.08 }}
               >
-                Your business online —
+                Your business online -
               </motion.span>
               <motion.span
                 className="mt-1 block text-gradient-leaf"
@@ -81,7 +81,7 @@ export function StorefrontHero() {
               transition={{ duration: 0.55, delay: 0.28 }}
             >
               A public page at your Modufy link. List products and services from Inventory, take
-              guest orders and enquiries, run promotions, and collect reviews — all tied back to
+              guest orders and enquiries, run promotions, and collect reviews, all tied back to
               your customer records.
             </motion.p>
 

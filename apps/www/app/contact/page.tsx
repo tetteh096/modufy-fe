@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: `Get in touch with the ${siteConfig.name} team — book a call, ask a question, or request support.`,
+  description: `Get in touch with the ${siteConfig.name} team: book a call, ask a question, or request support.`,
 };
 
 const contactFaqs = marketingFaqs.slice(0, 5);
@@ -30,7 +30,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-[#faf8f5]">
+      <section className="section-padding border-t border-border bg-[#f5f6f3]">
         <div className="container-site">
           <FadeIn className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-leaf-green">
@@ -38,7 +38,7 @@ export default function ContactPage() {
             </p>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Common questions before you write</h2>
             <p className="mt-3 text-muted-foreground">
-              Quick answers — if you don&apos;t find what you need, the form above goes straight to our team.
+              Quick answers. If you don&apos;t find what you need, the form above goes straight to our team.
             </p>
           </FadeIn>
           <div className="mt-12">

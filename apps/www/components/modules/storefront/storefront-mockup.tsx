@@ -71,7 +71,7 @@ export function StorefrontMockup() {
                   M
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-[#1a2744]">Meridian Studio</p>
+                  <p className="text-sm font-bold text-[#0e120e]">Meridian Studio</p>
                   <p className="text-[11px] text-muted-foreground">modufy.app/meridian</p>
                 </div>
               </div>
@@ -91,13 +91,13 @@ export function StorefrontMockup() {
           </div>
 
           <div className="space-y-4 px-5 py-5 sm:px-6">
-            <div className="rounded-2xl bg-gradient-to-br from-[#eef4ea] via-[#faf8f5] to-[#fff4e8] p-4">
+            <div className="rounded-2xl bg-gradient-to-br from-[#eef4ea] via-[#f5f6f3] to-[#fff4e8] p-4">
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-leaf-green">
                 Featured
               </p>
-              <p className="mt-1 text-sm font-bold text-[#1a2744]">Shop products or book a service</p>
+              <p className="mt-1 text-sm font-bold text-[#0e120e]">Shop products or book a service</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Guest checkout — no customer account required.
+                Guest checkout, no customer account required.
               </p>
             </div>
 
@@ -108,7 +108,7 @@ export function StorefrontMockup() {
                   className="flex items-center justify-between gap-3 rounded-xl border border-border px-3 py-2.5"
                 >
                   <div>
-                    <p className="text-sm font-semibold text-[#1a2744]">{product.name}</p>
+                    <p className="text-sm font-semibold text-[#0e120e]">{product.name}</p>
                     <p className="text-[11px] text-muted-foreground">{product.tag}</p>
                   </div>
                   <span className="text-sm font-bold text-brand-leaf-green">{product.price}</span>
@@ -117,7 +117,7 @@ export function StorefrontMockup() {
             </div>
 
             <div className="flex items-center justify-between rounded-xl border border-border bg-[#f7f5f1] px-3 py-2.5 text-xs">
-              <span className="inline-flex items-center gap-1.5 font-semibold text-[#1a2744]">
+              <span className="inline-flex items-center gap-1.5 font-semibold text-[#0e120e]">
                 <Star className="h-3.5 w-3.5 text-brand-tangerine" />
                 4.9 · 38 reviews
               </span>
@@ -139,13 +139,13 @@ export function StorefrontMockup() {
               <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                 Enquiry
               </p>
-              <p className="text-xs font-semibold text-[#1a2744]">New message</p>
+              <p className="text-xs font-semibold text-[#0e120e]">New message</p>
             </div>
           </div>
         </motion.div>
 
         <motion.div
-          className="absolute -right-1 top-24 hidden w-[170px] rounded-2xl border border-white/80 bg-[#1a2744] p-3 text-white shadow-xl sm:block"
+          className="absolute -right-1 top-24 hidden w-[170px] rounded-2xl border border-white/80 bg-[#0e120e] p-3 text-white shadow-xl sm:block"
           animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
         >

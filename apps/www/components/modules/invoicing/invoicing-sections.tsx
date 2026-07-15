@@ -12,7 +12,7 @@ import { appPath } from "@/lib/site-config";
 const BENEFITS = [
   {
     title: "Send once. Track everywhere.",
-    copy: "Share invoices by WhatsApp, email, SMS, or link — and see when they are viewed, overdue, or paid.",
+    copy: "Share invoices by WhatsApp, email, SMS, or link, and see when they are viewed, overdue, or paid.",
   },
   {
     title: "Payments update your books",
@@ -135,7 +135,7 @@ export function InvoicingVisualFeatures() {
     },
     {
       title: "Get paid, stay in sync",
-      copy: "Record payments in any currency — every amount posts straight to Accounts.",
+      copy: "Record payments in any currency: every amount posts straight to Accounts.",
       image: homeImages.features.payments,
       alt: "Payment card visual connected to Modufy books",
     },
@@ -204,7 +204,7 @@ export function InvoicingConnectionsSection() {
             Invoicing sits where money moves.
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-            One invoice record ties customers, stock, payments, and follow-ups together — so nothing
+            One invoice record ties customers, stock, payments, and follow-ups together, so nothing
             lives in a separate spreadsheet.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -314,7 +314,7 @@ export function InvoicingPricingSection() {
             Start free. Add Invoicing when you need it.
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Begin with Modufy Core at no cost, then turn on Invoicing as you grow — without migrating
+            Begin with Modufy Core at no cost, then turn on Invoicing as you grow, without migrating
             customers or rebuilding your workflow.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -340,7 +340,7 @@ export function InvoicingPricingSection() {
             <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/15 bg-white/95 p-4 backdrop-blur-sm">
               <p className="text-sm font-bold text-[#1a2744]">Invoicing module</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                Enable anytime — branded invoices, reminders, and accounts sync.
+                Enable anytime. Branded invoices, reminders, and accounts sync.
               </p>
             </div>
           </div>

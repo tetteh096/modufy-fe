@@ -14,7 +14,7 @@ const STEPS = [
     id: "customers",
     number: "01",
     title: "Add your first customers",
-    blurb: "Import or create contacts — every sale starts from one shared book.",
+    blurb: "Import or create contacts: every sale starts from one shared book.",
     image: homeImages.pages.testimonials,
     imageAlt: "Small business owner getting started with Modufy",
   },
@@ -22,7 +22,7 @@ const STEPS = [
     id: "catalog",
     number: "02",
     title: "Set up products and services",
-    blurb: "One catalog for stock and bookable work — ready for POS and invoices.",
+    blurb: "One catalog for stock and bookable work, ready for POS and invoices.",
     image: homeImages.features.inventoryPhoto,
     imageAlt: "Inventory and product catalog in Modufy",
   },
@@ -30,7 +30,7 @@ const STEPS = [
     id: "sell",
     number: "03",
     title: "Take your first sale",
-    blurb: "Ring it up, send an invoice, or collect a deposit — books update live.",
+    blurb: "Ring it up, send an invoice, or collect a deposit: books update live.",
     image: homeImages.features.payments,
     imageAlt: "Payments and till with Modufy",
   },
@@ -64,7 +64,7 @@ export function BuildFastSection() {
                 Build fast on Modufy
               </h2>
               <p className="mt-3 max-w-md text-sm leading-relaxed text-white/50 sm:text-base">
-                Go from empty account to first sale in three steps — then keep layering
+                Go from empty account to first sale in three steps, then keep layering
                 modules as you grow.
               </p>
             </FadeIn>

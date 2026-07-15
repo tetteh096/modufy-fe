@@ -1,33 +1,31 @@
-import { CoreCapabilities } from "@/components/modules/core/core-capabilities";
-import { CoreHero } from "@/components/modules/core/core-hero";
-import { CoreInteractivePreview } from "@/components/modules/core/core-interactive-preview";
+import { ModuleFullBleedHero } from "@/components/modules/module-fullbleed-hero";
 import {
-  CoreAudienceSection,
-  CoreComparisonSection,
-  CoreConnectionsSection,
-  CoreFinalCta,
+  CoreCloseSection,
   CoreFoundationSection,
-  CorePricingSection,
-  CoreTestimonialsSection,
-} from "@/components/modules/core/core-sections";
-import { CoreTrustStrip } from "@/components/modules/core/core-trust-strip";
-import { CoreWorkflow } from "@/components/modules/core/core-workflow";
+  CoreReadyStrip,
+  CoreTrustStrip,
+  CoreVisualFeatures,
+} from "@/components/modules/core/core-visual-sections";
+import { moduleHeroImages } from "@/lib/module-heroes";
 
 export function CorePage() {
   return (
     <>
-      <CoreHero />
+      <ModuleFullBleedHero
+        breadcrumb="Modufy Core"
+        eyebrow="Included with every account"
+        title="Run your business"
+        titleAccent="from one foundation."
+        description="Customers, sales, expenses, and team access: always on. Add paid modules later without starting over."
+        image={moduleHeroImages.core}
+        imageAlt="Modufy Core business foundation"
+        note="Free to start. No card required."
+      />
       <CoreTrustStrip />
-      <CoreWorkflow />
-      <CoreCapabilities />
-      <CoreInteractivePreview />
+      <CoreVisualFeatures />
       <CoreFoundationSection />
-      <CoreAudienceSection />
-      <CoreConnectionsSection />
-      <CoreComparisonSection />
-      <CoreTestimonialsSection />
-      <CorePricingSection />
-      <CoreFinalCta />
+      <CoreReadyStrip />
+      <CoreCloseSection />
     </>
   );
 }

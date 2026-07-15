@@ -28,8 +28,8 @@ export function CoreCapabilities() {
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Key capabilities
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Everything you need to run the day — included.
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
+            Everything you need to run the day: included.
           </h2>
         </FadeIn>
 
@@ -38,7 +38,7 @@ export function CoreCapabilities() {
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
               Customers
             </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">
+            <h3 className="mt-2 text-2xl font-bold text-[#0e120e]">
               A living customer book, not a spreadsheet
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -52,13 +52,13 @@ export function CoreCapabilities() {
               ].map(([name, meta], index) => (
                 <motion.div
                   key={name}
-                  className="flex items-center justify-between rounded-xl border border-border bg-[#faf8f5] px-3 py-3"
+                  className="flex items-center justify-between rounded-xl border border-border bg-[#f5f6f3] px-3 py-3"
                   animate={
                     reduceMotion ? undefined : { y: [0, index % 2 === 0 ? -3 : 3, 0] }
                   }
                   transition={{ duration: 3.3 + index * 0.2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a2744]">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0e120e]">
                     <Tags className="h-4 w-4 text-brand-leaf-green" />
                     {name}
                   </span>
@@ -72,21 +72,21 @@ export function CoreCapabilities() {
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
               Money in & out
             </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">
+            <h3 className="mt-2 text-2xl font-bold text-[#0e120e]">
               Quick sales and expense capture
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Cash, mobile money, and card — plus categories and receipt photos for spend.
+              Cash, mobile money, and card: plus categories and receipt photos for spend.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
                 <Receipt className="h-5 w-5 text-brand-leaf-green" />
-                <p className="mt-3 text-sm font-bold text-[#1a2744]">Quick sale</p>
+                <p className="mt-3 text-sm font-bold text-[#0e120e]">Quick sale</p>
                 <p className="mt-1 text-xs text-muted-foreground">Record in seconds</p>
               </div>
               <div className="rounded-2xl border border-border bg-white p-4 shadow-sm">
                 <Wallet className="h-5 w-5 text-brand-tangerine" />
-                <p className="mt-3 text-sm font-bold text-[#1a2744]">Expenses</p>
+                <p className="mt-3 text-sm font-bold text-[#0e120e]">Expenses</p>
                 <p className="mt-1 text-xs text-muted-foreground">Photo receipts</p>
               </div>
             </div>
@@ -97,7 +97,7 @@ export function CoreCapabilities() {
               <Shield className="h-5 w-5" />
               <span className="text-xs font-bold uppercase tracking-wider">Permissions</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Invite your team safely</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Invite your team safely</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Roles and granular access so staff only see what they need.
             </p>
@@ -108,21 +108,21 @@ export function CoreCapabilities() {
               <Building2 className="h-5 w-5" />
               <span className="text-xs font-bold uppercase tracking-wider">Branches</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Multi-location ready</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">Multi-location ready</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Grow into new branches without starting over.
             </p>
           </CapabilityShell>
 
           <CapabilityShell className="xl:col-span-2" delay={0.18}>
-            <div className="flex items-center gap-2 text-[#1a2744]">
+            <div className="flex items-center gap-2 text-[#0e120e]">
               <span className="inline-flex gap-1.5">
                 <MessageSquare className="h-4 w-4 text-brand-leaf-green" />
                 <Mail className="h-4 w-4 text-brand-tangerine" />
               </span>
               <span className="text-xs font-bold uppercase tracking-wider">1:1 messages</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">SMS and email to individuals</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#0e120e]">SMS and email to individuals</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Personal outreach stays in Core; campaigns live in Marketing.
             </p>
@@ -135,11 +135,11 @@ export function CoreCapabilities() {
                   <Bell className="h-5 w-5" />
                   <span className="text-xs font-bold uppercase tracking-wider">Attention</span>
                 </div>
-                <h3 className="mt-3 text-xl font-bold text-[#1a2744]">
+                <h3 className="mt-3 text-xl font-bold text-[#0e120e]">
                   An alert dashboard that keeps you ahead
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  In-app alerts surface what needs review — so unpaid bills, expenses, and team
+                  In-app alerts surface what needs review, so unpaid bills, expenses, and team
                   activity do not get lost when other modules plug in later.
                 </p>
                 <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-semibold text-muted-foreground">

@@ -10,7 +10,7 @@ export function InventoryHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f7f4ef] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
+    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f4f6f3] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
       <div className="texture-noise pointer-events-none absolute inset-0 opacity-60" aria-hidden />
       <motion.div
         className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-leaf-green/15 blur-[90px]"
@@ -40,7 +40,7 @@ export function InventoryHero() {
               </Link>
             </li>
             <li className="text-border">/</li>
-            <li className="font-medium text-[#1a2744]">Inventory &amp; Stock</li>
+            <li className="font-medium text-[#0e120e]">Inventory &amp; Stock</li>
           </ol>
         </nav>
 
@@ -55,7 +55,7 @@ export function InventoryHero() {
               Paid module
             </motion.span>
 
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#1a2744] sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#0e120e] sm:text-5xl lg:text-[3.4rem]">
               <motion.span
                 className="block"
                 initial={reduceMotion ? false : { opacity: 0, y: 24 }}
@@ -81,7 +81,7 @@ export function InventoryHero() {
               transition={{ duration: 0.55, delay: 0.28 }}
             >
               One catalog for physical products and billable services. Stock moves automatically when
-              you sell through POS, invoices, or your storefront — with suppliers, POs, and low-stock
+              you sell through POS, invoices, or your storefront: with suppliers, POs, and low-stock
               alerts built in.
             </motion.p>
 

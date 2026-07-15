@@ -42,7 +42,7 @@ export const modufyModules: ModufyModule[] = [
   {
     slug: "core",
     name: "Modufy Core",
-    tagline: "Customers, sales, expenses, and team — included with every account",
+    tagline: "Customers, sales, expenses, and team: included with every account",
     category: "revenue",
     tier: "core",
     icon: Users,
@@ -52,7 +52,7 @@ export const modufyModules: ModufyModule[] = [
     seo: {
       title: "Core Business Management Software for Growing Teams",
       description:
-        "Modufy Core is included with every account — manage customers, record sales, track expenses, invite your team, and stay on top of alerts before you add a single paid module.",
+        "Modufy Core is included with every account: manage customers, record sales, track expenses, invite your team, and stay on top of alerts before you add a single paid module.",
       keywords: [
         "business management software",
         "CRM",
@@ -64,14 +64,14 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Run your business from one foundation.",
     heroDescription:
-      "Core is always on. Manage customers, record sales, track expenses, invite your team, and stay on top of what needs attention — before you add a single paid module.",
+      "Customers, sales, expenses, and team access: always on. Add paid modules later without starting over.",
     overview: [
-      "Every Modufy account starts with Core: your customer book, daily sales, expense capture, notifications, and role-based team access.",
+      "Every Modufy account starts with Core, your customer book, daily sales, expense capture, notifications, and role-based team access.",
       "Paid modules plug into Core instead of replacing it. A POS sale, invoice payment, and storefront order all land in the same financial picture.",
     ],
     capabilities: [
       "Customer records with tags, balance, and full history",
-      "Quick sales — cash, mobile money, and card",
+      "Quick sales: cash, mobile money, and card",
       "Expense tracking with categories and receipt photos",
       "Team invites, roles, and granular permissions",
       "Multi-branch support for growing locations",
@@ -110,7 +110,7 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Bill professionally. Get paid faster.",
     heroDescription:
-      "Create branded invoices, send reminders, and sync every payment straight into your books — from draft to paid.",
+      "Create branded invoices, send reminders, and sync every payment straight into your books, from draft to paid.",
     overview: [
       "Invoicing turns informal sales into formal documents your customers trust. Line items can come from your inventory catalog or be entered manually.",
       "When a payment lands, Accounts updates automatically. No duplicate entry between billing and bookkeeping.",
@@ -156,10 +156,10 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Know what you have. Know what you sold.",
     heroDescription:
-      "One catalog for physical products and billable services. Stock moves automatically when you sell through POS, invoices, or your storefront.",
+      "One catalog for products and services. Sell through POS, invoices, or storefront, stock updates in the same place.",
     overview: [
-      "Inventory is the product brain of Modufy. Define what you sell once — then use it everywhere else in the platform.",
-      "Low-stock alerts, supplier records, and purchase orders keep retail and wholesale teams ahead of stockouts.",
+      "Define what you sell once. POS, invoices, and storefront all read the same catalog.",
+      "Low-stock alerts and purchase orders keep restock ahead of stockouts.",
     ],
     capabilities: [
       "Products with photos, SKU, barcode, variants, and pricing",
@@ -188,17 +188,24 @@ export const modufyModules: ModufyModule[] = [
     imageAlt: "Modufy point of sale and order tracking",
 
     seo: {
-      title: "Point of Sale (POS) Software",
+      title: "POS System: Point of Sale for Every Sale",
       description:
-        "Modufy POS is a full-screen register for shops and counters — barcode scan, held carts, shift sessions, receipts, and live stock deduction.",
-      keywords: ["point of sale", "POS software", "retail checkout", "cash register", "barcode POS"],
+        "Modufy’s POS system for retail counters and service desks. Scan, sell, hold carts, run shift sessions, and keep inventory and books in sync.",
+      keywords: [
+        "POS system",
+        "point of sale",
+        "retail POS",
+        "barcode checkout",
+        "POS software",
+        "Modufy POS",
+      ],
     },
-    heroTitle: "Checkout built for the counter",
+    heroTitle: "The point of sale for every sale",
     heroDescription:
-      "Scan, sell, and receipt in seconds. Every completed sale posts to Core and Accounts — one financial truth, whether customers buy in-store or online.",
+      "From first sale to full scale: scan, sell, and receipt at the counter while Inventory, customers, and books stay in sync.",
     overview: [
-      "POS is Modufy’s register experience for retail counters and busy service desks. It pulls your live catalog from Inventory and deducts stock on every sale.",
-      "Open and close shift sessions with cash float tracking so managers know exactly what happened on each register.",
+      "Close sales at the counter and keep stock, customers, and books in sync, the way connected retail should work.",
+      "Open shift sessions, park busy carts, send receipts, and deduct inventory automatically on every completed sale.",
     ],
     capabilities: [
       "Full-screen product grid with barcode and SKU search",
@@ -234,10 +241,10 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Fill your calendar without the back-and-forth",
     heroDescription:
-      "Customers book from your public storefront. Collect deposits via Paystack, send SMS reminders, and auto-generate an invoice when the appointment is done.",
+      "Guests book from your storefront. Collect a deposit, send reminders, and auto-create an invoice when the session is done.",
     overview: [
-      "Appointments connects your bookable services from Inventory to a live calendar your team manages every day.",
-      "Guest booking means customers only need a name and phone — no account required — which removes friction for first-time clients.",
+      "Connect bookable services from Inventory to a live calendar your team runs every day.",
+      "Guest booking needs only a name and phone: less friction, fewer no-shows with deposits and reminders.",
     ],
     capabilities: [
       "Week and day calendar views for your team",
@@ -268,7 +275,7 @@ export const modufyModules: ModufyModule[] = [
     seo: {
       title: "Online Storefront for Growing Businesses",
       description:
-        "Customize and publish a branded Modufy storefront. Sync products from Inventory, take guest orders and enquiries, run promotions, and collect reviews — without building a website from scratch.",
+        "Customize and publish a branded Modufy storefront. Sync products from Inventory, take guest orders and enquiries, run promotions, and collect reviews, without building a website from scratch.",
       keywords: [
         "online storefront",
         "small business website",
@@ -278,12 +285,12 @@ export const modufyModules: ModufyModule[] = [
         "Modufy storefront",
       ],
     },
-    heroTitle: "Your vision. Your storefront — live.",
+    heroTitle: "Your vision. Your storefront, live.",
     heroDescription:
-      "Customize branding, sync products from Inventory, and publish a public page to browse, book, and buy — without building a website from scratch.",
+      "Customize branding, sync products from Inventory, and publish a public page to browse, book, and buy, without building a website from scratch.",
     overview: [
       "Storefront is your customer-facing page. It adapts to product businesses and service businesses from the same catalog you already manage.",
-      "Promotions, enquiries, and reviews turn a simple catalog into a full commercial presence — without a separate website project.",
+      "Promotions, enquiries, and reviews turn a simple catalog into a full commercial presence, without a separate website project.",
     ],
     capabilities: [
       "Publish/unpublish storefront with your branding",
@@ -326,7 +333,7 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Unify your messaging. Reach customers who already know you.",
     heroDescription:
-      "Segments from your customer book. SMS or email. Opt-outs and wallet tracking — without leaving Modufy.",
+      "Segments from your customer book. SMS or email. Opt-outs and wallet tracking, without leaving Modufy.",
     overview: [
       "Marketing is for outbound campaigns, while Core handles one-to-one messages. Together they cover transactional and promotional communication.",
       "Segments are saved audience rules evaluated at send time, so your lists stay fresh without manual exports.",
@@ -365,10 +372,10 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Books that update themselves",
     heroDescription:
-      "Every sale, invoice payment, expense, and stock movement can post to your ledger automatically. See P&L, cash flow, and tax summaries without re-keying data.",
+      "Sales, invoice payments, expenses, and stock movements can post to your ledger automatically. P&L and cash flow without re-keying.",
     overview: [
-      "Accounts is the financial layer of Modufy. It receives entries from Core and every paid module so your reports reflect real activity.",
-      "Accountants get journal views, manual adjustments, and export-friendly summaries — owners get dashboards they can actually read.",
+      "Accounts is Modufy’s financial layer: entries from Core and paid modules become real reports.",
+      "Owners get readable dashboards; accountants get journals, adjustments, and export-friendly summaries.",
     ],
     capabilities: [
       "Auto-posting from sales, invoices, expenses, inventory, POS",
@@ -404,10 +411,10 @@ export const modufyModules: ModufyModule[] = [
     },
     heroTitle: "Tell your story on your storefront",
     heroDescription:
-      "Draft, publish, and organise posts that live on your public Modufy page — with cover images, categories, tags, and SEO fields built in.",
+      "Draft, publish, and organise posts that live beside your products and bookings: with covers, tags, and SEO fields built in.",
     overview: [
-      "Blog gives your storefront a content layer. Posts appear under your business link alongside products and booking pages.",
-      "SEO title and meta description fields help each article rank for the topics your customers search for.",
+      "Blog adds a content layer to your storefront: posts sit next to products and booking pages.",
+      "SEO title and meta fields help each article rank for the topics customers search.",
     ],
     capabilities: [
       "Draft and publish workflow",
@@ -438,14 +445,14 @@ export const modufyModules: ModufyModule[] = [
     seo: {
       title: "AI Assistant for Business Operations",
       description:
-        "Modufy AI drafts invoice lines, categorises expenses, explains P&L in plain language, and powers an assist chat — tenant-scoped with usage budgets.",
+        "Modufy AI drafts invoice lines, categorises expenses, explains P&L in plain language, and powers an assist chat: tenant-scoped with usage budgets.",
       keywords: ["AI for business", "invoice drafting AI", "expense categorisation", "business assistant"],
     },
     heroTitle: "Less admin. Clearer decisions.",
     heroDescription:
       "AI helps you draft invoice lines from plain English, summarise your day, explain financial reports, and answer questions about your business data.",
     overview: [
-      "AI sits alongside your modules — it never auto-posts financial records without your review.",
+      "AI sits alongside your modules, it never auto-posts financial records without your review.",
       "Usage is tenant-scoped with monthly budgets. Bring your own Anthropic key if you prefer.",
     ],
     capabilities: [
@@ -477,7 +484,7 @@ export const moduleCategoryMeta: Record<
   },
   operations: {
     label: "Run operations",
-    description: "Stock, orders, and day-to-day work — without the chaos.",
+    description: "Stock, orders, and day-to-day work, without the chaos.",
     icon: Package,
   },
   engage: {

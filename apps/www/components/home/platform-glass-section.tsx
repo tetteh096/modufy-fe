@@ -6,7 +6,6 @@ import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
-import { getModuleBadge } from "@/lib/module-badges";
 import { homeImages } from "@/lib/home-images";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +19,6 @@ type FeatureTab = {
   visual: string;
   visualAlt: string;
   toast: { title: string; detail: string };
-  accent: string;
 };
 
 const TABS: FeatureTab[] = [
@@ -29,7 +27,7 @@ const TABS: FeatureTab[] = [
     label: "One customer book",
     title: "Every sale starts with the same customer record.",
     description:
-      "Tags, balances, and full history live in Modufy Core — so invoicing, POS, and storefront never start from a blank list.",
+      "Tags, balances, and full history live in Modufy Core, so invoicing, POS, and storefront never start from a blank list.",
     points: [
       "Shared customer profiles across modules",
       "Quick sales with cash, MoMo, or card",
@@ -37,15 +35,14 @@ const TABS: FeatureTab[] = [
       "1:1 SMS and email from context",
     ],
     cta: { label: "Explore Core", href: "/modules/core" },
-    visual: getModuleBadge("core"),
+    visual: "/landingscroll/modu/ba9f63df107b6c078626bf9f55174bd4.jpg",
     visualAlt: "Modufy Core customer hub",
     toast: { title: "Customer updated", detail: "Kwame Mensah tagged as VIP" },
-    accent: "#dceee0",
   },
   {
     id: "invoices",
     label: "Bill professionally",
-    title: "Invoices that get paid — and update your books.",
+    title: "Invoices that get paid, and update your books.",
     description:
       "Create branded invoices, send reminders, track statuses, and stay Ghana tax-ready without re-entering payments.",
     points: [
@@ -55,17 +52,16 @@ const TABS: FeatureTab[] = [
       "Payments sync to Accounts",
     ],
     cta: { label: "Explore Invoicing", href: "/modules/invoices" },
-    visual: homeImages.features.invoice,
+    visual: "/landingscroll/modu/inviocesec.jpg",
     visualAlt: "Modufy invoicing illustration",
     toast: { title: "Payment received", detail: "INV-204 · GHS 1,240 settled" },
-    accent: "#e8e2f4",
   },
   {
     id: "inventory",
     label: "Know your stock",
     title: "One catalog. Every channel reads the same numbers.",
     description:
-      "Products and services in one place — stock moves when you sell through POS, invoices, or your storefront.",
+      "Products and services in one place, stock moves when you sell through POS, invoices, or your storefront.",
     points: [
       "SKU, barcode, and variants",
       "Low-stock alerts",
@@ -73,15 +69,14 @@ const TABS: FeatureTab[] = [
       "FIFO or average-cost valuation",
     ],
     cta: { label: "Explore Inventory", href: "/modules/inventory" },
-    visual: homeImages.features.inventory,
+    visual: "/landingscroll/modu/cate.jpg",
     visualAlt: "Modufy inventory illustration",
     toast: { title: "Stock synced", detail: "12 units deducted after sale" },
-    accent: "#dce6ee",
   },
   {
     id: "storefront",
     label: "Sell online",
-    title: "Your business online — without building a website.",
+    title: "Your business online, without building a website.",
     description:
       "Publish a branded storefront from Inventory. Guests can order or enquire, and every lead lands back in Modufy.",
     points: [
@@ -91,17 +86,16 @@ const TABS: FeatureTab[] = [
       "Orders linked to customers",
     ],
     cta: { label: "Explore Storefront", href: "/modules/marketplace" },
-    visual: homeImages.features.orders,
+    visual: "/landingscroll/modu/store.jpg",
     visualAlt: "Modufy online storefront illustration",
     toast: { title: "New order received", detail: "You saved GHS 45 in fees" },
-    accent: "#f3e4d4",
   },
   {
     id: "marketing",
     label: "Reach customers",
     title: "Campaigns from the same customer book.",
     description:
-      "Build segments, send SMS or email, track delivery, and respect opt-outs — without exporting to another tool.",
+      "Build segments, send SMS or email, track delivery, and respect opt-outs, without exporting to another tool.",
     points: [
       "SMS and email templates",
       "Live audience previews",
@@ -109,10 +103,9 @@ const TABS: FeatureTab[] = [
       "SMS wallet tracking",
     ],
     cta: { label: "Explore Marketing", href: "/modules/marketing" },
-    visual: homeImages.features.marketing,
+    visual: "/landingscroll/modu/mart.jpg",
     visualAlt: "Modufy marketing campaigns illustration",
     toast: { title: "Campaign sent", detail: "842 SMS delivered · 2 failed" },
-    accent: "#fce8d4",
   },
 ];
 
@@ -124,7 +117,7 @@ export function PlatformGlassSection() {
   return (
     <section className="relative px-1 pb-12 pt-2 sm:px-2 sm:pb-16 lg:px-3">
       <div className="relative mx-auto w-full overflow-hidden rounded-[1.75rem] sm:rounded-[2.5rem]">
-        {/* Native fixed bg — smooth, no JS scroll transforms */}
+        {/* Native fixed bg: smooth, no JS scroll transforms */}
         <div
           aria-hidden
           className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-[0.8] contrast-[1.05] saturate-[1.05] max-md:bg-scroll md:bg-fixed"
@@ -185,7 +178,7 @@ export function PlatformGlassSection() {
 
           {/* Frosted rim + bigger unequal cards */}
           <div className="mt-6 rounded-[1.75rem] border border-white/45 bg-white/20 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-md sm:mt-8 sm:rounded-[2.1rem] sm:p-3 lg:p-3.5">
-            <div className="grid items-stretch gap-2.5 sm:gap-3 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.4fr)] lg:gap-4">
+            <div className="grid items-stretch gap-2.5 sm:gap-3 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.25fr)] lg:gap-4">
               <AnimatePresence mode="wait">
                 <motion.article
                   key={`${active.id}-copy`}
@@ -234,52 +227,70 @@ export function PlatformGlassSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
                   transition={{ duration: 0.28, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative min-h-[420px] overflow-hidden rounded-[1.45rem] bg-white p-3 sm:min-h-[520px] sm:rounded-[1.75rem] sm:p-4"
+                  className="relative min-h-[420px] overflow-hidden rounded-[1.45rem] sm:min-h-[520px] sm:rounded-[1.75rem]"
                 >
+                  {/* Soft calm outer glow */}
                   <div
-                    className="relative flex h-full min-h-[396px] flex-col overflow-hidden rounded-[1.15rem] sm:min-h-[488px] sm:rounded-[1.4rem]"
-                    style={{ backgroundColor: active.accent }}
-                  >
-                    <div className="flex items-center justify-between px-5 pb-2 pt-5">
-                      <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#1a2744]/65">
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-px rounded-[inherit] bg-[radial-gradient(ellipse_at_top,rgba(180,210,195,0.55),transparent_58%)] opacity-90 blur-[1px]"
+                  />
+                  <div className="relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-[inherit] border border-white/70 bg-[#e6efe9] p-4 shadow-[0_20px_48px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.85)] sm:min-h-[520px] sm:p-5">
+                    {/* App chrome */}
+                    <div className="mb-3 flex items-center justify-between px-1 sm:mb-4">
+                      <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#1a2744]/70">
                         Modufy
                       </p>
-                      <div className="flex gap-1.5">
-                        <span className="h-2 w-10 rounded-full bg-black/10" />
-                        <span className="h-2 w-6 rounded-full bg-black/10" />
-                        <span className="h-2 w-8 rounded-full bg-black/10" />
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-12 rounded-full bg-[#1a2744]/10" />
+                        <span className="h-2 w-7 rounded-full bg-[#1a2744]/8" />
+                        <span className="h-2 w-9 rounded-full bg-[#1a2744]/8" />
+                        <span className="h-2 w-5 rounded-full bg-[#1a2744]/6" />
                       </div>
                     </div>
 
-                    <div className="relative mx-3 flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-white/55 sm:mx-5">
+                    {/* Photo plane */}
+                    <div className="relative mx-0.5 min-h-[260px] flex-1 overflow-hidden rounded-[1.1rem] sm:min-h-[340px] sm:rounded-[1.25rem]">
                       <Image
                         src={active.visual}
                         alt={active.visualAlt}
-                        width={720}
-                        height={720}
-                        className="h-auto w-[90%] max-w-[460px] object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.16)]"
-                        sizes="(min-width: 1024px) 460px, 340px"
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 560px, 90vw"
+                        priority
                       />
-                    </div>
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-white/10" />
 
-                    <div className="grid grid-cols-[110px_1fr] gap-3 px-5 py-5">
-                      <div className="h-16 rounded-xl bg-black/8" />
-                      <div className="flex flex-col justify-center gap-2.5">
-                        <span className="h-2.5 w-full rounded-full bg-black/10" />
-                        <span className="h-2.5 w-[80%] rounded-full bg-black/8" />
-                        <span className="h-2.5 w-[55%] rounded-full bg-black/6" />
-                      </div>
-                    </div>
-
-                    <div className="absolute bottom-[5.25rem] left-1/2 w-[min(92%,380px)] -translate-x-1/2">
-                      <div className="flex items-center gap-3 rounded-full border border-white/15 bg-[#2a2a2a]/88 px-3.5 py-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.35)] backdrop-blur-md">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-tangerine text-sm font-extrabold text-white">
-                          M
-                        </span>
-                        <div className="min-w-0">
-                          <p className="truncate text-xs font-bold text-white">{active.toast.title}</p>
-                          <p className="truncate text-[11px] text-white/70">{active.toast.detail}</p>
+                      {/* Floating toast over image */}
+                      <motion.div
+                        key={active.toast.title}
+                        initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ duration: 0.35, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute inset-x-3 bottom-4 sm:inset-x-5 sm:bottom-5"
+                      >
+                        <div className="mx-auto flex w-full max-w-[380px] items-center gap-3 rounded-full border border-white/10 bg-[#1c1c1e]/92 px-3.5 py-2.5 shadow-[0_16px_40px_rgba(0,0,0,0.55)] backdrop-blur-md">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-tangerine text-sm font-extrabold text-white shadow-[0_0_0_3px_rgba(255,140,60,0.25)]">
+                            M
+                          </span>
+                          <div className="min-w-0">
+                            <p className="truncate text-[13px] font-bold leading-tight text-white">
+                              {active.toast.title}
+                            </p>
+                            <p className="truncate text-[11px] leading-tight text-white/65">
+                              {active.toast.detail}
+                            </p>
+                          </div>
                         </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Bottom skeleton */}
+                    <div className="mt-3 grid grid-cols-[72px_1fr] items-center gap-3 px-0.5 sm:mt-4 sm:grid-cols-[88px_1fr] sm:gap-3.5">
+                      <div className="aspect-square rounded-xl bg-[#1a2744]/8 ring-1 ring-[#1a2744]/6" />
+                      <div className="flex flex-col gap-2.5">
+                        <span className="h-2.5 w-full rounded-full bg-[#1a2744]/10" />
+                        <span className="h-2.5 w-[78%] rounded-full bg-[#1a2744]/8" />
+                        <span className="h-2.5 w-[52%] rounded-full bg-[#1a2744]/6" />
                       </div>
                     </div>
                   </div>

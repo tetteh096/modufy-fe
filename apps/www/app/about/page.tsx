@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Learn about ${siteConfig.name} — our mission, team, and the modular platform we built for growing businesses.`,
+  description: `Learn about ${siteConfig.name}, our mission, team, and the modular platform we built for growing businesses.`,
 };
 
 export default function AboutPage() {

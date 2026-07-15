@@ -23,13 +23,13 @@ export function InventoryWorkflow() {
   const progressWidth = useTransform(progressPercent, (value) => `${value}%`);
 
   return (
-    <section className="section-padding bg-[#fdfbf8]">
+    <section className="section-padding bg-[#f5f6f3]">
       <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
         <FadeIn className="lg:col-span-5">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             What Inventory does
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Define what you sell once. Use it everywhere.
           </h2>
           <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
@@ -41,7 +41,7 @@ export function InventoryWorkflow() {
               Low-stock alerts, supplier records, and purchase orders keep retail and wholesale teams
               ahead of stockouts.
             </p>
-            <p>Services live alongside products — hourly, fixed, or bookable — without a second system.</p>
+            <p>Services live alongside products: hourly, fixed, or bookable, without a second system.</p>
           </div>
         </FadeIn>
 
@@ -85,7 +85,7 @@ export function InventoryWorkflow() {
                   <span className="z-10 flex h-8 w-8 items-center justify-center rounded-full border border-brand-leaf-green/30 bg-brand-leaf-green/10 text-xs font-bold text-brand-leaf-green">
                     {index + 1}
                   </span>
-                  <span className="text-sm font-semibold text-[#1a2744]">{stage}</span>
+                  <span className="text-sm font-semibold text-[#0e120e]">{stage}</span>
                 </li>
               ))}
             </ol>
@@ -114,12 +114,12 @@ function StageCard({
   return (
     <motion.div
       style={reduceMotion ? undefined : { opacity, scale }}
-      className="rounded-2xl border border-border bg-[#faf8f5] px-2 py-4 text-center"
+      className="rounded-2xl border border-border bg-[#f5f6f3] px-2 py-4 text-center"
     >
       <p className="text-[10px] font-bold uppercase tracking-wider text-brand-leaf-green">
         0{index + 1}
       </p>
-      <p className="mt-1 text-xs font-semibold leading-snug text-[#1a2744]">{stage}</p>
+      <p className="mt-1 text-xs font-semibold leading-snug text-[#0e120e]">{stage}</p>
     </motion.div>
   );
 }

@@ -13,7 +13,7 @@ export const demoSteps = [
   {
     step: "02",
     title: "We pick the right walkthrough",
-    description: "Retail, services, or multi-location — we focus on workflows that match how you operate.",
+    description: "Retail, services, or multi-location, we focus on workflows that match how you operate.",
   },
   {
     step: "03",
@@ -49,7 +49,7 @@ export const demoTeamSizes = [
 ] as const;
 
 export const demoQuote = {
-  text: "The demo showed us exactly how invoicing and inventory connect — we signed up the same week.",
+  text: "The demo showed us exactly how invoicing and inventory connect, we signed up the same week.",
   author: "Retail operator, early access",
 };
 
@@ -57,12 +57,12 @@ export const demoFaqs = [
   {
     question: "How long is the demo?",
     answer:
-      "Most sessions run 30 minutes. If you have a larger team or complex setup, we can book 45 minutes — just mention it in the form.",
+      "Most sessions run 30 minutes. If you have a larger team or complex setup, we can book 45 minutes: just mention it in the form.",
   },
   {
     question: "Do I need to prepare anything?",
     answer:
-      "No slides or homework. It helps if you know your rough team size and whether you care most about sales, stock, billing, or appointments — we'll handle the rest.",
+      "No slides or homework. It helps if you know your rough team size and whether you care most about sales, stock, billing, or appointments, we'll handle the rest.",
   },
   {
     question: "Can I invite my co-founder or ops lead?",
@@ -72,11 +72,11 @@ export const demoFaqs = [
   {
     question: "Is there a free trial if I'm not ready for a call?",
     answer:
-      "Yes. Core is free to start — you can explore on your own and book a demo anytime from the app or this page.",
+      "Yes. Core is free to start, you can explore on your own and book a demo anytime from the app or this page.",
   },
   {
     question: "What happens after the demo?",
     answer:
-      "We'll send a summary of what we covered, recommended modules, and a link to start your trial. No pressure — many teams try Modufy on their own first.",
+      "We'll send a summary of what we covered, recommended modules, and a link to start your trial. No pressure: many teams try Modufy on their own first.",
   },
 ] as const;

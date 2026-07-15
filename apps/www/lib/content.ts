@@ -43,7 +43,7 @@ export const testimonials = [
   },
   {
     quote:
-      "A game changer for our business. Our team finally has one place for leads, invoices, and customer follow-ups — without juggling five different tools.",
+      "A game changer for our business. Our team finally has one place for leads, invoices, and customer follow-ups, without juggling five different tools.",
     author: "Amara Osei",
     role: "Operations Lead",
     initials: "AO",

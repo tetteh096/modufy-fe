@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AccountsPage } from "@/components/modules/accounts/accounts-page";
+import { AppointmentsPage } from "@/components/modules/appointments/appointments-page";
+import { BlogPage } from "@/components/modules/blog/blog-page";
 import { CorePage } from "@/components/modules/core/core-page";
 import { InventoryPage } from "@/components/modules/inventory/inventory-page";
 import { InvoicingPage } from "@/components/modules/invoicing/invoicing-page";
 import { MarketingPage } from "@/components/modules/marketing/marketing-page";
+import { PosPage } from "@/components/modules/pos/pos-page";
 import { StorefrontPage } from "@/components/modules/storefront/storefront-page";
 import { ModulePageBody, ModulePageHero } from "@/components/modules/module-detail-sections";
 import { getModuleBySlug, modufyModules } from "@/lib/modules-content";
@@ -81,6 +85,14 @@ export default async function ModuleDetailPage({ params }: PageProps) {
         <MarketingPage />
       ) : module.slug === "marketplace" ? (
         <StorefrontPage />
+      ) : module.slug === "pos" ? (
+        <PosPage />
+      ) : module.slug === "appointments" ? (
+        <AppointmentsPage />
+      ) : module.slug === "blog" ? (
+        <BlogPage />
+      ) : module.slug === "accounts" ? (
+        <AccountsPage />
       ) : (
         <>
           <ModulePageHero module={module} />

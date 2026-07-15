@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -128,8 +128,9 @@ export function SiteHeader() {
   );
 
   const isHome = pathname === "/";
-  const scrolledPastHero = useScrolledPastHero(isHome);
-  const heroNav = isHome && !scrolledPastHero;
+  const isModulePage = pathname.startsWith("/modules/");
+  const scrolledPastHero = useScrolledPastHero(isHome || isModulePage);
+  const heroNav = (isHome || isModulePage) && !scrolledPastHero;
 
   return (
     <header data-site-header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">

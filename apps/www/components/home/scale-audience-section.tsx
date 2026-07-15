@@ -26,7 +26,7 @@ const STORIES = [
     body: (
       <>
         <strong className="text-white">Coastal Goods</strong> grew from a single
-        counter to multi-channel stock, bookings, and billing — without swapping
+        counter to multi-channel stock, bookings, and billing, without swapping
         tools.
       </>
     ),
@@ -40,7 +40,7 @@ const STORIES = [
       <>
         Established teams use Modufy to keep{" "}
         <strong className="text-white">sales, inventory, and finance</strong>{" "}
-        aligned — from first sale to year-end reports.
+        aligned, from first sale to year-end reports.
       </>
     ),
   },

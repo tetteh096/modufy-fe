@@ -30,7 +30,7 @@ export const pricingPlans: PricingPlanDef[] = [
   {
     id: "starter",
     name: "Starter",
-    tagline: "Start with core modules — simple and straightforward",
+    tagline: "Start with core modules: simple and straightforward",
     monthlyBase: 19,
     yearlyBase: 14,
     highlighted: false,
@@ -168,7 +168,7 @@ export const pricingAddons = [
   },
   {
     title: "Onboarding package",
-    description: "Guided setup with a Modufy specialist — data migration and team training included.",
+    description: "Guided setup with a Modufy specialist: data migration and team training included.",
     price: "One-time $199",
   },
 ] as const;
@@ -192,12 +192,12 @@ export const pricingFaqs = [
   {
     question: "Is there a free trial?",
     answer:
-      "Yes — 14 days free on any paid plan. No credit card required to start. You can explore modules and invite your team before subscribing.",
+      "Yes: 14 days free on any paid plan. No credit card required to start. You can explore modules and invite your team before subscribing.",
   },
   {
     question: "Can I add modules without changing plans?",
     answer:
-      "Yes. Modufy is modular — enable inventory, POS, or accounts as add-ons on most plans without jumping to the next tier.",
+      "Yes. Modufy is modular, enable inventory, POS, or accounts as add-ons on most plans without jumping to the next tier.",
   },
   {
     question: "Do you offer nonprofit or startup discounts?",
@@ -226,5 +226,5 @@ export const pricingComparison = {
 export const pricingSolutionsIntro = {
   title: "Modular pricing that scales with you",
   description:
-    "Start with what you need, add modules as you grow. Every plan includes core CRM — expand into inventory, POS, marketing, and finance when you're ready.",
+    "Start with what you need, add modules as you grow. Every plan includes core CRM: expand into inventory, POS, marketing, and finance when you're ready.",
 };

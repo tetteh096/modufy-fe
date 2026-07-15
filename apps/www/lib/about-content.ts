@@ -18,13 +18,13 @@ export const aboutValues: {
     icon: Sparkles,
     title: "Ship what operators actually need",
     description:
-      "We build from real workflows — stock counts, invoice reminders, shift handoffs — not feature checklists copied from legacy ERPs.",
+      "We build from real workflows, stock counts, invoice reminders, shift handoffs, not feature checklists copied from legacy ERPs.",
   },
   {
     icon: HeartHandshake,
     title: "Stay close to customers",
     description:
-      "Every module shares the same customer record, so support, sales, and finance see one truth — and your clients feel the difference.",
+      "Every module shares the same customer record, so support, sales, and finance see one truth, and your clients feel the difference.",
   },
 ];
 
@@ -50,12 +50,12 @@ export const aboutFaqs = [
   {
     question: "What makes Modufy different from other business software?",
     answer:
-      "Modufy is modular by design. Core — customers, sales, expenses, and team access — is included with every account. You add invoicing, inventory, POS, or marketing only when you need them, and everything shares the same data.",
+      "Modufy is modular by design. Core: customers, sales, expenses, and team access: is included with every account. You add invoicing, inventory, POS, or marketing only when you need them, and everything shares the same data.",
   },
   {
     question: "How secure is my business data?",
     answer:
-      "Data is encrypted in transit and at rest. Every account is tenant-scoped — your team only sees your business. We run regular backups and follow industry-standard access controls.",
+      "Data is encrypted in transit and at rest. Every account is tenant-scoped, your team only sees your business. We run regular backups and follow industry-standard access controls.",
   },
   {
     question: "Can Modufy integrate with tools we already use?",
@@ -65,12 +65,12 @@ export const aboutFaqs = [
   {
     question: "What kind of support can we expect?",
     answer:
-      "Email and in-app support on all plans, with faster response on higher tiers. Documentation, module guides, and onboarding help are included — and our team runs live demos when you want a walkthrough.",
+      "Email and in-app support on all plans, with faster response on higher tiers. Documentation, module guides, and onboarding help are included, and our team runs live demos when you want a walkthrough.",
   },
   {
     question: "How does pricing work as we grow?",
     answer:
-      "Plans scale by team size and billing cycle. Core is free to start. Paid modules are add-ons you enable when ready — no rip-and-replace migration required.",
+      "Plans scale by team size and billing cycle. Core is free to start. Paid modules are add-ons you enable when ready, no rip-and-replace migration required.",
   },
 ] as const;
 
@@ -89,5 +89,5 @@ export const journeyGallery = [
 export const aboutJourneyCopy = {
   title: "Why we built Modufy",
   description:
-    "We watched growing teams juggle spreadsheets, WhatsApp threads, and disconnected apps just to sell a product and send an invoice. Modufy brings those workflows into one modular platform — start with Core, add modules as you scale.",
+    "We watched growing teams juggle spreadsheets, WhatsApp threads, and disconnected apps just to sell a product and send an invoice. Modufy brings those workflows into one modular platform: start with Core, add modules as you scale.",
 };

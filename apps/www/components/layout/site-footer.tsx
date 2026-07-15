@@ -198,7 +198,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      {/* Giant Modufy — clear gap under panel, no collision */}
+      {/* Giant Modufy, clear gap under panel, no collision */}
       <div aria-hidden className="relative mt-8 overflow-hidden sm:mt-10">
         <div className="flex h-[clamp(9rem,26vw,16rem)] items-start justify-center px-2">
           <span className="select-none whitespace-nowrap font-brand text-[clamp(8rem,26vw,22rem)] font-normal uppercase leading-none tracking-[-0.04em] text-brand-tangerine">

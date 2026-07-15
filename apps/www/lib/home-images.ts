@@ -1,4 +1,4 @@
-/** Curated Modufy marketing imagery — product shots + module illustrations. */
+/** Curated Modufy marketing imagery: product shots + module illustrations. */
 const img = (file: string) => `/website_images/${file}`;
 
 export const homeImages = {

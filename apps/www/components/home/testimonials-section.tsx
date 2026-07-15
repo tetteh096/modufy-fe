@@ -28,7 +28,7 @@ export function TestimonialsSection() {
   const item = testimonials[active];
 
   return (
-    <section className="relative overflow-hidden section-padding bg-gradient-to-b from-transparent to-[#faf8f5]">
+    <section className="relative overflow-hidden section-padding bg-gradient-to-b from-transparent to-[#f5f6f3]">
       <div className="texture-noise pointer-events-none absolute inset-0" aria-hidden />
       <div className="container-site relative">
         <FadeIn className="mb-12 max-w-lg">

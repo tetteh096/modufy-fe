@@ -85,7 +85,7 @@ const AFTER = [
 const TESTIMONIALS = [
   {
     quote:
-      "We stopped guessing shelf counts. When POS sells a product, Inventory already knows — and low-stock alerts force the reorder before we disappoint customers.",
+      "We stopped guessing shelf counts. When POS sells a product, Inventory already knows, and low-stock alerts force the reorder before we disappoint customers.",
     name: "Mawuli Boateng",
     role: "Manager, East Gate Pharmacy",
     initials: "MB",
@@ -105,17 +105,17 @@ export function InventoryFlowSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section-padding bg-[#faf8f5]">
+    <section className="section-padding bg-[#f5f6f3]">
       <div className="container-site">
         <FadeIn className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             How it works
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Sell anywhere. Keep one stock truth.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Build the catalog once, set thresholds, and let Modufy update quantities as you sell —
+            Build the catalog once, set thresholds, and let Modufy update quantities as you sell -
             then restock through suppliers when alerts fire.
           </p>
         </FadeIn>
@@ -146,7 +146,7 @@ export function InventoryFlowSection() {
                 >
                   <Check className="h-4 w-4" />
                 </motion.span>
-                <p className="mt-3 text-xs font-semibold leading-snug text-[#1a2744]">{node}</p>
+                <p className="mt-3 text-xs font-semibold leading-snug text-[#0e120e]">{node}</p>
               </div>
             ))}
           </div>
@@ -160,7 +160,7 @@ export function InventoryFlowSection() {
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-leaf-green/10 text-xs font-bold text-brand-leaf-green">
                   {index + 1}
                 </span>
-                <span className="text-sm font-semibold text-[#1a2744]">{node}</span>
+                <span className="text-sm font-semibold text-[#0e120e]">{node}</span>
               </li>
             ))}
           </ol>
@@ -178,7 +178,7 @@ export function InventoryAudienceSection() {
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Who it&apos;s for
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Built for teams that cannot afford a wrong count.
           </h2>
         </FadeIn>
@@ -193,7 +193,7 @@ export function InventoryAudienceSection() {
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-tangerine">
                   0{index + 1}
                 </p>
-                <h3 className="mt-4 text-lg font-bold text-[#1a2744]">{item.title}</h3>
+                <h3 className="mt-4 text-lg font-bold text-[#0e120e]">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
               </motion.article>
             </FadeIn>
@@ -247,7 +247,7 @@ export function InventoryConnectionsSection() {
             ))}
 
             <motion.div
-              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brand-leaf-green/40 bg-[#1a2744] text-center shadow-xl sm:flex"
+              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brand-leaf-green/40 bg-[#0e120e] text-center shadow-xl sm:flex"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : {}}
               transition={{ delay: 0.25, duration: 0.4 }}
@@ -265,13 +265,13 @@ export function InventoryConnectionsSection() {
 
 export function InventoryComparisonSection() {
   return (
-    <section className="section-padding bg-[#fdfbf8]">
+    <section className="section-padding bg-[#f5f6f3]">
       <div className="container-site">
         <FadeIn className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Before & after
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Less stock guesswork. One catalog truth.
           </h2>
         </FadeIn>
@@ -299,7 +299,7 @@ export function InventoryComparisonSection() {
               </p>
               <ul className="mt-5 space-y-3">
                 {AFTER.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-[#1a2744]">
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-[#0e120e]">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-leaf-green" />
                     {item}
                   </li>
@@ -321,7 +321,7 @@ export function InventoryTestimonialsSection() {
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Customer voices
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Stock that keeps up with how you sell.
           </h2>
         </FadeIn>
@@ -330,13 +330,13 @@ export function InventoryTestimonialsSection() {
           {TESTIMONIALS.map((item, index) => (
             <FadeIn key={item.name} delay={index * 0.06}>
               <blockquote className="h-full rounded-[1.5rem] border border-border bg-white p-6 shadow-sm sm:p-8">
-                <p className="text-base leading-relaxed text-[#1a2744]">“{item.quote}”</p>
+                <p className="text-base leading-relaxed text-[#0e120e]">“{item.quote}”</p>
                 <footer className="mt-6 flex items-center gap-3">
                   <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-leaf-green/15 text-sm font-bold text-brand-leaf-green">
                     {item.initials}
                   </span>
                   <div>
-                    <p className="font-semibold text-[#1a2744]">{item.name}</p>
+                    <p className="font-semibold text-[#0e120e]">{item.name}</p>
                     <p className="text-sm text-muted-foreground">{item.role}</p>
                   </div>
                 </footer>
@@ -359,13 +359,13 @@ export function InventoryPricingSection() {
   }, [reduceMotion]);
 
   return (
-    <section className="section-padding bg-[#faf8f5]">
+    <section className="section-padding bg-[#f5f6f3]">
       <div className="container-site grid items-center gap-10 lg:grid-cols-2">
         <FadeIn>
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Pricing
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0e120e] sm:text-4xl">
             Start free. Add Inventory when your catalog needs structure.
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
@@ -386,7 +386,7 @@ export function InventoryPricingSection() {
           <div className="rounded-[1.75rem] border border-border bg-white p-6 shadow-sm">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-bold text-[#1a2744]">Inventory &amp; Stock</p>
+                <p className="text-sm font-bold text-[#0e120e]">Inventory &amp; Stock</p>
                 <p className="text-xs text-muted-foreground">Enable on your account anytime</p>
               </div>
               <button
@@ -408,11 +408,11 @@ export function InventoryPricingSection() {
             <div className="mt-5 rounded-2xl bg-[#f7f5f1] p-4 text-sm">
               {enabled ? (
                 <p className="font-semibold text-brand-leaf-green">
-                  Inventory active — catalog, stock movements, and alerts are ready.
+                  Inventory active. Catalog, stock movements, and alerts are ready.
                 </p>
               ) : (
                 <p className="text-muted-foreground">
-                  Module off — you are still on Core with customers, sales, and expenses.
+                  Module off, you are still on Core with customers, sales, and expenses.
                 </p>
               )}
             </div>

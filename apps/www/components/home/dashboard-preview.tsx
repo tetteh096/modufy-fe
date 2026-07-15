@@ -82,7 +82,7 @@ export function DashboardPreview({ className, variant = "hero" }: DashboardPrevi
 
             <div className="grid gap-2 sm:grid-cols-2">
               {["Invoice paid", "Low stock alert"].map((item, index) => (
-                <div key={item} className="rounded-xl border border-border bg-[#faf8f5] p-3">
+                <div key={item} className="rounded-xl border border-border bg-[#f5f6f3] p-3">
                   <p className="text-xs font-bold text-brand-sea-grey">{item}</p>
                   <p className="mt-1 text-[10px] text-muted-foreground">
                     {index === 0 ? "Ava Studios, $1,280" : "12 products need restock"}

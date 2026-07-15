@@ -85,7 +85,7 @@ export function StorefrontInteractivePreview() {
             ))}
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#1a2744] shadow-2xl">
+          <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#0e120e] shadow-2xl">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4 sm:px-6">
               <div>
                 <p className="text-sm font-bold">meridian.modufy.app</p>
@@ -120,7 +120,7 @@ export function StorefrontInteractivePreview() {
                       key={item.title}
                       className="rounded-2xl border border-border bg-[#f7f5f1] px-4 py-3"
                     >
-                      <p className="text-sm font-semibold text-[#1a2744]">{item.title}</p>
+                      <p className="text-sm font-semibold text-[#0e120e]">{item.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{item.meta}</p>
                     </li>
                   ))}

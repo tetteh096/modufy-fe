@@ -46,7 +46,7 @@ const OFFER_CARDS = [
     kind: "sms" as const,
     title: "Win-back nudge",
     meta: "SMS · quiet hours respected",
-    body: "Miss you — here's an early look at this week's drop.",
+    body: "Miss you, here's an early look at this week's drop.",
   },
   {
     kind: "segment" as const,
@@ -133,7 +133,7 @@ export function MarketingReachSection() {
                 </p>
                 <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">Tell the fuller story</h3>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Longer offers with merge tags and automatic unsubscribe — from the same customer
+                  Longer offers with merge tags and automatic unsubscribe, from the same customer
                   book you already run.
                 </p>
               </div>
@@ -171,7 +171,7 @@ export function MarketingPhoneSection() {
             Meet them on the screen they check first
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-            SMS for urgency. Email for depth. Both pull from live segments — so every send feels
+            SMS for urgency. Email for depth. Both pull from live segments, so every send feels
             personal, not copy-pasted.
           </p>
           <ul className="mt-8 space-y-3 text-sm text-[#1a2744]">
@@ -243,7 +243,7 @@ export function MarketingPhoneSection() {
                   </div>
                   <div className="mt-4 rounded-2xl bg-[#f7f5f1] p-3.5">
                     <p className="text-[12px] leading-relaxed text-[#1a2744]">
-                      Hi Alex — your favourites are back this weekend. Show this at checkout. Reply
+                      Hi Alex, your favourites are back this weekend. Show this at checkout. Reply
                       STOP to opt out.
                     </p>
                   </div>
@@ -288,7 +288,7 @@ export function MarketingAutomationSection() {
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60 sm:text-base">
             Segment who to reach, send branded SMS or email, then refine the next campaign with
-            delivery rollups — no exported customer list required.
+            delivery rollups, no exported customer list required.
           </p>
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/55">
             {["Templates", "Segments", "Opt-outs", "Wallet"].map((item) => (
@@ -314,7 +314,7 @@ export function MarketingAutomationSection() {
           >
             <div className="border-b border-border px-5 py-4 text-sm">
               <Field label="To" value="Customers · bought in last 90 days" />
-              <Field label="Subject" value="We're glad you're here — enjoy 15% off" />
+              <Field label="Subject" value="We're glad you're here: enjoy 15% off" />
               <Field label="Preview" value="Your early code for this week's restock" />
             </div>
             <div className="relative aspect-[4/3]">
@@ -338,7 +338,7 @@ export function MarketingAutomationSection() {
   );
 }
 
-/** Clear post-send report — replaces the old “Results” sparkline cards. */
+/** Clear post-send report: replaces the old “Results” sparkline cards. */
 export function MarketingAfterSendSection() {
   const reduceMotion = useReducedMotion();
 
@@ -350,7 +350,7 @@ export function MarketingAfterSendSection() {
             After you send
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            A simple delivery report — not another spreadsheet
+            A simple delivery report, not another spreadsheet
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             When a campaign finishes, Modufy shows who got the message, who was skipped, and what
@@ -394,7 +394,7 @@ export function MarketingAfterSendSection() {
               </div>
               <h3 className="mt-5 text-xl font-bold text-[#1a2744]">Know who got the message</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Sent, skipped, and failed — clear numbers after every SMS or email campaign.
+                Sent, skipped, and failed, clear numbers after every SMS or email campaign.
               </p>
             </article>
           </FadeIn>
@@ -517,7 +517,7 @@ export function MarketingCloseSection() {
               Start free. Add Marketing when you are ready.
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Begin with Modufy Core, then enable campaigns when your customer list is ready —
+              Begin with Modufy Core, then enable campaigns when your customer list is ready -
               without exporting contacts elsewhere.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -560,7 +560,7 @@ export function MarketingCloseSection() {
               Ready to message with confidence?
             </h2>
             <p className="relative mx-auto mt-4 max-w-md text-sm text-white/60">
-              Segments, SMS or email, delivery tracking, and opt-outs — in the same place you run
+              Segments, SMS or email, delivery tracking, and opt-outs: in the same place you run
               the business.
             </p>
             <div className="relative mt-8 flex flex-wrap justify-center gap-3">

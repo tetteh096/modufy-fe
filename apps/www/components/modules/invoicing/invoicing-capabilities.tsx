@@ -52,7 +52,7 @@ export function InvoicingCapabilities() {
             </p>
             <h3 className="mt-2 text-2xl font-bold text-[#1a2744]">Know exactly what is happening</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Track draft through paid — and spot overdue invoices early.
+              Track draft through paid, and spot overdue invoices early.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {STATUSES.map((status, index) => (
@@ -138,7 +138,7 @@ export function InvoicingCapabilities() {
                   Every payment updates your books
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Multi-currency invoicing and payment recording — posted straight into Accounting &
+                  Multi-currency invoicing and payment recording: posted straight into Accounting &
                   Finance. No duplicate entry.
                 </p>
               </div>

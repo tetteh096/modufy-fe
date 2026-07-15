@@ -160,7 +160,7 @@ export function PricingPageView() {
         </div>
       </section>
 
-      <section className="section-padding border-t border-border bg-[#faf8f5]">
+      <section className="section-padding border-t border-border bg-[#f5f6f3]">
         <div className="container-site">
           <FadeIn className="mb-12 max-w-xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-leaf-green">
