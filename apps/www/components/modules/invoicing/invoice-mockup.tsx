@@ -9,12 +9,12 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { Check, MessageCircle, RefreshCw, ShieldCheck } from "lucide-react";
+import { Check, MessageCircle, RefreshCw } from "lucide-react";
 
 const LINE_ITEMS = [
-  { name: "Wireless barcode scanner", qty: 2, amount: "GHS 1,240.00" },
-  { name: "Shelf restock kit", qty: 1, amount: "GHS 380.00" },
-  { name: "On-site setup", qty: 1, amount: "GHS 450.00" },
+  { name: "Wireless barcode scanner", qty: 2, amount: "$1,240.00" },
+  { name: "Shelf restock kit", qty: 1, amount: "$380.00" },
+  { name: "On-site setup", qty: 1, amount: "$450.00" },
 ] as const;
 
 export function InvoiceMockup() {
@@ -54,7 +54,7 @@ export function InvoiceMockup() {
       ref={containerRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="relative mx-auto w-full max-w-[520px]"
+      className="relative mx-auto w-full max-w-[480px]"
     >
       <div className="absolute -left-6 top-10 h-40 w-40 rounded-full bg-[#467434]/35 blur-[70px]" />
       <div className="absolute -right-4 bottom-8 h-44 w-44 rounded-full bg-[#F58F20]/25 blur-[80px]" />
@@ -94,8 +94,8 @@ export function InvoiceMockup() {
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div>
                 <p className="font-semibold uppercase tracking-[0.14em] text-muted-foreground">Bill to</p>
-                <p className="mt-1 font-semibold text-[#1a2744]">Accra Retail Hub</p>
-                <p className="text-muted-foreground">Kwame Mensah</p>
+                <p className="mt-1 font-semibold text-[#1a2744]">Riverfront Retail</p>
+                <p className="text-muted-foreground">Alex Rivera</p>
               </div>
               <div className="text-right">
                 <p className="font-semibold uppercase tracking-[0.14em] text-muted-foreground">Dates</p>
@@ -124,10 +124,8 @@ export function InvoiceMockup() {
 
             <div className="space-y-1.5 text-xs">
               {[
-                ["Subtotal", "GHS 2,070.00"],
-                ["VAT 15%", "GHS 310.50"],
-                ["NHIL 2.5%", "GHS 51.75"],
-                ["GETFund 2.5%", "GHS 51.75"],
+                ["Subtotal", "$2,070.00"],
+                ["Tax", "$310.50"],
               ].map(([label, value]) => (
                 <div key={label} className="flex items-center justify-between text-muted-foreground">
                   <span>{label}</span>
@@ -136,15 +134,8 @@ export function InvoiceMockup() {
               ))}
               <div className="flex items-center justify-between border-t border-border pt-2 text-sm font-bold text-[#1a2744]">
                 <span>Total</span>
-                <span>GHS 2,484.00</span>
+                <span>$2,484.00</span>
               </div>
-            </div>
-
-            <div className="flex items-center gap-2 rounded-xl border border-brand-leaf-green/20 bg-brand-leaf-green/5 px-3 py-2.5 text-xs text-brand-leaf-green">
-              <ShieldCheck className="h-4 w-4 shrink-0" />
-              <span>
-                GRA E-VAT <span className="font-semibold">approved · EV-78421</span>
-              </span>
             </div>
           </div>
         </div>
@@ -186,7 +177,7 @@ export function InvoiceMockup() {
               className="mt-2 flex items-center gap-1.5 text-[11px] text-brand-leaf-green"
             >
               <Check className="h-3.5 w-3.5" />
-              GHS 2,484.00 posted
+              $2,484.00 posted
             </motion.div>
           )}
         </motion.div>

@@ -98,12 +98,19 @@ export const modufyModules: ModufyModule[] = [
     seo: {
       title: "Invoicing & Billing Software for Growing Businesses",
       description:
-        "Create branded invoices, send payment reminders, track invoice statuses, record payments, and manage Ghana VAT and E-VAT workflows with Modufy.",
-      keywords: ["invoicing software", "billing", "quotes", "payment tracking", "VAT invoices Ghana", "E-VAT"],
+        "Create branded invoices, send payment reminders, track invoice statuses, and sync every payment into your books with Modufy Invoicing.",
+      keywords: [
+        "invoicing software",
+        "billing",
+        "quotes",
+        "payment tracking",
+        "multi-currency invoices",
+        "accounts sync",
+      ],
     },
     heroTitle: "Bill professionally. Get paid faster.",
     heroDescription:
-      "From draft to paid — create branded invoices, send automatic payment reminders, generate proforma quotes, and stay compliant with Ghana E-VAT. Every payment flows directly into your books.",
+      "Create branded invoices, send reminders, and sync every payment straight into your books — from draft to paid.",
     overview: [
       "Invoicing turns informal sales into formal documents your customers trust. Line items can come from your inventory catalog or be entered manually.",
       "When a payment lands, Accounts updates automatically. No duplicate entry between billing and bookkeeping.",
@@ -114,13 +121,13 @@ export const modufyModules: ModufyModule[] = [
       "Send via WhatsApp, SMS, email, or shareable link",
       "Proforma quotes that convert to invoices in one click",
       "Multi-currency invoices and payment recording",
-      "Ghana VAT, NHIL, and GETFund line breakdown",
-      "GRA E-VAT transmission and approval codes",
+      "Automatic sync into Accounting & Finance",
+      "Payment reminders and shareable invoice links",
     ],
     whoItsFor: [
       "B2B suppliers and wholesalers sending formal bills",
       "Freelancers and agencies converting quotes to invoices",
-      "Businesses that need VAT-compliant documents in Ghana",
+      "Growing teams that need clear payment tracking",
     ],
     connectsWith: ["core", "inventory", "accounts", "marketing"],
   },
@@ -259,24 +266,24 @@ export const modufyModules: ModufyModule[] = [
     imageAlt: "Modufy online storefront",
 
     seo: {
-      title: "Online Storefront & Marketplace for Growing Businesses",
+      title: "Online Storefront for Growing Businesses",
       description:
-        "Publish a branded storefront at your Modufy link. List products and services from Inventory, take guest orders and enquiries, run promotions, collect reviews, and manage orders in one place.",
+        "Customize and publish a branded Modufy storefront. Sync products from Inventory, take guest orders and enquiries, run promotions, and collect reviews — without building a website from scratch.",
       keywords: [
         "online storefront",
         "small business website",
         "sell online",
         "service booking page",
         "product catalog online",
-        "Modufy marketplace",
+        "Modufy storefront",
       ],
     },
-    heroTitle: "Your business online — without building a website.",
+    heroTitle: "Your vision. Your storefront — live.",
     heroDescription:
-      "A public page at your Modufy link. List products and services from Inventory, take orders and enquiries, run promotions, and collect reviews.",
+      "Customize branding, sync products from Inventory, and publish a public page to browse, book, and buy — without building a website from scratch.",
     overview: [
-      "Marketplace is your customer-facing storefront. It adapts to product businesses and service businesses from the same catalog you already manage.",
-      "Promotions, coupons, portfolio galleries, and an enquiry inbox turn a simple catalog into a full commercial presence.",
+      "Storefront is your customer-facing page. It adapts to product businesses and service businesses from the same catalog you already manage.",
+      "Promotions, enquiries, and reviews turn a simple catalog into a full commercial presence — without a separate website project.",
     ],
     capabilities: [
       "Publish/unpublish storefront with your branding",
@@ -288,7 +295,7 @@ export const modufyModules: ModufyModule[] = [
       "Order management linked to customer records",
     ],
     whoItsFor: [
-      "Retailers who want online orders without Shopify complexity",
+      "Retailers who want online orders without website complexity",
       "Service businesses needing a booking and portfolio page",
       "Brands that outgrew Instagram DMs for sales",
     ],
@@ -317,9 +324,9 @@ export const modufyModules: ModufyModule[] = [
         "SMS wallet",
       ],
     },
-    heroTitle: "Reach your customers where they already are.",
+    heroTitle: "Unify your messaging. Reach customers who already know you.",
     heroDescription:
-      "Build segments from your customer book, choose a template, and send — with opt-out handling and SMS wallet tracking built in.",
+      "Segments from your customer book. SMS or email. Opt-outs and wallet tracking — without leaving Modufy.",
     overview: [
       "Marketing is for outbound campaigns, while Core handles one-to-one messages. Together they cover transactional and promotional communication.",
       "Segments are saved audience rules evaluated at send time, so your lists stay fresh without manual exports.",
@@ -335,8 +342,8 @@ export const modufyModules: ModufyModule[] = [
     ],
     whoItsFor: [
       "Shops running seasonal promotions to past buyers",
-      "Salons sending appointment reminders and offers",
-      "Any business with a customer list ready to re-engage",
+      "Salons sending offers and rebooking nudges",
+      "Any team with a customer list ready to re-engage",
     ],
     connectsWith: ["core", "invoices", "marketplace", "appointments"],
   },

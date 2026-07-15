@@ -10,18 +10,12 @@ export function InvoicingHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f7f4ef] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
-      <div className="texture-noise pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f6f6f4] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
+      <div className="texture-noise pointer-events-none absolute inset-0 opacity-40" aria-hidden />
       <motion.div
-        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-leaf-green/15 blur-[90px]"
+        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-leaf-green/12 blur-[90px]"
         animate={reduceMotion ? undefined : { x: [0, 24, 0], y: [0, 16, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      />
-      <motion.div
-        className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-[#F58F20]/12 blur-[100px]"
-        animate={reduceMotion ? undefined : { x: [0, -20, 0], y: [0, -18, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden
       />
 
@@ -45,17 +39,17 @@ export function InvoicingHero() {
         </nav>
 
         <div className="mt-10 grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-6">
-            <motion.span
+          <div className="lg:col-span-5">
+            <motion.p
               initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center rounded-full border border-brand-leaf-green/20 bg-brand-leaf-green/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-leaf-green"
+              className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#1a2744]/55"
             >
-              Paid module
-            </motion.span>
+              Modufy Invoicing
+            </motion.p>
 
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#1a2744] sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#1a2744] sm:text-5xl lg:text-[3.35rem]">
               <motion.span
                 className="block"
                 initial={reduceMotion ? false : { opacity: 0, y: 24 }}
@@ -75,14 +69,13 @@ export function InvoicingHero() {
             </h1>
 
             <motion.p
-              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg"
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.28 }}
             >
-              From draft to paid — create branded invoices, send automatic payment reminders,
-              generate proforma quotes, and stay compliant with Ghana E-VAT. Every payment flows
-              directly into your books.
+              Create branded invoices, send reminders, and sync every payment straight into your
+              books — from draft to paid.
             </motion.p>
 
             <motion.div
@@ -116,7 +109,7 @@ export function InvoicingHero() {
           </div>
 
           <motion.div
-            className="lg:col-span-6"
+            className="lg:col-span-7"
             initial={reduceMotion ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}

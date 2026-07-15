@@ -10,78 +10,67 @@ export function MarketingHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#f7f4ef] pb-12 pt-28 sm:-mt-[6.25rem] sm:pb-16 sm:pt-32">
-      <div className="texture-noise pointer-events-none absolute inset-0 opacity-60" aria-hidden />
-      <motion.div
-        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-leaf-green/15 blur-[90px]"
-        animate={reduceMotion ? undefined : { x: [0, 24, 0], y: [0, 16, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      />
-      <motion.div
-        className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-brand-tangerine/12 blur-[100px]"
-        animate={reduceMotion ? undefined : { x: [0, -20, 0], y: [0, -18, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      />
+    <section className="relative -mt-[5.75rem] overflow-hidden bg-[#121212] pb-14 pt-28 text-white sm:-mt-[6.25rem] sm:pb-20 sm:pt-32">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_15%_20%,rgba(70,116,52,0.28),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_85%_70%,rgba(245,143,32,0.12),transparent)]" />
+      <div className="texture-noise pointer-events-none absolute inset-0 opacity-30 mix-blend-soft-light" aria-hidden />
 
       <div className="container-site relative">
-        <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
+        <nav aria-label="Breadcrumb" className="text-sm text-white/45">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="transition hover:text-brand-leaf-green">
+              <Link href="/" className="transition hover:text-white">
                 Home
               </Link>
             </li>
-            <li className="text-border">/</li>
+            <li>/</li>
             <li>
-              <Link href="/modules" className="transition hover:text-brand-leaf-green">
+              <Link href="/modules" className="transition hover:text-white">
                 Modules
               </Link>
             </li>
-            <li className="text-border">/</li>
-            <li className="font-medium text-[#1a2744]">Marketing Campaigns</li>
+            <li>/</li>
+            <li className="font-medium text-white/80">Marketing</li>
           </ol>
         </nav>
 
-        <div className="mt-10 grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-6">
-            <motion.span
+        <div className="mt-10 grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <motion.p
               initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center rounded-full border border-brand-leaf-green/20 bg-brand-leaf-green/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-leaf-green"
+              className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50"
             >
-              Paid module
-            </motion.span>
+              Modufy Marketing
+            </motion.p>
 
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-[#1a2744] sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
               <motion.span
                 className="block"
                 initial={reduceMotion ? false : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.08 }}
               >
-                Reach your customers
+                Unify your messaging.
               </motion.span>
               <motion.span
-                className="mt-1 block text-gradient-leaf"
+                className="mt-1 block text-brand-leaf-green"
                 initial={reduceMotion ? false : { opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.18 }}
               >
-                where they already are.
+                Reach customers who already know you.
               </motion.span>
             </h1>
 
             <motion.p
-              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              className="mt-5 max-w-md text-base leading-relaxed text-white/60 sm:text-lg"
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.28 }}
             >
-              Build segments from your customer book, choose a template, and send SMS or email —
-              with opt-out handling, delivery rollups, and SMS wallet tracking built in.
+              Segments from your customer book. SMS or email. Opt-outs and wallet tracking —
+              without leaving Modufy.
             </motion.p>
 
             <motion.div
@@ -93,28 +82,35 @@ export function MarketingHero() {
               <Button href={appPath("/register")} size="lg" external variant="secondary">
                 Start free trial
               </Button>
-              <Button href="/demo" variant="outline" size="lg">
+              <Button
+                href="/demo"
+                size="lg"
+                variant="outline"
+                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              >
                 Book a demo
               </Button>
             </motion.div>
 
             <motion.p
-              className="mt-4 text-sm text-muted-foreground"
+              className="mt-4 text-sm text-white/45"
               initial={reduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.48 }}
             >
-              No card required. Start with Modufy Core free.
+              No card required · start with Core free
             </motion.p>
           </div>
 
           <motion.div
-            className="lg:col-span-6"
-            initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+            className="lg:col-span-7"
+            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
           >
-            <CampaignMockup />
+            <div className="relative rounded-[2rem] bg-gradient-to-b from-white/10 to-transparent p-2 sm:p-3">
+              <CampaignMockup />
+            </div>
           </motion.div>
         </div>
       </div>

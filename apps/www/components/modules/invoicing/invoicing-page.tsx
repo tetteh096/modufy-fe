@@ -2,13 +2,12 @@ import { InvoicingCapabilities } from "@/components/modules/invoicing/invoicing-
 import { InvoicingHero } from "@/components/modules/invoicing/invoicing-hero";
 import { InvoicingInteractivePreview } from "@/components/modules/invoicing/invoicing-interactive-preview";
 import {
-  InvoicingAudienceSection,
   InvoicingComparisonSection,
   InvoicingConnectionsSection,
   InvoicingFinalCta,
-  InvoicingGhanaSection,
   InvoicingPricingSection,
-  InvoicingTestimonialsSection,
+  InvoicingSpotlightSection,
+  InvoicingVisualFeatures,
 } from "@/components/modules/invoicing/invoicing-sections";
 import { InvoicingTrustStrip } from "@/components/modules/invoicing/invoicing-trust-strip";
 import { InvoicingWorkflow } from "@/components/modules/invoicing/invoicing-workflow";
@@ -18,14 +17,13 @@ export function InvoicingPage() {
     <>
       <InvoicingHero />
       <InvoicingTrustStrip />
+      <InvoicingSpotlightSection />
       <InvoicingWorkflow />
       <InvoicingCapabilities />
+      <InvoicingVisualFeatures />
       <InvoicingInteractivePreview />
-      <InvoicingGhanaSection />
-      <InvoicingAudienceSection />
       <InvoicingConnectionsSection />
       <InvoicingComparisonSection />
-      <InvoicingTestimonialsSection />
       <InvoicingPricingSection />
       <InvoicingFinalCta />
     </>

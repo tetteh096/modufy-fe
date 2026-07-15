@@ -23,34 +23,25 @@ export function MarketingWorkflow() {
   const progressWidth = useTransform(progressPercent, (value) => `${value}%`);
 
   return (
-    <section className="section-padding bg-[#fdfbf8]">
-      <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+    <section className="section-padding bg-white">
+      <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
         <FadeIn className="lg:col-span-5">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
-            What Marketing does
+            How it works
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Campaigns for the crowd. Core for the one-to-one.
+            Segment. Send. See what landed.
           </h2>
-          <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
-            <p>
-              Marketing handles outbound SMS and email. Core keeps personal replies and transactional
-              notes in context.
-            </p>
-            <p>
-              Segments are saved audience rules evaluated at send time — so your lists stay fresh
-              without manual CSV exports.
-            </p>
-            <p>
-              Every send respects suppression and opt-outs before a single message leaves your wallet.
-            </p>
-          </div>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+            Marketing handles outbound SMS and email. Core keeps one-to-one replies in context.
+            Opt-outs are filtered before anything leaves your wallet.
+          </p>
         </FadeIn>
 
         <FadeIn delay={0.08} className="lg:col-span-7">
           <div
             ref={ref}
-            className="rounded-[1.75rem] border border-border bg-white p-6 shadow-sm sm:p-8"
+            className="rounded-[1.75rem] border border-border bg-[#faf8f5] p-6 shadow-sm sm:p-8"
           >
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
               Campaign flow
@@ -80,11 +71,10 @@ export function MarketingWorkflow() {
               </div>
             </div>
 
-            <ol className="relative space-y-4 md:hidden">
-              <div className="absolute bottom-3 left-[15px] top-3 w-px bg-[#efece6]" />
+            <ol className="space-y-3 md:hidden">
               {STAGES.map((stage, index) => (
-                <li key={stage} className="relative flex items-center gap-4 pl-1">
-                  <span className="z-10 flex h-8 w-8 items-center justify-center rounded-full border border-brand-leaf-green/30 bg-brand-leaf-green/10 text-xs font-bold text-brand-leaf-green">
+                <li key={stage} className="flex items-center gap-3">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-leaf-green/10 text-[11px] font-bold text-brand-leaf-green">
                     {index + 1}
                   </span>
                   <span className="text-sm font-semibold text-[#1a2744]">{stage}</span>
@@ -116,12 +106,12 @@ function StageCard({
   return (
     <motion.div
       style={reduceMotion ? undefined : { opacity, scale }}
-      className="rounded-2xl border border-border bg-[#faf8f5] px-2 py-4 text-center"
+      className="rounded-xl border border-border bg-white px-1.5 py-3 text-center"
     >
       <p className="text-[10px] font-bold uppercase tracking-wider text-brand-leaf-green">
         0{index + 1}
       </p>
-      <p className="mt-1 text-xs font-semibold leading-snug text-[#1a2744]">{stage}</p>
+      <p className="mt-1 text-[11px] font-semibold leading-snug text-[#1a2744]">{stage}</p>
     </motion.div>
   );
 }

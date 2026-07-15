@@ -9,35 +9,31 @@ type Status = (typeof STATUSES)[number];
 
 const STATUS_META: Record<
   Status,
-  { badge: string; badgeClass: string; paid: number; note: string; code: string }
+  { badge: string; badgeClass: string; paid: number; note: string }
 > = {
   Draft: {
     badge: "Draft",
     badgeClass: "bg-[#f4f1ea] text-[#6f6f6f]",
     paid: 0,
     note: "Ready to review before sending",
-    code: "—",
   },
   Sent: {
     badge: "Sent",
     badgeClass: "bg-blue-50 text-blue-700",
     paid: 0,
     note: "Awaiting customer payment",
-    code: "EV-78421",
   },
   Paid: {
     badge: "Paid",
     badgeClass: "bg-brand-leaf-green/15 text-brand-leaf-green",
     paid: 2484,
     note: "Full payment recorded and synced",
-    code: "EV-78421",
   },
   Overdue: {
     badge: "Overdue",
     badgeClass: "bg-red-50 text-red-600",
     paid: 800,
     note: "Partial payment · reminder scheduled",
-    code: "EV-78421",
   },
 };
 
@@ -97,7 +93,7 @@ export function InvoicingInteractivePreview() {
           <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white text-[#1a2744] shadow-2xl">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4 sm:px-6">
               <div>
-                <p className="text-sm font-bold">INV-2048 · Accra Retail Hub</p>
+                <p className="text-sm font-bold">INV-2048 · Riverfront Retail</p>
                 <p className="text-xs text-muted-foreground">Issued 12 Mar 2026 · Due 26 Mar 2026</p>
               </div>
               <AnimatePresence mode="wait">
@@ -121,39 +117,34 @@ export function InvoicingInteractivePreview() {
                 <ul className="mt-3 space-y-2 text-sm">
                   <li className="flex justify-between gap-4">
                     <span>Wireless barcode scanner × 2</span>
-                    <span className="font-semibold">GHS 1,240</span>
+                    <span className="font-semibold">$1,240</span>
                   </li>
                   <li className="flex justify-between gap-4">
                     <span>Shelf restock kit × 1</span>
-                    <span className="font-semibold">GHS 380</span>
+                    <span className="font-semibold">$380</span>
                   </li>
                   <li className="flex justify-between gap-4">
                     <span>On-site setup × 1</span>
-                    <span className="font-semibold">GHS 450</span>
+                    <span className="font-semibold">$450</span>
                   </li>
                 </ul>
               </div>
 
               <div className="rounded-2xl bg-[#f7f5f1] p-4">
                 <div className="space-y-1.5 text-sm">
-                  <Row label="Subtotal" value="GHS 2,070.00" />
-                  <Row label="VAT 15%" value="GHS 310.50" />
-                  <Row label="NHIL 2.5%" value="GHS 51.75" />
-                  <Row label="GETFund 2.5%" value="GHS 51.75" />
+                  <Row label="Subtotal" value="$2,070.00" />
+                  <Row label="Tax" value="$310.50" />
                   <div className="flex justify-between border-t border-border pt-2 font-bold">
                     <span>Total</span>
-                    <span>GHS 2,484.00</span>
+                    <span>$2,484.00</span>
                   </div>
                 </div>
                 <div className="mt-4 rounded-xl border border-border bg-white p-3">
                   <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                     Payments recorded
                   </p>
-                  <p className="mt-1 text-xl font-bold text-brand-leaf-green">GHS {paidLabel}</p>
+                  <p className="mt-1 text-xl font-bold text-brand-leaf-green">${paidLabel}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{meta.note}</p>
-                  <p className="mt-2 text-xs text-[#1a2744]">
-                    GRA approval: <span className="font-semibold">{meta.code}</span>
-                  </p>
                 </div>
               </div>
             </div>

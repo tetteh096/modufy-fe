@@ -1,205 +1,180 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
-import {
-  ArrowRight,
-  Building2,
-  Check,
-  Package,
-  Sparkles,
-  Users,
-  Wallet,
-  X,
-} from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Button } from "@/components/ui/button";
+import { homeImages } from "@/lib/home-images";
 import { appPath } from "@/lib/site-config";
 
-const GHANA_NODES = [
-  "Invoice created",
-  "Tax calculated",
-  "Sent to GRA",
-  "Approved",
-  "Shared with customer",
-] as const;
-
-const AUDIENCES = [
+const BENEFITS = [
   {
-    title: "B2B suppliers and wholesalers",
-    copy: "Send formal invoices, track partial payments, and manage high-volume customer accounts.",
-    icon: Building2,
+    title: "Send once. Track everywhere.",
+    copy: "Share invoices by WhatsApp, email, SMS, or link — and see when they are viewed, overdue, or paid.",
   },
   {
-    title: "Freelancers and agencies",
-    copy: "Turn estimates into invoices and present your work professionally.",
-    icon: Sparkles,
+    title: "Payments update your books",
+    copy: "When a payment lands, Accounting syncs automatically. No duplicate entry between billing and books.",
   },
   {
-    title: "VAT-registered businesses",
-    copy: "Create structured tax documents and maintain clear transaction records.",
-    icon: Wallet,
+    title: "Quotes become invoices",
+    copy: "Convert a proforma to a branded invoice in one click, keeping the same customer history.",
   },
 ] as const;
 
-const CONNECTIONS = [
-  {
-    slug: "core",
-    name: "Modufy Core",
-    detail: "Supplies customers and sales information",
-    icon: Users,
-  },
-  {
-    slug: "inventory",
-    name: "Inventory & Stock",
-    detail: "Supplies products, services, and pricing",
-    icon: Package,
-  },
-  {
-    slug: "accounts",
-    name: "Accounting & Finance",
-    detail: "Records invoice payments automatically",
-    icon: Wallet,
-  },
-  {
-    slug: "marketing",
-    name: "Marketing Campaigns",
-    detail: "Helps follow up with customers",
-    icon: Sparkles,
-  },
-] as const;
-
-const BEFORE = [
-  "Manual Word documents",
-  "Unclear payment status",
-  "Re-entering transactions",
-  "Missing tax breakdowns",
-  "Payment follow-ups done manually",
-] as const;
-
-const AFTER = [
-  "Branded automated invoices",
-  "Real-time payment tracking",
-  "Accounts update automatically",
-  "Ghana tax breakdowns included",
-  "Automated reminders and easy sharing",
-] as const;
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Our invoices finally look as professional as our shop. Customers pay faster because the document is clear, and we always know what is outstanding.",
-    name: "Ama Owusu",
-    role: "Owner, Meridian Apothecary",
-    initials: "AO",
-  },
-  {
-    quote:
-      "We stopped copying payments into a spreadsheet. When an invoice is marked paid in Modufy, the books are already updated.",
-    name: "Kojo Adjei",
-    role: "Operations lead, Northline Wholesale",
-    initials: "KA",
-  },
-] as const;
-
-export function InvoicingGhanaSection() {
+export function InvoicingSpotlightSection() {
   const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section-padding bg-[#faf8f5]">
-      <div className="container-site">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
-            Ghana compliance
+    <section className="relative overflow-hidden bg-[#0b0b0b] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_20%_40%,rgba(70,116,52,0.22),transparent)]" />
+      <div className="container-site relative py-16 sm:py-20 lg:py-24">
+        <FadeIn className="max-w-2xl">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50">
+            Modufy Invoicing
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Designed for the way businesses invoice in Ghana.
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]">
+            Billing that keeps your business moving
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Modufy supports VAT, NHIL, GETFund breakdowns, GRA E-VAT transmission workflows, and
-            approval codes on professional documents — so your team stays organised without
-            juggling separate tax tools.
-          </p>
-          <p className="mt-3 text-xs text-muted-foreground/80">
-            Features described here are product capabilities. They are not a government certification.
-          </p>
         </FadeIn>
 
-        <div ref={ref} className="mx-auto mt-12 max-w-4xl">
-          <div className="hidden items-start justify-between gap-2 md:flex">
-            {GHANA_NODES.map((node, index) => (
-              <div key={node} className="relative flex flex-1 flex-col items-center text-center">
-                {index < GHANA_NODES.length - 1 && (
-                  <div className="absolute left-1/2 top-4 h-0.5 w-full bg-[#e5e0d6]">
-                    <motion.div
-                      className="h-full bg-brand-leaf-green"
-                      initial={{ width: 0 }}
-                      animate={inView && !reduceMotion ? { width: "100%" } : { width: inView ? "100%" : 0 }}
-                      transition={{ duration: 0.45, delay: index * 0.25 }}
-                    />
-                  </div>
-                )}
-                <motion.span
-                  className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-brand-leaf-green bg-white text-xs font-bold text-brand-leaf-green"
-                  initial={{ scale: 0.7, opacity: 0.4 }}
-                  animate={inView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ delay: index * 0.25, duration: 0.35 }}
-                >
-                  <Check className="h-4 w-4" />
-                </motion.span>
-                <p className="mt-3 text-xs font-semibold leading-snug text-[#1a2744]">{node}</p>
+        <div className="mt-12 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <FadeIn>
+            <div className="relative mx-auto max-w-lg">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-[#1a2744]/40 sm:aspect-[5/6]">
+                <Image
+                  src={homeImages.features.invoice}
+                  alt="Professional invoice document in Modufy"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 90vw, 480px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               </div>
-            ))}
-          </div>
 
-          <ol className="space-y-3 md:hidden">
-            {GHANA_NODES.map((node, index) => (
-              <li
-                key={node}
-                className="flex items-center gap-3 rounded-2xl border border-border bg-white px-4 py-3"
+              <motion.div
+                className="absolute -right-2 top-8 rounded-full bg-brand-leaf-green px-3.5 py-1.5 text-xs font-bold text-white shadow-lg sm:right-4"
+                animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-leaf-green/10 text-xs font-bold text-brand-leaf-green">
-                  {index + 1}
-                </span>
-                <span className="text-sm font-semibold text-[#1a2744]">{node}</span>
-              </li>
-            ))}
-          </ol>
+                Invoice paid
+              </motion.div>
+
+              <motion.div
+                className="absolute -left-2 bottom-16 w-[min(100%,220px)] rounded-2xl border border-white/15 bg-white p-4 text-[#1a2744] shadow-2xl sm:left-4"
+                animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              >
+                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  Total collected
+                </p>
+                <p className="mt-1 text-3xl font-extrabold tracking-tight">$2,484</p>
+                <ul className="mt-3 space-y-2 border-t border-border pt-3 text-xs">
+                  <li className="flex justify-between gap-3">
+                    <span className="text-muted-foreground">Scanner kit</span>
+                    <span className="font-semibold">-$1,240</span>
+                  </li>
+                  <li className="flex justify-between gap-3">
+                    <span className="text-muted-foreground">Restock pack</span>
+                    <span className="font-semibold">-$380</span>
+                  </li>
+                  <li className="flex justify-between gap-3">
+                    <span className="text-muted-foreground">Setup</span>
+                    <span className="font-semibold">-$450</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.08}>
+            <ul className="space-y-8">
+              {BENEFITS.map((item) => (
+                <li key={item.title}>
+                  <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{item.title}</h3>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/60 sm:text-base">
+                    {item.copy}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <Button
+                href={appPath("/register")}
+                size="lg"
+                external
+                variant="outline"
+                className="rounded-full border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              >
+                Start free trial
+              </Button>
+              <Link
+                href="/modules"
+                className="text-sm font-semibold text-white underline underline-offset-4 transition hover:text-brand-leaf-green"
+              >
+                View all modules
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>
   );
 }
 
-export function InvoicingAudienceSection() {
+export function InvoicingVisualFeatures() {
+  const features = [
+    {
+      title: "Invoices that look like your brand",
+      copy: "Logo, colours, and customer details on every PDF your clients receive.",
+      image: homeImages.features.finance,
+      alt: "Finance growth visuals with Modufy invoicing",
+    },
+    {
+      title: "Get paid, stay in sync",
+      copy: "Record payments in any currency — every amount posts straight to Accounts.",
+      image: homeImages.features.payments,
+      alt: "Payment card visual connected to Modufy books",
+    },
+    {
+      title: "Connected to the rest of Modufy",
+      copy: "Pull products from Inventory, follow up in Marketing, keep Core customers in one place.",
+      image: homeImages.integrations,
+      alt: "Modufy modules connected across the platform",
+    },
+  ] as const;
+
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-[#f6f6f4]">
       <div className="container-site">
         <FadeIn className="max-w-xl">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
-            Who it&apos;s for
+            Built to work together
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Built for teams that bill for a living.
+            Less admin. Clearer cash flow.
           </h2>
         </FadeIn>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {AUDIENCES.map((item, index) => (
+        <div className="mt-12 grid gap-8 md:grid-cols-3">
+          {features.map((item, index) => (
             <FadeIn key={item.title} delay={index * 0.06}>
-              <motion.article
-                whileHover={{ y: -4 }}
-                className="h-full rounded-[1.5rem] border border-border bg-white p-6 shadow-sm transition hover:border-brand-leaf-green/25 hover:shadow-lg"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-leaf-green/10 text-brand-leaf-green">
-                  <item.icon className="h-5 w-5" />
-                </span>
+              <article>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#e8e4dc]">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
                 <h3 className="mt-5 text-lg font-bold text-[#1a2744]">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.copy}</p>
-              </motion.article>
+              </article>
             </FadeIn>
           ))}
         </div>
@@ -210,86 +185,97 @@ export function InvoicingAudienceSection() {
 
 export function InvoicingConnectionsSection() {
   const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  const connections = [
+    { slug: "core", name: "Modufy Core", detail: "Customers and sales history" },
+    { slug: "inventory", name: "Inventory", detail: "Products and pricing" },
+    { slug: "accounts", name: "Accounting", detail: "Payments land in books" },
+    { slug: "marketing", name: "Marketing", detail: "Follow-ups that convert" },
+  ] as const;
 
   return (
-    <section className="relative overflow-hidden section-padding bg-[#122038] text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(70,116,52,0.22),transparent)]" />
-      <div className="container-site relative">
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-tangerine">
+    <section className="section-padding">
+      <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <FadeIn>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Connected modules
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Invoicing sits at the centre of how money moves.
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
+            Invoicing sits where money moves.
           </h2>
-        </FadeIn>
-
-        <div ref={ref} className="mx-auto mt-12 max-w-4xl">
-          <div className="relative grid gap-4 sm:grid-cols-2">
-            {CONNECTIONS.map((item, index) => (
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+            One invoice record ties customers, stock, payments, and follow-ups together — so nothing
+            lives in a separate spreadsheet.
+          </p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {connections.map((item, index) => (
               <motion.div
                 key={item.slug}
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.08, duration: 0.45 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.06, duration: 0.4 }}
               >
                 <Link
                   href={`/modules/${item.slug}`}
-                  className="group flex h-full items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-brand-leaf-green/40 hover:bg-white/10"
+                  className="group block rounded-2xl border border-border bg-white p-4 transition hover:border-brand-leaf-green/30 hover:shadow-md"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-leaf-green/15 text-brand-leaf-green">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="font-semibold group-hover:text-[#c5e4b0]">{item.name}</p>
-                    <p className="mt-1 text-sm text-white/55">{item.detail}</p>
-                  </div>
+                  <p className="font-semibold text-[#1a2744] group-hover:text-brand-leaf-green">
+                    {item.name}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
                 </Link>
               </motion.div>
             ))}
-
-            <motion.div
-              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brand-leaf-green/40 bg-[#1a2744] text-center shadow-xl sm:flex"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={inView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ delay: 0.25, duration: 0.4 }}
-            >
-              <span className="text-[10px] font-bold uppercase leading-tight tracking-wider text-brand-leaf-green">
-                Invoicing
-              </span>
-            </motion.div>
           </div>
-        </div>
+        </FadeIn>
+
+        <FadeIn delay={0.08}>
+          <div className="relative aspect-[5/4] overflow-hidden rounded-[1.75rem]">
+            <Image
+              src={homeImages.hero.dashboardDevices}
+              alt="Modufy dashboard across devices"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
 
 export function InvoicingComparisonSection() {
+  const before = [
+    "Manual documents and unclear status",
+    "Re-entering payments into books",
+    "Follow-ups that slip through cracks",
+  ] as const;
+  const after = [
+    "Branded invoices with live status",
+    "Accounts update automatically",
+    "Reminders and easy sharing built in",
+  ] as const;
+
   return (
     <section className="section-padding bg-[#fdfbf8]">
       <div className="container-site">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
+          <h2 className="text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
             Before & after
-          </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Less admin. Clearer payments.
           </h2>
         </FadeIn>
 
-        <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-3xl gap-4 md:grid-cols-2">
           <FadeIn>
             <div className="h-full rounded-[1.5rem] border border-border bg-white p-6">
               <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                Before Modufy
+                Without Modufy
               </p>
               <ul className="mt-5 space-y-3">
-                {BEFORE.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <X className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
+                {before.map((item) => (
+                  <li key={item} className="text-sm leading-relaxed text-muted-foreground">
                     {item}
                   </li>
                 ))}
@@ -297,14 +283,13 @@ export function InvoicingComparisonSection() {
             </div>
           </FadeIn>
           <FadeIn delay={0.08}>
-            <div className="h-full rounded-[1.5rem] border border-brand-leaf-green/25 bg-brand-leaf-green/[0.04] p-6 shadow-sm">
+            <div className="h-full rounded-[1.5rem] border border-brand-leaf-green/25 bg-brand-leaf-green/[0.04] p-6">
               <p className="text-sm font-bold uppercase tracking-wider text-brand-leaf-green">
                 With Modufy
               </p>
               <ul className="mt-5 space-y-3">
-                {AFTER.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-[#1a2744]">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-leaf-green" />
+                {after.map((item) => (
+                  <li key={item} className="text-sm font-medium leading-relaxed text-[#1a2744]">
                     {item}
                   </li>
                 ))}
@@ -317,63 +302,19 @@ export function InvoicingComparisonSection() {
   );
 }
 
-export function InvoicingTestimonialsSection() {
+export function InvoicingPricingSection() {
   return (
     <section className="section-padding">
-      <div className="container-site">
-        <FadeIn className="max-w-xl">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
-            Customer voices
-          </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Professional billing without the spreadsheet scramble.
-          </h2>
-        </FadeIn>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {TESTIMONIALS.map((item, index) => (
-            <FadeIn key={item.name} delay={index * 0.06}>
-              <blockquote className="h-full rounded-[1.5rem] border border-border bg-white p-6 shadow-sm sm:p-8">
-                <p className="text-base leading-relaxed text-[#1a2744]">“{item.quote}”</p>
-                <footer className="mt-6 flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-leaf-green/15 text-sm font-bold text-brand-leaf-green">
-                    {item.initials}
-                  </span>
-                  <div>
-                    <p className="font-semibold text-[#1a2744]">{item.name}</p>
-                    <p className="text-sm text-muted-foreground">{item.role}</p>
-                  </div>
-                </footer>
-              </blockquote>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function InvoicingPricingSection() {
-  const reduceMotion = useReducedMotion();
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => setEnabled(true), reduceMotion ? 0 : 900);
-    return () => window.clearTimeout(timer);
-  }, [reduceMotion]);
-
-  return (
-    <section className="section-padding bg-[#faf8f5]">
-      <div className="container-site grid items-center gap-10 lg:grid-cols-2">
+      <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <FadeIn>
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Pricing
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Start free. Add Invoicing when your business is ready.
+            Start free. Add Invoicing when you need it.
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Begin with Modufy Core at no cost, then enable Invoicing as you grow — without migrating
+            Begin with Modufy Core at no cost, then turn on Invoicing as you grow — without migrating
             customers or rebuilding your workflow.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -387,49 +328,25 @@ export function InvoicingPricingSection() {
         </FadeIn>
 
         <FadeIn delay={0.08}>
-          <div className="rounded-[1.75rem] border border-border bg-white p-6 shadow-sm">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-sm font-bold text-[#1a2744]">Invoicing module</p>
-                <p className="text-xs text-muted-foreground">Enable on your account anytime</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setEnabled((value) => !value)}
-                className={`relative h-8 w-14 rounded-full transition ${
-                  enabled ? "bg-brand-leaf-green" : "bg-[#d9d4cb]"
-                }`}
-                aria-pressed={enabled}
-                aria-label="Toggle invoicing module"
-              >
-                <motion.span
-                  className="absolute top-1 h-6 w-6 rounded-full bg-white shadow"
-                  animate={{ left: enabled ? 28 : 4 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 28 }}
-                />
-              </button>
+          <div className="relative aspect-[16/11] overflow-hidden rounded-[1.75rem]">
+            <Image
+              src={homeImages.pages.testimonials}
+              alt="Business teams using Modufy for billing"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#122038]/70 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/15 bg-white/95 p-4 backdrop-blur-sm">
+              <p className="text-sm font-bold text-[#1a2744]">Invoicing module</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Enable anytime — branded invoices, reminders, and accounts sync.
+              </p>
             </div>
-            <AnimatePresenceSwitch enabled={enabled} />
           </div>
         </FadeIn>
       </div>
     </section>
-  );
-}
-
-function AnimatePresenceSwitch({ enabled }: { enabled: boolean }) {
-  return (
-    <div className="mt-5 rounded-2xl bg-[#f7f5f1] p-4 text-sm">
-      {enabled ? (
-        <p className="font-semibold text-brand-leaf-green">
-          Invoicing active — create branded invoices and sync payments to Accounts.
-        </p>
-      ) : (
-        <p className="text-muted-foreground">
-          Module off — you&apos;re still on Core with customers, sales, and expenses.
-        </p>
-      )}
-    </div>
   );
 }
 
@@ -447,19 +364,13 @@ export function InvoicingFinalCta() {
               animate={reduceMotion ? undefined : { y: [0, 16, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
-            <motion.div
-              className="pointer-events-none absolute -right-8 bottom-6 h-44 w-44 rounded-full bg-[#F58F20]/18 blur-[80px]"
-              animate={reduceMotion ? undefined : { y: [0, -14, 0] }}
-              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-            />
 
             <div className="relative z-10">
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Ready to invoice professionally?
               </h2>
-              <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/60">
-                Create trusted documents, track every payment, and keep your books updated
-                automatically.
+              <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/60">
+                Trusted documents. Clear payment status. Books that stay up to date.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Button href={appPath("/register")} size="lg" external variant="secondary">

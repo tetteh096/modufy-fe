@@ -1,12 +1,10 @@
 "use client";
 
 import type { ReactNode } from "react";
-import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import {
   Cake,
   Gift,
-  Link2,
   Mail,
   MessageSquare,
   RefreshCcw,
@@ -15,7 +13,6 @@ import {
   Wallet,
 } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
-import { homeImages } from "@/lib/home-images";
 
 const TEMPLATES = [
   { icon: Gift, label: "Welcome" },
@@ -28,15 +25,14 @@ export function MarketingCapabilities() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding relative overflow-hidden">
-      <div className="texture-noise pointer-events-none absolute inset-0" aria-hidden />
+    <section className="section-padding relative overflow-hidden bg-white">
       <div className="container-site relative">
         <FadeIn className="max-w-2xl">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
             Key capabilities
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#1a2744] sm:text-4xl">
-            Everything you need to message customers with care.
+            Everything you need to message with care.
           </h2>
         </FadeIn>
 
@@ -57,9 +53,7 @@ export function MarketingCapabilities() {
                   key={item.label}
                   className="flex items-center gap-2 rounded-xl border border-border bg-[#faf8f5] px-3 py-3"
                   animate={
-                    reduceMotion
-                      ? undefined
-                      : { y: [0, index % 2 === 0 ? -3 : 3, 0] }
+                    reduceMotion ? undefined : { y: [0, index % 2 === 0 ? -3 : 3, 0] }
                   }
                   transition={{ duration: 3.4 + index * 0.15, repeat: Infinity, ease: "easeInOut" }}
                 >
@@ -80,36 +74,34 @@ export function MarketingCapabilities() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Save rules once. Preview counts before you spend wallet credits.
             </p>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-[#f7f5f1] p-4">
-              <div className="rounded-xl bg-white p-4 shadow-sm">
-                <p className="text-xs font-bold text-[#1a2744]">Bought · last 90 days</p>
-                <div className="mt-3 space-y-2">
-                  <div className="h-2 w-4/5 rounded bg-[#ece8e1]" />
-                  <div className="h-2 w-3/5 rounded bg-[#ece8e1]" />
-                </div>
-                <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
-                  <span className="text-xs text-muted-foreground">Live preview</span>
-                  <span className="text-lg font-bold text-brand-leaf-green">1,284</span>
-                </div>
+            <div className="mt-6 rounded-2xl border border-border bg-[#f7f5f1] p-4">
+              <p className="text-sm font-semibold text-[#1a2744]">Bought · last 90 days</p>
+              <div className="mt-4 flex items-end justify-between">
+                <span className="text-xs text-muted-foreground">Live preview</span>
+                <motion.span
+                  className="text-3xl font-extrabold text-brand-leaf-green"
+                  initial={reduceMotion ? false : { opacity: 0.4 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  1,284
+                </motion.span>
               </div>
             </div>
           </CapabilityShell>
 
           <CapabilityShell className="xl:col-span-2" delay={0.1}>
             <div className="flex gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-[#faf8f5]">
-                <MessageSquare className="h-4 w-4 text-brand-leaf-green" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-leaf-green/10 text-brand-leaf-green">
+                <MessageSquare className="h-4 w-4" />
               </span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-[#faf8f5]">
-                <Mail className="h-4 w-4 text-brand-tangerine" />
-              </span>
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-[#faf8f5]">
-                <Link2 className="h-4 w-4 text-[#1a2744]" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-[#faf8f5] text-[#1a2744]">
+                <Mail className="h-4 w-4" />
               </span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Send on the channels people use</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Send on channels people use</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
-              SMS for urgency. Email for longer offers. Same customer book.
+              SMS for urgency. Email for longer offers.
             </p>
           </CapabilityShell>
 
@@ -120,7 +112,7 @@ export function MarketingCapabilities() {
             </div>
             <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Opt-outs handled automatically</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
-              Suppression lists and email unsubscribe links keep sends respectful.
+              Suppression lists and email unsubscribe links built in.
             </p>
           </CapabilityShell>
 
@@ -129,36 +121,10 @@ export function MarketingCapabilities() {
               <Wallet className="h-5 w-5" />
               <span className="text-xs font-bold uppercase tracking-wider">SMS wallet</span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Credits you can actually track</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Credits you can track</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               See usage before and after each campaign leaves your wallet.
             </p>
-          </CapabilityShell>
-
-          <CapabilityShell className="md:col-span-2 xl:col-span-6" delay={0.22}>
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div className="max-w-xl">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-tangerine">
-                  Delivery clarity
-                </p>
-                <h3 className="mt-3 text-xl font-bold text-[#1a2744]">
-                  Sent, failed, and skipped — in one rollup
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Campaign drafts keep a clear history so your team knows what reached the list and
-                  what was filtered out.
-                </p>
-              </div>
-              <div className="relative h-36 w-full max-w-[220px] shrink-0 overflow-hidden rounded-2xl bg-[#eef4ea] sm:h-40">
-                <Image
-                  src={homeImages.features.marketing}
-                  alt="Marketing campaigns illustration"
-                  fill
-                  className="object-contain p-3"
-                  sizes="220px"
-                />
-              </div>
-            </div>
           </CapabilityShell>
         </div>
       </div>

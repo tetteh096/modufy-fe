@@ -1,18 +1,11 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import {
-  FileText,
-  Link2,
-  Mail,
-  MessageCircle,
-  Phone,
-  Quote,
-  RefreshCw,
-  ShieldCheck,
-} from "lucide-react";
+import { FileText, Link2, Mail, MessageCircle, Phone, Quote, RefreshCw } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
+import { homeImages } from "@/lib/home-images";
 
 const STATUSES = ["Draft", "Sent", "Viewed", "Partial", "Paid", "Overdue"] as const;
 
@@ -20,8 +13,7 @@ export function InvoicingCapabilities() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section-padding relative overflow-hidden">
-      <div className="texture-noise pointer-events-none absolute inset-0" aria-hidden />
+    <section className="section-padding relative overflow-hidden bg-white">
       <div className="container-site relative">
         <FadeIn className="max-w-2xl">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-leaf-green">
@@ -43,26 +35,14 @@ export function InvoicingCapabilities() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Logo, colour theme, and customer details on every branded PDF.
             </p>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-[#f7f5f1] p-4">
-              <div className="rounded-xl bg-white p-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-leaf-green text-xs font-bold text-white">
-                    M
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold text-[#1a2744]">Greenfield Supplies</p>
-                    <p className="text-[11px] text-muted-foreground">Invoice · INV-1182</p>
-                  </div>
-                </div>
-                <div className="mt-4 space-y-2">
-                  <div className="h-2 w-3/4 rounded bg-[#ece8e1]" />
-                  <div className="h-2 w-1/2 rounded bg-[#ece8e1]" />
-                  <div className="mt-3 flex items-end justify-between border-t border-border pt-3">
-                    <span className="text-xs text-muted-foreground">Total due</span>
-                    <span className="text-lg font-bold text-brand-leaf-green">GHS 1,840</span>
-                  </div>
-                </div>
-              </div>
+            <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-2xl">
+              <Image
+                src={homeImages.features.invoice}
+                alt="Branded Modufy invoice preview"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1280px) 50vw, 40vw"
+              />
             </div>
           </CapabilityShell>
 
@@ -116,17 +96,6 @@ export function InvoicingCapabilities() {
           </CapabilityShell>
 
           <CapabilityShell className="xl:col-span-2" delay={0.14}>
-            <div className="flex items-center gap-2 text-brand-leaf-green">
-              <ShieldCheck className="h-5 w-5" />
-              <span className="text-xs font-bold uppercase tracking-wider">Ghana ready</span>
-            </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Built for Ghana tax compliance</h3>
-            <p className="mt-1.5 text-sm text-muted-foreground">
-              VAT, NHIL, GETFund breakdowns with GRA E-VAT submission support.
-            </p>
-          </CapabilityShell>
-
-          <CapabilityShell className="xl:col-span-2" delay={0.18}>
             <div className="flex items-center gap-2">
               <span className="rounded-lg border border-border bg-[#faf8f5] p-2">
                 <Quote className="h-4 w-4 text-brand-tangerine" />
@@ -136,9 +105,25 @@ export function InvoicingCapabilities() {
                 <FileText className="h-4 w-4 text-brand-leaf-green" />
               </span>
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Quotes become invoices instantly</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#1a2744]">Quotes become invoices</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">
               Convert a proforma to an invoice in one click.
+            </p>
+          </CapabilityShell>
+
+          <CapabilityShell className="xl:col-span-2" delay={0.18}>
+            <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-xl">
+              <Image
+                src={homeImages.features.payments}
+                alt="Payment tracking in Modufy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1280px) 50vw, 20vw"
+              />
+            </div>
+            <h3 className="text-lg font-bold text-[#1a2744]">Multi-currency ready</h3>
+            <p className="mt-1.5 text-sm text-muted-foreground">
+              Invoice and record payments in the currencies your customers use.
             </p>
           </CapabilityShell>
 
@@ -161,7 +146,7 @@ export function InvoicingCapabilities() {
                 <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">
                   Latest payment
                 </p>
-                <p className="mt-1 text-2xl font-bold">GHS 2,484.00</p>
+                <p className="mt-1 text-2xl font-bold">$2,484.00</p>
                 <p className="mt-1 text-xs text-brand-leaf-green">Synced to ledger · just now</p>
               </div>
             </div>
