@@ -6,12 +6,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { SectionLabel } from "@/components/home/section-label";
 import { FadeIn } from "@/components/ui/fade-in";
 import { testimonials } from "@/lib/content";
+import { homeImages } from "@/lib/home-images";
 import { cn } from "@/lib/utils";
 
 const testimonialPhotos = [
-  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
+  homeImages.story.support,
+  homeImages.story.salesTeam,
+  homeImages.pages.journey.retail,
 ] as const;
 
 export function TestimonialsSection() {

@@ -30,7 +30,7 @@ export function CtaSection() {
               <div className="relative hidden min-h-[320px] lg:block group">
                 <Image
                   src={homeImages.cta}
-                  alt="Modern office workspace"
+                  alt="Team collaborating on Modufy in Accra"
                   fill
                   className="object-cover opacity-70 transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   sizes="50vw"

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { homeImages } from "@/lib/home-images";
 
 export type HeroSlide = {
   image: string;
@@ -13,25 +14,22 @@ export type HeroSlide = {
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    image:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2400&q=85",
-    alt: "Business team reviewing work in a modern office",
-    eyebrow: "Get set for growth season and save 50%!",
-    headline: ["Pay less.", "Grow more."],
+    image: homeImages.hero.teamMeeting,
+    alt: "Modufy team reviewing live business dashboards together",
+    eyebrow: "Business management for growing teams",
+    headline: ["Run it all.", "In one place."],
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=85",
-    alt: "Business team planning around a workshop table",
-    eyebrow: "All-in-one platform for growing teams",
-    headline: ["Run smarter.", "Scale faster."],
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=2400&q=85",
-    alt: "Operations team discussing business performance",
-    eyebrow: "Sales, ops, and finance in one place",
+    image: homeImages.hero.systemsConnected,
+    alt: "Operator connecting payments, orders, and accounting in Modufy",
+    eyebrow: "Sales, ops, and finance connected",
     headline: ["One platform.", "Every module."],
+  },
+  {
+    image: homeImages.hero.retailModules,
+    alt: "Retailer managing inventory, invoices, and bookings on Modufy",
+    eyebrow: "Inventory, invoices, and bookings",
+    headline: ["Built in pieces.", "Runs as one."],
   },
 ];
 
@@ -65,14 +63,14 @@ export function HeroSliderBackground({
             alt={slide.alt}
             fill
             priority={activeIndex === 0}
-            className="object-cover object-center"
+            className="object-cover object-center brightness-[1.08] contrast-[1.04] saturate-[1.05]"
             sizes="100vw"
           />
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-sea-grey/55 via-brand-sea-grey/45 to-brand-sea-grey/78" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-sea-grey/72 via-brand-sea-grey/38 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/15 to-brand-sea-grey/55" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-sea-grey/45 via-brand-sea-grey/18 to-transparent" />
     </div>
   );
 }
@@ -155,10 +153,10 @@ export function HeroSlideCopy({
         exit={{ opacity: 0, y: -14 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-tangerine drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] sm:text-sm">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-tangerine drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] sm:text-sm">
           {slide.eyebrow}
         </p>
-        <h1 className="mt-3 max-w-2xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.5rem] drop-shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+        <h1 className="mt-3 max-w-2xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.5rem] drop-shadow-[0_4px_20px_rgba(0,0,0,0.55)]">
           <span className="block text-white">{slide.headline[0]}</span>
           <span className="block text-gradient-tangerine leading-none">{slide.headline[1]}</span>
         </h1>

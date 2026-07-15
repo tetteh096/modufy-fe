@@ -36,10 +36,10 @@ export type NavModuleCategory = {
 };
 
 const categoryImages: Record<ModuleCategoryId, { image: string; imageAlt: string }> = {
-  revenue: { image: homeImages.features.pipeline, imageAlt: "Grow revenue with Modufy modules" },
-  operations: { image: homeImages.features.tracking, imageAlt: "Run operations with Modufy" },
-  engage: { image: homeImages.story.support, imageAlt: "Engage customers with Modufy" },
-  finance: { image: homeImages.features.analytics, imageAlt: "Control finances with Modufy" },
+  revenue: { image: homeImages.features.invoice, imageAlt: "Grow revenue with Modufy modules" },
+  operations: { image: homeImages.features.inventory, imageAlt: "Run operations with Modufy" },
+  engage: { image: homeImages.features.appointments, imageAlt: "Engage customers with Modufy" },
+  finance: { image: homeImages.features.finance, imageAlt: "Control finances with Modufy" },
 };
 
 const navCategorySlugs: Record<ModuleCategoryId, string[]> = {

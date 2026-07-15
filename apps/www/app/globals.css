@@ -6,29 +6,62 @@
   --brand-tangerine: #f58f20;
   --brand-leaf-green: #467434;
   --brand-sea-grey: #363636;
+  --background: #fdfbf8;
+  --foreground: #363636;
+  --card: #ffffff;
+  --card-foreground: #363636;
+  --primary: #f58f20;
+  --primary-foreground: #ffffff;
+  --secondary: #e8f0e4;
+  --secondary-foreground: #467434;
+  --muted: #f3f2f0;
+  --muted-foreground: #6f6f6f;
+  --accent: #fef3e8;
+  --accent-foreground: #467434;
+  --border: #e8e6e2;
+  --ring: #f58f20;
+}
+
+.dark {
+  --background: #0f1419;
+  --foreground: #f0eee9;
+  --card: #1a222c;
+  --card-foreground: #f0eee9;
+  --primary: #f58f20;
+  --primary-foreground: #ffffff;
+  --secondary: #1e2e22;
+  --secondary-foreground: #b4d0a6;
+  --muted: #1a222c;
+  --muted-foreground: #9aa3ad;
+  --accent: #2a241c;
+  --accent-foreground: #f58f20;
+  --border: #2a333d;
+  --ring: #f58f20;
+  --brand-sea-grey: #e8e6e2;
 }
 
 @theme inline {
-  --color-background: #fdfbf8;
-  --color-foreground: #363636;
-  --color-card: #ffffff;
-  --color-card-foreground: #363636;
-  --color-primary: #f58f20;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #e8f0e4;
-  --color-secondary-foreground: #467434;
-  --color-muted: #f3f2f0;
-  --color-muted-foreground: #6f6f6f;
-  --color-accent: #fef3e8;
-  --color-accent-foreground: #467434;
-  --color-border: #e8e6e2;
-  --color-ring: #f58f20;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
   --color-brand-tangerine: #f58f20;
   --color-brand-leaf-green: #467434;
-  --color-brand-sea-grey: #363636;
+  --color-brand-sea-grey: var(--brand-sea-grey);
   --color-hero-glow: #f58f20;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-raleway), system-ui, sans-serif;
+  --font-brand: var(--font-archivo-black), var(--font-raleway), system-ui, sans-serif;
   --radius-lg: 1rem;
   --radius-xl: calc(1rem + 4px);
   --radius-2xl: calc(1rem + 8px);
@@ -76,6 +109,13 @@
       linear-gradient(180deg, #fff9f3 0%, #fdfbf8 45%, #f7f5f1 100%);
   }
 
+  .dark .gradient-hero {
+    background:
+      radial-gradient(ellipse 85% 65% at 15% -5%, rgb(245 143 32 / 0.16), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 95% 10%, rgb(70 116 52 / 0.12), transparent 50%),
+      linear-gradient(180deg, #141a22 0%, #0f1419 55%, #0c1116 100%);
+  }
+
   .gradient-brand-cta {
     background: linear-gradient(135deg, #467434 0%, #2f5025 55%, #363636 100%);
   }
@@ -84,6 +124,12 @@
     background:
       radial-gradient(circle at 20% 20%, rgb(245 143 32 / 0.12), transparent 45%),
       linear-gradient(180deg, #eef4ea 0%, #fdfbf8 100%);
+  }
+
+  .dark .gradient-testimonials {
+    background:
+      radial-gradient(circle at 20% 20%, rgb(245 143 32 / 0.1), transparent 45%),
+      linear-gradient(180deg, #152018 0%, #0f1419 100%);
   }
 
   .text-gradient-tangerine {
@@ -120,12 +166,21 @@
     mix-blend-mode: multiply;
   }
 
+  .dark .texture-noise {
+    mix-blend-mode: soft-light;
+    opacity: 0.05;
+  }
+
   .section-editorial {
     @apply py-20 md:py-28;
   }
 
   .glass-nav-overlay {
     background: linear-gradient(180deg, rgb(253 251 248 / 0.9) 0%, rgb(253 251 248 / 0) 100%);
+  }
+
+  .dark .glass-nav-overlay {
+    background: linear-gradient(180deg, rgb(15 20 25 / 0.92) 0%, rgb(15 20 25 / 0) 100%);
   }
 
   @keyframes marquee {

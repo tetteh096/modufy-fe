@@ -47,14 +47,22 @@ export const modufyModules: ModufyModule[] = [
     tier: "core",
     icon: Users,
     image: homeImages.features.pipeline,
-    imageAlt: "Modufy core business dashboard",
+    imageAlt: "Modufy core dashboard on desktop and mobile",
+
     seo: {
-      title: "Core Business Management Software",
+      title: "Core Business Management Software for Growing Teams",
       description:
-        "Modufy Core gives every business customers, sales tracking, expenses, team permissions, branches, and alerts — the foundation all modules build on.",
-      keywords: ["business management software", "CRM", "sales tracking", "expense management", "team permissions"],
+        "Modufy Core is included with every account — manage customers, record sales, track expenses, invite your team, and stay on top of alerts before you add a single paid module.",
+      keywords: [
+        "business management software",
+        "CRM",
+        "sales tracking",
+        "expense management",
+        "team permissions",
+        "Modufy Core",
+      ],
     },
-    heroTitle: "Run your business from one foundation",
+    heroTitle: "Run your business from one foundation.",
     heroDescription:
       "Core is always on. Manage customers, record sales, track expenses, invite your team, and stay on top of what needs attention — before you add a single paid module.",
     overview: [
@@ -84,17 +92,18 @@ export const modufyModules: ModufyModule[] = [
     category: "revenue",
     tier: "paid",
     icon: FileText,
-    image: homeImages.features.analytics,
+    image: homeImages.features.invoice,
     imageAlt: "Modufy invoicing and billing",
+
     seo: {
-      title: "Invoicing & Billing Software",
+      title: "Invoicing & Billing Software for Growing Businesses",
       description:
-        "Send branded invoices, track payments, manage quotes, and stay tax-ready with Modufy Invoicing. Integrates with inventory and accounts.",
-      keywords: ["invoicing software", "billing", "quotes", "payment tracking", "VAT invoices Ghana"],
+        "Create branded invoices, send payment reminders, track invoice statuses, record payments, and manage Ghana VAT and E-VAT workflows with Modufy.",
+      keywords: ["invoicing software", "billing", "quotes", "payment tracking", "VAT invoices Ghana", "E-VAT"],
     },
     heroTitle: "Bill professionally. Get paid faster.",
     heroDescription:
-      "From draft to paid — branded PDFs, payment reminders, proforma quotes, and Ghana E-VAT support. Payments flow straight into your books.",
+      "From draft to paid — create branded invoices, send automatic payment reminders, generate proforma quotes, and stay compliant with Ghana E-VAT. Every payment flows directly into your books.",
     overview: [
       "Invoicing turns informal sales into formal documents your customers trust. Line items can come from your inventory catalog or be entered manually.",
       "When a payment lands, Accounts updates automatically. No duplicate entry between billing and bookkeeping.",
@@ -122,13 +131,21 @@ export const modufyModules: ModufyModule[] = [
     category: "operations",
     tier: "paid",
     icon: Package,
-    image: homeImages.features.tracking,
+    image: homeImages.features.inventory,
     imageAlt: "Modufy inventory management",
+
     seo: {
-      title: "Inventory Management Software",
+      title: "Inventory Management Software for Growing Businesses",
       description:
-        "Track products, variants, stock levels, suppliers, and purchase orders. Modufy Inventory feeds invoices, POS, appointments, and your online storefront.",
-      keywords: ["inventory management", "stock control", "SKU tracking", "purchase orders", "retail catalog"],
+        "Track products, services, variants, stock levels, suppliers, and purchase orders. Modufy Inventory feeds invoices, POS, appointments, and your online storefront from one catalog.",
+      keywords: [
+        "inventory management",
+        "stock control",
+        "SKU tracking",
+        "purchase orders",
+        "retail catalog",
+        "low stock alerts",
+      ],
     },
     heroTitle: "Know what you have. Know what you sold.",
     heroDescription:
@@ -160,8 +177,9 @@ export const modufyModules: ModufyModule[] = [
     category: "operations",
     tier: "paid",
     icon: ShoppingBag,
-    image: homeImages.story.salesTeam,
-    imageAlt: "Modufy point of sale register",
+    image: homeImages.features.orders,
+    imageAlt: "Modufy point of sale and order tracking",
+
     seo: {
       title: "Point of Sale (POS) Software",
       description:
@@ -198,8 +216,9 @@ export const modufyModules: ModufyModule[] = [
     category: "engage",
     tier: "paid",
     icon: Calendar,
-    image: homeImages.story.support,
+    image: homeImages.features.appointments,
     imageAlt: "Modufy appointment booking calendar",
+
     seo: {
       title: "Appointment Booking Software",
       description:
@@ -236,15 +255,23 @@ export const modufyModules: ModufyModule[] = [
     category: "revenue",
     tier: "paid",
     icon: Store,
-    image: homeImages.features.marketing,
+    image: homeImages.features.orders,
     imageAlt: "Modufy online storefront",
+
     seo: {
-      title: "Online Storefront & Marketplace",
+      title: "Online Storefront & Marketplace for Growing Businesses",
       description:
-        "Publish a branded storefront at your Modufy link. Customers browse products, book services, place orders, and leave reviews — no account needed.",
-      keywords: ["online storefront", "small business website", "sell online", "service booking page", "product catalog online"],
+        "Publish a branded storefront at your Modufy link. List products and services from Inventory, take guest orders and enquiries, run promotions, collect reviews, and manage orders in one place.",
+      keywords: [
+        "online storefront",
+        "small business website",
+        "sell online",
+        "service booking page",
+        "product catalog online",
+        "Modufy marketplace",
+      ],
     },
-    heroTitle: "Your business online — without building a website",
+    heroTitle: "Your business online — without building a website.",
     heroDescription:
       "A public page at your Modufy link. List products and services from Inventory, take orders and enquiries, run promotions, and collect reviews.",
     overview: [
@@ -275,14 +302,22 @@ export const modufyModules: ModufyModule[] = [
     tier: "paid",
     icon: MessageSquare,
     image: homeImages.features.marketing,
-    imageAlt: "Modufy marketing campaigns",
+    imageAlt: "Modufy marketing campaigns megaphone",
+
     seo: {
-      title: "SMS & Email Marketing Software",
+      title: "SMS & Email Marketing Software for Growing Businesses",
       description:
-        "Send bulk SMS and email campaigns to your Modufy customer book. Templates, audience segments, opt-out compliance, and campaign analytics built in.",
-      keywords: ["SMS marketing", "email campaigns", "customer segments", "bulk messaging", "marketing automation"],
+        "Send SMS and email campaigns from your Modufy customer book. Build segments, use templates with merge tags, track deliveries, and handle opt-outs with SMS wallet tracking built in.",
+      keywords: [
+        "SMS marketing",
+        "email campaigns",
+        "customer segments",
+        "bulk messaging",
+        "marketing automation",
+        "SMS wallet",
+      ],
     },
-    heroTitle: "Reach your customers where they already are",
+    heroTitle: "Reach your customers where they already are.",
     heroDescription:
       "Build segments from your customer book, choose a template, and send — with opt-out handling and SMS wallet tracking built in.",
     overview: [
@@ -314,6 +349,7 @@ export const modufyModules: ModufyModule[] = [
     icon: Wallet,
     image: homeImages.features.analytics,
     imageAlt: "Modufy accounting and finance reports",
+
     seo: {
       title: "Accounting & Bookkeeping Software",
       description:
@@ -350,8 +386,9 @@ export const modufyModules: ModufyModule[] = [
     category: "engage",
     tier: "paid",
     icon: BookOpen,
-    image: homeImages.story.pipeline,
-    imageAlt: "Modufy storefront blog",
+    image: homeImages.features.mobile,
+    imageAlt: "Modufy storefront content and messaging",
+
     seo: {
       title: "Business Blog for Your Storefront",
       description:
@@ -388,8 +425,9 @@ export const modufyModules: ModufyModule[] = [
     category: "finance",
     tier: "paid",
     icon: Bot,
-    image: homeImages.integrations,
-    imageAlt: "Modufy AI assistant",
+    image: homeImages.features.analytics,
+    imageAlt: "Modufy AI assistant analytics",
+
     seo: {
       title: "AI Assistant for Business Operations",
       description:

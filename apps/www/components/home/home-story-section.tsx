@@ -83,7 +83,7 @@ export function HomeStorySection() {
                   src={homeImages.story.support}
                   alt="Customer support professional helping a client"
                   fill
-                  className="object-cover object-[50%_38%] transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                  className="object-cover object-[55%_30%] transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/5" />
@@ -116,7 +116,7 @@ export function HomeStorySection() {
                     src={homeImages.story.salesTeam}
                     alt="Sales team collaborating in the office"
                     fill
-                    className="object-cover object-[48%_35%] transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/sales:scale-[1.04]"
+                    className="object-cover object-[45%_28%] transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/sales:scale-[1.04]"
                     sizes="40vw"
                   />
                 </div>

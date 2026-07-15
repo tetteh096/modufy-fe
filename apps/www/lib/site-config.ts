@@ -12,6 +12,9 @@ export const siteConfig = {
     facebook: "https://facebook.com/",
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/",
+    instagram: "https://instagram.com/",
+    tiktok: "https://www.tiktok.com/",
+    youtube: "https://www.youtube.com/",
   },
   nav: {
     main: [

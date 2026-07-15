@@ -36,7 +36,7 @@ export function IntegrationsSection() {
             <div className="relative min-h-[360px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/30 backdrop-blur group">
               <Image
                 src={homeImages.integrations}
-                alt="Connected apps and integrations"
+                alt="Modufy connecting payments, orders, and accounts"
                 fill
                 className="object-cover opacity-18 transition duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                 sizes="(max-width: 1024px) 100vw, 50vw"

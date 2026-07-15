@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,6 +10,7 @@ import { GlassPill } from "@/components/layout/glass-pill";
 import { AboutNavTrigger } from "@/components/layout/mega-menu-about";
 import { ModulesNavTrigger } from "@/components/layout/mega-menu-features";
 import { ResourcesNavTrigger } from "@/components/layout/mega-menu-resources";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   aboutNavLinks,
@@ -65,7 +66,7 @@ function MobileAccordion({
 }) {
   const [expanded, setExpanded] = useState(defaultOpen);
   return (
-    <div className="rounded-2xl border border-border bg-white/70">
+    <div className="rounded-2xl border border-border bg-white/70 dark:bg-white/5">
       <button
         type="button"
         onClick={() => setExpanded((value) => !value)}
@@ -137,7 +138,7 @@ export function SiteHeader() {
           "mx-auto max-w-7xl overflow-visible rounded-[2rem] px-3 py-2 sm:px-4 sm:py-2.5",
           heroNav
             ? "border-white/25 bg-white/12 text-white shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
-            : "border-white/90 bg-white/92 shadow-[0_8px_40px_rgba(54,54,54,0.14)]"
+            : "border-white/90 bg-white/92 shadow-[0_8px_40px_rgba(54,54,54,0.14)] dark:border-white/15 dark:bg-[#1a222c]/90 dark:shadow-[0_8px_40px_rgba(0,0,0,0.45)]"
         )}
       >
         <div className="flex items-center justify-between gap-3">
@@ -177,6 +178,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle light={heroNav} />
             <Button
               href={appPath("/login")}
               variant="ghost"
@@ -191,18 +193,21 @@ export function SiteHeader() {
             </Button>
           </div>
 
-          <button
-            type="button"
-            className={cn(
-              "inline-flex h-11 w-11 items-center justify-center rounded-full lg:hidden",
-              heroNav ? "text-white hover:bg-white/10" : "text-brand-sea-grey hover:bg-muted"
-            )}
-            onClick={() => setMobileOpen((value) => !value)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <ThemeToggle light={heroNav} />
+            <button
+              type="button"
+              className={cn(
+                "inline-flex h-11 w-11 items-center justify-center rounded-full",
+                heroNav ? "text-white hover:bg-white/10" : "text-brand-sea-grey hover:bg-muted"
+              )}
+              onClick={() => setMobileOpen((value) => !value)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </GlassPill>
 
@@ -215,7 +220,7 @@ export function SiteHeader() {
             transition={{ duration: 0.22 }}
             className="mx-auto mt-3 max-h-[calc(100vh-6rem)] max-w-7xl overflow-y-auto lg:hidden"
           >
-            <GlassPill className="rounded-3xl p-4">
+            <GlassPill className="rounded-3xl p-4 dark:border-white/15 dark:bg-[#1a222c]/95">
               <nav className="space-y-2">
                 <NavTextLink href="/" label="Home" active={isHome} onNavigate={closeMobile} />
 

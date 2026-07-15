@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CorePage } from "@/components/modules/core/core-page";
+import { InventoryPage } from "@/components/modules/inventory/inventory-page";
+import { InvoicingPage } from "@/components/modules/invoicing/invoicing-page";
+import { MarketingPage } from "@/components/modules/marketing/marketing-page";
+import { StorefrontPage } from "@/components/modules/storefront/storefront-page";
 import { ModulePageBody, ModulePageHero } from "@/components/modules/module-detail-sections";
 import { getModuleBySlug, modufyModules } from "@/lib/modules-content";
 import { siteConfig } from "@/lib/site-config";
@@ -66,8 +71,22 @@ export default async function ModuleDetailPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(moduleJsonLd(module)) }}
       />
-      <ModulePageHero module={module} />
-      <ModulePageBody module={module} />
+      {module.slug === "core" ? (
+        <CorePage />
+      ) : module.slug === "invoices" ? (
+        <InvoicingPage />
+      ) : module.slug === "inventory" ? (
+        <InventoryPage />
+      ) : module.slug === "marketing" ? (
+        <MarketingPage />
+      ) : module.slug === "marketplace" ? (
+        <StorefrontPage />
+      ) : (
+        <>
+          <ModulePageHero module={module} />
+          <ModulePageBody module={module} />
+        </>
+      )}
     </>
   );
 }
