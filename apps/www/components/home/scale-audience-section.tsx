@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
-import { homeImages } from "@/lib/home-images";
 
 const STORIES = [
   {
     title: "Get started fast",
     eyebrow: "Solo & early stage",
-    image: homeImages.pages.testimonials,
+    image: "/landingscroll/modu/solo.jpg",
     imageAlt: "Founder launching a small business with Modufy",
     body: (
       <>
@@ -21,7 +20,7 @@ const STORIES = [
   {
     title: "Grow as big as you want",
     eyebrow: "Scaling teams",
-    image: homeImages.pages.journey.retail,
+    image: "/landingscroll/modu/grow.jpg",
     imageAlt: "Growing retail operations powered by Modufy",
     body: (
       <>
@@ -34,7 +33,7 @@ const STORIES = [
   {
     title: "Raise the bar",
     eyebrow: "Established ops",
-    image: homeImages.story.salesTeam,
+    image: "/landingscroll/modu/team.jpg",
     imageAlt: "Established team using Modufy across operations",
     body: (
       <>

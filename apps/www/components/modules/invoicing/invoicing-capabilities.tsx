@@ -138,16 +138,20 @@ export function InvoicingCapabilities() {
                   Every payment updates your books
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Multi-currency invoicing and payment recording: posted straight into Accounting &
+                  Multi-currency invoicing and payment recording, posted straight into Accounting &
                   Finance. No duplicate entry.
                 </p>
               </div>
-              <div className="rounded-2xl border border-border bg-[#1a2744] px-5 py-4 text-white shadow-lg">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">
+              <div className="rounded-2xl border border-white/15 bg-[#1a2744] px-5 py-4 text-white shadow-lg">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-white/70">
                   Latest payment
                 </p>
-                <p className="mt-1 text-2xl font-bold">$2,484.00</p>
-                <p className="mt-1 text-xs text-brand-leaf-green">Synced to ledger · just now</p>
+                <p className="mt-1 text-3xl font-extrabold tracking-tight text-brand-leaf-green">
+                  $2,484.00
+                </p>
+                <p className="mt-1 text-xs font-semibold text-brand-tangerine">
+                  Synced to ledger · just now
+                </p>
               </div>
             </div>
           </CapabilityShell>

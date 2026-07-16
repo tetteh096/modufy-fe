@@ -67,7 +67,7 @@ export function InvoicingInteractivePreview() {
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
             See how professional billing should feel.
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-white/60">
+          <p className="mt-4 text-sm leading-relaxed text-white/80">
             Switch statuses to preview how an invoice looks as it moves through your workflow.
           </p>
         </FadeIn>
@@ -82,7 +82,7 @@ export function InvoicingInteractivePreview() {
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                   status === item
                     ? "bg-brand-leaf-green text-white shadow-lg shadow-brand-leaf-green/30"
-                    : "border border-white/15 bg-white/5 text-white/70 hover:bg-white/10"
+                    : "border border-white/25 bg-white/10 text-white/85 hover:bg-white/15 hover:text-white"
                 }`}
               >
                 {item}
@@ -134,17 +134,19 @@ export function InvoicingInteractivePreview() {
                 <div className="space-y-1.5 text-sm">
                   <Row label="Subtotal" value="$2,070.00" />
                   <Row label="Tax" value="$310.50" />
-                  <div className="flex justify-between border-t border-border pt-2 font-bold">
+                  <div className="flex justify-between border-t border-border pt-2 text-base font-extrabold text-[#111]">
                     <span>Total</span>
-                    <span>$2,484.00</span>
+                    <span className="text-brand-leaf-green">$2,484.00</span>
                   </div>
                 </div>
                 <div className="mt-4 rounded-xl border border-border bg-white p-3">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-[#666]">
                     Payments recorded
                   </p>
-                  <p className="mt-1 text-xl font-bold text-brand-leaf-green">${paidLabel}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{meta.note}</p>
+                  <p className="mt-1 text-2xl font-extrabold tracking-tight text-brand-leaf-green">
+                    ${paidLabel}
+                  </p>
+                  <p className="mt-1 text-xs text-[#555]">{meta.note}</p>
                 </div>
               </div>
             </div>
@@ -157,9 +159,9 @@ export function InvoicingInteractivePreview() {
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between text-muted-foreground">
+    <div className="flex justify-between text-[#444]">
       <span>{label}</span>
-      <span>{value}</span>
+      <span className="font-semibold text-[#222]">{value}</span>
     </div>
   );
 }

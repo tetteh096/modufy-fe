@@ -133,17 +133,11 @@
   }
 
   .text-gradient-tangerine {
-    background: linear-gradient(90deg, #f58f20 0%, #ffd08a 55%, #ffffff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #f58f20;
   }
 
   .text-gradient-leaf {
-    background: linear-gradient(90deg, #467434 0%, #7ba564 55%, #f58f20 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #467434;
   }
 
   .shadow-glow-tangerine {

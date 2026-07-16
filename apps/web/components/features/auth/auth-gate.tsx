@@ -28,6 +28,11 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
         return;
       }
 
+      if (result?.onboarding_required) {
+        router.replace("/onboarding");
+        return;
+      }
+
       // No token means no valid session — send to login, preserving where the
       // user was so they return there after signing in.
       if (!useAuthStore.getState().token) {

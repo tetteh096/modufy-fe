@@ -98,7 +98,7 @@ export function categoryServicesUrl(basePath: string, category: string) {
   return `${basePath}/services?category=${categorySlug(category)}`;
 }
 
-export function productImage(product: PublicProduct) {
+export function productImage(product?: PublicProduct | null) {
   return primaryProductImage(product);
 }
 
@@ -123,8 +123,9 @@ type PortfolioItem = PublicStorefront["portfolio"][number];
 
 /** Images assigned to the homepage hero slider; falls back to all if none assigned. */
 export function portfolioForHero(sf: PublicStorefront): PortfolioItem[] {
-  const picked = sf.portfolio.filter((p) => p.use_hero);
-  return picked.length > 0 ? picked : sf.portfolio;
+  const portfolio = sf.portfolio ?? [];
+  const picked = portfolio.filter((p) => p.use_hero);
+  return picked.length > 0 ? picked : portfolio;
 }
 
 /** Images for homepage story / editorial blocks; falls back to all if none assigned. */

@@ -87,7 +87,8 @@ export function sharedProductImages(product: PublicProduct): string[] {
 }
 
 /** Primary cover image only — used on shop cards and catalog (never variant colour shots). */
-export function primaryProductImage(product: PublicProduct): string | null {
+export function primaryProductImage(product?: PublicProduct | null): string | null {
+  if (!product) return null;
   const url = product.photo_url ? resolveMediaUrl(product.photo_url) : null;
   if (url) return url;
   const fallback = product.images?.[0];

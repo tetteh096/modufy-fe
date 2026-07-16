@@ -68,7 +68,7 @@ function buildHeroSlides(sf: PublicStorefront, basePath: string): Slide[] {
   }
 
   // No portfolio — gradient hero; product photo only as full-bleed fallback (never a side card)
-  const fallbackImage = productImage(sf.products[0]) || null;
+  const fallbackImage = productImage(sf.products?.[0]);
 
   return [
     {
@@ -101,10 +101,6 @@ export function StorefrontHomeHero({
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    setIndex(0);
-  }, [slides.length]);
-
-  useEffect(() => {
     if (slides.length <= 1) return;
     const timer = window.setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
@@ -112,7 +108,8 @@ export function StorefrontHomeHero({
     return () => window.clearInterval(timer);
   }, [slides.length]);
 
-  const slide = slides[index];
+  const safeIndex = index < slides.length ? index : 0;
+  const slide = slides[safeIndex];
 
   function prev() {
     setIndex((i) => (i - 1 + slides.length) % slides.length);
@@ -205,8 +202,8 @@ export function StorefrontHomeHero({
                 <button
                   key={s.id}
                   type="button"
-                  className={i === index ? "is-active" : ""}
-                  style={i === index ? { background: accent } : undefined}
+                  className={i === safeIndex ? "is-active" : ""}
+                  style={i === safeIndex ? { background: accent } : undefined}
                   onClick={() => setIndex(i)}
                   aria-label={`Go to slide ${i + 1}`}
                 />

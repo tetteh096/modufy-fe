@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, MessageCircle, RefreshCw, FileCheck } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Button } from "@/components/ui/button";
 import { homeImages } from "@/lib/home-images";
@@ -13,14 +13,17 @@ const BENEFITS = [
   {
     title: "Send once. Track everywhere.",
     copy: "Share invoices by WhatsApp, email, SMS, or link, and see when they are viewed, overdue, or paid.",
+    icon: MessageCircle,
   },
   {
     title: "Payments update your books",
     copy: "When a payment lands, Accounting syncs automatically. No duplicate entry between billing and books.",
+    icon: RefreshCw,
   },
   {
     title: "Quotes become invoices",
     copy: "Convert a proforma to a branded invoice in one click, keeping the same customer history.",
+    icon: FileCheck,
   },
 ] as const;
 
@@ -28,94 +31,146 @@ export function InvoicingSpotlightSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#0b0b0b] text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_20%_40%,rgba(70,116,52,0.22),transparent)]" />
+    <section className="relative overflow-hidden bg-[#101010] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_15%_35%,rgba(70,116,52,0.18),transparent)]" />
       <div className="container-site relative py-16 sm:py-20 lg:py-24">
         <FadeIn className="max-w-2xl">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-brand-tangerine">
             Modufy Invoicing
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
             Billing that keeps your business moving
           </h2>
         </FadeIn>
 
-        <div className="mt-12 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
           <FadeIn>
-            <div className="relative mx-auto max-w-lg">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-[#1a2744]/40 sm:aspect-[5/6]">
-                <Image
-                  src={homeImages.features.invoice}
-                  alt="Professional invoice document in Modufy"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 90vw, 480px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div className="relative mx-auto w-full max-w-xl">
+              {/* Calm product board */}
+              <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#e8efe9] p-3 shadow-[0_28px_64px_rgba(0,0,0,0.35)] sm:rounded-[2rem] sm:p-4">
+                <div className="mb-3 flex items-center justify-between px-1 sm:mb-4">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#1a2744]/70">
+                    Modufy
+                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-10 rounded-full bg-[#1a2744]/10" />
+                    <span className="h-2 w-6 rounded-full bg-[#1a2744]/8" />
+                    <span className="h-2 w-8 rounded-full bg-[#1a2744]/8" />
+                  </div>
+                </div>
+
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] sm:aspect-[5/6] sm:rounded-[1.4rem]">
+                  <Image
+                    src="/landingscroll/modu/inviocesec.jpg"
+                    alt="Professional invoice document in Modufy"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 90vw, 520px"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10" />
+
+                  {/* Paid pill on image */}
+                  <motion.div
+                    className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-brand-leaf-green px-3.5 py-2 text-xs font-bold text-white shadow-[0_10px_28px_rgba(70,116,52,0.45)] sm:right-5 sm:top-5"
+                    animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    Invoice paid
+                  </motion.div>
+
+                  {/* Money card over image */}
+                  <motion.div
+                    className="absolute inset-x-3 bottom-3 sm:inset-x-5 sm:bottom-5"
+                    animate={reduceMotion ? undefined : { y: [0, 6, 0] }}
+                    transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.35 }}
+                  >
+                    <div className="rounded-[1.25rem] border border-white/20 bg-white p-4 shadow-[0_18px_40px_rgba(0,0,0,0.28)] sm:p-5">
+                      <div className="flex items-end justify-between gap-3">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#6b6b6b]">
+                            Total collected
+                          </p>
+                          <p className="mt-1 font-display text-[2.35rem] font-extrabold leading-none tracking-tight text-brand-leaf-green sm:text-[2.75rem]">
+                            $2,484
+                          </p>
+                        </div>
+                        <span className="mb-1 rounded-full bg-brand-leaf-green/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-leaf-green">
+                          Synced
+                        </span>
+                      </div>
+                      <ul className="mt-4 space-y-2.5 border-t border-[#ece8e2] pt-3.5">
+                        {[
+                          ["Scanner kit", "$1,240"],
+                          ["Restock pack", "$380"],
+                          ["Setup", "$450"],
+                        ].map(([label, amount]) => (
+                          <li key={label} className="flex items-center justify-between gap-3 text-sm">
+                            <span className="text-[#555]">{label}</span>
+                            <span className="font-bold text-[#111]">{amount}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <div className="mt-3 grid grid-cols-[72px_1fr] items-center gap-3 px-0.5 sm:mt-4 sm:grid-cols-[88px_1fr]">
+                  <div className="aspect-square rounded-xl bg-[#1a2744]/8 ring-1 ring-[#1a2744]/6" />
+                  <div className="flex flex-col gap-2">
+                    <span className="h-2.5 w-full rounded-full bg-[#1a2744]/10" />
+                    <span className="h-2.5 w-[76%] rounded-full bg-[#1a2744]/8" />
+                    <span className="h-2.5 w-[50%] rounded-full bg-[#1a2744]/6" />
+                  </div>
+                </div>
               </div>
-
-              <motion.div
-                className="absolute -right-2 top-8 rounded-full bg-brand-leaf-green px-3.5 py-1.5 text-xs font-bold text-white shadow-lg sm:right-4"
-                animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                Invoice paid
-              </motion.div>
-
-              <motion.div
-                className="absolute -left-2 bottom-16 w-[min(100%,220px)] rounded-2xl border border-white/15 bg-white p-4 text-[#1a2744] shadow-2xl sm:left-4"
-                animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-              >
-                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                  Total collected
-                </p>
-                <p className="mt-1 text-3xl font-extrabold tracking-tight">$2,484</p>
-                <ul className="mt-3 space-y-2 border-t border-border pt-3 text-xs">
-                  <li className="flex justify-between gap-3">
-                    <span className="text-muted-foreground">Scanner kit</span>
-                    <span className="font-semibold">-$1,240</span>
-                  </li>
-                  <li className="flex justify-between gap-3">
-                    <span className="text-muted-foreground">Restock pack</span>
-                    <span className="font-semibold">-$380</span>
-                  </li>
-                  <li className="flex justify-between gap-3">
-                    <span className="text-muted-foreground">Setup</span>
-                    <span className="font-semibold">-$450</span>
-                  </li>
-                </ul>
-              </motion.div>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.08}>
-            <ul className="space-y-8">
-              {BENEFITS.map((item) => (
-                <li key={item.title}>
-                  <h3 className="text-xl font-bold tracking-tight sm:text-2xl">{item.title}</h3>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/60 sm:text-base">
-                    {item.copy}
-                  </p>
-                </li>
-              ))}
+            <ul className="space-y-5">
+              {BENEFITS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <li
+                    key={item.title}
+                    className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] p-5 transition hover:border-white/20 hover:bg-white/[0.06] sm:p-6"
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-leaf-green/15 text-brand-leaf-green">
+                        <Icon className="h-4 w-4" strokeWidth={2.25} />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-white/80 sm:text-[15px]">
+                          {item.copy}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
 
-            <div className="mt-10 flex flex-wrap items-center gap-5">
+            <div className="mt-9 flex flex-wrap items-center gap-4">
               <Button
                 href={appPath("/register")}
                 size="lg"
                 external
-                variant="outline"
-                className="rounded-full border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                className="rounded-full bg-brand-leaf-green px-7 text-white shadow-lg shadow-brand-leaf-green/25 hover:brightness-110"
               >
                 Start free trial
+                <ArrowRight className="ml-1.5 h-4 w-4" />
               </Button>
               <Link
                 href="/modules"
-                className="text-sm font-semibold text-white underline underline-offset-4 transition hover:text-brand-leaf-green"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/85 transition hover:text-white"
               >
                 View all modules
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </FadeIn>
@@ -135,7 +190,7 @@ export function InvoicingVisualFeatures() {
     },
     {
       title: "Get paid, stay in sync",
-      copy: "Record payments in any currency: every amount posts straight to Accounts.",
+      copy: "Record payments in any currency. Every amount posts straight to Accounts.",
       image: homeImages.features.payments,
       alt: "Payment card visual connected to Modufy books",
     },

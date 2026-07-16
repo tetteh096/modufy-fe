@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
-import { homeImages } from "@/lib/home-images";
 import { cn } from "@/lib/utils";
 
 const STEPS = [
@@ -14,8 +13,8 @@ const STEPS = [
     id: "customers",
     number: "01",
     title: "Add your first customers",
-    blurb: "Import or create contacts: every sale starts from one shared book.",
-    image: homeImages.pages.testimonials,
+    blurb: "Import or create contacts. Every sale starts from one shared book.",
+    image: "/landingscroll/modu/ba9f63df107b6c078626bf9f55174bd4.jpg",
     imageAlt: "Small business owner getting started with Modufy",
   },
   {
@@ -23,15 +22,15 @@ const STEPS = [
     number: "02",
     title: "Set up products and services",
     blurb: "One catalog for stock and bookable work, ready for POS and invoices.",
-    image: homeImages.features.inventoryPhoto,
+    image: "/landingscroll/modu/cate.jpg",
     imageAlt: "Inventory and product catalog in Modufy",
   },
   {
     id: "sell",
     number: "03",
     title: "Take your first sale",
-    blurb: "Ring it up, send an invoice, or collect a deposit: books update live.",
-    image: homeImages.features.payments,
+    blurb: "Ring it up, send an invoice, or collect a deposit. Books update live.",
+    image: "/landingscroll/modu/inviocesec.jpg",
     imageAlt: "Payments and till with Modufy",
   },
 ] as const;
@@ -63,7 +62,7 @@ export function BuildFastSection() {
               <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]">
                 Build fast on Modufy
               </h2>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/50 sm:text-base">
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
                 Go from empty account to first sale in three steps, then keep layering
                 modules as you grow.
               </p>
@@ -87,15 +86,15 @@ export function BuildFastSection() {
                       className={cn(
                         "group relative w-full rounded-2xl border px-4 py-5 text-left transition sm:px-5",
                         isActive
-                          ? "border-white/20 bg-white/[0.06]"
-                          : "border-transparent hover:bg-white/[0.03]"
+                          ? "border-white/25 bg-white/[0.08]"
+                          : "border-transparent hover:bg-white/[0.04]"
                       )}
                     >
                       <div className="flex items-start gap-4 sm:gap-5">
                         <span
                           className={cn(
                             "mt-0.5 shrink-0 text-sm font-bold tabular-nums",
-                            isActive ? "text-brand-leaf-green" : "text-white/35"
+                            isActive ? "text-brand-leaf-green" : "text-white/60"
                           )}
                         >
                           {item.number}
@@ -104,7 +103,7 @@ export function BuildFastSection() {
                           <p
                             className={cn(
                               "text-xl font-extrabold tracking-tight sm:text-2xl",
-                              isActive ? "text-white" : "text-white/45"
+                              isActive ? "text-white" : "text-white/75"
                             )}
                           >
                             {item.title}
@@ -115,7 +114,7 @@ export function BuildFastSection() {
                                 initial={reduceMotion ? false : { opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
-                                className="overflow-hidden text-sm leading-relaxed text-white/50"
+                                className="overflow-hidden text-sm leading-relaxed text-white/85"
                               >
                                 <span className="mt-1.5 block">{item.blurb}</span>
                               </motion.p>
@@ -149,7 +148,7 @@ export function BuildFastSection() {
               </Link>
               <Link
                 href="/demo"
-                className="text-sm font-semibold text-white/50 transition hover:text-white"
+                className="text-sm font-semibold text-white/75 transition hover:text-white"
               >
                 Or book a live demo →
               </Link>

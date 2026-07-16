@@ -73,7 +73,8 @@ export function resolvePostAuthPath(
   next: string | null,
 ): string {
   if (requiresBranchSelection) return "/select-branch";
-  if (onboardingRequired && !next) return "/onboarding";
+  // Never let a stale `next=/dashboard` bypass required business creation.
+  if (onboardingRequired) return "/onboarding";
   if (next && next.startsWith("/")) return next;
   return "/dashboard";
 }
